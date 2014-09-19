@@ -1,0 +1,250 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* Setting up the Grid */
+.wrap {
+  *zoom: 1;
+  max-width: 58em;
+  _width: 58em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wrap:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html {
+  background-color: $white;
+  background-image: url(../images/wild_flowers.png);
+}
+
+body {
+  font-size: 18px;
+  font-family: "Lato", Verdana, sans-serif;
+  line-height: 31.5px;
+  color: #515861;
+  
+}
+
+em {
+  font-style: italic;
+}
+
+hr {
+  margin: 1.5em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: .5em 0;
+}
+
+a {
+  color: #c99360;
+  text-decoration: none;
+}
+a:visited {
+  color: #91aab5;
+}
+a:focus {
+  color: #65c4c7;
+}
+a:hover {
+  color: #42b3b7;
+}
+a:active {
+  color: #515861;
+}
+
+h1 {
+  font-family: "Nova Square", cursive;
+  font-size: 40.5px;
+  color: #fafafa;
+}
+
+h2 {
+  font-size: 31.5px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 22.5px;
+  color: #509997;
+  border-bottom: 3px double #509997;
+  padding-top: 1em;
+}
+
+h4 {
+  font-size: 22.5px;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/*Section Styles */
+header,
+footer {
+  padding: 20px 0;
+}
+
+article {
+  background-color: white;
+  padding: 1em 2em;
+  margin: 1.5em 0;
+  float: left;
+  width: 100%;
+  box-shadow: 6px 6px 10px 0px #515861;
+  -moz-box-shadow: 6px 6px 10px 0px #515861;
+  -webkit-box-shadow: 6px 6px 10px 0px #515861;
+}
+
+p {
+  margin: 1em 0;
+}
+
+header {
+  background-color: #515861;
+  float: right;
+  width: 100%;
+  text-align: right;
+}
+header h1 {
+  margin: .25em 0;
+}
+header h2 {
+  color: #ced9de;
+  font-size: 22.5px;
+}
+
+nav a{
+    display: inline-block;
+    padding:0 1em;
+    border-right:1px solid #91aab5;
+}
+nav a:last-of-type {
+  padding-right:0;
+  border-right:none;
+}
+
+#main {
+  display: block;
+  clear: both;
+}
+
+#sidebar {
+  width:30%;
+  float:left;
+  margin-right:3%;
+}
+#sidebar ul {
+  padding-left:1em;
+}
+#content {
+  width: 65%;
+  float:left;
+}
+
+footer {
+  background-color: #515861;
+  color: #fafafa;
+}
+footer a {
+  color: #a6e1e3;
+}
+footer a:visited {
+  color: #a6e1e3;
+}
+footer a:hover {
+  color: #65c4c7;
+}
+footer p {
+  float: left;
+}
+
+#contact {
+  float: right;
+  font-size: 27px;
+  margin: 0.25em 0;
+}
+#contact a {
+  padding: .5em;
+}
+#contact a:last-of-type {
+  padding-right: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .sponsor h4 {
+    padding-left: 0 !important;
+  }
+
+  #register .left, #register .right {
+    width: 100%;
+    float: left;
+  }
+}
