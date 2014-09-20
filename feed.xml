@@ -10,9 +10,45 @@
     <name>Blog Author</name>
   </author>
   <entry>
+    <title>Working with Your Computer</title>
+    <link rel="alternate" href="http://blog.url.com/modules/terminal.html"/>
+    <id>http://blog.url.com/modules/terminal.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-09-20T10:51:05-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;Coming Soon&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Create Subset of Data</title>
+    <link rel="alternate" href="http://blog.url.com/modules/subset.html"/>
+    <id>http://blog.url.com/modules/subset.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-09-20T10:50:13-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;Coming Soon&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using the Loop</title>
+    <link rel="alternate" href="http://blog.url.com/modules/loop.html"/>
+    <id>http://blog.url.com/modules/loop.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-09-20T10:50:26-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;Coming Soon&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>Installation</title>
-    <link rel="alternate" href="http://blog.url.com/modules/Installation.html"/>
-    <id>http://blog.url.com/modules/Installation.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/installation.html"/>
+    <id>http://blog.url.com/modules/installation.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-09-20T10:29:15-04:00</updated>
     <author>
@@ -163,6 +199,30 @@ Type "help", "copyright", "credits" or license for more information.
 
 &lt;h3 id="credits"&gt;Credits&lt;/h3&gt;
 &lt;p&gt;These instructions are modifications of the Python installation instruction at &lt;a href="http://learnpythonthehardway.org/book/ex0.html"&gt;&lt;em&gt;Learn Python the Hard Way&lt;/em&gt;&lt;/a&gt; and Fred Gibb's &lt;a href="http://fredgibbs.net/tutorials/tutorial/install-python-modules/"&gt;tutorial on installing Pip&lt;/a&gt; as well as the &lt;a href="http://docs.railsbridge.org/installfest/"&gt;InstallFest docs of RailsBridge&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Getting Data</title>
+    <link rel="alternate" href="http://blog.url.com/modules/get_data.html"/>
+    <id>http://blog.url.com/modules/get_data.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-09-20T10:50:48-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;Coming Soon&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Thinking about Data</title>
+    <link rel="alternate" href="http://blog.url.com/modules/data.html"/>
+    <id>http://blog.url.com/modules/data.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-09-20T10:50:38-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;Coming Soon&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
