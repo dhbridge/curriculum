@@ -3,8 +3,8 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+a, abbr, acronym, address, big, cite,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
@@ -54,6 +54,27 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
+
+pre {
+  font-family: monospace;
+  width:100%;
+  float:left;
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  font-size:.9em;
+  box-shadow: 6px 6px 10px 0px #515861;
+  -moz-box-shadow: 6px 6px 10px 0px #515861;
+  -webkit-box-shadow: 6px 6px 10px 0px #515861;
+  padding-left:.5em;
+  background-color:#515861;
+  color:#fafafa;
+
+}
+
+
 
 /* Setting up the Grid */
 .wrap {
@@ -165,6 +186,16 @@ article {
 
 p {
   margin: 1em 0;
+}
+.command {
+  font-family: monospace;
+  padding:0 .5em;
+  margin:0 .5em;
+  background-color:#515861;
+  color:#fafafa;
+  box-shadow: 3px 3px 5px 0px #515861;
+  -moz-box-shadow: 3px 3px 5px 0px #515861;
+  -webkit-box-shadow: 3px 3px 5px 0px #515861;
 }
 
 header {

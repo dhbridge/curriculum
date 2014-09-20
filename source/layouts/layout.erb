@@ -5,15 +5,18 @@
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="" />
-	<meta name="viewport" content="width=device-width, user-scalable=no">
+	  <meta name="viewport" content="width=device-width, user-scalable=no">
 	
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Nova+Square' rel='stylesheet' type='text/css'>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title><%= current_page.data.title || "DH Bridge" %></title>
     
-    <%= stylesheet_link_tag "style" %>
-    <%= javascript_include_tag  "all" %>
+    <!--<link href="/stylesheets/style.css" rel="stylesheet" type="text/css"
+    <script src="/javascripts/all.js" type="text/javascript"></script> -->
+    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css"
+    <script src="http://dhbridge.org/curriculum/javascripts/all.js" type="text/javascript"></script>
+    
   </head>
 
   <body class="<%= page_classes %>">
@@ -26,7 +29,9 @@
             <div id="main">
               <article>
                 <%= partial "sidebar" %>
-                <%= yield %>
+                <section id="content">
+                  <%= yield %>
+                </section>
               </article>
   			   </div>
   		</div>
