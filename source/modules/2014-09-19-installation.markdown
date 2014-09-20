@@ -2,6 +2,7 @@
 title: Installation
 date: 2014-09-19
 ---
+
 Welcome to DH Bridge. This one day workshop will introduce you to basic programming concepts for use in humanities research. We will be working with Python, a programming language that combines a human-readable syntax with robust support for statistical analysis and graphing. The data for the day will be gleaned from the Digital Public Library of America. We are excited that you will be joining us.
 
 ## Step One: Required Supplies
