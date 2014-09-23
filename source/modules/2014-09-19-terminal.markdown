@@ -3,4 +3,21 @@ title: Working with Your Computer
 date: 2014-09-19
 ---
 
-*Coming Soon*
+Throughout this tutorial, we will be spending a lot of time in Terminal or PowerShell as our primary way of talking to our computers. In order to do this, however, it is necessary to take some time to get comfortable.
+
+### Terminology and Mapping the Computer
+
+We're now going to take a step back to think about the different layers of the computer that we will be working with and about how we move data from one process to another. 
+
+At your table, there is paper and many different drawing implements. We are going to talk through the tools and technologies we're using.  While we do that, your job is to visualize those connections using whatever metaphor or structure makes sense to you.
+
+The topics we will cover include:
+
+- Working from terminal rather than interface
+- Levels of Programming Languages
+- Programming Libraries
+- Servers
+- API
+
+### Credits
+This tutorial is based on the [Praxis Program's Command Line Bootcamp](http://praxis.scholarslab.org/scratchpad/bash/) and Greg Bloom's post, <a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/">Draw an API</a>.

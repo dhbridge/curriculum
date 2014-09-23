@@ -253,14 +253,20 @@ footer a:visited {
 footer a:hover {
   color: #65c4c7;
 }
-footer p {
-  float: left;
+#rights {
+  width:70%;
+  float:left;
 }
-
+#rights p {
+  margin: 0 0 .5em;
+  display: block;
+}
 #contact {
+  width:30%;
   float: right;
   font-size: 27px;
   margin: 0.25em 0;
+  text-align:right;
 }
 #contact a {
   padding: .5em;
