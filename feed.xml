@@ -163,6 +163,20 @@ Downloads		Movies		Sites
 </content>
   </entry>
   <entry>
+    <title>Using the Loop</title>
+    <link rel="alternate" href="http://blog.url.com/modules/loop.html"/>
+    <id>http://blog.url.com/modules/loop.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-09-25T18:22:45-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h3 id="overview"&gt;Overview&lt;/h3&gt;
+
+&lt;p&gt;In this module, we are going to learn about one of the most important programming concepts: the loop. In a loop, you tell the computer to do something to every item in a set, or in Python speak, in an array. We will start simple, displaying information on each item, and then work to something a bit more complicated.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>Installation</title>
     <link rel="alternate" href="http://blog.url.com/modules/installation.html"/>
     <id>http://blog.url.com/modules/installation.html</id>
@@ -316,27 +330,6 @@ Type "help", "copyright", "credits" or license for more information.
 
 &lt;h3 id="credits"&gt;Credits&lt;/h3&gt;
 &lt;p&gt;These instructions are modifications of the Python installation instruction at &lt;a href="http://learnpythonthehardway.org/book/ex0.html"&gt;&lt;em&gt;Learn Python the Hard Way&lt;/em&gt;&lt;/a&gt; and Fred Gibb's &lt;a href="http://fredgibbs.net/tutorials/tutorial/install-python-modules/"&gt;tutorial on installing Pip&lt;/a&gt; as well as the &lt;a href="http://docs.railsbridge.org/installfest/"&gt;InstallFest docs of RailsBridge&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Getting Data</title>
-    <link rel="alternate" href="http://blog.url.com/modules/get_data.html"/>
-    <id>http://blog.url.com/modules/get_data.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-25T17:31:03-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;h3 id="overview"&gt;Overview&lt;/h3&gt;
-
-&lt;p&gt;In this module, we will use pip to install the DPyLA python library to make it easy to use the API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;install dpla python library&lt;/li&gt;
-  &lt;li&gt;fire up python interactive shell&lt;/li&gt;
-  &lt;li&gt;use dpla library to see data in terminal&lt;/li&gt;
-&lt;/ul&gt;
-
 </content>
   </entry>
 </feed>
