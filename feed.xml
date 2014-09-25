@@ -14,11 +14,105 @@
     <link rel="alternate" href="http://blog.url.com/modules/terminal.html"/>
     <id>http://blog.url.com/modules/terminal.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-20T10:51:05-04:00</updated>
+    <updated>2014-09-25T11:42:10-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;&lt;em&gt;Coming Soon&lt;/em&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;Throughout this tutorial, we will be spending a lot of time in Terminal or PowerShell as our primary way of talking to our computers. In order to do this, however, it is necessary to take some time to get comfortable working with the command line.&lt;/p&gt;
+
+&lt;p&gt;So let's walk through some basic commands while setting up our computer for the rest of the tutorial.&lt;/p&gt;
+
+&lt;p&gt;First, let's get a sense of where we are in the file structure of our computer. &lt;/p&gt;
+
+&lt;p&gt;Type &lt;span class="command"&gt;pwd&lt;/span&gt; and press enter. &lt;/p&gt;
+
+&lt;p&gt;The command, which stands for "print working directory," does exactly, tells you which directory you are in. Navigating the computer through the Terminal sometimes feels like tunneling, and 'pwd' is very helpful for seeing where you are at. You should see something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/Users/yourusername
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;if you're on a Mac or&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C:\Users\username
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;for Windows.&lt;/p&gt;
+
+&lt;p&gt;Type &lt;span class="command"&gt;ls&lt;/span&gt; and press enter. &lt;/p&gt;
+
+&lt;p&gt;This is another super helpful command for orienting yourself. This commands lists all the files in your current directory. If you need to see hidden files, type 'ls -a'. &lt;/p&gt;
+
+&lt;p&gt;You should see something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jeris-mbp:~ jeriwieringa$ ls
+Applications		Dropbox		Music
+Desktop			Envs		Pictures
+Documents		Library		Public
+Downloads		Movies		Sites		
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now that we know where we are, we now need to learn how to move around the different files. This is done with 'cd' or "change directory." If you just type 'cd', you will move back to the root of your user directory. To move forward, type 'cd [Directory_Name]'. You can also move multiple directories at a time with 'cd [Directory_Name/Directory_Name/Directory_Name]'. This way you can dig down through your files. Let's give it a try.&lt;/p&gt;
+
+&lt;p&gt;Type &lt;span class="command"&gt;cd Documents&lt;/span&gt; and press enter. Now type &lt;span class="command"&gt;ls&lt;/span&gt; and press enter.&lt;/p&gt;
+
+&lt;p&gt;You can also move backwards by typing &lt;span class="command"&gt;cd ../&lt;/span&gt; and to move back multiple directories, type &lt;span class="command"&gt;cd ../../../&lt;/span&gt;. &lt;/p&gt;
+
+&lt;p&gt;Go ahead and give that a try. After moving around, work your way back to the "Documents" folder.&lt;/p&gt;
+
+&lt;p&gt;Let's create a folder for our work today. &lt;/p&gt;
+
+&lt;p&gt;Type &lt;span class="command"&gt;mkdir dhb_awesome&lt;/span&gt; and press enter. Now type &lt;span class="command"&gt;ls&lt;/span&gt; and you should see your 'dhb_awesome' folder. Use 'cd' to move into that folder.&lt;/p&gt;
+
+&lt;p&gt;Folders are great but it is also helpful to know how to make files. For that, we'll use a command called 'touch' on OSX and 'New-Item' on Windows.&lt;/p&gt;
+
+&lt;p&gt;If you're on a Mac, type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;touch my_first_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and press enter. &lt;/p&gt;
+
+&lt;p&gt;If you're on Windows, type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;New-Item -ItemType file my_first_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and press enter. &lt;/p&gt;
+
+&lt;p&gt;Type &lt;span class="command"&gt;ls&lt;/span&gt; to see your file. &lt;/p&gt;
+
+&lt;p&gt;To edit your new file in your default text-editor, type &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;open my_first_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;on your Mac or&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Invoke-Item my_first_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;on your Windows machine. This should launch your default text editor. Type &lt;span class="command"&gt;print "Hello World"&lt;/span&gt; into the text file and save. We will do something with that later.&lt;/p&gt;
+
+&lt;p&gt;If you want to know more commands, like removing files, copying files, and renaming files, checkout the &lt;a href="http://praxis.scholarslab.org/scratchpad/bash/"&gt;Scholars' Lab Command Line Bootcamp&lt;/a&gt;. But this is enough to start!&lt;/p&gt;
+
+&lt;h3 id="terminology-and-mapping-the-computer"&gt;Terminology and Mapping the Computer&lt;/h3&gt;
+
+&lt;p&gt;We're now going to take a step back to think about the different layers of the computer that we will be working with and about how we move data from one process to another. &lt;/p&gt;
+
+&lt;p&gt;At your table, there is paper and many different drawing implements. We are going to talk through the tools and technologies we're using.  While we do that, your job is to visualize those connections using whatever metaphor or structure makes sense to you.&lt;/p&gt;
+
+&lt;p&gt;The topics we will cover include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Working from terminal rather than interface&lt;/li&gt;
+  &lt;li&gt;Levels of Programming Languages&lt;/li&gt;
+  &lt;li&gt;Programming Libraries&lt;/li&gt;
+  &lt;li&gt;Servers&lt;/li&gt;
+  &lt;li&gt;API&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="credits"&gt;Credits&lt;/h3&gt;
+&lt;p&gt;This tutorial is based on the &lt;a href="http://praxis.scholarslab.org/scratchpad/bash/"&gt;Praxis Program's Command Line Bootcamp&lt;/a&gt; and Greg Bloom's post, &lt;a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/"&gt;Draw an API&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
   <entry>

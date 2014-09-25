@@ -65,10 +65,10 @@ pre {
   white-space: -pre-wrap;      /* Opera 4-6 */
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
-  font-size:.9em;
-  box-shadow: 6px 6px 10px 0px #515861;
-  -moz-box-shadow: 6px 6px 10px 0px #515861;
-  -webkit-box-shadow: 6px 6px 10px 0px #515861;
+  font-size:.85 em;
+  box-shadow: 1px 1px 4px 0px #515861;
+  -moz-box-shadow: 1px 1px 4px 0px #515861;
+  -webkit-box-shadow: 1px 1px 4px 0px #515861;
   padding-left:.5em;
   background-color:#515861;
   color:#fafafa;
@@ -190,6 +190,7 @@ p {
 }
 .command {
   font-family: monospace;
+  font-size: .85em;
   padding:0 .5em;
   margin:0 .5em;
   background-color:#515861;
@@ -254,14 +255,20 @@ footer a:visited {
 footer a:hover {
   color: #65c4c7;
 }
-footer p {
-  float: left;
+#rights {
+  width:70%;
+  float:left;
 }
-
+#rights p {
+  margin: 0 0 .5em;
+  display: block;
+}
 #contact {
+  width:30%;
   float: right;
   font-size: 27px;
   margin: 0.25em 0;
+  text-align:right;
 }
 #contact a {
   padding: .5em;
