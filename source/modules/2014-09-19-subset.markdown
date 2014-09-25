@@ -3,4 +3,6 @@ title: Create Subset of Data
 date: 2014-09-19
 ---
 
-*Coming Soon*
+### Overview
+
+In this module, we will introduce variables to store and work with a subset of the data. 

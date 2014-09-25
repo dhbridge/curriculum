@@ -3,4 +3,11 @@ title: Getting Data
 date: 2014-09-19
 ---
 
-*Coming Soon*
+### Overview
+
+In this module, we will use pip to install the DPyLA python library to make it easy to use the API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.
+
+- install dpla python library
+- fire up python interactive shell
+- use dpla library to see data in terminal
+

@@ -3,4 +3,38 @@ title: Thinking about Data
 date: 2014-09-19
 ---
 
-*Coming Soon*
+### Overview
+
+For this module, we will be using data from the [Digital Public Library of America](http://dp.la). In this module we will walk through requesting an API key using the command line, learn how to talk to the api in our browsers, and think about the structure of the data we get back.
+
+Steps:
+
+- Use curl to get API key.
+- Look at DPLA data in browser.
+- Think about the data structure.
+
+### Get an API Key
+
+The DPLA is an incredible resource for those of use interested in computational research. By bringing together information from a growing number of partners and making that information available through an API, we are able to survey vasts amounts of data housed in various cultural heritage institutions.
+
+Go to [http://dp.la/info/developers/codex/](http://dp.la/info/developers/codex/). This is the documentation for the dp.la api. Remember from our earlier conversation that an API is like a direct link between your browser and a server, where if you format your request in a particular way, you will get back the data in a data format.
+
+First, you will need an api key. 
+
+If you are on a Mac, there is a utility built into your system called "cURL". To use cURL to request your key, type:
+
+	curl -v -XPOST http://api.dp.la/v2/api_key/YOUR_EMAIL@example.com
+
+into your terminal, replacing "YOUR_EMAIL@example.com" with your actual email address.
+
+If you are on windows, type:
+
+	Invoke-WebRequest -Uri ("http://api.dp.la/v2/api_key/YOUR_EMAIL@example.com") -Method POST -Verbose 
+
+again, replacing "YOUR_EMAIL@example.com" with your actual email address.
+
+You should get an email from the DPLA with your key. 
+
+### Use Key to Examine Data in Browser
+
+
