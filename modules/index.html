@@ -12,8 +12,8 @@
 
     <title>DH Bridge</title>
     
-    <!-- <link href="/stylesheets/style.css" rel="stylesheet" type="text/css"> -->
-    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
+<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+ -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
     
   </head>
 
@@ -39,114 +39,24 @@
 			<ul>
 				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/get_data.html">Getting Data</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/data.html">Thinking about Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/get_data.html">Getting Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/use_editor.html">Writing Script Files</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/loop.html">Using the Loop</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/subset.html">Create Subset of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/create.html">Create Data from Text Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/subset.html">Creating Subsets of Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/subset.html">Writing Results to Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/create.html">Creating Data</a></li>
 			</ul>
 		</section>
 
                 <section id="content">
                   
-  <h3><a href="/modules/terminal.html">Working with Your Computer</a></h3>
+  <h3><a href="/modules/write.html">Writings to a File</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>Throughout this tutorial, we will be spending a lot of time in Terminal or PowerShell as our primary way of talking to our computers. In order to do this, however, it is necessary to take some time to get comfortable working with the command line.</p>
+  <h3 id="overview">Overview</h3>
 
-<p>So let's walk through some basic commands while setting up our computer for the rest of the tutorial.</p>
-
-<p>First, let's get a sense of where we are in the file structure of our computer. </p>
-
-<p>Type <span class="command">pwd</span> and press enter. </p>
-
-<p>The command, which stands for "print working directory," does exactly, tells you which directory you are in. Navigating the computer through the Terminal sometimes feels like tunneling, and 'pwd' is very helpful for seeing where you are at. You should see something like:</p>
-
-<pre><code>/Users/yourusername
-</code></pre>
-
-<p>if you're on a Mac or</p>
-
-<pre><code>C:\Users\username
-</code></pre>
-
-<p>for Windows.</p>
-
-<p>Type <span class="command">ls</span> and press enter. </p>
-
-<p>This is another super helpful command for orienting yourself. This commands lists all the files in your current directory. If you need to see hidden files, type 'ls -a'. </p>
-
-<p>You should see something like:</p>
-
-<pre><code>jeris-mbp:~ jeriwieringa$ ls
-Applications		Dropbox		Music
-Desktop			Envs		Pictures
-Documents		Library		Public
-Downloads		Movies		Sites		
-</code></pre>
-
-<p>Now that we know where we are, we now need to learn how to move around the different files. This is done with 'cd' or "change directory." If you just type 'cd', you will move back to the root of your user directory. To move forward, type 'cd [Directory_Name]'. You can also move multiple directories at a time with 'cd [Directory_Name/Directory_Name/Directory_Name]'. This way you can dig down through your files. Let's give it a try.</p>
-
-<p>Type <span class="command">cd Documents</span> and press enter. Now type <span class="command">ls</span> and press enter.</p>
-
-<p>You can also move backwards by typing <span class="command">cd ../</span> and to move back multiple directories, type <span class="command">cd ../../../</span>. </p>
-
-<p>Go ahead and give that a try. After moving around, work your way back to the "Documents" folder.</p>
-
-<p>Let's create a folder for our work today. </p>
-
-<p>Type <span class="command">mkdir dhb_awesome</span> and press enter. Now type <span class="command">ls</span> and you should see your 'dhb_awesome' folder. Use 'cd' to move into that folder.</p>
-
-<p>Folders are great but it is also helpful to know how to make files. For that, we'll use a command called 'touch' on OSX and 'New-Item' on Windows.</p>
-
-<p>If you're on a Mac, type:</p>
-
-<pre><code>touch my_first_script.py
-</code></pre>
-
-<p>and press enter. </p>
-
-<p>If you're on Windows, type:</p>
-
-<pre><code>New-Item -ItemType file my_first_script.py
-</code></pre>
-
-<p>and press enter. </p>
-
-<p>Type <span class="command">ls</span> to see your file. </p>
-
-<p>To edit your new file in your default text-editor, type </p>
-
-<pre><code>open my_first_script.py
-</code></pre>
-
-<p>on your Mac or</p>
-
-<pre><code>Invoke-Item my_first_script.py
-</code></pre>
-
-<p>on your Windows machine. This should launch your default text editor. Type <span class="command">print "Hello World"</span> into the text file and save. We will do something with that later.</p>
-
-<p>If you want to know more commands, like removing files, copying files, and renaming files, checkout the <a href="http://praxis.scholarslab.org/scratchpad/bash/">Scholars' Lab Command Line Bootcamp</a>. But this is enough to start!</p>
-
-<h3 id="terminology-and-mapping-the-computer">Terminology and Mapping the Computer</h3>
-
-<p>We're now going to take a step back to think about the different layers of the computer that we will be working with and about how we move data from one process to another. </p>
-
-<p>At your table, there is paper and many different drawing implements. We are going to talk through the tools and technologies we're using.  While we do that, your job is to visualize those connections using whatever metaphor or structure makes sense to you.</p>
-
-<p>The topics we will cover include:</p>
-
-<ul>
-  <li>Working from terminal rather than interface</li>
-  <li>Levels of Programming Languages</li>
-  <li>Programming Libraries</li>
-  <li>Servers</li>
-  <li>API</li>
-</ul>
-
-<h3 id="credits">Credits</h3>
-<p>This tutorial is based on the <a href="http://praxis.scholarslab.org/scratchpad/bash/">Praxis Program's Command Line Bootcamp</a> and Greg Bloom's post, <a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/">Draw an API</a>.</p>
+<p>In this module, we will focus on writing the results of our loop to a new text file. This enables us to keep our results for future work and as a source to ask further questions.</p>
 
 
 
