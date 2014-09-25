@@ -65,7 +65,7 @@ pre {
   white-space: -pre-wrap;      /* Opera 4-6 */
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
-  font-size:.85 em;
+  font-size:.85em;
   box-shadow: 1px 1px 4px 0px #515861;
   -moz-box-shadow: 1px 1px 4px 0px #515861;
   -webkit-box-shadow: 1px 1px 4px 0px #515861;
