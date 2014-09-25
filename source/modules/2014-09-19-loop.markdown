@@ -1,8 +1,6 @@
 ---
 title: Using the Loop
 date: 2014-09-19
-published: false
-
 ---
 
 ### Overview
