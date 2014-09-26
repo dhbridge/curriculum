@@ -3,8 +3,6 @@ title: Thinking about Data
 date: 2014-09-19
 ---
 
-### Overview
-
 For this module, we will be using data from the [Digital Public Library of America](http://dp.la). We will walk through requesting an API key using the terminal, learn how to talk to the api in our browsers, and think about the structure of the data we get back.
 
 ### Get an API Key
@@ -71,4 +69,13 @@ What you are looking at is a JSON document. In a JSON object, all the informatio
 3. Which key:value pairs do you find the most interested?
 4. What types of questions can you ask of this dataset? Which key:value pairs would be most helpful for answering those questions?
 5. What questions would be hard to answer with this dataset? What additional information would you need?
+
+### What You Have Learned
+
+In this module, you've learned:
+
+- to use cURL or Invoke-WebRequest to talk to a server
+- to use an API to request data
+- to read JSON documents and think about how data is structured
+
 

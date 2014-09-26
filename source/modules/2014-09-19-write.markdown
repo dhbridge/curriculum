@@ -3,6 +3,4 @@ title: Writings to a File
 date: 2014-09-19
 ---
 
-### Overview
-
 In this module, we will focus on writing the results of our loop to a new text file. This enables us to keep our results for future work and as a source to ask further questions.

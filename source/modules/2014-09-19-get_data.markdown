@@ -3,11 +3,101 @@ title: Getting Data
 date: 2014-09-19
 ---
 
-### Overview
-
 In this module, we will use pip to install the DPyLA python library to make it easy to use the API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.
 
-- install dpla python library
-- fire up python interactive shell
-- use dpla library to see data in terminal
+### Install DPyLA Library
 
+We talked earlier about libraries, bundles of code that we can load and use in creating our own scripts. Just as in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to go about making something. Instead, unless there is a reason to not, programming works by combining existing bits to create something new and useful.
+
+One library that makes it easy to work with the DPLA api with Python is [DPyLA](https://github.com/bibliotechy/DPyLA), which you can look at on Github.
+
+We can easily get this library for use in our own code using pip.
+
+Type <span class="command">pip install dpla</span>. 
+
+If you get a permissions error, type <span class="command">sudo pip install dpla</span> and enter your password.
+
+You have just installed your first python library.
+
+### Introducing the Python Interactive Shell
+
+Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the interactive shell, we can experiment with lines of python and see what the language can do. 
+
+To start up the interactive shell, go to your terminal window and type <span class="command">python</span> and press "Enter".
+
+Your terminal should now look like this:
+
+	jeris-mbp:dhb jeriwieringa$ python
+	Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+	[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+	Type "help", "copyright", "credits" or "license" for more information.
+	>>>
+
+Everything you type will now be processed by python. Try it out with a little math. Type <span class="command">print "Hello World"</span> and press "Enter". Now type <span class="command">print "My Name is [Your Name]"</span> and press "Enter". Now type <span class="command">print 5 + 8</span>
+
+Here you have discovered a couple of very useful things with programming languages. 
+
+"print" is a function in python that return whatever you give it next. 
+
+The content contained inside "" marks is called a string. For humanities research, we work with strings a lot.
+
+Finally, if we pass numbers or equations into python, it will compute them. If you don't want python to compute, you should treat the numbers like a string. Experiment in the shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.
+
+### Loading DPyLA in the Shell and Make an API Request
+
+Let's start using our new DPyLA library to make an API call to the DPLA. Following the [library documentation](https://github.com/bibliotechy/DPyLA), run 
+
+	from dpla.api import DPLA 
+
+You just loaded the DPyLA library into your python shell, making all of it's code available for you to use.
+
+Next run:
+	
+	dpla = DPLA('your-key-here')
+
+What you have just done is create what is called a "variable", dpla, that stores your api key.
+
+Next run:
+
+	result = dpla.search('cooking')
+
+You have just created a new variable, "result" that stores the result of a dpla search for "cooking". Now, you might be wondering what happened to your api key. This is part of the magic of using a library. When you save your key as dpla, you make it known to the library. Then, when you call dpla.search, you're combining your key with code in the DPyLA library that executes the search and saving all of the data in a new variable called "result". 
+
+But we still haven't seen any of the results from the API. To show the results, run:
+
+	result.items
+
+You should see something like this:
+
+	[{u'_id': u'digitalnc--urn:brevard.lib.unc.eduecu_c5:oai:digital.lib.ecu.edu/7394', u'admin': {u'sourceResource': {u'title': u'Cooking'}, u'validation_message': None, u'valid_after_enrich': True}, u'sourceResource': {u'isPartOf': [u'https://digital.lib.ecu.edu/encore/ncgre000/00000008/00007394/00007394_tn_0001.gif'], u'description': [u'Boys and girls cooking during home economics class. Dates from negative sleeve.'], u'language': [{u'iso639_3': u'eng', u'name': u'English'}], u'rights': u'Copyright held by Joyner Library. Permission to reuse this work is granted for all non-commercial purposes.', u'@id': u'http://dp.la/api/items/7cb32765b538a57a35fbdbfad03be57b#sourceResource', u'format': u'negatives (photographic)'
+
+You just asked the computer to give you all of the items it got back from the search for "cooking". 
+
+Notice the structure of this data. Can you find the key:value pairs? 
+
+You might notice the " u' " in front of each string. This is a feature of python 2. The u' indicates that what follows is a unicode string. Don't worry too much about what that means - it is information about how the data is being encoded - but if you want to really geek out, you can read all about encoding in the [language documentation](https://docs.python.org/2/tutorial/introduction.html#unicode-strings).
+
+But what if you only want to see one item at a time?
+
+The information you get back from the DPLA API comes in the form of an **array**, or **list** ("array" is the general programming word for a series of things, "list" is python's name for a series of things). Lists are a super powerful, enabling us to load up a lot of information and then work through each bit individually.
+
+One general things we can do with lists is get items by their position in the list. 
+
+For example, if you want the first item only:
+
+	result.items[0]
+
+You should now see a much smaller dump of data. You might be wondering why we used 0. Programming languages start counting with 0 rather than one.
+
+Try to get the 3rd item in the search results. What if you want to get a couple of items? Can you use [this tutorial](http://effbot.org/zone/python-list.htm) to figure out how to get items 1 - 3?	
+
+
+### What You Have Learned
+
+In this module, you have learned:
+
+- to install new libraries using pip
+- to use the Python Interactive Shell to run basic python commands
+- to load and use those libraries
+- to make an API request using a python script
+- to work with variables and lists

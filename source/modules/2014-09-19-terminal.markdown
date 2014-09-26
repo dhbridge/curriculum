@@ -88,5 +88,12 @@ The topics we will cover include:
 - Servers
 - API
 
+### What You Have Learned
+
+In this module, you have learned:
+
+- to navigate and manipulate the computer using the Terminal 
+- to conceptualize your computer as a computing machine connected to other computing machines
+
 ### Credits
 This tutorial is based on the [Praxis Program's Command Line Bootcamp](http://praxis.scholarslab.org/scratchpad/bash/) and Greg Bloom's post, <a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/">Draw an API</a>.
