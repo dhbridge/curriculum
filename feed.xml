@@ -14,13 +14,11 @@
     <link rel="alternate" href="http://blog.url.com/modules/write.html"/>
     <id>http://blog.url.com/modules/write.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-25T17:30:50-04:00</updated>
+    <updated>2014-09-26T17:25:29-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;h3 id="overview"&gt;Overview&lt;/h3&gt;
-
-&lt;p&gt;In this module, we will focus on writing the results of our loop to a new text file. This enables us to keep our results for future work and as a source to ask further questions.&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module, we will focus on writing the results of our loop to a new text file. This enables us to keep our results for future work and as a source to ask further questions.&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -28,13 +26,11 @@
     <link rel="alternate" href="http://blog.url.com/modules/use_editor.html"/>
     <id>http://blog.url.com/modules/use_editor.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-25T17:43:49-04:00</updated>
+    <updated>2014-09-26T17:25:24-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;h3 id="overview"&gt;Overview&lt;/h3&gt;
-
-&lt;p&gt;In this module, we will look at how to keep save our python scripts in a text file. While the interactive shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module, we will look at how to keep save our python scripts in a text file. While the interactive shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Running a python script file&lt;/li&gt;
@@ -47,7 +43,7 @@
     <link rel="alternate" href="http://blog.url.com/modules/terminal.html"/>
     <id>http://blog.url.com/modules/terminal.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-25T11:42:10-04:00</updated>
+    <updated>2014-09-26T10:36:05-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -144,6 +140,15 @@ Downloads		Movies		Sites
   &lt;li&gt;API&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id="what-you-have-learned"&gt;What You Have Learned&lt;/h3&gt;
+
+&lt;p&gt;In this module, you have learned:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to navigate and manipulate the computer using the Terminal &lt;/li&gt;
+  &lt;li&gt;to conceptualize your computer as a computing machine connected to other computing machines&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h3 id="credits"&gt;Credits&lt;/h3&gt;
 &lt;p&gt;This tutorial is based on the &lt;a href="http://praxis.scholarslab.org/scratchpad/bash/"&gt;Praxis Program's Command Line Bootcamp&lt;/a&gt; and Greg Bloom's post, &lt;a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/"&gt;Draw an API&lt;/a&gt;.&lt;/p&gt;
 </content>
@@ -153,13 +158,11 @@ Downloads		Movies		Sites
     <link rel="alternate" href="http://blog.url.com/modules/subset.html"/>
     <id>http://blog.url.com/modules/subset.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-25T17:31:13-04:00</updated>
+    <updated>2014-09-26T17:25:14-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;h3 id="overview"&gt;Overview&lt;/h3&gt;
-
-&lt;p&gt;In this module, we will introduce variables to store and work with a subset of the data. &lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module, we will introduce variables to store and work with a subset of the data. &lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -167,13 +170,11 @@ Downloads		Movies		Sites
     <link rel="alternate" href="http://blog.url.com/modules/loop.html"/>
     <id>http://blog.url.com/modules/loop.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-25T18:22:45-04:00</updated>
+    <updated>2014-09-26T17:25:10-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;h3 id="overview"&gt;Overview&lt;/h3&gt;
-
-&lt;p&gt;In this module, we are going to learn about one of the most important programming concepts: the loop. In a loop, you tell the computer to do something to every item in a set, or in Python speak, in an array. We will start simple, displaying information on each item, and then work to something a bit more complicated.&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module, we are going to learn about one of the most important programming concepts: the loop. In a loop, you tell the computer to do something to every item in a set, or in Python speak, in an array. We will start simple, displaying information on each item, and then work to something a bit more complicated.&lt;/p&gt;
 </content>
   </entry>
   <entry>
