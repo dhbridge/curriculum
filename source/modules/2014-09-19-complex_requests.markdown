@@ -1,0 +1,36 @@
+---
+title: Working with the API
+date: 2014-09-19
+---
+
+Now that we've learned to make a simple request using the DPyLA library, let's spend some time exploring the different kinds of requests we can make. 
+
+### Constructing API Requests
+
+Open up the [documentation for the DPyLA library](https://github.com/bibliotechy/DPyLA) and for the [DPLA API](http://dp.la/info/developers/codex/requests/).
+
+First, let's get some contextual data about the search results. Run <span class="command">result.count</span>. This tells you how many items total fit the search term. 
+
+Now run <span class="command">result.limit</span>. This tells you how many results the API returned. By default, the API will give you 10 results at a time. Look at the DPyLA documentation and try to construct a request that gets you 50 results.
+
+You can also limit your search results by a variety of variables. 
+
+For example, you can sort by geography:
+
+	result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
+
+You can also be more specific with your search, such as limiting your query to cooking in the title of an item. 
+
+	result = dpla.search("cooking", fields=["sourceResource:title"])
+
+These types of commands help you focus the search results so that you have less noisy data - so that more of the data fits the questions you want to ask.
+
+Work with the documentation and your table to construct some more targeted queries. 
+
+- In what ways would you want to narrow the data for different questions?
+- Do you see any additional strengths or weaknesses with the data when trying to limit your search results?
+
+
+### What we learned
+
+- Reading API documentataion to understand the possible queries
