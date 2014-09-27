@@ -282,8 +282,9 @@ footer a:hover {
     padding-left: 0 !important;
   }
 
-  #register .left, #register .right {
+  #register .left, #register .right, #sidebar, #content{
     width: 100%;
     float: left;
   }
+
 }

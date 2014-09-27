@@ -10,14 +10,14 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Nova+Square' rel='stylesheet' type='text/css'>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <title>DH Bridge</title>
+    <title>Working with the API</title>
     
 <!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
  -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
     
   </head>
 
-  <body class="modules modules_2014">
+  <body class="modules modules_complex_requests">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -51,22 +51,44 @@
 		</section>
 
                 <section id="content">
-                  <h1>Archive for
-    2014
-</h1>
+                        <h3>
+          Working with the API
+      </h3>
+       <p>Now that we've learned to make a simple request using the DPyLA library, let's spend some time exploring the different kinds of requests we can make. </p>
 
+<h3 id="constructing-api-requests">Constructing API Requests</h3>
+
+<p>Open up the <a href="https://github.com/bibliotechy/DPyLA">documentation for the DPyLA library</a> and for the <a href="http://dp.la/info/developers/codex/requests/">DPLA API</a>.</p>
+
+<p>First, let's get some contextual data about the search results. Run <span class="command">result.count</span>. This tells you how many items total fit the search term. </p>
+
+<p>Now run <span class="command">result.limit</span>. This tells you how many results the API returned. By default, the API will give you 10 results at a time. Look at the DPyLA documentation and try to construct a request that gets you 50 results.</p>
+
+<p>You can also limit your search results by a variety of variables. </p>
+
+<p>For example, you can sort by geography:</p>
+
+<pre><code>result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
+</code></pre>
+
+<p>You can also be more specific with your search, such as limiting your query to cooking in the title of an item. </p>
+
+<pre><code>result = dpla.search("cooking", fields=["sourceResource:title"])
+</code></pre>
+
+<p>These types of commands help you focus the search results so that you have less noisy data - so that more of the data fits the questions you want to ask.</p>
+
+<p>Work with the documentation and your table to construct some more targeted queries. </p>
 
 <ul>
-    <li><a href="/modules/write.html">Writings to a File</a> <span>Sep 19</span></li>
-    <li><a href="/modules/use_editor.html">Write Python in Script Files</a> <span>Sep 19</span></li>
-    <li><a href="/modules/terminal.html">Working with Your Computer</a> <span>Sep 19</span></li>
-    <li><a href="/modules/subset.html">Create Subset of Data</a> <span>Sep 19</span></li>
-    <li><a href="/modules/loop.html">Using the Loop</a> <span>Sep 19</span></li>
-    <li><a href="/modules/installation.html">Installation</a> <span>Sep 19</span></li>
-    <li><a href="/modules/get_data.html">Getting Data</a> <span>Sep 19</span></li>
-    <li><a href="/modules/data.html">Thinking about Data</a> <span>Sep 19</span></li>
-    <li><a href="/modules/create.html">Create Data from Text Files</a> <span>Sep 19</span></li>
-    <li><a href="/modules/complex_requests.html">Working with the API</a> <span>Sep 19</span></li>
+  <li>In what ways would you want to narrow the data for different questions?</li>
+  <li>Do you see any additional strengths or weaknesses with the data when trying to limit your search results?</li>
+</ul>
+
+<h3 id="what-we-learned">What we learned</h3>
+
+<ul>
+  <li>Reading API documentataion to understand the possible queries</li>
 </ul>
 
 
