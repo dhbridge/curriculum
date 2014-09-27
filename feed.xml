@@ -26,16 +26,81 @@
     <link rel="alternate" href="http://blog.url.com/modules/use_editor.html"/>
     <id>http://blog.url.com/modules/use_editor.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-26T17:25:24-04:00</updated>
+    <updated>2014-09-26T22:33:23-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
     <content type="html">&lt;p&gt;In this module, we will look at how to keep save our python scripts in a text file. While the interactive shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.&lt;/p&gt;
 
+&lt;h3 id="writing-and-executing-script-files"&gt;Writing and Executing Script Files&lt;/h3&gt;
+
+&lt;p&gt;First, exit out of the Python Interactive Shell by running &lt;span class="command"&gt;exit()&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;You should still be in the folder we made at the beginning of the day. Check using &lt;span class="command"&gt;pwd&lt;/span&gt;. &lt;/p&gt;
+
+&lt;p&gt;Now remember we created a file called "my_first_script.py"? Let's open that file again and remind ourselves of what we wrote.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;open my_first_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It should say 'print "Hello World"'. Now that you know something about python functions, what do you expect this script to do?&lt;/p&gt;
+
+&lt;p&gt;Let's test it out! To execute a python file, run the following in terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python my_first_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your terminal window should look something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jeriwieringa$ python my_first_script.py
+Hello World
+jeriwieringa$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Excellent! You just executed your first python script!&lt;/p&gt;
+
+&lt;h3 id="writing-our-dpyla-script"&gt;Writing our DPyLA Script&lt;/h3&gt;
+
+&lt;p&gt;Now lets recreate some of the work we did in the Interactive Shell in this script file.&lt;/p&gt;
+
+&lt;p&gt;Delete &lt;span class="command"&gt;print "Hello World"&lt;/span&gt; so that we're working with a clean file. &lt;/p&gt;
+
+&lt;p&gt;First, at the beginning of a Python file we need to list the libraries that we will be using. Similar to HTML, the computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then we need to store our API key:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dpla = DPLA('YourAPIKey')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then we can write our search query:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking') //replace with complex query
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save the file and go back to Terminal. Run &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python my_first_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should notice that your computer works for awhile and then returns to normal, but doesn't tell you anything about what it did. To see results, we can use the print function again.&lt;/p&gt;
+
+&lt;p&gt;Open your script file again (&lt;span class="command"&gt;open my_first_script.py&lt;/span&gt;). &lt;/p&gt;
+
+&lt;p&gt;Work with your table to add another line to the file that uses the print function to display one item from your search. &lt;/p&gt;
+
+&lt;p&gt;Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. &lt;/p&gt;
+
+&lt;h3 id="what-weve-learned"&gt;What We've Learned&lt;/h3&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;Running a python script file&lt;/li&gt;
-  &lt;li&gt;Structuring python scripts&lt;/li&gt;
+  &lt;li&gt;To execute python scripts in the terminal&lt;/li&gt;
+  &lt;li&gt;To write our commands in the order they should be executed&lt;/li&gt;
+  &lt;li&gt;To use print to display the results of our scripts&lt;/li&gt;
 &lt;/ul&gt;
+
 </content>
   </entry>
   <entry>
