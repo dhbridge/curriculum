@@ -3,4 +3,15 @@ title: Using the Loop
 date: 2014-09-19
 ---
 
-In this module, we are going to learn about one of the most important programming concepts: the loop. In a loop, you tell the computer to do something to every item in a set, or in Python speak, in an array. We will start simple, displaying information on each item, and then work to something a bit more complicated.
+In this module, we are going to learn about one of the most important programming concepts: the loop. In a loop, you tell the computer to do something to every item in a set, or in Python speak, in an list. We will start simple, displaying information on each item, and then work to something a bit more complicated.
+
+
+For each item in the list, we want the value of ['sourceResource']['description']. We'll put those in pot called "descriptions". Then we'll use [Counter](http://pymotw.com/2/collections/counter.html) to get the most common words.
+
+result.items[1]['sourceResource']['description']
+
+What if we also want the titles?
+
+
+What if we want to see if there is a noticible difference in the descriptions between the different contributing organizations?
+
