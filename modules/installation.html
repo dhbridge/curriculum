@@ -64,7 +64,7 @@
   <li><strong>Your Laptop:</strong>
     <ul>
       <li>You need to have a working wifi connection (we will provide access to Mason's wireless)</li>
-      <li>We recommend that you that you update your operating system to the latest version your machine can support. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. </li>
+      <li>We recommend that you update your operating system to the latest version your machine can support. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. </li>
     </ul>
   </li>
   <li><strong>Your Powercord</strong></li>
@@ -90,7 +90,7 @@
 <h3 id="a-note-on-python-versions">A Note on Python Versions</h3>
 <p>For this workshop, we will be using Python 2.7. This is for two reasons: first, using the default Python version enables us to teach basic programming concepts without the additional complexity of managing Python versions; and second, most of the existing tutorials for learning Python, including <em>The Programming Historian</em> and <em>Learn Python the Hard Way</em>, still use 2.7. Starting with 2.7 will enable you to use these materials smoothly. We would like to also offer a Python3 version of this tutorial, so that those who wish to start with the newer syntax can do so.</p>
 
-<h2 id="step-three-choose-your-operating-system">Step Three: Choose your Operating System</h2>
+<h2 id="step-three-install-go-to-your-operating-system-below">Step Three: Install (Go To Your Operating System Below)</h2>
 
 <ul>
   <li><a href="#mac">Mac</a></li>
@@ -108,7 +108,7 @@
 <p>You are welcome to use another text editor if you wish. Just make sure that it is a plain text editor (do not use TextEdit).</p>
 
 <h4 id="check-your-python-version">2. Check your Python Version</h4>
-<p>Search your computer for "Terminal." This program allows you to give your computer commands without using the interface. Select to keep Terminal in your doc. </p>
+<p>Search your computer for "Terminal." This program allows you to give your computer commands without using the interface. Select to keep Terminal in your dock. </p>
 
 <p>Open up Terminal. It should give you a screen that looks similar to this: </p>
 
@@ -124,7 +124,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Make note of your Python version. </p>
 
-<p>You are now in the Python Shell. This is an interactive environment that allows you to give python commands directly inside Terminal. We will come back to this during the workshop.</p>
+<p>You are now in the Python Shell. This is an interactive environment that allows you to give Python commands directly inside Terminal. We will come back to this during the workshop.</p>
 
 <p>Exit the shell by typing <span class="command">quit()</span> and pressing "Enter".</p>
 
@@ -138,7 +138,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>To install Pip, you need to run that file with Python. To do that, type <span class="command">python get-pip.py</span> into Terminal and press "Enter". </p>
 
-<p>If Termainal turns red and you get errors that says <span class="command"> OSError: [Errno 13] Permission denied</span>, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the python command.</p>
+<p>If Terminal turns red and you get errors that say <span class="command"> OSError: [Errno 13] Permission denied</span>, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give Python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the Python command.</p>
 
 <p>Type <span class="command">sudo python get-pip.py</span> into the Termainal window.</p>
 
@@ -163,11 +163,11 @@ Cleaning up...
 
 <p>For this tutorial, we recommend using NotePad++, which is a free editor. To get Notepad++, go to <a href="http://notepad-plus-plus.org/">http://notepad-plus-plus.org/</a> and download. </p>
 
-<p>To easily access NotePadd++, be sure to add it to your Desktop and/or Quick Launch.</p>
+<p>To easily access NotePad++, be sure to add it to your Desktop and/or Quick Launch.</p>
 
 <h4 id="install-python">2. Install Python</h4>
 
-<p>Search your computer for "PowerShel;." This program allows you to give your computer commands without using the interface. </p>
+<p>Search your computer for "PowerShell." This program allows you to give your computer commands without using the interface. </p>
 
 <p>Open up PowerShell. It should give you a screen that looks similar to this: </p>
 
@@ -184,7 +184,7 @@ Cleaning up...
 
 <p>Close PowerShell and re-open. To check if Python installed properly, type <span class="command">python</span> and press "Enter". You should get something that looks like this back:</p>
 
-<pre><code>Python 2.7.3  (default, Apr 10 2012, 14:24) [MSC v.1500 32 bit (Intel)] on win32
+<pre><code>Python 2.7.8  (default, Jun 30 2014, 14:24) [MSC v.1500 32 bit (Intel)] on win32
 Type "help", "copyright", "credits" or license for more information.
 &gt;&gt;&gt; 
 </code></pre>
@@ -195,7 +195,31 @@ Type "help", "copyright", "credits" or license for more information.
 
 <h4 id="install-pip-1">3. Install Pip</h4>
 
-<p><strong>Coming Soon</strong></p>
+<p>One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.</p>
+
+<p>The easiest way to install pip is through the use of a Python program called get-pip.py, which you can download here: <a href="https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py">https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py</a>. When you open this link, you might be scared of the massive jumble of code that awaits you. Please don’t be. Simply use your browser to save this page under its default name, which is get-pip.py.</p>
+
+<p>Open PowerShell as admin by right-clicking on the PowerShell icon and select "Run as Admin." </p>
+
+<p>Enter the following commands in PowerShell to download the bootstrap scripts for easy_install and pip:</p>
+
+<pre><code>mkdir c:\envs
+cd c:\envs
+   
+
+(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
+   
+
+python c:\envs\get-pip.py
+</code></pre>
+
+<p>Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python33\Scripts with the correct location of your Python installation:</p>
+
+<pre><code>setx PATH "%PATH%;C:\Python33\Scripts"
+&gt;&gt;&gt;
+</code></pre>
+
+<p>Close and reopen PowerShell after running this command.</p>
 
 <h3 id="credits">Credits</h3>
 <p>These instructions are modifications of the Python installation instruction at <a href="http://learnpythonthehardway.org/book/ex0.html"><em>Learn Python the Hard Way</em></a> and Fred Gibb's <a href="http://fredgibbs.net/tutorials/tutorial/install-python-modules/">tutorial on installing Pip</a> as well as the <a href="http://docs.railsbridge.org/installfest/">InstallFest docs of RailsBridge</a>.</p>

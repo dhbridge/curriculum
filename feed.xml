@@ -5,7 +5,7 @@
   <id>http://blog.url.com/modules</id>
   <link href="http://blog.url.com/modules"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2014-09-18T20:00:00-04:00</updated>
+  <updated>2014-09-18T17:00:00-07:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
@@ -13,8 +13,8 @@
     <title>Writings to a File</title>
     <link rel="alternate" href="http://blog.url.com/modules/write.html"/>
     <id>http://blog.url.com/modules/write.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-26T17:25:29-04:00</updated>
+    <published>2014-09-18T17:00:00-07:00</published>
+    <updated>2014-09-26T14:25:29-07:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -25,8 +25,8 @@
     <title>Write Python in Script Files</title>
     <link rel="alternate" href="http://blog.url.com/modules/use_editor.html"/>
     <id>http://blog.url.com/modules/use_editor.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-26T22:33:23-04:00</updated>
+    <published>2014-09-18T17:00:00-07:00</published>
+    <updated>2014-09-26T19:33:23-07:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -107,12 +107,12 @@ jeriwieringa$
     <title>Working with Your Computer</title>
     <link rel="alternate" href="http://blog.url.com/modules/terminal.html"/>
     <id>http://blog.url.com/modules/terminal.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-26T10:36:05-04:00</updated>
+    <published>2014-09-18T17:00:00-07:00</published>
+    <updated>2014-10-03T11:53:28-07:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;Throughout this tutorial, we will be spending a lot of time in Terminal or PowerShell as our primary way of talking to our computers. In order to do this, however, it is necessary to take some time to get comfortable working with the command line.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Throughout this tutorial, we will be spending a lot of time in Terminal/PowerShell as our primary way of talking to our computers. In order to do this, however, it is necessary to take some time to get comfortable working with the command line.&lt;/p&gt;
 
 &lt;p&gt;So let's walk through some basic commands while setting up our computer for the rest of the tutorial.&lt;/p&gt;
 
@@ -134,7 +134,7 @@ jeriwieringa$
 
 &lt;p&gt;Type &lt;span class="command"&gt;ls&lt;/span&gt; and press enter. &lt;/p&gt;
 
-&lt;p&gt;This is another super helpful command for orienting yourself. This commands lists all the files in your current directory. If you need to see hidden files, type 'ls -a'. &lt;/p&gt;
+&lt;p&gt;This is another super helpful command for orienting yourself. This commands lists all the files in your current directory. If you need to see hidden files, type 'ls -a' (Mac) or 'ls -Hidden' (Windows). &lt;/p&gt;
 
 &lt;p&gt;You should see something like:&lt;/p&gt;
 
@@ -191,9 +191,9 @@ Downloads		Movies		Sites
 
 &lt;h3 id="terminology-and-mapping-the-computer"&gt;Terminology and Mapping the Computer&lt;/h3&gt;
 
-&lt;p&gt;We're now going to take a step back to think about the different layers of the computer that we will be working with and about how we move data from one process to another. &lt;/p&gt;
+&lt;p&gt;Now we're going to take a step back to think about the different layers of the computer that we will be working with and about how we move data from one process to another. &lt;/p&gt;
 
-&lt;p&gt;At your table, there is paper and many different drawing implements. We are going to talk through the tools and technologies we're using.  While we do that, your job is to visualize those connections using whatever metaphor or structure makes sense to you.&lt;/p&gt;
+&lt;p&gt;At your table, there is paper and many different drawing implements. We're going to talk through the tools and technologies we're using.  While we do that, your job is to diagram those connections using whatever metaphors or graphics that make sense to you.&lt;/p&gt;
 
 &lt;p&gt;The topics we will cover include:&lt;/p&gt;
 
@@ -222,8 +222,8 @@ Downloads		Movies		Sites
     <title>Create Subset of Data</title>
     <link rel="alternate" href="http://blog.url.com/modules/subset.html"/>
     <id>http://blog.url.com/modules/subset.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-26T17:25:14-04:00</updated>
+    <published>2014-09-18T17:00:00-07:00</published>
+    <updated>2014-09-26T14:25:14-07:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -231,23 +231,11 @@ Downloads		Movies		Sites
 </content>
   </entry>
   <entry>
-    <title>Using the Loop</title>
-    <link rel="alternate" href="http://blog.url.com/modules/loop.html"/>
-    <id>http://blog.url.com/modules/loop.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-26T17:25:10-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;In this module, we are going to learn about one of the most important programming concepts: the loop. In a loop, you tell the computer to do something to every item in a set, or in Python speak, in an array. We will start simple, displaying information on each item, and then work to something a bit more complicated.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
     <title>Installation</title>
     <link rel="alternate" href="http://blog.url.com/modules/installation.html"/>
     <id>http://blog.url.com/modules/installation.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-20T10:57:19-04:00</updated>
+    <published>2014-09-18T17:00:00-07:00</published>
+    <updated>2014-10-03T11:53:28-07:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -261,7 +249,7 @@ Downloads		Movies		Sites
   &lt;li&gt;&lt;strong&gt;Your Laptop:&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;You need to have a working wifi connection (we will provide access to Mason's wireless)&lt;/li&gt;
-      &lt;li&gt;We recommend that you that you update your operating system to the latest version your machine can support. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. &lt;/li&gt;
+      &lt;li&gt;We recommend that you update your operating system to the latest version your machine can support. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Your Powercord&lt;/strong&gt;&lt;/li&gt;
@@ -287,7 +275,7 @@ Downloads		Movies		Sites
 &lt;h3 id="a-note-on-python-versions"&gt;A Note on Python Versions&lt;/h3&gt;
 &lt;p&gt;For this workshop, we will be using Python 2.7. This is for two reasons: first, using the default Python version enables us to teach basic programming concepts without the additional complexity of managing Python versions; and second, most of the existing tutorials for learning Python, including &lt;em&gt;The Programming Historian&lt;/em&gt; and &lt;em&gt;Learn Python the Hard Way&lt;/em&gt;, still use 2.7. Starting with 2.7 will enable you to use these materials smoothly. We would like to also offer a Python3 version of this tutorial, so that those who wish to start with the newer syntax can do so.&lt;/p&gt;
 
-&lt;h2 id="step-three-choose-your-operating-system"&gt;Step Three: Choose your Operating System&lt;/h2&gt;
+&lt;h2 id="step-three-install-go-to-your-operating-system-below"&gt;Step Three: Install (Go To Your Operating System Below)&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href="#mac"&gt;Mac&lt;/a&gt;&lt;/li&gt;
@@ -305,7 +293,7 @@ Downloads		Movies		Sites
 &lt;p&gt;You are welcome to use another text editor if you wish. Just make sure that it is a plain text editor (do not use TextEdit).&lt;/p&gt;
 
 &lt;h4 id="check-your-python-version"&gt;2. Check your Python Version&lt;/h4&gt;
-&lt;p&gt;Search your computer for "Terminal." This program allows you to give your computer commands without using the interface. Select to keep Terminal in your doc. &lt;/p&gt;
+&lt;p&gt;Search your computer for "Terminal." This program allows you to give your computer commands without using the interface. Select to keep Terminal in your dock. &lt;/p&gt;
 
 &lt;p&gt;Open up Terminal. It should give you a screen that looks similar to this: &lt;/p&gt;
 
@@ -321,7 +309,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;Make note of your Python version. &lt;/p&gt;
 
-&lt;p&gt;You are now in the Python Shell. This is an interactive environment that allows you to give python commands directly inside Terminal. We will come back to this during the workshop.&lt;/p&gt;
+&lt;p&gt;You are now in the Python Shell. This is an interactive environment that allows you to give Python commands directly inside Terminal. We will come back to this during the workshop.&lt;/p&gt;
 
 &lt;p&gt;Exit the shell by typing &lt;span class="command"&gt;quit()&lt;/span&gt; and pressing "Enter".&lt;/p&gt;
 
@@ -335,7 +323,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;To install Pip, you need to run that file with Python. To do that, type &lt;span class="command"&gt;python get-pip.py&lt;/span&gt; into Terminal and press "Enter". &lt;/p&gt;
 
-&lt;p&gt;If Termainal turns red and you get errors that says &lt;span class="command"&gt; OSError: [Errno 13] Permission denied&lt;/span&gt;, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the python command.&lt;/p&gt;
+&lt;p&gt;If Terminal turns red and you get errors that say &lt;span class="command"&gt; OSError: [Errno 13] Permission denied&lt;/span&gt;, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give Python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the Python command.&lt;/p&gt;
 
 &lt;p&gt;Type &lt;span class="command"&gt;sudo python get-pip.py&lt;/span&gt; into the Termainal window.&lt;/p&gt;
 
@@ -360,11 +348,11 @@ Cleaning up...
 
 &lt;p&gt;For this tutorial, we recommend using NotePad++, which is a free editor. To get Notepad++, go to &lt;a href="http://notepad-plus-plus.org/"&gt;http://notepad-plus-plus.org/&lt;/a&gt; and download. &lt;/p&gt;
 
-&lt;p&gt;To easily access NotePadd++, be sure to add it to your Desktop and/or Quick Launch.&lt;/p&gt;
+&lt;p&gt;To easily access NotePad++, be sure to add it to your Desktop and/or Quick Launch.&lt;/p&gt;
 
 &lt;h4 id="install-python"&gt;2. Install Python&lt;/h4&gt;
 
-&lt;p&gt;Search your computer for "PowerShel;." This program allows you to give your computer commands without using the interface. &lt;/p&gt;
+&lt;p&gt;Search your computer for "PowerShell." This program allows you to give your computer commands without using the interface. &lt;/p&gt;
 
 &lt;p&gt;Open up PowerShell. It should give you a screen that looks similar to this: &lt;/p&gt;
 
@@ -381,7 +369,7 @@ Cleaning up...
 
 &lt;p&gt;Close PowerShell and re-open. To check if Python installed properly, type &lt;span class="command"&gt;python&lt;/span&gt; and press "Enter". You should get something that looks like this back:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Python 2.7.3  (default, Apr 10 2012, 14:24) [MSC v.1500 32 bit (Intel)] on win32
+&lt;pre&gt;&lt;code&gt;Python 2.7.8  (default, Jun 30 2014, 14:24) [MSC v.1500 32 bit (Intel)] on win32
 Type "help", "copyright", "credits" or license for more information.
 &amp;gt;&amp;gt;&amp;gt; 
 &lt;/code&gt;&lt;/pre&gt;
@@ -392,10 +380,153 @@ Type "help", "copyright", "credits" or license for more information.
 
 &lt;h4 id="install-pip-1"&gt;3. Install Pip&lt;/h4&gt;
 
-&lt;p&gt;&lt;strong&gt;Coming Soon&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.&lt;/p&gt;
+
+&lt;p&gt;The easiest way to install pip is through the use of a Python program called get-pip.py, which you can download here: &lt;a href="https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py"&gt;https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py&lt;/a&gt;. When you open this link, you might be scared of the massive jumble of code that awaits you. Please don’t be. Simply use your browser to save this page under its default name, which is get-pip.py.&lt;/p&gt;
+
+&lt;p&gt;Open PowerShell as admin by right-clicking on the PowerShell icon and select "Run as Admin." &lt;/p&gt;
+
+&lt;p&gt;Enter the following commands in PowerShell to download the bootstrap scripts for easy_install and pip:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir c:\envs
+cd c:\envs
+   
+
+(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
+   
+
+python c:\envs\get-pip.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now typing &lt;span class="command"&gt;pip&lt;/span&gt; should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python33\Scripts with the correct location of your Python installation:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;setx PATH "%PATH%;C:\Python33\Scripts"
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Close and reopen PowerShell after running this command.&lt;/p&gt;
 
 &lt;h3 id="credits"&gt;Credits&lt;/h3&gt;
 &lt;p&gt;These instructions are modifications of the Python installation instruction at &lt;a href="http://learnpythonthehardway.org/book/ex0.html"&gt;&lt;em&gt;Learn Python the Hard Way&lt;/em&gt;&lt;/a&gt; and Fred Gibb's &lt;a href="http://fredgibbs.net/tutorials/tutorial/install-python-modules/"&gt;tutorial on installing Pip&lt;/a&gt; as well as the &lt;a href="http://docs.railsbridge.org/installfest/"&gt;InstallFest docs of RailsBridge&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Getting Data</title>
+    <link rel="alternate" href="http://blog.url.com/modules/get_data.html"/>
+    <id>http://blog.url.com/modules/get_data.html</id>
+    <published>2014-09-18T17:00:00-07:00</published>
+    <updated>2014-09-26T15:27:04-07:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;In this module, we will use pip to install the DPyLA python library to make it easy to use the API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.&lt;/p&gt;
+
+&lt;h3 id="install-dpyla-library"&gt;Install DPyLA Library&lt;/h3&gt;
+
+&lt;p&gt;We talked earlier about libraries, bundles of code that we can load and use in creating our own scripts. Just as in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to go about making something. Instead, unless there is a reason to not, programming works by combining existing bits to create something new and useful.&lt;/p&gt;
+
+&lt;p&gt;One library that makes it easy to work with the DPLA api with Python is &lt;a href="https://github.com/bibliotechy/DPyLA"&gt;DPyLA&lt;/a&gt;, which you can look at on Github.&lt;/p&gt;
+
+&lt;p&gt;We can easily get this library for use in our own code using pip.&lt;/p&gt;
+
+&lt;p&gt;Type &lt;span class="command"&gt;pip install dpla&lt;/span&gt;. &lt;/p&gt;
+
+&lt;p&gt;If you get a permissions error, type &lt;span class="command"&gt;sudo pip install dpla&lt;/span&gt; and enter your password.&lt;/p&gt;
+
+&lt;p&gt;You have just installed your first python library.&lt;/p&gt;
+
+&lt;h3 id="introducing-the-python-interactive-shell"&gt;Introducing the Python Interactive Shell&lt;/h3&gt;
+
+&lt;p&gt;Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the interactive shell, we can experiment with lines of python and see what the language can do. &lt;/p&gt;
+
+&lt;p&gt;To start up the interactive shell, go to your terminal window and type &lt;span class="command"&gt;python&lt;/span&gt; and press "Enter".&lt;/p&gt;
+
+&lt;p&gt;Your terminal should now look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jeriwieringa$ python
+Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Everything you type will now be processed by python. Try it out with a little math. Type &lt;span class="command"&gt;print "Hello World"&lt;/span&gt; and press "Enter". Now type &lt;span class="command"&gt;print "My Name is [Your Name]"&lt;/span&gt; and press "Enter". Now type &lt;span class="command"&gt;print 5 + 8&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Here you have discovered a couple of very useful things with programming languages. &lt;/p&gt;
+
+&lt;p&gt;"print" is a function in python that return whatever you give it next. &lt;/p&gt;
+
+&lt;p&gt;The content contained inside "" marks is called a string. For humanities research, we work with strings a lot.&lt;/p&gt;
+
+&lt;p&gt;Finally, if we pass numbers or equations into python, it will compute them. If you don't want python to compute, you should treat the numbers like a string. Experiment in the shell to see if you can get it to display &lt;span class="command"&gt;5 + 8&lt;/span&gt; rather than &lt;span class="command"&gt;13&lt;/span&gt;.&lt;/p&gt;
+
+&lt;h3 id="loading-dpyla-in-the-shell-and-make-an-api-request"&gt;Loading DPyLA in the Shell and Make an API Request&lt;/h3&gt;
+
+&lt;p&gt;Let's start using our new DPyLA library to make an API call to the DPLA. Following the &lt;a href="https://github.com/bibliotechy/DPyLA"&gt;library documentation&lt;/a&gt;, run &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You just loaded the DPyLA library into your python shell, making all of it's code available for you to use.&lt;/p&gt;
+
+&lt;p&gt;Next run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dpla = DPLA('your-key-here')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What you have just done is create what is called a "variable", dpla, that stores your api key.&lt;/p&gt;
+
+&lt;p&gt;Next run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You have just created a new variable, "result" that stores the result of a dpla search for "cooking". Now, you might be wondering what happened to your api key. This is part of the magic of using a library. When you save your key as dpla, you make it known to the library. Then, when you call dpla.search, you're combining your key with code in the DPyLA library that executes the search and saving all of the data in a new variable called "result". &lt;/p&gt;
+
+&lt;p&gt;But we still haven't seen any of the results from the API. To show the results, run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result.items
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[{u'_id': u'digitalnc--urn:brevard.lib.unc.eduecu_c5:oai:digital.lib.ecu.edu/7394', u'admin': {u'sourceResource': {u'title': u'Cooking'}, u'validation_message': None, u'valid_after_enrich': True}, u'sourceResource': {u'isPartOf': [u'https://digital.lib.ecu.edu/encore/ncgre000/00000008/00007394/00007394_tn_0001.gif'], u'description': [u'Boys and girls cooking during home economics class. Dates from negative sleeve.'], u'language': [{u'iso639_3': u'eng', u'name': u'English'}], u'rights': u'Copyright held by Joyner Library. Permission to reuse this work is granted for all non-commercial purposes.', u'@id': u'http://dp.la/api/items/7cb32765b538a57a35fbdbfad03be57b#sourceResource', u'format': u'negatives (photographic)'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You just asked the computer to give you all of the items it got back from the search for "cooking". &lt;/p&gt;
+
+&lt;p&gt;Notice the structure of this data. Can you find the key:value pairs? &lt;/p&gt;
+
+&lt;p&gt;You might notice the " u' " in front of each string. This is a feature of python 2. The u' indicates that what follows is a unicode string. Don't worry too much about what that means - it is information about how the data is being encoded - but if you want to really geek out, you can read all about encoding in the &lt;a href="https://docs.python.org/2/tutorial/introduction.html#unicode-strings"&gt;language documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;But what if you only want to see one item at a time?&lt;/p&gt;
+
+&lt;p&gt;The information you get back from the DPLA API comes in the form of an &lt;strong&gt;array&lt;/strong&gt;, or &lt;strong&gt;list&lt;/strong&gt; ("array" is the general programming word for a series of things, "list" is python's name for a series of things). Lists are a super powerful, enabling us to load up a lot of information and then work through each bit individually.&lt;/p&gt;
+
+&lt;p&gt;One general things we can do with lists is get items by their position in the list. &lt;/p&gt;
+
+&lt;p&gt;For example, if you want the first item only:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result.items[0]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should now see a much smaller dump of data. You might be wondering why we used 0. Programming languages start counting with 0 rather than one.&lt;/p&gt;
+
+&lt;p&gt;Try to get the 3rd item in the search results. &lt;/p&gt;
+
+&lt;p&gt;Can you use &lt;a href="http://effbot.org/zone/python-list.htm"&gt;this tutorial&lt;/a&gt; to figure out how to get items 1 - 3?	&lt;/p&gt;
+
+&lt;h3 id="what-you-have-learned"&gt;What You Have Learned&lt;/h3&gt;
+
+&lt;p&gt;In this module, you have learned:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to install new libraries using pip&lt;/li&gt;
+  &lt;li&gt;to use the Python Interactive Shell to run basic python commands&lt;/li&gt;
+  &lt;li&gt;to load and use those libraries&lt;/li&gt;
+  &lt;li&gt;to make an API request using a python script&lt;/li&gt;
+  &lt;li&gt;to work with variables and lists&lt;/li&gt;
+&lt;/ul&gt;
 </content>
   </entry>
 </feed>
