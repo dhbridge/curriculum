@@ -3,4 +3,48 @@ title: Using the Loop
 date: 2014-09-19
 ---
 
-In this module, we are going to learn about one of the most important programming concepts: the loop. In a loop, you tell the computer to do something to every item in a set, or in Python speak, in an array. We will start simple, displaying information on each item, and then work to something a bit more complicated.
+In this module, we are going to learn about one of the most important programming concepts: the loop. In a loop, you tell the computer to do something to every item in a set, or in Python speak, in an list. We will start simple, displaying information on each item, and then work to something a bit more complicated.
+
+### Asking Questions of Our Data
+
+We have been able to do a lot with filtering the data by subject headings, by geographic space, and by contributor. But what if we want to ask questions about how the materials are described across all 10,000 items associated with "cooking"? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings?
+
+There are many ways one could go about investigating the descriptions. Work with your table to brain storm a couple of approaches.
+
+
+
+One way to investigate patterns across all of the collections is to gather all of the descriptions into a "bag of words" and see what the most common words are across all of the collections.
+
+To start, let's **loop** through all of our search results, get the description for each one, and save as a **list** of words.  
+
+### Identifying Our Target Fields
+
+Remember back to JSON and how it organizes data using key:value pairs? One of the most powerful features of JSON is that we are able to nest features and create lists within key:value pairs. This is useful for creating complex data structures. It also means that we have work within the hierarchy of key:value pairs to isolate particular values.
+
+In order to better see that hierarchy, let's **Pretty Print** the JSON results, or print with the indentations and hierarchies visually displayed. 
+
+Open "my_first_script.py" and **comment out** "print result.items[0]" by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work.
+
+In order to pretty print the file, we need to load the json library. 
+
+Under <span class="command">from dpla.api import DPLA</span>, add <span class="command">import json</span>.
+
+Then, at the bottom of your script, add the line:
+
+	print json.dumps(result.items[1], sort_keys=True, indent=4, separators=(',', ': '))
+
+Save and run in Terminal. 
+
+Work with your table to map out what this command did.
+
+
+
+For each item in the list, we want the value of ['sourceResource']['description']. We'll put those in list called "descriptions". Then we'll use [Counter](http://pymotw.com/2/collections/counter.html) to get the most common words.
+
+result.items[1]['sourceResource']['description']
+
+What if we also want the titles?
+
+
+What if we want to see if there is a noticible difference in the descriptions between the different contributing organizations?
+
