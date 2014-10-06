@@ -33,4 +33,4 @@ Work with the documentation and your table to construct some more targeted queri
 
 ### What we learned
 
-- Reading API documentataion to understand the possible queries
+- Reading API documentation to understand the possible queries

@@ -137,11 +137,11 @@ Exit the shell by typing <span class="command">quit()</span> and pressing "Enter
 
 One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.
 
-The easiest way to install pip is through the use of a Python program called get-pip.py, which you can download here: [https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py](https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py). When you open this link, you might be scared of the massive jumble of code that awaits you. Please don’t be. Simply use your browser to save this page under its default name, which is get-pip.py.
+The easiest way to install Pip is through the use of a Python program called get-pip.py, which you can download here: [https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py](https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py). When you open this link, you might be scared of the massive jumble of code that awaits you--don’t be! Simply use your browser to save this page under its default name, which is get-pip.py.
 
-Open PowerShell as admin by right-clicking on the PowerShell icon and select "Run as Admin." 
+Open PowerShell with administrator privileges by right-clicking on the PowerShell icon and select "Run as Admin." 
 
-Enter the following commands in PowerShell to download the bootstrap scripts for easy_install and pip:
+Enter the following commands in PowerShell to download the bootstrap scripts for Pip:
 
     mkdir c:\envs
     cd c:\envs
@@ -153,9 +153,9 @@ Enter the following commands in PowerShell to download the bootstrap scripts for
     python c:\envs\get-pip.py
    
 
-Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python33\Scripts with the correct location of your Python installation:
+Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python27\Scripts with the correct location of your Python installation:
 
-    setx PATH "%PATH%;C:\Python33\Scripts"
+    setx PATH "%PATH%;C:\Python27\Scripts"
     >>>
 
 Close and reopen PowerShell after running this command.
