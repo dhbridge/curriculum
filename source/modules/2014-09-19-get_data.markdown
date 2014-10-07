@@ -3,29 +3,29 @@ title: Getting Data
 date: 2014-09-19
 ---
 
-In this module, we will use pip to install the DPyLA python library to make it easy to use the API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.
+In this module, we will use Pip to install the DPyLA Python library to make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.
 
 ### Install DPyLA Library
 
-We talked earlier about libraries, bundles of code that we can load and use in creating our own scripts. Just as in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to go about making something. Instead, unless there is a reason to not, programming works by combining existing bits to create something new and useful.
+We talked earlier about libraries, those bundles of code that we can load and use in creating our own scripts. Just like in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to get the same results. 
 
-One library that makes it easy to work with the DPLA api with Python is [DPyLA](https://github.com/bibliotechy/DPyLA), which you can look at on Github.
+One library that makes it easy to work with the DPLA API with Python is [DPyLA](https://github.com/bibliotechy/DPyLA), which you can look at on Github.
 
-We can easily get this library for use in our own code using pip.
+We can easily get this library for use with our own code using Pip.
 
 Type <span class="command">pip install dpla</span>. 
 
-If you get a permissions error, type <span class="command">sudo pip install dpla</span> and enter your password.
+If you get a permissions error and you're a Mac user, type <span class="command">sudo pip install dpla</span> and enter your password. If you get a permissions error and you're a Windows user, type <span class="command">Start-Process powershell -Verb runAs</span> to open Powershell as an administrator then type <span class="command">pip install dpla</span>.
 
-You have just installed your first python library.
+You have just installed your first Python library.
 
 ### Introducing the Python Interactive Shell
 
-Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the interactive shell, we can experiment with lines of python and see what the language can do. 
+Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the Interactive Shell, we can experiment with lines of Python and see what the language can do. 
 
-To start up the interactive shell, go to your terminal window and type <span class="command">python</span> and press "Enter".
+To start up the interactive shell, go to your Terminal window and type <span class="command">python</span> and press "Enter".
 
-Your terminal should now look like this:
+Your Terminal should now look like this:
 
 	jeriwieringa$ python
 	Python 2.7.5 (default, Mar  9 2014, 22:15:05)
@@ -33,23 +33,23 @@ Your terminal should now look like this:
 	Type "help", "copyright", "credits" or "license" for more information.
 	>>>
 
-Everything you type will now be processed by python. Try it out with a little math. Type <span class="command">print "Hello World"</span> and press "Enter". Now type <span class="command">print "My Name is [Your Name]"</span> and press "Enter". Now type <span class="command">print 5 + 8</span>
+Everything you type will now be processed by Python. Let's try it out a bit. Type <span class="command">print "Hello World"</span> and press "Enter". Now type <span class="command">print "My Name is [Your Name]"</span> and press "Enter". Now type <span class="command">print 5 + 8</span>
 
 Here you have discovered a couple of very useful things with programming languages. 
 
-"print" is a function in python that return whatever you give it next. 
+"print" is a function in Python that returns whatever follows it next. 
 
-The content contained inside "" marks is called a string. For humanities research, we work with strings a lot.
+The content contained inside "" marks is called a string. This is especially important for humanities research, since we work with strings a lot.
 
-Finally, if we pass numbers or equations into python, it will compute them. If you don't want python to compute, you should treat the numbers like a string. Experiment in the shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.
+Finally, if we input numbers or equations into Python, it will compute them. If you don't want Python to compute, you should treat the numbers like a string. Experiment in the Interactive Shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.
 
 ### Loading DPyLA in the Shell and Make an API Request
 
-Let's start using our new DPyLA library to make an API call to the DPLA. Following the [library documentation](https://github.com/bibliotechy/DPyLA), run 
+Let's start using our new DPyLA library to make an API call to the DPLA. Following the [library documentation](https://github.com/bibliotechy/DPyLA), run (type the following and press "Enter") 
 
 	from dpla.api import DPLA 
 
-You just loaded the DPyLA library into your python shell, making all of it's code available for you to use.
+You just loaded the DPyLA library into your Python shell, making all of it's code available for you to use.
 
 Next run:
 	
@@ -79,7 +79,7 @@ You might notice the " u' " in front of each string. This is a feature of python
 
 But what if you only want to see one item at a time?
 
-The information you get back from the DPLA API comes in the form of an **array**, or **list** ("array" is the general programming word for a series of things, "list" is python's name for a series of things). Lists are a super powerful, enabling us to load up a lot of information and then work through each bit individually.
+The information you get back from the DPLA API comes in the form of an **array**, or **list** ("array" is the general programming word for a series of things, "list" is Python's name for a series of things). Lists are a super powerful, enabling us to load up a lot of information and then work through each bit individually.
 
 One general things we can do with lists is get items by their position in the list. 
 
@@ -98,8 +98,8 @@ Can you use [this tutorial](http://effbot.org/zone/python-list.htm) to figure ou
 
 In this module, you have learned:
 
-- to install new libraries using pip
-- to use the Python Interactive Shell to run basic python commands
+- to install new libraries using Pip
+- to use the Python Interactive Shell to run basic Python commands
 - to load and use those libraries
-- to make an API request using a python script
+- to make an API request using a Python script
 - to work with variables and lists
