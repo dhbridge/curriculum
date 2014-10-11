@@ -1,0 +1,79 @@
+---
+title: Looping through the Pages
+date: 2014-09-19
+---
+
+In this module, we will add another loop to our "pull records" function that allows us to move through more than one page of search results.
+
+### Introducing the While Loop
+
+The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the while loop and a "counter" to work through all of the pages of search results.
+
+To use a while loop, let's look again at our "pull records" function.
+
+	def pull_records(pages, end, size):
+		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		save_each(paged_search)
+
+Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.
+
+To write this logic in code, we will add:
+
+	while(pages <= end):
+
+so that our function now looks like this:
+
+	def pull_records(pages, end, size):
+		while(pages <= end):
+			paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+			save_each(paged_search)
+
+### Adding a Counter
+
+Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now.
+
+To avoid the infinite loop, we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".
+
+After <span class="command">save_each(paged_search)</span> add:
+
+	pages = pages + 1
+
+Let's also add a print command to check that things are working as we expect. Above <span class = "command">pages = pages + 1</span> add:
+
+	print "finished page " + str(pages)
+
+Our file should now look like this:
+
+	from dpla.api import DPLA
+
+	dpla = DPLA('Your-Key-Here')
+
+	# result = dpla.search('cooking')
+	# print result.items[1]
+	
+	all_records = []
+
+	def pull_records(pages, end, size):
+		while(pages <= end):
+			paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+			save_each(paged_search)
+			print "finished page " + str(pages)
+			pages = pages + 1
+
+	def save_each(n):
+		for each in n.items:
+			all_records.append(each)
+
+	pull_records(2, 3, 50)
+
+	print all_records[40]
+
+Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[40]</span> to <span class="command">print all_records[150]</span>
+
+Save and run in Terminal.
+
+### What We Learned:
+
+- To use a while loop and counter
+- To test on a subset of the data
+- To use "print" to check our functions along the way
