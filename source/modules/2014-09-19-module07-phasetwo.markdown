@@ -1,27 +1,35 @@
 ---
 title: Moving to Phase Two
 date: 2014-09-19
-published:false
 ---
 
-At the half-way point, it is stop briefly and think through what we have already learned. So far, you have learned to talk to your computer using the terminal. You've interacted with Python, a programming language and used Python to execute a few commands. You've also learned how to use Pip to add additional libraries to Python, and thought some about using libraries like lego blocks or cake mix to create new programs. 
+At the half-way point, it is stop briefly and think through what we have already learned. So far, you have learned to talk to your computer using the terminal. You've interacted with Python, a programming language and used Python to execute a few commands. You've also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks or cake mix to create new programs. 
 
-You've also learned about JSON as a way of structuring data and thought some about what it means to represent things in this format. 
+You've also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.
+
+Well Done!
+
+So far you have been writing code that does one thing: it get search results or prints a particular item. The power of code, however, is being able to do the same thing to a series of items and it is thinking in terms of iterating through a series that is at the core of computational thinking. To do this, we will learn two very powerful programming concepts: functions and loops.
+
 
 ### Asking Questions of Our Data
 
-We have been able to do a lot with filtering the data by subject headings, by geographic space, and by contributor. But what if we want to ask questions about how the materials are described across all 10,000 items associated with "cooking"? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings?
+We have been able to do a lot with filtering the data by subject headings, by geographic space, and by contributor. But what if we want to ask questions about how the materials are described across all 10,000+ items associated with "cooking"? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking"?
 
-There are many ways one could go about investigating the descriptions. Work with your table to brain storm a couple of approaches.
+There are many ways one could go about investigating the descriptions. Work with your table to brain-storm a couple of approaches.
+ 
 
-
-One way to investigate patterns across all of the collections is to gather all of the descriptions into a "bag of words" and see what the most common words are across all of the collections.
-
-To start, we need to collect all of the items in the DPLA library associated with "cooking". Remember that the API by default gives us 10 items at a time. We can pass a variable to get up to 500 items at a time, but there were 10,909 items associated with "cooking". To get all of that data, we are going to use the programming concept of the **loop**. In the next module, we will be good internet citizens and save that data to a file, so that we don't repeatedly hit the DPLA's server for 10,909 items. 
 
 ### Adding Parameters to the Query
 
-Open your "my_first_script.py" file. Looking at the line that says <span class="command">result = dpla.search('cooking')</span>, we can change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:
+To start, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can pass a variable to get up to 500 items at a time, but there were 10,909 items associated with "cooking".
+
+
+Open your "my_first_script.py" file. Looking at the line that says 
+
+	result = dpla.search('cooking')
+
+we can change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:
 
 	result = dpla.search('cooking', page_size=50)
 
@@ -31,7 +39,7 @@ To check that this worked, let's add a line telling the computer to print out th
 
 Remember, counting within a list begins at 0.
 
-Use the documentation and your table to add another parameter to get the information from page 3.
+Use the [documentation](https://github.com/bibliotechy/DPyLA) and your table to add another parameter to get the information from page 3.
 
 
 ### Setting Up a Variable
@@ -55,7 +63,6 @@ Go back to "my_first_script.py". Comment out the line <span class="command">resu
 Your file should look something like this: 
 
 	from dpla.api import DPLA
-	import json
 
 	dpla = DPLA('YourKeyHere')
 	
@@ -72,44 +79,8 @@ This tells the computer that we have a variable, "all_records", that this variab
 
 Now that we have a place to store our values, we now have to tell the computer to get the search results from each page and save those results to the "all_records" list.
 
-### Getting a Range of Pages
+### What We Learned
 
-
-// Code we need to get them to:
-
-from dpla.api import DPLA
-
-dpla = DPLA('Your-Key-Here')
-
-all_records = []
-search_term = "cooking"
-
-		
-def get_total_pages(search_term):
-	result = dpla.search(search_term)
-	total = result.count	
-	total_pages = total/500 + 1
-	return total_pages
-
-def save_each(n):
-	for each in n.items:
-		all_records.append(each)
-
-def pull_records(pages, end, size):
-	while(pages <= end):
-		paged_search = dpla.search(q=search_term, page_size=size, page=pages)
-		print "finished page " + str(pages)
-		pages = pages + 1
-	
-	save_results()
-		
-end = get_total_pages(search_term)	
-
-pull_records(1, end, 500)	
-
-
-
-
-
-
-
+- To add additional parameters to our API call
+- To create an empty list
+- To comment-out code that we don't want to run, but want to keep
