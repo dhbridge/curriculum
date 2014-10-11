@@ -11,8 +11,8 @@
   </author>
   <entry>
     <title>Create Data from Text Files</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module12-create.html"/>
-    <id>http://blog.url.com/modules/module12-create.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module11-create.html"/>
+    <id>http://blog.url.com/modules/module11-create.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-09-25T17:35:57-04:00</updated>
     <author>
@@ -23,8 +23,8 @@
   </entry>
   <entry>
     <title>Looping through the Pages</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module09-whileloop.html"/>
-    <id>http://blog.url.com/modules/module09-whileloop.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module08-whileloop.html"/>
+    <id>http://blog.url.com/modules/module08-whileloop.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-11T16:54:00-04:00</updated>
     <author>
@@ -116,8 +116,8 @@ print all_records[40]
   </entry>
   <entry>
     <title>Functions and Loops</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module08-functionsandloops.html"/>
-    <id>http://blog.url.com/modules/module08-functionsandloops.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module07-functionsandloops.html"/>
+    <id>http://blog.url.com/modules/module07-functionsandloops.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-11T16:17:55-04:00</updated>
     <author>
@@ -273,8 +273,8 @@ pull_records(2, 3, 50)
   </entry>
   <entry>
     <title>Moving to Phase Two</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module07-phasetwo.html"/>
-    <id>http://blog.url.com/modules/module07-phasetwo.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module06-phasetwo.html"/>
+    <id>http://blog.url.com/modules/module06-phasetwo.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-11T16:17:52-04:00</updated>
     <author>
@@ -369,8 +369,8 @@ dpla = DPLA('YourKeyHere')
   </entry>
   <entry>
     <title>Write Python in Script Files</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module06-use_editor.html"/>
-    <id>http://blog.url.com/modules/module06-use_editor.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module05-use_editor.html"/>
+    <id>http://blog.url.com/modules/module05-use_editor.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-11T10:46:54-04:00</updated>
     <author>
@@ -451,8 +451,8 @@ jeriwieringa$
   </entry>
   <entry>
     <title>Working with the API</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module05-complex_requests.html"/>
-    <id>http://blog.url.com/modules/module05-complex_requests.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module04-complex_requests.html"/>
+    <id>http://blog.url.com/modules/module04-complex_requests.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-06T23:55:11-04:00</updated>
     <author>
