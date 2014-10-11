@@ -5,32 +5,378 @@
   <id>http://blog.url.com/modules</id>
   <link href="http://blog.url.com/modules"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2014-09-18T17:00:00-07:00</updated>
+  <updated>2014-09-18T20:00:00-04:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
   <entry>
-    <title>Writings to a File</title>
-    <link rel="alternate" href="http://blog.url.com/modules/write.html"/>
-    <id>http://blog.url.com/modules/write.html</id>
-    <published>2014-09-18T17:00:00-07:00</published>
-    <updated>2014-09-26T14:25:29-07:00</updated>
+    <title>Create Data from Text Files</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module12-create.html"/>
+    <id>http://blog.url.com/modules/module12-create.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-09-25T17:35:57-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module, we will focus on writing the results of our loop to a new text file. This enables us to keep our results for future work and as a source to ask further questions.&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module, we will be thinking about how we can use the skills we just learned to create data from our primary source material. &lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Looping through the Pages</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module09-whileloop.html"/>
+    <id>http://blog.url.com/modules/module09-whileloop.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-11T16:54:00-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;In this module, we will add another loop to our "pull records" function that allows us to move through more than one page of search results.&lt;/p&gt;
+
+&lt;h3 id="introducing-the-while-loop"&gt;Introducing the While Loop&lt;/h3&gt;
+
+&lt;p&gt;The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the while loop and a "counter" to work through all of the pages of search results.&lt;/p&gt;
+
+&lt;p&gt;To use a while loop, let's look again at our "pull records" function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def pull_records(pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	save_each(paged_search)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.&lt;/p&gt;
+
+&lt;p&gt;To write this logic in code, we will add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;while(pages &amp;lt;= end):
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;so that our function now looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def pull_records(pages, end, size):
+	while(pages &amp;lt;= end):
+		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		save_each(paged_search)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="adding-a-counter"&gt;Adding a Counter&lt;/h3&gt;
+
+&lt;p&gt;Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now.&lt;/p&gt;
+
+&lt;p&gt;To avoid the infinite loop, we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".&lt;/p&gt;
+
+&lt;p&gt;After &lt;span class="command"&gt;save_each(paged_search)&lt;/span&gt; add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pages = pages + 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let's also add a print command to check that things are working as we expect. Above &lt;span class="command"&gt;pages = pages + 1&lt;/span&gt; add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print "finished page " + str(pages)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Our file should now look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	while(pages &amp;lt;= end):
+		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		save_each(paged_search)
+		print "finished page " + str(pages)
+		pages = pages + 1
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 3, 50)
+
+print all_records[40]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let's test our function on a subset of the pages. Change &lt;span class="command"&gt;pull_records(2, 3, 50)&lt;/span&gt; to &lt;span class="command"&gt;pull_records(2, 5, 50)&lt;/span&gt; and change &lt;span class="command"&gt;print all_records[40]&lt;/span&gt; to &lt;span class="command"&gt;print all_records[150]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Save and run in Terminal.&lt;/p&gt;
+
+&lt;h3 id="what-we-learned"&gt;What We Learned:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To use a while loop and counter&lt;/li&gt;
+  &lt;li&gt;To test on a subset of the data&lt;/li&gt;
+  &lt;li&gt;To use "print" to check our functions along the way&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Functions and Loops</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module08-functionsandloops.html"/>
+    <id>http://blog.url.com/modules/module08-functionsandloops.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-11T16:17:55-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;We now have a file that looks as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We will now add a function that handles the query for any given page number.&lt;/p&gt;
+
+&lt;h3 id="creating-a-pull-records-function"&gt;Creating a "Pull Records" Function&lt;/h3&gt;
+
+&lt;p&gt;To write a function, we set of the function with the word "def" and then indent all of the commands that are part of the function.&lt;/p&gt;
+
+&lt;p&gt;In your "my_first_script.py" file, add the line&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def pull_records(pages, end, size):
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.&lt;/p&gt;
+
+&lt;p&gt;Tab in one space on the next line and type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your file should now look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.&lt;/p&gt;
+
+&lt;p&gt;Let's add a print statement and test out the first stage of this function. At the same tab as "paged_search…", add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print paged_search.items[2]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now to run the function, we will call the function name and give it values. On a new line and outside of the function, add the line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pull_records(2, 3, 50)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save the file and go to terminal to run it.&lt;/p&gt;
+
+&lt;h3 id="saving-items-to-all-records"&gt;Saving Items to "All Records"&lt;/h3&gt;
+
+&lt;p&gt;You have written and executed your first function! Well done!&lt;/p&gt;
+
+&lt;p&gt;Now we need to add another function to store those results to the empty "all records" array we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.&lt;/p&gt;
+
+&lt;p&gt;To set up our new "Save Each" function, we will define a new function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def save_each(n):
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in and to take that variable and plug it in for 'n' throughout the function.&lt;/p&gt;
+
+&lt;p&gt;We now need to add our first loop. With how we currently have framed our request, there are 50 items in our paged_search item. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, take the item and add it to "all_records". &lt;/p&gt;
+
+&lt;p&gt;Tabbing in one space on the next line under &lt;span class="command"&gt;def save_each(n):&lt;/span&gt;s add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for each in n.items:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is called a "for loop". It tells the computer to iterate through each item in the list 'n'. We use n.items because this is the syntax from the DPyLA library. &lt;/p&gt;
+
+&lt;p&gt;Now we tab in one more space and tell the computer what we want done to each item. To add the item to the "all_records" array, we use the "append" command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;all_records.append(each)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The "save each" function should now look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we can use this function in our "pull records" function. Currently, our "pull records" looks as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def pull_records (pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	print paged_search.items[2]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let's delete the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;save_each(paged_search)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Our file should now look like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	save_each(paged_search)
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 3, 50)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To test this, let's now add a print statement to the end of the file, after the pull_records function has been run, to make sure that the items are going into the "all_records" variable.&lt;/p&gt;
+
+&lt;p&gt;Add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print all_records[30]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save and run your script.&lt;/p&gt;
+
+&lt;p&gt;We have made great progress! We now have two functions to handle making the query and saving the results, but we are still only working with one "page" of search results at a time. In the next module, we will add yet another kind of loop in order to move through the different pages.&lt;/p&gt;
+
+&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To create and call functions&lt;/li&gt;
+  &lt;li&gt;To pass variables into functions&lt;/li&gt;
+  &lt;li&gt;To create a "for loop"&lt;/li&gt;
+  &lt;li&gt;To "append" items into a list&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Moving to Phase Two</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module07-phasetwo.html"/>
+    <id>http://blog.url.com/modules/module07-phasetwo.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-11T16:17:52-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;At the half-way point, it is stop briefly and think through what we have already learned. So far, you have learned to talk to your computer using the terminal. You've interacted with Python, a programming language and used Python to execute a few commands. You've also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks or cake mix to create new programs. &lt;/p&gt;
+
+&lt;p&gt;You've also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.&lt;/p&gt;
+
+&lt;p&gt;Well Done!&lt;/p&gt;
+
+&lt;p&gt;So far you have been writing code that does one thing: it get search results or prints a particular item. The power of code, however, is being able to do the same thing to a series of items and it is thinking in terms of iterating through a series that is at the core of computational thinking. To do this, we will learn two very powerful programming concepts: functions and loops.&lt;/p&gt;
+
+&lt;h3 id="asking-questions-of-our-data"&gt;Asking Questions of Our Data&lt;/h3&gt;
+
+&lt;p&gt;We have been able to do a lot with filtering the data by subject headings, by geographic space, and by contributor. But what if we want to ask questions about how the materials are described across all 10,000+ items associated with "cooking"? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking"?&lt;/p&gt;
+
+&lt;p&gt;There are many ways one could go about investigating the descriptions. Work with your table to brain-storm a couple of approaches.&lt;/p&gt;
+
+&lt;h3 id="adding-parameters-to-the-query"&gt;Adding Parameters to the Query&lt;/h3&gt;
+
+&lt;p&gt;To start, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can pass a variable to get up to 500 items at a time, but there were 10,909 items associated with "cooking".&lt;/p&gt;
+
+&lt;p&gt;Open your "my_first_script.py" file. Looking at the line that says &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;we can change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is &lt;span class="command"&gt;page_size=&lt;/span&gt; and the number of items we want. To get 50 items rather than 10, change that line to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking', page_size=50)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To check that this worked, let's add a line telling the computer to print out the 40th item:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print result.items[39]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Remember, counting within a list begins at 0.&lt;/p&gt;
+
+&lt;p&gt;Use the &lt;a href="https://github.com/bibliotechy/DPyLA"&gt;documentation&lt;/a&gt; and your table to add another parameter to get the information from page 3.&lt;/p&gt;
+
+&lt;h3 id="setting-up-a-variable"&gt;Setting Up a Variable&lt;/h3&gt;
+
+&lt;p&gt;To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items all of the pages and we need a place to store them, so that as we get new items, our collections grows.&lt;/p&gt;
+
+&lt;p&gt;Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. For example, I could create a list "fruit" that has the values "apple, orange, banana" by doing the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fruit = ["apple", "orange", "banana"]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;now if I ask for the second item in fruit&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fruit[1]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I will get back "orange".&lt;/p&gt;
+
+&lt;p&gt;We are going to use a similar structure to save all of the items we get back from the DPLA.&lt;/p&gt;
+
+&lt;p&gt;Go back to "my_first_script.py". Comment out the line &lt;span class="command"&gt;result = dpla.search('cooking', page_size=50)&lt;/span&gt; by placing a # sign at the front of the line. This tells the computer to skip this line. Also comment out the line you wrote to print out one of the items.&lt;/p&gt;
+
+&lt;p&gt;Your file should look something like this: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
+
+dpla = DPLA('YourKeyHere')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let's create a new variable, "all_records" and set it equal to an empty list.&lt;/p&gt;
+
+&lt;p&gt;To do this, add a new line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;all_records = []
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This tells the computer that we have a variable, "all_records", that this variable will hold a list, and that we currently have no items in that list.&lt;/p&gt;
+
+&lt;p&gt;Now that we have a place to store our values, we now have to tell the computer to get the search results from each page and save those results to the "all_records" list.&lt;/p&gt;
+
+&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To add additional parameters to our API call&lt;/li&gt;
+  &lt;li&gt;To create an empty list&lt;/li&gt;
+  &lt;li&gt;To comment-out code that we don't want to run, but want to keep&lt;/li&gt;
+&lt;/ul&gt;
 </content>
   </entry>
   <entry>
     <title>Write Python in Script Files</title>
-    <link rel="alternate" href="http://blog.url.com/modules/use_editor.html"/>
-    <id>http://blog.url.com/modules/use_editor.html</id>
-    <published>2014-09-18T17:00:00-07:00</published>
-    <updated>2014-09-26T19:33:23-07:00</updated>
+    <link rel="alternate" href="http://blog.url.com/modules/module06-use_editor.html"/>
+    <id>http://blog.url.com/modules/module06-use_editor.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-11T10:46:54-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module, we will look at how to keep save our python scripts in a text file. While the interactive shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.&lt;/p&gt;
 
 &lt;h3 id="writing-and-executing-script-files"&gt;Writing and Executing Script Files&lt;/h3&gt;
 
@@ -43,9 +389,9 @@
 &lt;pre&gt;&lt;code&gt;open my_first_script.py
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;It should say 'print "Hello World"'. Now that you know something about python functions, what do you expect this script to do?&lt;/p&gt;
+&lt;p&gt;It should say 'print "Hello World"'. Now that you know something about Python functions, what do you expect this script to do?&lt;/p&gt;
 
-&lt;p&gt;Let's test it out! To execute a python file, run the following in terminal:&lt;/p&gt;
+&lt;p&gt;Let's test it out! To execute a Python file, run the following in terminal:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;python my_first_script.py
 &lt;/code&gt;&lt;/pre&gt;
@@ -57,15 +403,15 @@ Hello World
 jeriwieringa$
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Excellent! You just executed your first python script!&lt;/p&gt;
+&lt;p&gt;Excellent! You just executed your first Python script!&lt;/p&gt;
 
 &lt;h3 id="writing-our-dpyla-script"&gt;Writing our DPyLA Script&lt;/h3&gt;
 
-&lt;p&gt;Now lets recreate some of the work we did in the Interactive Shell in this script file.&lt;/p&gt;
+&lt;p&gt;Now let's recreate some of the work we did in the Interactive Shell in this script file.&lt;/p&gt;
 
-&lt;p&gt;Delete &lt;span class="command"&gt;print "Hello World"&lt;/span&gt; so that we're working with a clean file. &lt;/p&gt;
+&lt;p&gt;Delete &lt;span class="command"&gt;print "Hello World"&lt;/span&gt; so that you're working with a clean file. &lt;/p&gt;
 
-&lt;p&gt;First, at the beginning of a Python file we need to list the libraries that we will be using. Similar to HTML, the computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. &lt;/p&gt;
+&lt;p&gt;First, at the beginning of a Python file you need to list the libraries that we will be using. Similar to HTML, the computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. &lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
 &lt;/code&gt;&lt;/pre&gt;
@@ -77,7 +423,7 @@ jeriwieringa$
 
 &lt;p&gt;Then we can write our search query:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking') //replace with complex query
+&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking')
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Save the file and go back to Terminal. Run &lt;/p&gt;
@@ -89,14 +435,14 @@ jeriwieringa$
 
 &lt;p&gt;Open your script file again (&lt;span class="command"&gt;open my_first_script.py&lt;/span&gt;). &lt;/p&gt;
 
-&lt;p&gt;Work with your table to add another line to the file that uses the print function to display one item from your search. &lt;/p&gt;
+&lt;p&gt;Work with your group to add another line to the file that uses the print function to display one item from your search. &lt;/p&gt;
 
 &lt;p&gt;Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. &lt;/p&gt;
 
 &lt;h3 id="what-weve-learned"&gt;What We've Learned&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;To execute python scripts in the terminal&lt;/li&gt;
+  &lt;li&gt;To execute Python scripts in the Terminal&lt;/li&gt;
   &lt;li&gt;To write our commands in the order they should be executed&lt;/li&gt;
   &lt;li&gt;To use print to display the results of our scripts&lt;/li&gt;
 &lt;/ul&gt;
@@ -104,428 +450,49 @@ jeriwieringa$
 </content>
   </entry>
   <entry>
-    <title>Working with Your Computer</title>
-    <link rel="alternate" href="http://blog.url.com/modules/terminal.html"/>
-    <id>http://blog.url.com/modules/terminal.html</id>
-    <published>2014-09-18T17:00:00-07:00</published>
-    <updated>2014-10-03T11:53:28-07:00</updated>
+    <title>Working with the API</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module05-complex_requests.html"/>
+    <id>http://blog.url.com/modules/module05-complex_requests.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-06T23:55:11-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;Throughout this tutorial, we will be spending a lot of time in Terminal/PowerShell as our primary way of talking to our computers. In order to do this, however, it is necessary to take some time to get comfortable working with the command line.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Now that we've learned to make a simple request using the DPyLA library, let's spend some time exploring the different kinds of requests we can make. &lt;/p&gt;
 
-&lt;p&gt;So let's walk through some basic commands while setting up our computer for the rest of the tutorial.&lt;/p&gt;
+&lt;h3 id="constructing-api-requests"&gt;Constructing API Requests&lt;/h3&gt;
 
-&lt;p&gt;First, let's get a sense of where we are in the file structure of our computer. &lt;/p&gt;
+&lt;p&gt;Open up the &lt;a href="https://github.com/bibliotechy/DPyLA"&gt;documentation for the DPyLA library&lt;/a&gt; and for the &lt;a href="http://dp.la/info/developers/codex/requests/"&gt;DPLA API&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Type &lt;span class="command"&gt;pwd&lt;/span&gt; and press enter. &lt;/p&gt;
+&lt;p&gt;First, let's get some contextual data about the search results. Run &lt;span class="command"&gt;result.count&lt;/span&gt;. This tells you how many items total fit the search term. &lt;/p&gt;
 
-&lt;p&gt;The command, which stands for "print working directory," does exactly, tells you which directory you are in. Navigating the computer through the Terminal sometimes feels like tunneling, and 'pwd' is very helpful for seeing where you are at. You should see something like:&lt;/p&gt;
+&lt;p&gt;Now run &lt;span class="command"&gt;result.limit&lt;/span&gt;. This tells you how many results the API returned. By default, the API will give you 10 results at a time. Look at the DPyLA documentation and try to construct a request that gets you 50 results.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/Users/yourusername
+&lt;p&gt;You can also limit your search results by a variety of variables. &lt;/p&gt;
+
+&lt;p&gt;For example, you can sort by geography:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;if you're on a Mac or&lt;/p&gt;
+&lt;p&gt;You can also be more specific with your search, such as limiting your query to cooking in the title of an item. &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;C:\Users\username
+&lt;pre&gt;&lt;code&gt;result = dpla.search("cooking", fields=["sourceResource:title"])
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;for Windows.&lt;/p&gt;
+&lt;p&gt;These types of commands help you focus the search results so that you have less noisy data - so that more of the data fits the questions you want to ask.&lt;/p&gt;
 
-&lt;p&gt;Type &lt;span class="command"&gt;ls&lt;/span&gt; and press enter. &lt;/p&gt;
-
-&lt;p&gt;This is another super helpful command for orienting yourself. This commands lists all the files in your current directory. If you need to see hidden files, type 'ls -a' (Mac) or 'ls -Hidden' (Windows). &lt;/p&gt;
-
-&lt;p&gt;You should see something like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;jeris-mbp:~ jeriwieringa$ ls
-Applications		Dropbox		Music
-Desktop			Envs		Pictures
-Documents		Library		Public
-Downloads		Movies		Sites		
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now that we know where we are, we now need to learn how to move around the different files. This is done with 'cd' or "change directory." If you just type 'cd', you will move back to the root of your user directory. To move forward, type 'cd [Directory_Name]'. You can also move multiple directories at a time with 'cd [Directory_Name/Directory_Name/Directory_Name]'. This way you can dig down through your files. Let's give it a try.&lt;/p&gt;
-
-&lt;p&gt;Type &lt;span class="command"&gt;cd Documents&lt;/span&gt; and press enter. Now type &lt;span class="command"&gt;ls&lt;/span&gt; and press enter.&lt;/p&gt;
-
-&lt;p&gt;You can also move backwards by typing &lt;span class="command"&gt;cd ../&lt;/span&gt; and to move back multiple directories, type &lt;span class="command"&gt;cd ../../../&lt;/span&gt;. &lt;/p&gt;
-
-&lt;p&gt;Go ahead and give that a try. After moving around, work your way back to the "Documents" folder.&lt;/p&gt;
-
-&lt;p&gt;Let's create a folder for our work today. &lt;/p&gt;
-
-&lt;p&gt;Type &lt;span class="command"&gt;mkdir dhb_awesome&lt;/span&gt; and press enter. Now type &lt;span class="command"&gt;ls&lt;/span&gt; and you should see your 'dhb_awesome' folder. Use 'cd' to move into that folder.&lt;/p&gt;
-
-&lt;p&gt;Folders are great but it is also helpful to know how to make files. For that, we'll use a command called 'touch' on OSX and 'New-Item' on Windows.&lt;/p&gt;
-
-&lt;p&gt;If you're on a Mac, type:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;touch my_first_script.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;and press enter. &lt;/p&gt;
-
-&lt;p&gt;If you're on Windows, type:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;New-Item -ItemType file my_first_script.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;and press enter. &lt;/p&gt;
-
-&lt;p&gt;Type &lt;span class="command"&gt;ls&lt;/span&gt; to see your file. &lt;/p&gt;
-
-&lt;p&gt;To edit your new file in your default text-editor, type &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;open my_first_script.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;on your Mac or&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Invoke-Item my_first_script.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;on your Windows machine. This should launch your default text editor. Type &lt;span class="command"&gt;print "Hello World"&lt;/span&gt; into the text file and save. We will do something with that later.&lt;/p&gt;
-
-&lt;p&gt;If you want to know more commands, like removing files, copying files, and renaming files, checkout the &lt;a href="http://praxis.scholarslab.org/scratchpad/bash/"&gt;Scholars' Lab Command Line Bootcamp&lt;/a&gt;. But this is enough to start!&lt;/p&gt;
-
-&lt;h3 id="terminology-and-mapping-the-computer"&gt;Terminology and Mapping the Computer&lt;/h3&gt;
-
-&lt;p&gt;Now we're going to take a step back to think about the different layers of the computer that we will be working with and about how we move data from one process to another. &lt;/p&gt;
-
-&lt;p&gt;At your table, there is paper and many different drawing implements. We're going to talk through the tools and technologies we're using.  While we do that, your job is to diagram those connections using whatever metaphors or graphics that make sense to you.&lt;/p&gt;
-
-&lt;p&gt;The topics we will cover include:&lt;/p&gt;
+&lt;p&gt;Work with the documentation and your table to construct some more targeted queries. &lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Working from terminal rather than interface&lt;/li&gt;
-  &lt;li&gt;Levels of Programming Languages&lt;/li&gt;
-  &lt;li&gt;Programming Libraries&lt;/li&gt;
-  &lt;li&gt;Servers&lt;/li&gt;
-  &lt;li&gt;API&lt;/li&gt;
+  &lt;li&gt;In what ways would you want to narrow the data for different questions?&lt;/li&gt;
+  &lt;li&gt;Do you see any additional strengths or weaknesses with the data when trying to limit your search results?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id="what-you-have-learned"&gt;What You Have Learned&lt;/h3&gt;
-
-&lt;p&gt;In this module, you have learned:&lt;/p&gt;
+&lt;h3 id="what-we-learned"&gt;What we learned&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;to navigate and manipulate the computer using the Terminal &lt;/li&gt;
-  &lt;li&gt;to conceptualize your computer as a computing machine connected to other computing machines&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id="credits"&gt;Credits&lt;/h3&gt;
-&lt;p&gt;This tutorial is based on the &lt;a href="http://praxis.scholarslab.org/scratchpad/bash/"&gt;Praxis Program's Command Line Bootcamp&lt;/a&gt; and Greg Bloom's post, &lt;a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/"&gt;Draw an API&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Create Subset of Data</title>
-    <link rel="alternate" href="http://blog.url.com/modules/subset.html"/>
-    <id>http://blog.url.com/modules/subset.html</id>
-    <published>2014-09-18T17:00:00-07:00</published>
-    <updated>2014-09-26T14:25:14-07:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;In this module, we will introduce variables to store and work with a subset of the data. &lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Installation</title>
-    <link rel="alternate" href="http://blog.url.com/modules/installation.html"/>
-    <id>http://blog.url.com/modules/installation.html</id>
-    <published>2014-09-18T17:00:00-07:00</published>
-    <updated>2014-10-03T11:53:28-07:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;Welcome to DH Bridge. This one day workshop will introduce you to basic programming concepts for use in humanities research. We will be working with Python, a programming language that combines a human-readable syntax with robust support for statistical analysis and graphing. The data for the day will be gleaned from the Digital Public Library of America. We are excited that you will be joining us.&lt;/p&gt;
-
-&lt;h2 id="step-one-required-supplies"&gt;Step One: Required Supplies&lt;/h2&gt;
-
-&lt;p&gt;For the workshop you will need to bring:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Your Laptop:&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;You need to have a working wifi connection (we will provide access to Mason's wireless)&lt;/li&gt;
-      &lt;li&gt;We recommend that you update your operating system to the latest version your machine can support. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Your Powercord&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You might also want to bring:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;An Extension Cord&lt;/li&gt;
-  &lt;li&gt;Snacks&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id="step-two-overview"&gt;Step Two: Overview&lt;/h2&gt;
-
-&lt;p&gt;You will be installing or checking the status of the following tools:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Python&lt;/li&gt;
-  &lt;li&gt;Pip&lt;/li&gt;
-  &lt;li&gt;Text Editor&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id="a-note-on-python-versions"&gt;A Note on Python Versions&lt;/h3&gt;
-&lt;p&gt;For this workshop, we will be using Python 2.7. This is for two reasons: first, using the default Python version enables us to teach basic programming concepts without the additional complexity of managing Python versions; and second, most of the existing tutorials for learning Python, including &lt;em&gt;The Programming Historian&lt;/em&gt; and &lt;em&gt;Learn Python the Hard Way&lt;/em&gt;, still use 2.7. Starting with 2.7 will enable you to use these materials smoothly. We would like to also offer a Python3 version of this tutorial, so that those who wish to start with the newer syntax can do so.&lt;/p&gt;
-
-&lt;h2 id="step-three-install-go-to-your-operating-system-below"&gt;Step Three: Install (Go To Your Operating System Below)&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="#mac"&gt;Mac&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#windows"&gt;Windows&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id="mac"&gt;Mac&lt;/h3&gt;
-
-&lt;h4 id="install-text-editor"&gt;1. Install Text Editor&lt;/h4&gt;
-
-&lt;p&gt;For this tutorial, we recommend using TextWrangler, which is a free editor from BareBones software. To get TextWrangler, go to &lt;a href="http://www.barebones.com/products/textwrangler/"&gt;http://www.barebones.com/products/textwrangler/&lt;/a&gt; and download. &lt;/p&gt;
-
-&lt;p&gt;We recommend keeping TextWrangler in your Dock so that it is easy to access.&lt;/p&gt;
-
-&lt;p&gt;You are welcome to use another text editor if you wish. Just make sure that it is a plain text editor (do not use TextEdit).&lt;/p&gt;
-
-&lt;h4 id="check-your-python-version"&gt;2. Check your Python Version&lt;/h4&gt;
-&lt;p&gt;Search your computer for "Terminal." This program allows you to give your computer commands without using the interface. Select to keep Terminal in your dock. &lt;/p&gt;
-
-&lt;p&gt;Open up Terminal. It should give you a screen that looks similar to this: &lt;/p&gt;
-
-&lt;p&gt;[image of terminal screen]&lt;/p&gt;
-
-&lt;p&gt;To check your Python version, type &lt;span class="command"&gt;python&lt;/span&gt; into the terminal window and press "Enter". You should see something that looks like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Python 2.7.5 (default, Mar  9 2014, 22:15:05) 
-[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-&amp;gt;&amp;gt;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Make note of your Python version. &lt;/p&gt;
-
-&lt;p&gt;You are now in the Python Shell. This is an interactive environment that allows you to give Python commands directly inside Terminal. We will come back to this during the workshop.&lt;/p&gt;
-
-&lt;p&gt;Exit the shell by typing &lt;span class="command"&gt;quit()&lt;/span&gt; and pressing "Enter".&lt;/p&gt;
-
-&lt;h4 id="install-pip"&gt;3. Install Pip&lt;/h4&gt;
-
-&lt;p&gt;One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.&lt;/p&gt;
-
-&lt;p&gt;To download Pip, we are going to use another tool called cURL, which is already part of your operating system. cURL allows us to transfer data using the command line.&lt;/p&gt;
-
-&lt;p&gt;Type &lt;span class="command"&gt;curl -O https://bootstrap.pypa.io/get-pip.py&lt;/span&gt; and press "Enter". This will download a file titled "get-pip.py" onto your machine.&lt;/p&gt;
-
-&lt;p&gt;To install Pip, you need to run that file with Python. To do that, type &lt;span class="command"&gt;python get-pip.py&lt;/span&gt; into Terminal and press "Enter". &lt;/p&gt;
-
-&lt;p&gt;If Terminal turns red and you get errors that say &lt;span class="command"&gt; OSError: [Errno 13] Permission denied&lt;/span&gt;, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give Python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the Python command.&lt;/p&gt;
-
-&lt;p&gt;Type &lt;span class="command"&gt;sudo python get-pip.py&lt;/span&gt; into the Termainal window.&lt;/p&gt;
-
-&lt;p&gt;The computer will prompt you for your password. This is the password you use to log onto your computer. The terminal will give no indication that you are typing as you enter your password.&lt;/p&gt;
-
-&lt;p&gt;If everything goes well, you should see something similar to the following in your Terminal window:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Downloading/unpacking pip from https://pypi.python.org/packages/py2.py3/p/pip/pip-1.5.6-py2.py3-none-any.whl#md5=4d4fb4b69df6731c7aeaadd6300bc1f2
-  	Downloading pip-1.5.6-py2.py3-none-any.whl (1.0MB): 1.0MB downloaded
-Installing collected packages: pip
-Successfully installed pip
-Cleaning up...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To check that everything installed, type &lt;span class="command"&gt;pip&lt;/span&gt; into your Terminal and press "Enter". This will give you information on the different commands that available for you to use with "pip".&lt;/p&gt;
-
-&lt;h4 id="well-done-your-computer-is-now-ready-for-the-workshop"&gt;Well done! Your computer is now ready for the workshop!&lt;/h4&gt;
-
-&lt;h3 id="windows"&gt;Windows&lt;/h3&gt;
-
-&lt;h4 id="install-text-editor-1"&gt;1. Install Text Editor&lt;/h4&gt;
-
-&lt;p&gt;For this tutorial, we recommend using NotePad++, which is a free editor. To get Notepad++, go to &lt;a href="http://notepad-plus-plus.org/"&gt;http://notepad-plus-plus.org/&lt;/a&gt; and download. &lt;/p&gt;
-
-&lt;p&gt;To easily access NotePad++, be sure to add it to your Desktop and/or Quick Launch.&lt;/p&gt;
-
-&lt;h4 id="install-python"&gt;2. Install Python&lt;/h4&gt;
-
-&lt;p&gt;Search your computer for "PowerShell." This program allows you to give your computer commands without using the interface. &lt;/p&gt;
-
-&lt;p&gt;Open up PowerShell. It should give you a screen that looks similar to this: &lt;/p&gt;
-
-&lt;p&gt;[Image of PowerShell]&lt;/p&gt;
-
-&lt;p&gt;In PowerShell, type &lt;span class="command"&gt;python&lt;/span&gt; and press "Enter". You will most get back a message that says &lt;span class="command"&gt;python is not recognized..&lt;/span&gt;.&lt;/p&gt;
-
-&lt;p&gt;If this is the case, download and install python from &lt;a href="https://www.python.org/download/"&gt;https://www.python.org/download/&lt;/a&gt;. Choose the "Python 2.7.8 Windows Installer" or "Python 2.7.8 Windows X86-64 Installer", depending on your system. Run the installer and accept the default settings.&lt;/p&gt;
-
-&lt;p&gt;Once Python is installed, we have to tell the computer a bit about where to look for it. In PowerShell, enter:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Close PowerShell and re-open. To check if Python installed properly, type &lt;span class="command"&gt;python&lt;/span&gt; and press "Enter". You should get something that looks like this back:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Python 2.7.8  (default, Jun 30 2014, 14:24) [MSC v.1500 32 bit (Intel)] on win32
-Type "help", "copyright", "credits" or license for more information.
-&amp;gt;&amp;gt;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You are now in the Python Shell. This is an interactive environment that allows you to give python commands directly inside PowerShell. We will come back to this during the workshop.&lt;/p&gt;
-
-&lt;p&gt;Exit the shell by typing &lt;span class="command"&gt;quit()&lt;/span&gt; and pressing "Enter".&lt;/p&gt;
-
-&lt;h4 id="install-pip-1"&gt;3. Install Pip&lt;/h4&gt;
-
-&lt;p&gt;One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.&lt;/p&gt;
-
-&lt;p&gt;The easiest way to install pip is through the use of a Python program called get-pip.py, which you can download here: &lt;a href="https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py"&gt;https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py&lt;/a&gt;. When you open this link, you might be scared of the massive jumble of code that awaits you. Please don’t be. Simply use your browser to save this page under its default name, which is get-pip.py.&lt;/p&gt;
-
-&lt;p&gt;Open PowerShell as admin by right-clicking on the PowerShell icon and select "Run as Admin." &lt;/p&gt;
-
-&lt;p&gt;Enter the following commands in PowerShell to download the bootstrap scripts for easy_install and pip:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mkdir c:\envs
-cd c:\envs
-   
-
-(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
-   
-
-python c:\envs\get-pip.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now typing &lt;span class="command"&gt;pip&lt;/span&gt; should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python33\Scripts with the correct location of your Python installation:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;setx PATH "%PATH%;C:\Python33\Scripts"
-&amp;gt;&amp;gt;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Close and reopen PowerShell after running this command.&lt;/p&gt;
-
-&lt;h3 id="credits"&gt;Credits&lt;/h3&gt;
-&lt;p&gt;These instructions are modifications of the Python installation instruction at &lt;a href="http://learnpythonthehardway.org/book/ex0.html"&gt;&lt;em&gt;Learn Python the Hard Way&lt;/em&gt;&lt;/a&gt; and Fred Gibb's &lt;a href="http://fredgibbs.net/tutorials/tutorial/install-python-modules/"&gt;tutorial on installing Pip&lt;/a&gt; as well as the &lt;a href="http://docs.railsbridge.org/installfest/"&gt;InstallFest docs of RailsBridge&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Getting Data</title>
-    <link rel="alternate" href="http://blog.url.com/modules/get_data.html"/>
-    <id>http://blog.url.com/modules/get_data.html</id>
-    <published>2014-09-18T17:00:00-07:00</published>
-    <updated>2014-09-26T15:27:04-07:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;In this module, we will use pip to install the DPyLA python library to make it easy to use the API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.&lt;/p&gt;
-
-&lt;h3 id="install-dpyla-library"&gt;Install DPyLA Library&lt;/h3&gt;
-
-&lt;p&gt;We talked earlier about libraries, bundles of code that we can load and use in creating our own scripts. Just as in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to go about making something. Instead, unless there is a reason to not, programming works by combining existing bits to create something new and useful.&lt;/p&gt;
-
-&lt;p&gt;One library that makes it easy to work with the DPLA api with Python is &lt;a href="https://github.com/bibliotechy/DPyLA"&gt;DPyLA&lt;/a&gt;, which you can look at on Github.&lt;/p&gt;
-
-&lt;p&gt;We can easily get this library for use in our own code using pip.&lt;/p&gt;
-
-&lt;p&gt;Type &lt;span class="command"&gt;pip install dpla&lt;/span&gt;. &lt;/p&gt;
-
-&lt;p&gt;If you get a permissions error, type &lt;span class="command"&gt;sudo pip install dpla&lt;/span&gt; and enter your password.&lt;/p&gt;
-
-&lt;p&gt;You have just installed your first python library.&lt;/p&gt;
-
-&lt;h3 id="introducing-the-python-interactive-shell"&gt;Introducing the Python Interactive Shell&lt;/h3&gt;
-
-&lt;p&gt;Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the interactive shell, we can experiment with lines of python and see what the language can do. &lt;/p&gt;
-
-&lt;p&gt;To start up the interactive shell, go to your terminal window and type &lt;span class="command"&gt;python&lt;/span&gt; and press "Enter".&lt;/p&gt;
-
-&lt;p&gt;Your terminal should now look like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;jeriwieringa$ python
-Python 2.7.5 (default, Mar  9 2014, 22:15:05)
-[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-&amp;gt;&amp;gt;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Everything you type will now be processed by python. Try it out with a little math. Type &lt;span class="command"&gt;print "Hello World"&lt;/span&gt; and press "Enter". Now type &lt;span class="command"&gt;print "My Name is [Your Name]"&lt;/span&gt; and press "Enter". Now type &lt;span class="command"&gt;print 5 + 8&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Here you have discovered a couple of very useful things with programming languages. &lt;/p&gt;
-
-&lt;p&gt;"print" is a function in python that return whatever you give it next. &lt;/p&gt;
-
-&lt;p&gt;The content contained inside "" marks is called a string. For humanities research, we work with strings a lot.&lt;/p&gt;
-
-&lt;p&gt;Finally, if we pass numbers or equations into python, it will compute them. If you don't want python to compute, you should treat the numbers like a string. Experiment in the shell to see if you can get it to display &lt;span class="command"&gt;5 + 8&lt;/span&gt; rather than &lt;span class="command"&gt;13&lt;/span&gt;.&lt;/p&gt;
-
-&lt;h3 id="loading-dpyla-in-the-shell-and-make-an-api-request"&gt;Loading DPyLA in the Shell and Make an API Request&lt;/h3&gt;
-
-&lt;p&gt;Let's start using our new DPyLA library to make an API call to the DPLA. Following the &lt;a href="https://github.com/bibliotechy/DPyLA"&gt;library documentation&lt;/a&gt;, run &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You just loaded the DPyLA library into your python shell, making all of it's code available for you to use.&lt;/p&gt;
-
-&lt;p&gt;Next run:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dpla = DPLA('your-key-here')
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;What you have just done is create what is called a "variable", dpla, that stores your api key.&lt;/p&gt;
-
-&lt;p&gt;Next run:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking')
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You have just created a new variable, "result" that stores the result of a dpla search for "cooking". Now, you might be wondering what happened to your api key. This is part of the magic of using a library. When you save your key as dpla, you make it known to the library. Then, when you call dpla.search, you're combining your key with code in the DPyLA library that executes the search and saving all of the data in a new variable called "result". &lt;/p&gt;
-
-&lt;p&gt;But we still haven't seen any of the results from the API. To show the results, run:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;result.items
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You should see something like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[{u'_id': u'digitalnc--urn:brevard.lib.unc.eduecu_c5:oai:digital.lib.ecu.edu/7394', u'admin': {u'sourceResource': {u'title': u'Cooking'}, u'validation_message': None, u'valid_after_enrich': True}, u'sourceResource': {u'isPartOf': [u'https://digital.lib.ecu.edu/encore/ncgre000/00000008/00007394/00007394_tn_0001.gif'], u'description': [u'Boys and girls cooking during home economics class. Dates from negative sleeve.'], u'language': [{u'iso639_3': u'eng', u'name': u'English'}], u'rights': u'Copyright held by Joyner Library. Permission to reuse this work is granted for all non-commercial purposes.', u'@id': u'http://dp.la/api/items/7cb32765b538a57a35fbdbfad03be57b#sourceResource', u'format': u'negatives (photographic)'
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You just asked the computer to give you all of the items it got back from the search for "cooking". &lt;/p&gt;
-
-&lt;p&gt;Notice the structure of this data. Can you find the key:value pairs? &lt;/p&gt;
-
-&lt;p&gt;You might notice the " u' " in front of each string. This is a feature of python 2. The u' indicates that what follows is a unicode string. Don't worry too much about what that means - it is information about how the data is being encoded - but if you want to really geek out, you can read all about encoding in the &lt;a href="https://docs.python.org/2/tutorial/introduction.html#unicode-strings"&gt;language documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;But what if you only want to see one item at a time?&lt;/p&gt;
-
-&lt;p&gt;The information you get back from the DPLA API comes in the form of an &lt;strong&gt;array&lt;/strong&gt;, or &lt;strong&gt;list&lt;/strong&gt; ("array" is the general programming word for a series of things, "list" is python's name for a series of things). Lists are a super powerful, enabling us to load up a lot of information and then work through each bit individually.&lt;/p&gt;
-
-&lt;p&gt;One general things we can do with lists is get items by their position in the list. &lt;/p&gt;
-
-&lt;p&gt;For example, if you want the first item only:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;result.items[0]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You should now see a much smaller dump of data. You might be wondering why we used 0. Programming languages start counting with 0 rather than one.&lt;/p&gt;
-
-&lt;p&gt;Try to get the 3rd item in the search results. &lt;/p&gt;
-
-&lt;p&gt;Can you use &lt;a href="http://effbot.org/zone/python-list.htm"&gt;this tutorial&lt;/a&gt; to figure out how to get items 1 - 3?	&lt;/p&gt;
-
-&lt;h3 id="what-you-have-learned"&gt;What You Have Learned&lt;/h3&gt;
-
-&lt;p&gt;In this module, you have learned:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;to install new libraries using pip&lt;/li&gt;
-  &lt;li&gt;to use the Python Interactive Shell to run basic python commands&lt;/li&gt;
-  &lt;li&gt;to load and use those libraries&lt;/li&gt;
-  &lt;li&gt;to make an API request using a python script&lt;/li&gt;
-  &lt;li&gt;to work with variables and lists&lt;/li&gt;
+  &lt;li&gt;Reading API documentation to understand the possible queries&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>

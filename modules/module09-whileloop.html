@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="" />
+	  <meta name="viewport" content="width=device-width, user-scalable=no">
+	
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Nova+Square' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>Looping through the Pages</title>
+    
+<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+ -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
+    
+  </head>
+
+  <body class="modules modules_module09-whileloop">
+    <!-- HEADER -->
+        <header>
+				<div class="wrap">
+	    <h1 id="project_title">DH Bridge</h1>
+	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
+
+	    <nav id="pages">
+	    	<a href="http://dhbridge.org/curriculum">Computational Thinking</a>
+	    	<a href="http://dhbridge.org">About DH Bridge</a>
+	    </nav>
+	</div>
+        </header> 
+        <!-- MAIN CONTENT -->
+        <div class="wrap">
+            <div id="main">
+              <article>
+                		<section id="sidebar">
+			<h3>Modules</h3>
+			<ul>
+				<li><a href="http://dhbridge.org/curriculum/modules/module01-installation.html">Installation</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module02-terminal.html">Working with your Computer</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module03-data.html">Thinking about Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module04-get_data.html">Getting Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module05-complex_requests.html">Working with the API</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module06-use_editor.html">Writing Script Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-phasetwo.html">Phase Two</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-functionsandloops.html">Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module09-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module10-write.html">Writing Results to File</a></li>
+			</ul>
+		</section>
+
+                <section id="content">
+                        <h3>
+          Looping through the Pages
+      </h3>
+       <p>In this module, we will add another loop to our "pull records" function that allows us to move through more than one page of search results.</p>
+
+<h3 id="introducing-the-while-loop">Introducing the While Loop</h3>
+
+<p>The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the while loop and a "counter" to work through all of the pages of search results.</p>
+
+<p>To use a while loop, let's look again at our "pull records" function.</p>
+
+<pre><code>def pull_records(pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	save_each(paged_search)
+</code></pre>
+
+<p>Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.</p>
+
+<p>To write this logic in code, we will add:</p>
+
+<pre><code>while(pages &lt;= end):
+</code></pre>
+
+<p>so that our function now looks like this:</p>
+
+<pre><code>def pull_records(pages, end, size):
+	while(pages &lt;= end):
+		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		save_each(paged_search)
+</code></pre>
+
+<h3 id="adding-a-counter">Adding a Counter</h3>
+
+<p>Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now.</p>
+
+<p>To avoid the infinite loop, we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".</p>
+
+<p>After <span class="command">save_each(paged_search)</span> add:</p>
+
+<pre><code>pages = pages + 1
+</code></pre>
+
+<p>Let's also add a print command to check that things are working as we expect. Above <span class="command">pages = pages + 1</span> add:</p>
+
+<pre><code>print "finished page " + str(pages)
+</code></pre>
+
+<p>Our file should now look like this:</p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	while(pages &lt;= end):
+		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		save_each(paged_search)
+		print "finished page " + str(pages)
+		pages = pages + 1
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 3, 50)
+
+print all_records[40]
+</code></pre>
+
+<p>Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[40]</span> to <span class="command">print all_records[150]</span></p>
+
+<p>Save and run in Terminal.</p>
+
+<h3 id="what-we-learned">What We Learned:</h3>
+
+<ul>
+  <li>To use a while loop and counter</li>
+  <li>To test on a subset of the data</li>
+  <li>To use "print" to check our functions along the way</li>
+</ul>
+
+
+                </section>
+              </article>
+  			   </div>
+  		</div>
+  		
+  		<footer>
+  				<div class="wrap">
+		<div id="rights">
+		    <p>&copy; CC-BY 2014</p>
+		    <p>The DH Bridge curriculum is supported by a microgrant from the <a href="http://ach.org/"><img src="http://dhbridge.org/images/ach-logo.png" width=50px ></a></p>
+		</div>
+
+	    <div id="contact">
+	        <a href="mailto:bridgingdh@gmail.com"><i class="fa fa-paper-plane"></i></a>
+	        <a href="https://twitter.com/dhbridge"><i class="fa fa-twitter"></i></a>
+	        <a href="https://github.com/dhbridge/curriculum"><i class="fa fa-github"></i></a>
+	    </div>
+	</div>
+  		</footer>
+
+  </body>
+</html>

@@ -17,7 +17,7 @@
     
   </head>
 
-  <body class="modules modules_installation">
+  <body class="modules modules_module01-installation">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -37,16 +37,16 @@
                 		<section id="sidebar">
 			<h3>Modules</h3>
 			<ul>
-				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/data.html">Thinking about Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/get_data.html">Getting Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/complex_requests.html">Working with the API</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/use_editor.html">Writing Script Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/loop.html">Using the Loop</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/subset.html">Creating Subsets of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/write.html">Writing Results to Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/create.html">Creating Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module01-installation.html">Installation</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module02-terminal.html">Working with your Computer</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module03-data.html">Thinking about Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module04-get_data.html">Getting Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module05-complex_requests.html">Working with the API</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module06-use_editor.html">Writing Script Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-phasetwo.html">Phase Two</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-functionsandloops.html">Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module09-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module10-write.html">Writing Results to File</a></li>
 			</ul>
 		</section>
 
@@ -197,11 +197,11 @@ Type "help", "copyright", "credits" or license for more information.
 
 <p>One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.</p>
 
-<p>The easiest way to install pip is through the use of a Python program called get-pip.py, which you can download here: <a href="https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py">https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py</a>. When you open this link, you might be scared of the massive jumble of code that awaits you. Please don’t be. Simply use your browser to save this page under its default name, which is get-pip.py.</p>
+<p>The easiest way to install Pip is through the use of a Python program called get-pip.py, which you can download here: <a href="https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py">https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py</a>. When you open this link, you might be scared of the massive jumble of code that awaits you–don’t be! Simply use your browser to save this page under its default name, which is get-pip.py.</p>
 
-<p>Open PowerShell as admin by right-clicking on the PowerShell icon and select "Run as Admin." </p>
+<p>Open PowerShell with administrator privileges by right-clicking on the PowerShell icon and select "Run as Admin." </p>
 
-<p>Enter the following commands in PowerShell to download the bootstrap scripts for easy_install and pip:</p>
+<p>Enter the following commands in PowerShell to download the bootstrap scripts for Pip:</p>
 
 <pre><code>mkdir c:\envs
 cd c:\envs
@@ -213,9 +213,9 @@ cd c:\envs
 python c:\envs\get-pip.py
 </code></pre>
 
-<p>Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python33\Scripts with the correct location of your Python installation:</p>
+<p>Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python27\Scripts with the correct location of your Python installation:</p>
 
-<pre><code>setx PATH "%PATH%;C:\Python33\Scripts"
+<pre><code>setx PATH "%PATH%;C:\Python27\Scripts"
 &gt;&gt;&gt;
 </code></pre>
 

@@ -17,7 +17,7 @@
     
   </head>
 
-  <body class="modules modules_get_data">
+  <body class="modules modules_module04-get_data">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -37,16 +37,16 @@
                 		<section id="sidebar">
 			<h3>Modules</h3>
 			<ul>
-				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/data.html">Thinking about Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/get_data.html">Getting Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/complex_requests.html">Working with the API</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/use_editor.html">Writing Script Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/loop.html">Using the Loop</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/subset.html">Creating Subsets of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/write.html">Writing Results to Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/create.html">Creating Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module01-installation.html">Installation</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module02-terminal.html">Working with your Computer</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module03-data.html">Thinking about Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module04-get_data.html">Getting Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module05-complex_requests.html">Working with the API</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module06-use_editor.html">Writing Script Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-phasetwo.html">Phase Two</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-functionsandloops.html">Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module09-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module10-write.html">Writing Results to File</a></li>
 			</ul>
 		</section>
 
@@ -54,29 +54,29 @@
                         <h3>
           Getting Data
       </h3>
-       <p>In this module, we will use pip to install the DPyLA python library to make it easy to use the API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.</p>
+       <p>In this module, we will use Pip to install the DPyLA Python library to make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.</p>
 
 <h3 id="install-dpyla-library">Install DPyLA Library</h3>
 
-<p>We talked earlier about libraries, bundles of code that we can load and use in creating our own scripts. Just as in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to go about making something. Instead, unless there is a reason to not, programming works by combining existing bits to create something new and useful.</p>
+<p>We talked earlier about libraries, those bundles of code that we can load and use in creating our own scripts. Just like in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to get the same results. </p>
 
-<p>One library that makes it easy to work with the DPLA api with Python is <a href="https://github.com/bibliotechy/DPyLA">DPyLA</a>, which you can look at on Github.</p>
+<p>One library that makes it easy to work with the DPLA API with Python is <a href="https://github.com/bibliotechy/DPyLA">DPyLA</a>, which you can look at on Github.</p>
 
-<p>We can easily get this library for use in our own code using pip.</p>
+<p>We can easily get this library for use with our own code using Pip.</p>
 
 <p>Type <span class="command">pip install dpla</span>. </p>
 
-<p>If you get a permissions error, type <span class="command">sudo pip install dpla</span> and enter your password.</p>
+<p>If you get a permissions error and you're a Mac user, type <span class="command">sudo pip install dpla</span> and enter your password. If you get a permissions error and you're a Windows user, type <span class="command">Start-Process powershell -Verb runAs</span> to open Powershell as an administrator then type <span class="command">pip install dpla</span>.</p>
 
-<p>You have just installed your first python library.</p>
+<p>You have just installed your first Python library.</p>
 
 <h3 id="introducing-the-python-interactive-shell">Introducing the Python Interactive Shell</h3>
 
-<p>Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the interactive shell, we can experiment with lines of python and see what the language can do. </p>
+<p>Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the Interactive Shell, we can experiment with lines of Python and see what the language can do. </p>
 
-<p>To start up the interactive shell, go to your terminal window and type <span class="command">python</span> and press "Enter".</p>
+<p>To start up the interactive shell, go to your Terminal window and type <span class="command">python</span> and press "Enter".</p>
 
-<p>Your terminal should now look like this:</p>
+<p>Your Terminal should now look like this:</p>
 
 <pre><code>jeriwieringa$ python
 Python 2.7.5 (default, Mar  9 2014, 22:15:05)
@@ -85,24 +85,24 @@ Type "help", "copyright", "credits" or "license" for more information.
 &gt;&gt;&gt;
 </code></pre>
 
-<p>Everything you type will now be processed by python. Try it out with a little math. Type <span class="command">print "Hello World"</span> and press "Enter". Now type <span class="command">print "My Name is [Your Name]"</span> and press "Enter". Now type <span class="command">print 5 + 8</span></p>
+<p>Everything you type will now be processed by Python. Let's try it out a bit. Type <span class="command">print "Hello World"</span> and press "Enter". Now type <span class="command">print "My Name is [Your Name]"</span> and press "Enter". Now type <span class="command">print 5 + 8</span></p>
 
 <p>Here you have discovered a couple of very useful things with programming languages. </p>
 
-<p>"print" is a function in python that return whatever you give it next. </p>
+<p>"print" is a function in Python that returns whatever follows it next. </p>
 
-<p>The content contained inside "" marks is called a string. For humanities research, we work with strings a lot.</p>
+<p>The content contained inside "" marks is called a string. This is especially important for humanities research, since we work with strings a lot.</p>
 
-<p>Finally, if we pass numbers or equations into python, it will compute them. If you don't want python to compute, you should treat the numbers like a string. Experiment in the shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.</p>
+<p>Finally, if we input numbers or equations into Python, it will compute them. If you don't want Python to compute, you should treat the numbers like a string. Experiment in the Interactive Shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.</p>
 
 <h3 id="loading-dpyla-in-the-shell-and-make-an-api-request">Loading DPyLA in the Shell and Make an API Request</h3>
 
-<p>Let's start using our new DPyLA library to make an API call to the DPLA. Following the <a href="https://github.com/bibliotechy/DPyLA">library documentation</a>, run </p>
+<p>Let's start using our new DPyLA library to make an API call to the DPLA. Following the <a href="https://github.com/bibliotechy/DPyLA">library documentation</a>, run (type the following and press "Enter") </p>
 
 <pre><code>from dpla.api import DPLA 
 </code></pre>
 
-<p>You just loaded the DPyLA library into your python shell, making all of it's code available for you to use.</p>
+<p>You just loaded the DPyLA library into your Python shell, making all of it's code available for you to use.</p>
 
 <p>Next run:</p>
 
@@ -136,7 +136,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>But what if you only want to see one item at a time?</p>
 
-<p>The information you get back from the DPLA API comes in the form of an <strong>array</strong>, or <strong>list</strong> ("array" is the general programming word for a series of things, "list" is python's name for a series of things). Lists are a super powerful, enabling us to load up a lot of information and then work through each bit individually.</p>
+<p>The information you get back from the DPLA API comes in the form of an <strong>array</strong>, or <strong>list</strong> ("array" is the general programming word for a series of things, "list" is Python's name for a series of things). Lists are a super powerful, enabling us to load up a lot of information and then work through each bit individually.</p>
 
 <p>One general things we can do with lists is get items by their position in the list. </p>
 
@@ -156,10 +156,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 <p>In this module, you have learned:</p>
 
 <ul>
-  <li>to install new libraries using pip</li>
-  <li>to use the Python Interactive Shell to run basic python commands</li>
+  <li>to install new libraries using Pip</li>
+  <li>to use the Python Interactive Shell to run basic Python commands</li>
   <li>to load and use those libraries</li>
-  <li>to make an API request using a python script</li>
+  <li>to make an API request using a Python script</li>
   <li>to work with variables and lists</li>
 </ul>
 

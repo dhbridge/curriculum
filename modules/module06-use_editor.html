@@ -17,7 +17,7 @@
     
   </head>
 
-  <body class="modules modules_use_editor">
+  <body class="modules modules_module06-use_editor">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -37,16 +37,16 @@
                 		<section id="sidebar">
 			<h3>Modules</h3>
 			<ul>
-				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/data.html">Thinking about Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/get_data.html">Getting Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/complex_requests.html">Working with the API</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/use_editor.html">Writing Script Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/loop.html">Using the Loop</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/subset.html">Creating Subsets of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/write.html">Writing Results to Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/create.html">Creating Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module01-installation.html">Installation</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module02-terminal.html">Working with your Computer</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module03-data.html">Thinking about Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module04-get_data.html">Getting Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module05-complex_requests.html">Working with the API</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module06-use_editor.html">Writing Script Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-phasetwo.html">Phase Two</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-functionsandloops.html">Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module09-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module10-write.html">Writing Results to File</a></li>
 			</ul>
 		</section>
 
@@ -54,7 +54,7 @@
                         <h3>
           Write Python in Script Files
       </h3>
-       <p>In this module, we will look at how to keep save our python scripts in a text file. While the interactive shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.</p>
+       <p>In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.</p>
 
 <h3 id="writing-and-executing-script-files">Writing and Executing Script Files</h3>
 
@@ -67,9 +67,9 @@
 <pre><code>open my_first_script.py
 </code></pre>
 
-<p>It should say 'print "Hello World"'. Now that you know something about python functions, what do you expect this script to do?</p>
+<p>It should say 'print "Hello World"'. Now that you know something about Python functions, what do you expect this script to do?</p>
 
-<p>Let's test it out! To execute a python file, run the following in terminal:</p>
+<p>Let's test it out! To execute a Python file, run the following in terminal:</p>
 
 <pre><code>python my_first_script.py
 </code></pre>
@@ -81,15 +81,15 @@ Hello World
 jeriwieringa$
 </code></pre>
 
-<p>Excellent! You just executed your first python script!</p>
+<p>Excellent! You just executed your first Python script!</p>
 
 <h3 id="writing-our-dpyla-script">Writing our DPyLA Script</h3>
 
-<p>Now lets recreate some of the work we did in the Interactive Shell in this script file.</p>
+<p>Now let's recreate some of the work we did in the Interactive Shell in this script file.</p>
 
-<p>Delete <span class="command">print "Hello World"</span> so that we're working with a clean file. </p>
+<p>Delete <span class="command">print "Hello World"</span> so that you're working with a clean file. </p>
 
-<p>First, at the beginning of a Python file we need to list the libraries that we will be using. Similar to HTML, the computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. </p>
+<p>First, at the beginning of a Python file you need to list the libraries that we will be using. Similar to HTML, the computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. </p>
 
 <pre><code>from dpla.api import DPLA
 </code></pre>
@@ -101,7 +101,7 @@ jeriwieringa$
 
 <p>Then we can write our search query:</p>
 
-<pre><code>result = dpla.search('cooking') //replace with complex query
+<pre><code>result = dpla.search('cooking')
 </code></pre>
 
 <p>Save the file and go back to Terminal. Run </p>
@@ -113,14 +113,14 @@ jeriwieringa$
 
 <p>Open your script file again (<span class="command">open my_first_script.py</span>). </p>
 
-<p>Work with your table to add another line to the file that uses the print function to display one item from your search. </p>
+<p>Work with your group to add another line to the file that uses the print function to display one item from your search. </p>
 
 <p>Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. </p>
 
 <h3 id="what-weve-learned">What We've Learned</h3>
 
 <ul>
-  <li>To execute python scripts in the terminal</li>
+  <li>To execute Python scripts in the Terminal</li>
   <li>To write our commands in the order they should be executed</li>
   <li>To use print to display the results of our scripts</li>
 </ul>

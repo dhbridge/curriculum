@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="" />
+	  <meta name="viewport" content="width=device-width, user-scalable=no">
+	
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Nova+Square' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>Functions and Loops</title>
+    
+<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+ -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
+    
+  </head>
+
+  <body class="modules modules_module08-functionsandloops">
+    <!-- HEADER -->
+        <header>
+				<div class="wrap">
+	    <h1 id="project_title">DH Bridge</h1>
+	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
+
+	    <nav id="pages">
+	    	<a href="http://dhbridge.org/curriculum">Computational Thinking</a>
+	    	<a href="http://dhbridge.org">About DH Bridge</a>
+	    </nav>
+	</div>
+        </header> 
+        <!-- MAIN CONTENT -->
+        <div class="wrap">
+            <div id="main">
+              <article>
+                		<section id="sidebar">
+			<h3>Modules</h3>
+			<ul>
+				<li><a href="http://dhbridge.org/curriculum/modules/module01-installation.html">Installation</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module02-terminal.html">Working with your Computer</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module03-data.html">Thinking about Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module04-get_data.html">Getting Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module05-complex_requests.html">Working with the API</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module06-use_editor.html">Writing Script Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-phasetwo.html">Phase Two</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-functionsandloops.html">Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module09-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module10-write.html">Writing Results to File</a></li>
+			</ul>
+		</section>
+
+                <section id="content">
+                        <h3>
+          Functions and Loops
+      </h3>
+       <p>We now have a file that looks as follows:</p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+</code></pre>
+
+<p>We will now add a function that handles the query for any given page number.</p>
+
+<h3 id="creating-a-pull-records-function">Creating a "Pull Records" Function</h3>
+
+<p>To write a function, we set of the function with the word "def" and then indent all of the commands that are part of the function.</p>
+
+<p>In your "my_first_script.py" file, add the line</p>
+
+<pre><code>def pull_records(pages, end, size):
+</code></pre>
+
+<p>You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.</p>
+
+<p>Tab in one space on the next line and type:</p>
+
+<pre><code>paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+</code></pre>
+
+<p>Your file should now look like this:</p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+</code></pre>
+
+<p>It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.</p>
+
+<p>Let's add a print statement and test out the first stage of this function. At the same tab as "paged_search…", add:</p>
+
+<pre><code>print paged_search.items[2]
+</code></pre>
+
+<p>Now to run the function, we will call the function name and give it values. On a new line and outside of the function, add the line:</p>
+
+<pre><code>pull_records(2, 3, 50)
+</code></pre>
+
+<p>Save the file and go to terminal to run it.</p>
+
+<h3 id="saving-items-to-all-records">Saving Items to "All Records"</h3>
+
+<p>You have written and executed your first function! Well done!</p>
+
+<p>Now we need to add another function to store those results to the empty "all records" array we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.</p>
+
+<p>To set up our new "Save Each" function, we will define a new function:</p>
+
+<pre><code>def save_each(n):
+</code></pre>
+
+<p>The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in and to take that variable and plug it in for 'n' throughout the function.</p>
+
+<p>We now need to add our first loop. With how we currently have framed our request, there are 50 items in our paged_search item. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, take the item and add it to "all_records". </p>
+
+<p>Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:</p>
+
+<pre><code>for each in n.items:
+</code></pre>
+
+<p>This is called a "for loop". It tells the computer to iterate through each item in the list 'n'. We use n.items because this is the syntax from the DPyLA library. </p>
+
+<p>Now we tab in one more space and tell the computer what we want done to each item. To add the item to the "all_records" array, we use the "append" command:</p>
+
+<pre><code>all_records.append(each)
+</code></pre>
+
+<p>The "save each" function should now look like this:</p>
+
+<pre><code>def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+</code></pre>
+
+<p>Now we can use this function in our "pull records" function. Currently, our "pull records" looks as follows:</p>
+
+<pre><code>def pull_records (pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	print paged_search.items[2]
+</code></pre>
+
+<p>Let's delete the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:</p>
+
+<pre><code>save_each(paged_search)
+</code></pre>
+
+<p>Our file should now look like:</p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	save_each(paged_search)
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 3, 50)
+</code></pre>
+
+<p>To test this, let's now add a print statement to the end of the file, after the pull_records function has been run, to make sure that the items are going into the "all_records" variable.</p>
+
+<p>Add:</p>
+
+<pre><code>print all_records[30]
+</code></pre>
+
+<p>Save and run your script.</p>
+
+<p>We have made great progress! We now have two functions to handle making the query and saving the results, but we are still only working with one "page" of search results at a time. In the next module, we will add yet another kind of loop in order to move through the different pages.</p>
+
+<h3 id="what-we-learned">What We Learned</h3>
+
+<ul>
+  <li>To create and call functions</li>
+  <li>To pass variables into functions</li>
+  <li>To create a "for loop"</li>
+  <li>To "append" items into a list</li>
+</ul>
+
+
+                </section>
+              </article>
+  			   </div>
+  		</div>
+  		
+  		<footer>
+  				<div class="wrap">
+		<div id="rights">
+		    <p>&copy; CC-BY 2014</p>
+		    <p>The DH Bridge curriculum is supported by a microgrant from the <a href="http://ach.org/"><img src="http://dhbridge.org/images/ach-logo.png" width=50px ></a></p>
+		</div>
+
+	    <div id="contact">
+	        <a href="mailto:bridgingdh@gmail.com"><i class="fa fa-paper-plane"></i></a>
+	        <a href="https://twitter.com/dhbridge"><i class="fa fa-twitter"></i></a>
+	        <a href="https://github.com/dhbridge/curriculum"><i class="fa fa-github"></i></a>
+	    </div>
+	</div>
+  		</footer>
+
+  </body>
+</html>
