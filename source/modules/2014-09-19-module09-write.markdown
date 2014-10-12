@@ -1,7 +1,6 @@
 ---
 title: Writings Search Results to a File
 date: 2014-09-19
-published: false
 ---
 
 In this module, we will focus on writing the results of our functions to a text file. This gives us a local copy of the data so that we only hit the DPLA servers once for the entire collection of files.
