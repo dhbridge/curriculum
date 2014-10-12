@@ -1,0 +1,103 @@
+---
+title: Save Results to File
+date: 2014-09-19
+---
+
+We are almost there! We have been creating some interesting data on the word frequencies within the description fields. But so far, all of our results are stuck in terminal, which makes it difficult for us to reuse them. So for this final module, we will write out the results of our count to a CSV (comma separated value) file.
+
+### Create a New CSV File
+
+As we did when we wrote our json results, we will start by telling Python to open a CSV file and assign to a variable.
+
+Currently our script should look something like this:
+
+    import json
+    from collections import Counter
+    import nltk
+    from nltk.corpus import stopwords
+
+    with open("search_results.json") as json_file:
+        json_data = json.load(json_file)
+        
+    #print json_data[1]
+    #print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+    #print json_data[1]['sourceResource']['description']
+
+    description_words = []
+    stop = stopwords.words('english')
+
+    def remove_stops_and_add(word):
+        if word.lower() not in stop:
+            if not word.isdigit():
+                if word.isalnum():
+                    description_words.append(word.lower())
+                
+    def get_words():
+        for each in json_data:
+            try:
+                descriptions = each['sourceResource']['description']
+                if isinstance(descriptions, basestring):
+                    words = descriptions.split()
+                else:
+                    for line in descriptions:
+                        words = line.split()
+                #print words
+                
+                for word in words:
+                    remove_stops_and_add(word)
+                
+            except KeyError:
+                print "Description Missing"
+
+    get_words()
+
+    #print description_words[999] 
+
+    c = Counter(description_words)
+
+    print c.most_common(200)
+
+
+To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.
+
+    import json
+    from collections import Counter
+    import nltk
+    from nltk.corpus import stopwords
+    import csv
+   
+Now, we can create our CSV file right after the line where we opened the json file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.
+    
+    with open("search_results.json") as json_file:
+        json_data = json.load(json_file)
+
+    file = csv.writer(open("word_frequencies.csv", "w"))
+
+
+Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file.
+
+    get_words()
+
+    #print description_words[999] 
+
+    c = Counter(description_words)
+
+    print c.most_common(200)
+
+    for key, count in c.most_common(200):
+        file.writerow([key, count])
+
+You can now open your csv file using terminal by typing:
+
+    open word_frequencies.csv
+
+This will most likely open in excel or a similar program. 
+
+Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patters we see here?
+
+### What We Learned
+
+In this module, we learned:
+
+- to use the CSV library to save our results in csv format
+

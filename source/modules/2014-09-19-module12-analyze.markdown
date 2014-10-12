@@ -1,0 +1,111 @@
+---
+title: Analyzing a Subset of the Data
+date: 2014-09-19
+---
+
+We now have a bag of words that we can do some analysis on. In this module, we will ask some basic questions about word frequencies, make some adjustments to our collection of words to improve the results, and discuss what additional questions those patterns might raise.
+
+### Getting Word Frequencies
+
+To get word frequencies, we will use the "Counter" library we loaded earlier. Looking at the [documentation for the library](https://docs.python.org/2/library/collections.html#collections.Counter), we see that if we pass "Counter" a list, we can get back information regarding the items in the list, including the most common items.
+
+Add a new line to the bottom of "my_second_script.py" as follows:
+
+    c = Counter(description_words)
+
+Notice the capitalization here. Because the library has the name of "Counter", we need to keep that "C" uppercase whenever we use the library. 
+
+Now we will use the method "most_common" and let's start with the top 25 words:
+
+    print c.most_common(25)
+
+Comment out the "print words" statements from the last module (so that we can see what is going on), then save and run the file.
+
+You should see a list of words and frequencies that looks like this: 
+
+    (u'the', 11873), (u'of', 8435), (u'and', 7689), (u'in', 5553), (u'a', 4542), (u'to', 4375), (u'is', 2150), (u'1', 2090), (u'for', 2080), (u'on', 1897), (u'The', 1808), (u'was', 1632), (u'with', 1590), (u';', 1440), (u'by', 1408), (u':', 1389), (u'photograph', 1324), (u'from', 1191), (u'at', 1179), (u'as', 1140), (u'that', 1136), (u'are', 1035), (u'x', 1023), (u'be', 990), (u'or', 979), (u'2', 877), (u'0', 776), (u'2014', 740), (u'I', 734), (u'were', 714), (u'b&w', 691), (u'cooking', 685), (u'3', 685), (u'in.', 675), (u'4', 674), (u'it', 665), (u'this', 663), (u'which', 632), (u'5', 578), (u'have', 571), (u'.', 543), (u'cm.', 513), (u'an', 501), (u'their', 494), (u'about', 489), (u'This', 488), (u'not', 477), (u'col.', 468), (u'negative,', 460), (u'It', 441), (u'these', 438), (u'12', 429), (u'A', 425), (u'will', 423), (u'35', 415), (u'has', 413), (u'In', 411), (u'mm.', 395), (u'Jun', 391), (u'p.', 386), (u'they', 384), (u'food', 381), (u'had', 379), (u'all', 376), (u'we', 368), (u'he', 367)
+
+But for the most part, these words are not terribly interesting to us. The prevalence of "the" and "of" doesn't tell us much about how "cooking" is described and are making it hard to a pattern in the nouns and verbs. 
+
+There is a second problem. If you notice, "the" is in the list twice, once as "the" and once as "The". Computers, being ever the literal processors, take the difference in case to indicate a difference in word. This can be very helpful in some circumstances, like finding names. But when just looking for a rough count of words, it creates noise.
+
+To address these problems, we can remove those function words and transform all the words to lowercase, using the Natural Language ToolKit.
+
+### Removing StopWords
+
+Going back to our "get_words" function, one way to remove the stopwords is to check if the word is in a standard list of function words before adding it to the bag.
+
+The logic here is, if the word is not a stopword, then we want to save it to our "description_words" list.
+
+To do this, let's create a second function for checking the stopwords.
+
+    def remove_stops_and_add(word):
+        if word.lower() not in stop:
+            description_words.append(word.lower())
+
+Here we are combining two steps in one. We transform each word as it comes in to the lower case with ".lower()" before we check it against the stop words. Then we transform it again before we append it to our "description_words" list. 
+
+We could also transform it once at the beginning of this function. Work with your table to work out how would you change the function to do that.
+
+Now, we also need to load up the stopwords from nltk library into a variable "stop". 
+
+On the line after we set up our "description_words" list, add:
+
+    stop = stopwords.words('english')
+
+Here we are loading up the collection of english stop words from the stopwords library.
+
+Finally, we need to call this new function inside our "get_words()" function. 
+
+    def get_words():
+      for each in json_data:
+        try:
+          descriptions = each['sourceResource']['description']
+          if isinstance(descriptions, basestring):
+            words = descriptions.split()
+          else:
+            for line in descriptions:
+              words = line.split()
+            #print words
+            
+          for word in words:
+            remove_stops_and_add(word)
+
+        except KeyError:
+          print "Description Missing"
+
+Save and run your script.
+
+Now our results should look something like this:
+
+    [(u'1', 2090), (u'photograph', 1520), (u';', 1440), (u':', 1389), (u'x', 1057), (u'2', 877), (u'cooking', 779), (u'0', 776), (u'2014', 740), (u'b&w', 691), (u'3', 685), (u'in.', 675), (u'4', 674), (u'5', 578), (u'.', 543), (u'cm.', 513), (u'food', 471), (u'col.', 468), (u'may', 462), (u'negative,', 460), (u'one', 440), (u'12', 429), (u'35', 415), (u'p.', 408), (u'also', 404), (u'mm.', 396), (u'two', 393), (u'jun', 391), (u'6', 358), (u'would', 347), (u'clark', 345), (u'includes', 332), (u'time', 327), (u'molasses', 325), (u'new', 324), (u'people', 315), (u'20', 306), (u'well', 301), (u'state', 301), (u'early', 288), (u'work', 284), (u'water', 283), (u'university', 282), (u'positive,', 280), (u'home', 276), (u'joe', 275), (u'per', 270), (u'farm', 269), (u'information', 263), (u'school', 251), (u'three', 251), (u'-', 250), (u'first', 243), (u'8', 238), (u'used', 237), (u'7', 235), (u'good', 231), (u'10', 227), (u'large', 217), (u'no.', 216), (u'published', 213), (u'library', 207), (u'9', 206)
+
+This is much better! But now we have some distracting numbers and punctuation marks. So let's get rid of those too.
+
+Going back to our new "remove_stops_and_add()" function, let's add a few more filters that the words must pass through before we add it to the bag.
+    
+    def remove_stops_and_add(word):
+        if word.lower() not in stop:
+            if not word.isdigit():
+                description_words.append(word.lower())
+
+This checks to see if the words is a digit and if it is not, then it allows it to pass. We also had some punctuation marks and abbreviations. To remove these, we can allow only those words that are alphanumeric to pass before we add to "description_words". 
+
+    def remove_stops_and_add(word):
+        if word.lower() not in stop:
+            if not word.isdigit():
+                if word.isalnum():
+                    description_words.append(word.lower())
+
+
+And well done! We now have a very interesting list of description words and their frequencies across all of the "cooking" items in the DPLA's holdings.
+
+### Bonus Challege
+
+You can also use "stemming" to combine multipe forms of the same word, such as "photograph" and "photographs". Can you use the [NLTK documentation](http://www.nltk.org/api/nltk.stem.html) to add another filter that stems the words before adding them to "description_words"?
+
+### What We Learned
+
+In this module, we learned:
+
+- to use stopwords and filters to clean up noisy data

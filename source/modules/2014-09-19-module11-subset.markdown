@@ -1,0 +1,271 @@
+---
+title: Gathering a Subset of the Data
+date: 2014-09-19
+---
+
+In this module, we will learn how to collect and store the description data from each item in our "json_data" variable. To do this, we will first identify the location of the description with the data structure and then loop through each item, saving each of the words in the description into a new list.
+
+### Identifying Our Target Fields
+
+Remember back to JSON and how it organizes data using key:value pairs? One of the most powerful features of JSON is that we are able to nest features and create lists within key:value pairs. This is useful for creating complex data structures. It also means that we have work within the hierarchy of key:value pairs to isolate particular values.
+
+In order to better see that hierarchy, let's **Pretty Print** the JSON results, or print with the indentations and hierarchies visually displayed. 
+
+Open "my_second_script.py" and **comment out** "print jason_data[0]" by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work.
+
+
+At the bottom of your script, add the line:
+
+	print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+
+Save and run in Terminal. 
+
+Work with your table to map out what this command did.
+
+We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F". 
+
+Looking at the "description" field, work with your table to identify the field name it is nested under. 
+
+The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using <span class="command">json_data[1]</span>. This form means we want the first item in the json_data object. 
+
+If we want the value associated with the "description" key, we use a similar format. 
+
+To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:
+
+	print json_data[1]['sourceResource']['description']
+
+Work with your table to print only the titles. What about only the subject headings?
+
+### Saving the Descriptions
+
+One way to look at the descriptions is to consider them as a collection, or list, of words. If we take all of the collections as a whole, we can ask if there are any noticable patterns in the words being used to describe these items related to cooking.
+
+One common way of dealing with text computationally is to translate the text into a "bag of words". In a bag of words approach, the order does not matter. What we are looking at instead is the collection of words and their frequencies.
+
+To create a "bag of words" from the descriptions we need to 1) create a list to store the words and 2) write a loop that takes every description and adds the words to the list.
+
+See if you can use the information in module 7 (functions and loops) to create an empty list.
+
+Currently our "my_second_script.py" file should look like this:
+
+	import json
+	from collections import Counter
+	import nltk
+	from nltk.corpus import stopwords
+
+	with open("search_results.json") as json_file:
+	  json_data = json.load(json_file)
+		
+	#print json_data[1]
+	#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+
+	print json_data[1]['sourceResource']['description']
+
+
+I will use "description_words" as the variable for my empty list of stopwords. 
+
+	description_words = []
+
+Next, we will create a new function called "get_words"
+
+Declare the function by adding:
+
+	def get_words():
+
+Next, tab in once and add a for-loop to move through each item in the json_data list:
+
+	def get_words():
+	  for each in json_data:
+
+Next, let's set up a variable to grab the descriptions:
+
+	def get_words():
+	  for each in json_data:
+	    descriptions = each['sourceResource']['description']
+
+Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.
+
+	def get_words():
+	  for each in json_data:
+	    descriptions = each['sourceResource']['description']
+	    for line in descriptions:
+	      words = line.split()
+
+To see what just happened, let's add a print statement and call the function:
+
+	def get_words():
+	  for each in json_data:
+	    descriptions = each['sourceResource']['description']
+	    for line in descriptions:
+	      words = line.split()
+	      print words
+	
+	get_words()
+
+Your file should now look like this:
+
+	import json
+	from collections import Counter
+	import nltk
+	from nltk.corpus import stopwords
+
+	with open("search_results.json") as json_file:
+	  json_data = json.load(json_file)
+		
+	#print json_data[1]
+	#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+
+	print json_data[1]['sourceResource']['description']
+
+	description_words = []
+
+	def get_words():
+	  for each in json_data:
+	    descriptions = each['sourceResource']['description']
+	    for line in descriptions:
+	      words = line.split()
+	      print words
+
+	get_words()
+
+Save the file and run it in the terminal.
+
+You might first notice that this script threw an error, saying:
+
+	KeyError: 'description'
+
+One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:
+
+	jeriwieringa$ python my_second_script.py
+	Traceback (most recent call last):
+  	File "my_second_script.py", line 21, in <module>
+    	get_words()
+  	File "my_second_script.py", line 16, in get_words
+    	descriptions = each['sourceResource']['description']
+	KeyError: 'description'
+
+We have a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". 
+
+Let's see what is going. Comment out the call to "get_words" function.
+
+	# get_words()
+
+Now let's print the first object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 1 to 0, the save and run the file.
+
+Search for 'description' under 'sourceResource'. If you can't find it, it's because this item appears to be missing "description" information. Because the computer can't find the description, it returns an error and stops.
+
+Getting around this problem requires what is called "handling exceptions". We had expected a particular pattern in our data (that there was "description" keys nested under "sourceResource" keys) but we've encountered an exception to that general pattern. 
+
+To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:
+
+	def get_words():
+	  for each in json_data:
+	    try:
+	      descriptions = each['sourceResource']['description']
+	      for line in descriptions:
+          words = line.split()
+	        print words
+	    except KeyError:
+	      print "Description Missing"
+
+Un-comment "get_words()", save, and run the file.
+
+Our script should no longer error.
+
+But, now it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.
+
+To check if the value in "descriptions" in a string, we can add the following:
+
+	def get_words():
+	  for each in json_data:
+	    try:
+        descriptions = each['sourceResource']['description']
+        if isinstance(descriptions, basestring):
+          words = descriptions.split()
+        else:
+          for line in descriptions:
+            words = line.split()
+            print words
+      except KeyError:
+        print "Description Missing"
+
+Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.
+
+### Adding the words to our "bag of words"
+
+The final step in creating our subset of data is to add the words into our "description_words" list.
+
+To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function.
+
+	def get_words():
+    for each in json_data:
+      try:
+        descriptions = each['sourceResource']['description']
+        if isinstance(descriptions, basestring):
+          words = descriptions.split()
+        else:
+          for line in descriptions:
+            words = line.split()
+        print words
+
+        for word in words:
+          description_words.append(word)
+
+      except KeyError:
+        print "Description Missing"
+
+
+Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"
+
+	import json
+	from collections import Counter
+	import nltk
+	from nltk.corpus import stopwords
+
+	with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+		
+	#print json_data[1]
+	#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+	#print json_data[0]['sourceResource']['description']
+
+	description_words = []
+
+	def get_words():
+    for each in json_data:
+      try:
+        descriptions = each['sourceResource']['description']
+        if isinstance(descriptions, basestring):
+          words = descriptions.split()
+        else:
+          for line in descriptions:
+            words = line.split()
+        print words
+
+        for word in words:
+          description_words.append(word)
+
+      except KeyError:
+        print "Description Missing"
+  
+    get_words()
+    print description_words[999]
+
+
+### Bonus Challenges: 
+
+- Can you modify the function to also add the words of the title to our bag of words?
+- Can you also add the subject headings?
+
+
+### What We Learned
+
+In this module, we learned:
+
+- to pretty-print json with Python
+- to identify the nested key:value pairs we want to analyze
+- to split a list 
+- to trouble shoot from an error report
+- to handle exceptions
+- to check type and use an "if/else" statement
