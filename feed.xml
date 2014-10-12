@@ -14,11 +14,113 @@
     <link rel="alternate" href="http://blog.url.com/modules/module13-save.html"/>
     <id>http://blog.url.com/modules/module13-save.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-11T20:12:51-04:00</updated>
+    <updated>2014-10-12T11:34:22-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">
+    <content type="html">&lt;p&gt;We are almost there! We have been creating some interesting data on the word frequencies within the description fields. But so far, all of our results are stuck in terminal, which makes it difficult for us to reuse them. So for this final module, we will write out the results of our count to a CSV (comma separated value) file.&lt;/p&gt;
+
+&lt;h3 id="create-a-new-csv-file"&gt;Create a New CSV File&lt;/h3&gt;
+
+&lt;p&gt;As we did when we wrote our json results, we will start by telling Python to open a CSV file and assign to a variable.&lt;/p&gt;
+
+&lt;p&gt;Currently our script should look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+    
+#print json_data[1]
+#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+#print json_data[1]['sourceResource']['description']
+
+description_words = []
+stop = stopwords.words('english')
+
+def remove_stops_and_add(word):
+    if word.lower() not in stop:
+        if not word.isdigit():
+            if word.isalnum():
+                description_words.append(word.lower())
+            
+def get_words():
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
+            #print words
+            
+            for word in words:
+                remove_stops_and_add(word)
+            
+        except KeyError:
+            print "Description Missing"
+
+get_words()
+
+#print description_words[999] 
+
+c = Counter(description_words)
+
+print c.most_common(200)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in python. To do that, add &lt;span class="command"&gt;import csv&lt;/span&gt; to our list of libraries at the top of the file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+import csv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, we can create our CSV file right after the line where we opened the json file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+
+file = csv.writer(open("word_frequencies.csv", "w"))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;get_words()
+
+#print description_words[999] 
+
+c = Counter(description_words)
+
+print c.most_common(200)
+
+for key, count in c.most_common(200):
+    file.writerow([key, count])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can now open your csv file using terminal by typing:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;open word_frequencies.csv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will most likely open in excel or a similar program. &lt;/p&gt;
+
+&lt;p&gt;Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patters we see here?&lt;/p&gt;
+
+&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
+
+&lt;p&gt;In this module, we learned:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to use the CSV library to save our results in csv format&lt;/li&gt;
+&lt;/ul&gt;
+
 </content>
   </entry>
   <entry>
@@ -26,40 +128,126 @@
     <link rel="alternate" href="http://blog.url.com/modules/module12-analyze.html"/>
     <id>http://blog.url.com/modules/module12-analyze.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-11T23:38:54-04:00</updated>
+    <updated>2014-10-12T11:23:28-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;// Code we need to get them to
-from dpla.api import DPLA
-import json
-from collections import Counter
-from nltk.corpus import stopwords&lt;/p&gt;
+    <content type="html">&lt;p&gt;We now have a bag of words that we can do some analysis on. In this module, we will ask some basic questions about word frequencies, make some adjustments to our collection of words to improve the results, and discuss what additional questions those patterns might raise.&lt;/p&gt;
 
-&lt;p&gt;description_words = []
-stop = stopwords.words('english')&lt;/p&gt;
+&lt;h3 id="getting-word-frequencies"&gt;Getting Word Frequencies&lt;/h3&gt;
 
-&lt;p&gt;with open("cooking_results.txt") as json_file:
-	json_data = json.load(json_file)&lt;/p&gt;
+&lt;p&gt;To get word frequencies, we will use the "Counter" library we loaded earlier. Looking at the &lt;a href="https://docs.python.org/2/library/collections.html#collections.Counter"&gt;documentation for the library&lt;/a&gt;, we see that if we pass "Counter" a list, we can get back information regarding the items in the list, including the most common items.&lt;/p&gt;
 
-&lt;p&gt;print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))&lt;/p&gt;
+&lt;p&gt;Add a new line to the bottom of "my_second_script.py" as follows:&lt;/p&gt;
 
-&lt;p&gt;def get_words():
-	for each in json_data:
-		try:
-			description = each['sourceResource']['description']
-			words = description.split()
-			for each in words:
-				if each.lower() not in stop:
-					if not each.isdigit():
-						description_words.append(each.lower())&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;	except:
-		print "no description"
+&lt;pre&gt;&lt;code&gt;c = Counter(description_words)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;get_words()&lt;/p&gt;
+&lt;p&gt;Notice the capitalization here. Because the library has the name of "Counter", we need to keep that "C" uppercase whenever we use the library. &lt;/p&gt;
 
+&lt;p&gt;Now we will use the method "most_common" and let's start with the top 25 words:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print c.most_common(25)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Comment out the "print words" statements from the last module (so that we can see what is going on), then save and run the file.&lt;/p&gt;
+
+&lt;p&gt;You should see a list of words and frequencies that looks like this: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(u'the', 11873), (u'of', 8435), (u'and', 7689), (u'in', 5553), (u'a', 4542), (u'to', 4375), (u'is', 2150), (u'1', 2090), (u'for', 2080), (u'on', 1897), (u'The', 1808), (u'was', 1632), (u'with', 1590), (u';', 1440), (u'by', 1408), (u':', 1389), (u'photograph', 1324), (u'from', 1191), (u'at', 1179), (u'as', 1140), (u'that', 1136), (u'are', 1035), (u'x', 1023), (u'be', 990), (u'or', 979), (u'2', 877), (u'0', 776), (u'2014', 740), (u'I', 734), (u'were', 714), (u'b&amp;amp;w', 691), (u'cooking', 685), (u'3', 685), (u'in.', 675), (u'4', 674), (u'it', 665), (u'this', 663), (u'which', 632), (u'5', 578), (u'have', 571), (u'.', 543), (u'cm.', 513), (u'an', 501), (u'their', 494), (u'about', 489), (u'This', 488), (u'not', 477), (u'col.', 468), (u'negative,', 460), (u'It', 441), (u'these', 438), (u'12', 429), (u'A', 425), (u'will', 423), (u'35', 415), (u'has', 413), (u'In', 411), (u'mm.', 395), (u'Jun', 391), (u'p.', 386), (u'they', 384), (u'food', 381), (u'had', 379), (u'all', 376), (u'we', 368), (u'he', 367)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But for the most part, these words are not terribly interesting to us. The prevalence of "the" and "of" doesn't tell us much about how "cooking" is described and are making it hard to a pattern in the nouns and verbs. &lt;/p&gt;
+
+&lt;p&gt;There is a second problem. If you notice, "the" is in the list twice, once as "the" and once as "The". Computers, being ever the literal processors, take the difference in case to indicate a difference in word. This can be very helpful in some circumstances, like finding names. But when just looking for a rough count of words, it creates noise.&lt;/p&gt;
+
+&lt;p&gt;To address these problems, we can remove those function words and transform all the words to lowercase, using the Natural Language ToolKit.&lt;/p&gt;
+
+&lt;h3 id="removing-stopwords"&gt;Removing StopWords&lt;/h3&gt;
+
+&lt;p&gt;Going back to our "get_words" function, one way to remove the stopwords is to check if the word is in a standard list of function words before adding it to the bag.&lt;/p&gt;
+
+&lt;p&gt;The logic here is, if the word is not a stopword, then we want to save it to our "description_words" list.&lt;/p&gt;
+
+&lt;p&gt;To do this, let's create a second function for checking the stopwords.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def remove_stops_and_add(word):
+    if word.lower() not in stop:
+        description_words.append(word.lower())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here we are combining two steps in one. We transform each word as it comes in to the lower case with ".lower()" before we check it against the stop words. Then we transform it again before we append it to our "description_words" list. &lt;/p&gt;
+
+&lt;p&gt;We could also transform it once at the beginning of this function. Work with your table to work out how would you change the function to do that.&lt;/p&gt;
+
+&lt;p&gt;Now, we also need to load up the stopwords from nltk library into a variable "stop". &lt;/p&gt;
+
+&lt;p&gt;On the line after we set up our "description_words" list, add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;stop = stopwords.words('english')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here we are loading up the collection of english stop words from the stopwords library.&lt;/p&gt;
+
+&lt;p&gt;Finally, we need to call this new function inside our "get_words()" function. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_words():
+  for each in json_data:
+    try:
+      descriptions = each['sourceResource']['description']
+      if isinstance(descriptions, basestring):
+        words = descriptions.split()
+      else:
+        for line in descriptions:
+          words = line.split()
+        #print words
+        
+      for word in words:
+        remove_stops_and_add(word)
+
+    except KeyError:
+      print "Description Missing"
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save and run your script.&lt;/p&gt;
+
+&lt;p&gt;Now our results should look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[(u'1', 2090), (u'photograph', 1520), (u';', 1440), (u':', 1389), (u'x', 1057), (u'2', 877), (u'cooking', 779), (u'0', 776), (u'2014', 740), (u'b&amp;amp;w', 691), (u'3', 685), (u'in.', 675), (u'4', 674), (u'5', 578), (u'.', 543), (u'cm.', 513), (u'food', 471), (u'col.', 468), (u'may', 462), (u'negative,', 460), (u'one', 440), (u'12', 429), (u'35', 415), (u'p.', 408), (u'also', 404), (u'mm.', 396), (u'two', 393), (u'jun', 391), (u'6', 358), (u'would', 347), (u'clark', 345), (u'includes', 332), (u'time', 327), (u'molasses', 325), (u'new', 324), (u'people', 315), (u'20', 306), (u'well', 301), (u'state', 301), (u'early', 288), (u'work', 284), (u'water', 283), (u'university', 282), (u'positive,', 280), (u'home', 276), (u'joe', 275), (u'per', 270), (u'farm', 269), (u'information', 263), (u'school', 251), (u'three', 251), (u'-', 250), (u'first', 243), (u'8', 238), (u'used', 237), (u'7', 235), (u'good', 231), (u'10', 227), (u'large', 217), (u'no.', 216), (u'published', 213), (u'library', 207), (u'9', 206)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is much better! But now we have some distracting numbers and punctuation marks. So let's get rid of those too.&lt;/p&gt;
+
+&lt;p&gt;Going back to our new "remove_stops_and_add()" function, let's add a few more filters that the words must pass through before we add it to the bag.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def remove_stops_and_add(word):
+    if word.lower() not in stop:
+        if not word.isdigit():
+            description_words.append(word.lower())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This checks to see if the words is a digit and if it is not, then it allows it to pass. We also had some punctuation marks and abbreviations. To remove these, we can allow only those words that are alphanumeric to pass before we add to "description_words". &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def remove_stops_and_add(word):
+    if word.lower() not in stop:
+        if not word.isdigit():
+            if word.isalnum():
+                description_words.append(word.lower())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And well done! We now have a very interesting list of description words and their frequencies across all of the "cooking" items in the DPLA's holdings.&lt;/p&gt;
+
+&lt;h3 id="bonus-challege"&gt;Bonus Challege&lt;/h3&gt;
+
+&lt;p&gt;You can also use "stemming" to combine multipe forms of the same word, such as "photograph" and "photographs". Can you use the &lt;a href="http://www.nltk.org/api/nltk.stem.html"&gt;NLTK documentation&lt;/a&gt; to add another filter that stems the words before adding them to "description_words"?&lt;/p&gt;
+
+&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
+
+&lt;p&gt;In this module, we learned:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to use stopwords and filters to clean up noisy data&lt;/li&gt;
+&lt;/ul&gt;
 </content>
   </entry>
   <entry>
@@ -67,7 +255,7 @@ stop = stopwords.words('english')&lt;/p&gt;
     <link rel="alternate" href="http://blog.url.com/modules/module11-subset.html"/>
     <id>http://blog.url.com/modules/module11-subset.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-12T00:11:19-04:00</updated>
+    <updated>2014-10-12T09:49:08-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -83,7 +271,7 @@ stop = stopwords.words('english')&lt;/p&gt;
 
 &lt;p&gt;At the bottom of your script, add the line:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+&lt;pre&gt;&lt;code&gt;print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Save and run in Terminal. &lt;/p&gt;
@@ -94,13 +282,13 @@ stop = stopwords.words('english')&lt;/p&gt;
 
 &lt;p&gt;Looking at the "description" field, work with your table to identify the field name it is nested under. &lt;/p&gt;
 
-&lt;p&gt;The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using &lt;span class="command"&gt;json_data[0]&lt;/span&gt;. This form means we want the first item in the json_data object. &lt;/p&gt;
+&lt;p&gt;The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using &lt;span class="command"&gt;json_data[1]&lt;/span&gt;. This form means we want the first item in the json_data object. &lt;/p&gt;
 
 &lt;p&gt;If we want the value associated with the "description" key, we use a similar format. &lt;/p&gt;
 
 &lt;p&gt;To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;print json_data[0]['sourceResource']['description']
+&lt;pre&gt;&lt;code&gt;print json_data[1]['sourceResource']['description']
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Work with your table to print only the titles. What about only the subject headings?&lt;/p&gt;
@@ -125,10 +313,10 @@ from nltk.corpus import stopwords
 with open("search_results.json") as json_file:
   json_data = json.load(json_file)
 	
-#print json_data[0]
-#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+#print json_data[1]
+#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 
-print json_data[0]['sourceResource']['description']
+print json_data[1]['sourceResource']['description']
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;I will use "description_words" as the variable for my empty list of stopwords. &lt;/p&gt;
@@ -188,9 +376,9 @@ with open("search_results.json") as json_file:
   json_data = json.load(json_file)
 	
 #print json_data[1]
-#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 
-print json_data[0]['sourceResource']['description']
+print json_data[1]['sourceResource']['description']
 
 description_words = []
 
@@ -214,8 +402,6 @@ get_words()
 &lt;p&gt;One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;jeriwieringa$ python my_second_script.py
-[u'This book is published to give greater publicity to the exceptional qualities of Crisco."--Introd.']
-[u'This', u'book', u'is', u'published', u'to', u'give', u'greater', u'publicity', u'to', u'the', u'exceptional', u'qualities', u'of', u'Crisco."--Introd.']
 Traceback (most recent call last):
   	File "my_second_script.py", line 21, in &amp;lt;module&amp;gt;
 	get_words()
@@ -224,16 +410,14 @@ Traceback (most recent call last):
 KeyError: 'description'
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;First, we got a print out of the description sentence and then the words of that description as a list. This is good!&lt;/p&gt;
-
-&lt;p&gt;Then we got a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". &lt;/p&gt;
+&lt;p&gt;We have a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". &lt;/p&gt;
 
 &lt;p&gt;Let's see what is going. Comment out the call to "get_words" function.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;# get_words()
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Now let's print the second object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 0 to 1, the save and run the file.&lt;/p&gt;
+&lt;p&gt;Now let's print the first object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 1 to 0, the save and run the file.&lt;/p&gt;
 
 &lt;p&gt;Search for 'description' under 'sourceResource'. If you can't find it, it's because this item appears to be missing "description" information. Because the computer can't find the description, it returns an error and stops.&lt;/p&gt;
 
@@ -256,7 +440,7 @@ KeyError: 'description'
 
 &lt;p&gt;Our script should no longer error.&lt;/p&gt;
 
-&lt;p&gt;But, it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.&lt;/p&gt;
+&lt;p&gt;But, now it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.&lt;/p&gt;
 
 &lt;p&gt;To check if the value in "descriptions" in a string, we can add the following:&lt;/p&gt;
 
@@ -338,7 +522,7 @@ get_words()
 print description_words[999]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Bonus Challenges: &lt;/p&gt;
+&lt;h3 id="bonus-challenges"&gt;Bonus Challenges:&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Can you modify the function to also add the words of the title to our bag of words?&lt;/li&gt;
@@ -364,7 +548,7 @@ print description_words[999]
     <link rel="alternate" href="http://blog.url.com/modules/module10-local_data.html"/>
     <id>http://blog.url.com/modules/module10-local_data.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-12T00:16:04-04:00</updated>
+    <updated>2014-10-12T11:37:26-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -402,7 +586,7 @@ print description_words[999]
 
 &lt;p&gt;Here, we tell Python to "open" our "search_results.json" file and assign it to the variable "json_file". The we use the "load" method in the "json.library" to load up the data and save it as the variable "json_data". &lt;/p&gt;
 
-&lt;p&gt;To make sure this worked, let's print out one item from the json data. Work with our table to add a print statement to print the first item in the json_data list.&lt;/p&gt;
+&lt;p&gt;To make sure this worked, let's print out one item from the json data. Work with your table to add a print statement to print the second item in the json_data list.&lt;/p&gt;
 
 &lt;h3 id="installing-nltk"&gt;Installing NLTK&lt;/h3&gt;
 
@@ -430,7 +614,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;Great!&lt;/p&gt;
 
-&lt;p&gt;Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add &lt;span class="command"&gt;from nltk.corpus import stopwords&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add &lt;span class="command"&gt;from nltk.corpus import stopwords&lt;/span&gt; to the top of the file.&lt;/p&gt;
 
 &lt;p&gt;We are now ready to start working with our data.&lt;/p&gt;
 

@@ -44,11 +44,13 @@
 				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Functions and Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Using Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">Using While-Loops</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module12-analyze.html">Analyzing a Subset of the Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module13-save.html">Saving Results to a File</a></li>
 			</ul>
 		</section>
 
@@ -68,7 +70,7 @@
 
 <p>At the bottom of your script, add the line:</p>
 
-<pre><code>print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+<pre><code>print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 </code></pre>
 
 <p>Save and run in Terminal. </p>
@@ -79,13 +81,13 @@
 
 <p>Looking at the "description" field, work with your table to identify the field name it is nested under. </p>
 
-<p>The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using <span class="command">json_data[0]</span>. This form means we want the first item in the json_data object. </p>
+<p>The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using <span class="command">json_data[1]</span>. This form means we want the first item in the json_data object. </p>
 
 <p>If we want the value associated with the "description" key, we use a similar format. </p>
 
 <p>To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:</p>
 
-<pre><code>print json_data[0]['sourceResource']['description']
+<pre><code>print json_data[1]['sourceResource']['description']
 </code></pre>
 
 <p>Work with your table to print only the titles. What about only the subject headings?</p>
@@ -110,10 +112,10 @@ from nltk.corpus import stopwords
 with open("search_results.json") as json_file:
   json_data = json.load(json_file)
 	
-#print json_data[0]
-#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+#print json_data[1]
+#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 
-print json_data[0]['sourceResource']['description']
+print json_data[1]['sourceResource']['description']
 </code></pre>
 
 <p>I will use "description_words" as the variable for my empty list of stopwords. </p>
@@ -173,9 +175,9 @@ with open("search_results.json") as json_file:
   json_data = json.load(json_file)
 	
 #print json_data[1]
-#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 
-print json_data[0]['sourceResource']['description']
+print json_data[1]['sourceResource']['description']
 
 description_words = []
 
@@ -199,8 +201,6 @@ get_words()
 <p>One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:</p>
 
 <pre><code>jeriwieringa$ python my_second_script.py
-[u'This book is published to give greater publicity to the exceptional qualities of Crisco."--Introd.']
-[u'This', u'book', u'is', u'published', u'to', u'give', u'greater', u'publicity', u'to', u'the', u'exceptional', u'qualities', u'of', u'Crisco."--Introd.']
 Traceback (most recent call last):
   	File "my_second_script.py", line 21, in &lt;module&gt;
 	get_words()
@@ -209,16 +209,14 @@ Traceback (most recent call last):
 KeyError: 'description'
 </code></pre>
 
-<p>First, we got a print out of the description sentence and then the words of that description as a list. This is good!</p>
-
-<p>Then we got a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". </p>
+<p>We have a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". </p>
 
 <p>Let's see what is going. Comment out the call to "get_words" function.</p>
 
 <pre><code># get_words()
 </code></pre>
 
-<p>Now let's print the second object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 0 to 1, the save and run the file.</p>
+<p>Now let's print the first object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 1 to 0, the save and run the file.</p>
 
 <p>Search for 'description' under 'sourceResource'. If you can't find it, it's because this item appears to be missing "description" information. Because the computer can't find the description, it returns an error and stops.</p>
 
@@ -241,7 +239,7 @@ KeyError: 'description'
 
 <p>Our script should no longer error.</p>
 
-<p>But, it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.</p>
+<p>But, now it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.</p>
 
 <p>To check if the value in "descriptions" in a string, we can add the following:</p>
 
@@ -323,7 +321,7 @@ get_words()
 print description_words[999]
 </code></pre>
 
-<p>Bonus Challenges: </p>
+<h3 id="bonus-challenges">Bonus Challenges:</h3>
 
 <ul>
   <li>Can you modify the function to also add the words of the title to our bag of words?</li>

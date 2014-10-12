@@ -44,11 +44,13 @@
 				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Functions and Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Using Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">Using While-Loops</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module12-analyze.html">Analyzing a Subset of the Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module13-save.html">Saving Results to a File</a></li>
 			</ul>
 		</section>
 
@@ -56,7 +58,109 @@
                         <h3>
           Save Results to File
       </h3>
-       
+       <p>We are almost there! We have been creating some interesting data on the word frequencies within the description fields. But so far, all of our results are stuck in terminal, which makes it difficult for us to reuse them. So for this final module, we will write out the results of our count to a CSV (comma separated value) file.</p>
+
+<h3 id="create-a-new-csv-file">Create a New CSV File</h3>
+
+<p>As we did when we wrote our json results, we will start by telling Python to open a CSV file and assign to a variable.</p>
+
+<p>Currently our script should look something like this:</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+    
+#print json_data[1]
+#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+#print json_data[1]['sourceResource']['description']
+
+description_words = []
+stop = stopwords.words('english')
+
+def remove_stops_and_add(word):
+    if word.lower() not in stop:
+        if not word.isdigit():
+            if word.isalnum():
+                description_words.append(word.lower())
+            
+def get_words():
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
+            #print words
+            
+            for word in words:
+                remove_stops_and_add(word)
+            
+        except KeyError:
+            print "Description Missing"
+
+get_words()
+
+#print description_words[999] 
+
+c = Counter(description_words)
+
+print c.most_common(200)
+</code></pre>
+
+<p>To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+import csv
+</code></pre>
+
+<p>Now, we can create our CSV file right after the line where we opened the json file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.</p>
+
+<pre><code>with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+
+file = csv.writer(open("word_frequencies.csv", "w"))
+</code></pre>
+
+<p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file.</p>
+
+<pre><code>get_words()
+
+#print description_words[999] 
+
+c = Counter(description_words)
+
+print c.most_common(200)
+
+for key, count in c.most_common(200):
+    file.writerow([key, count])
+</code></pre>
+
+<p>You can now open your csv file using terminal by typing:</p>
+
+<pre><code>open word_frequencies.csv
+</code></pre>
+
+<p>This will most likely open in excel or a similar program. </p>
+
+<p>Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patters we see here?</p>
+
+<h3 id="what-we-learned">What We Learned</h3>
+
+<p>In this module, we learned:</p>
+
+<ul>
+  <li>to use the CSV library to save our results in csv format</li>
+</ul>
+
 
 
                 </section>
