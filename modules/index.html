@@ -47,15 +47,1262 @@
 				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Functions and Loops</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">While Loops</a></li>
 				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
 			</ul>
 		</section>
 
                 <section id="content">
                   
-  <h3><a href="/modules/module11-create.html">Create Data from Text Files</a></h3>
+  <h3><a href="/modules/module13-save.html">Save Results to File</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>In this module, we will be thinking about how we can use the skills we just learned to create data from our primary source material. </p>
+  
+
+  <h3><a href="/modules/module12-analyze.html">Analyzing a Subset of the Data</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>// Code we need to get them to
+from dpla.api import DPLA
+import json
+from collections import Counter
+from nltk.corpus import stopwords</p>
+
+<p>description_words = []
+stop = stopwords.words('english')</p>
+
+<p>with open("cooking_results.txt") as json_file:
+	json_data = json.load(json_file)</p>
+
+<p>print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))</p>
+
+<p>def get_words():
+	for each in json_data:
+		try:
+			description = each['sourceResource']['description']
+			words = description.split()
+			for each in words:
+				if each.lower() not in stop:
+					if not each.isdigit():
+						description_words.append(each.lower())</p>
+
+<pre><code>	except:
+		print "no description"
+</code></pre>
+
+<p>get_words()</p>
+
+
+  <h3><a href="/modules/module11-subset.html">Gathering a Subset of the Data</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>In this module, we will learn how to collect and store the description data from each item in our "json_data" variable. To do this, we will first identify the location of the description with the data structure and then loop through each item, saving each of the words in the description into a new list.</p>
+
+<h3 id="identifying-our-target-fields">Identifying Our Target Fields</h3>
+
+<p>Remember back to JSON and how it organizes data using key:value pairs? One of the most powerful features of JSON is that we are able to nest features and create lists within key:value pairs. This is useful for creating complex data structures. It also means that we have work within the hierarchy of key:value pairs to isolate particular values.</p>
+
+<p>In order to better see that hierarchy, let's <strong>Pretty Print</strong> the JSON results, or print with the indentations and hierarchies visually displayed. </p>
+
+<p>Open "my_second_script.py" and <strong>comment out</strong> "print jason_data[0]" by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work.</p>
+
+<p>At the bottom of your script, add the line:</p>
+
+<pre><code>print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+</code></pre>
+
+<p>Save and run in Terminal. </p>
+
+<p>Work with your table to map out what this command did.</p>
+
+<p>We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F". </p>
+
+<p>Looking at the "description" field, work with your table to identify the field name it is nested under. </p>
+
+<p>The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using <span class="command">json_data[0]</span>. This form means we want the first item in the json_data object. </p>
+
+<p>If we want the value associated with the "description" key, we use a similar format. </p>
+
+<p>To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:</p>
+
+<pre><code>print json_data[0]['sourceResource']['description']
+</code></pre>
+
+<p>Work with your table to print only the titles. What about only the subject headings?</p>
+
+<h3 id="saving-the-descriptions">Saving the Descriptions</h3>
+
+<p>One way to look at the descriptions is to consider them as a collection, or list, of words. If we take all of the collections as a whole, we can ask if there are any noticable patterns in the words being used to describe these items related to cooking.</p>
+
+<p>One common way of dealing with text computationally is to translate the text into a "bag of words". In a bag of words approach, the order does not matter. What we are looking at instead is the collection of words and their frequencies.</p>
+
+<p>To create a "bag of words" from the descriptions we need to 1) create a list to store the words and 2) write a loop that takes every description and adds the words to the list.</p>
+
+<p>See if you can use the information in module 7 (functions and loops) to create an empty list.</p>
+
+<p>Currently our "my_second_script.py" file should look like this:</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+  json_data = json.load(json_file)
+	
+#print json_data[0]
+#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+print json_data[0]['sourceResource']['description']
+</code></pre>
+
+<p>I will use "description_words" as the variable for my empty list of stopwords. </p>
+
+<pre><code>description_words = []
+</code></pre>
+
+<p>Next, we will create a new function called "get_words"</p>
+
+<p>Declare the function by adding:</p>
+
+<pre><code>def get_words():
+</code></pre>
+
+<p>Next, tab in once and add a for-loop to move through each item in the json_data list:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+</code></pre>
+
+<p>Next, let's set up a variable to grab the descriptions:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+</code></pre>
+
+<p>Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+    for line in descriptions:
+      words = line.split()
+</code></pre>
+
+<p>To see what just happened, let's add a print statement and call the function:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+    for line in descriptions:
+      words = line.split()
+      print words
+
+get_words()
+</code></pre>
+
+<p>Your file should now look like this:</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+  json_data = json.load(json_file)
+	
+#print json_data[1]
+#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+print json_data[0]['sourceResource']['description']
+
+description_words = []
+
+def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+    for line in descriptions:
+      words = line.split()
+      print words
+
+get_words()
+</code></pre>
+
+<p>Save the file and run it in the terminal.</p>
+
+<p>You might first notice that this script threw an error, saying:</p>
+
+<pre><code>KeyError: 'description'
+</code></pre>
+
+<p>One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:</p>
+
+<pre><code>jeriwieringa$ python my_second_script.py
+[u'This book is published to give greater publicity to the exceptional qualities of Crisco."--Introd.']
+[u'This', u'book', u'is', u'published', u'to', u'give', u'greater', u'publicity', u'to', u'the', u'exceptional', u'qualities', u'of', u'Crisco."--Introd.']
+Traceback (most recent call last):
+  	File "my_second_script.py", line 21, in &lt;module&gt;
+	get_words()
+  	File "my_second_script.py", line 16, in get_words
+	descriptions = each['sourceResource']['description']
+KeyError: 'description'
+</code></pre>
+
+<p>First, we got a print out of the description sentence and then the words of that description as a list. This is good!</p>
+
+<p>Then we got a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". </p>
+
+<p>Let's see what is going. Comment out the call to "get_words" function.</p>
+
+<pre><code># get_words()
+</code></pre>
+
+<p>Now let's print the second object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 0 to 1, the save and run the file.</p>
+
+<p>Search for 'description' under 'sourceResource'. If you can't find it, it's because this item appears to be missing "description" information. Because the computer can't find the description, it returns an error and stops.</p>
+
+<p>Getting around this problem requires what is called "handling exceptions". We had expected a particular pattern in our data (that there was "description" keys nested under "sourceResource" keys) but we've encountered an exception to that general pattern. </p>
+
+<p>To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    try:
+      descriptions = each['sourceResource']['description']
+      for line in descriptions:
+      words = line.split()
+        print words
+    except KeyError:
+      print "Description Missing"
+</code></pre>
+
+<p>Un-comment "get_words()", save, and run the file.</p>
+
+<p>Our script should no longer error.</p>
+
+<p>But, it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.</p>
+
+<p>To check if the value in "descriptions" in a string, we can add the following:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    try:
+    descriptions = each['sourceResource']['description']
+    if isinstance(descriptions, basestring):
+      words = descriptions.split()
+    else:
+      for line in descriptions:
+        words = line.split()
+        print words
+  except KeyError:
+    print "Description Missing"
+</code></pre>
+
+<p>Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.</p>
+
+<h3 id="adding-the-words-to-our-bag-of-words">Adding the words to our "bag of words"</h3>
+
+<p>The final step in creating our subset of data is to add the words into our "description_words" list.</p>
+
+<p>To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function.</p>
+
+<pre><code>def get_words():
+for each in json_data:
+  try:
+    descriptions = each['sourceResource']['description']
+    if isinstance(descriptions, basestring):
+      words = descriptions.split()
+    else:
+      for line in descriptions:
+        words = line.split()
+    print words
+
+    for word in words:
+      description_words.append(word)
+
+  except KeyError:
+    print "Description Missing"
+</code></pre>
+
+<p>Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+json_data = json.load(json_file)
+	
+#print json_data[1]
+#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+#print json_data[0]['sourceResource']['description']
+
+description_words = []
+
+def get_words():
+for each in json_data:
+  try:
+    descriptions = each['sourceResource']['description']
+    if isinstance(descriptions, basestring):
+      words = descriptions.split()
+    else:
+      for line in descriptions:
+        words = line.split()
+    print words
+
+    for word in words:
+      description_words.append(word)
+
+  except KeyError:
+    print "Description Missing"
+  
+get_words()
+print description_words[999]
+</code></pre>
+
+<p>Bonus Challenges: </p>
+
+<ul>
+  <li>Can you modify the function to also add the words of the title to our bag of words?</li>
+  <li>Can you also add the subject headings?</li>
+</ul>
+
+<h3 id="what-we-learned">What We Learned</h3>
+
+<p>In this module, we learned:</p>
+
+<ul>
+  <li>to pretty-print json with Python</li>
+  <li>to identify the nested key:value pairs we want to analyze</li>
+  <li>to split a list </li>
+  <li>to trouble shoot from an error report</li>
+  <li>to handle exceptions</li>
+  <li>to check type and use an "if/else" statement</li>
+</ul>
+
+  <h3><a href="/modules/module08-whileloop.html">Looping through the Pages</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>In this module, we will add another loop to our "pull records" function that allows us to move through more than one page of search results.</p>
+
+<h3 id="introducing-the-while-loop">Introducing the While Loop</h3>
+
+<p>The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the while loop and a "counter" to work through all of the pages of search results.</p>
+
+<p>To use a while loop, let's look again at our "pull records" function.</p>
+
+<pre><code>def pull_records(pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	save_each(paged_search)
+</code></pre>
+
+<p>Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.</p>
+
+<p>To write this logic in code, we will add:</p>
+
+<pre><code>while(pages &lt;= end):
+</code></pre>
+
+<p>so that our function now looks like this:</p>
+
+<pre><code>def pull_records(pages, end, size):
+	while(pages &lt;= end):
+		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		save_each(paged_search)
+</code></pre>
+
+<h3 id="adding-a-counter">Adding a Counter</h3>
+
+<p>Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now.</p>
+
+<p>To avoid the infinite loop, we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".</p>
+
+<p>After <span class="command">save_each(paged_search)</span> add:</p>
+
+<pre><code>pages = pages + 1
+</code></pre>
+
+<p>Let's also add a print command to check that things are working as we expect. Above <span class="command">pages = pages + 1</span> add:</p>
+
+<pre><code>print "finished page " + str(pages)
+</code></pre>
+
+<p>Our file should now look like this:</p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	while(pages &lt;= end):
+		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		save_each(paged_search)
+		print "finished page " + str(pages)
+		pages = pages + 1
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 3, 50)
+
+print all_records[40]
+</code></pre>
+
+<p>Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[40]</span> to <span class="command">print all_records[150]</span></p>
+
+<p>Save and run in Terminal.</p>
+
+<h3 id="what-we-learned">What We Learned:</h3>
+
+<ul>
+  <li>To use a while loop and counter</li>
+  <li>To test on a subset of the data</li>
+  <li>To use "print" to check our functions along the way</li>
+</ul>
+
+  <h3><a href="/modules/module07-functionsandloops.html">Functions and Loops</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>We now have a file that looks as follows:</p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+</code></pre>
+
+<p>We will now add a function that handles the query for any given page number.</p>
+
+<h3 id="creating-a-pull-records-function">Creating a "Pull Records" Function</h3>
+
+<p>To write a function, we set of the function with the word "def" and then indent all of the commands that are part of the function.</p>
+
+<p>In your "my_first_script.py" file, add the line</p>
+
+<pre><code>def pull_records(pages, end, size):
+</code></pre>
+
+<p>You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.</p>
+
+<p>Tab in one space on the next line and type:</p>
+
+<pre><code>paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+</code></pre>
+
+<p>Your file should now look like this:</p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+</code></pre>
+
+<p>It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.</p>
+
+<p>Let's add a print statement and test out the first stage of this function. At the same tab as "paged_search…", add:</p>
+
+<pre><code>print paged_search.items[2]
+</code></pre>
+
+<p>Now to run the function, we will call the function name and give it values. On a new line and outside of the function, add the line:</p>
+
+<pre><code>pull_records(2, 3, 50)
+</code></pre>
+
+<p>Save the file and go to terminal to run it.</p>
+
+<h3 id="saving-items-to-all-records">Saving Items to "All Records"</h3>
+
+<p>You have written and executed your first function! Well done!</p>
+
+<p>Now we need to add another function to store those results to the empty "all records" array we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.</p>
+
+<p>To set up our new "Save Each" function, we will define a new function:</p>
+
+<pre><code>def save_each(n):
+</code></pre>
+
+<p>The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in and to take that variable and plug it in for 'n' throughout the function.</p>
+
+<p>We now need to add our first loop. With how we currently have framed our request, there are 50 items in our paged_search item. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, take the item and add it to "all_records". </p>
+
+<p>Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:</p>
+
+<pre><code>for each in n.items:
+</code></pre>
+
+<p>This is called a "for loop". It tells the computer to iterate through each item in the list 'n'. We use n.items because this is the syntax from the DPyLA library. </p>
+
+<p>Now we tab in one more space and tell the computer what we want done to each item. To add the item to the "all_records" array, we use the "append" command:</p>
+
+<pre><code>all_records.append(each)
+</code></pre>
+
+<p>The "save each" function should now look like this:</p>
+
+<pre><code>def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+</code></pre>
+
+<p>Now we can use this function in our "pull records" function. Currently, our "pull records" looks as follows:</p>
+
+<pre><code>def pull_records (pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	print paged_search.items[2]
+</code></pre>
+
+<p>Let's delete the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:</p>
+
+<pre><code>save_each(paged_search)
+</code></pre>
+
+<p>Our file should now look like:</p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	save_each(paged_search)
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 3, 50)
+</code></pre>
+
+<p>To test this, let's now add a print statement to the end of the file, after the pull_records function has been run, to make sure that the items are going into the "all_records" variable.</p>
+
+<p>Add:</p>
+
+<pre><code>print all_records[30]
+</code></pre>
+
+<p>Save and run your script.</p>
+
+<p>We have made great progress! We now have two functions to handle making the query and saving the results, but we are still only working with one "page" of search results at a time. In the next module, we will add yet another kind of loop in order to move through the different pages.</p>
+
+<h3 id="what-we-learned">What We Learned</h3>
+
+<ul>
+  <li>To create and call functions</li>
+  <li>To pass variables into functions</li>
+  <li>To create a "for loop"</li>
+  <li>To "append" items into a list</li>
+</ul>
+
+  <h3><a href="/modules/module06-phasetwo.html">Moving to Phase Two</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>We are at the half-way point, so it is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks or cake mix to create new programs. </p>
+
+<p>We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.</p>
+
+<p>Well Done!</p>
+
+<p>So far you have been writing code that does one thing: it get search results or prints a particular item. The power of code, however, is being able to do the same thing to a series of items and it is thinking in terms of iterating through a series that is at the core of computational thinking. To do this, we will learn two very powerful programming concepts: functions and loops.</p>
+
+<h3 id="asking-questions-of-our-data">Asking Questions of Our Data</h3>
+
+<p>We have been able to do a lot with filtering the data by subject headings, by geographic space, and by contributor. But what if we want to ask questions about how the materials are described across all 10,000+ items associated with "cooking"? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking"?</p>
+
+<p>There are many ways one could go about investigating the descriptions. Work with your table to brain-storm a couple of approaches.</p>
+
+<h3 id="adding-parameters-to-the-query">Adding Parameters to the Query</h3>
+
+<p>To start, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can pass a variable to get up to 500 items at a time, but there were 10,909 items associated with "cooking".</p>
+
+<p>Open your "my_first_script.py" file. Looking at the line that says </p>
+
+<pre><code>result = dpla.search('cooking')
+</code></pre>
+
+<p>we can change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:</p>
+
+<pre><code>result = dpla.search('cooking', page_size=50)
+</code></pre>
+
+<p>To check that this worked, let's add a line telling the computer to print out the 40th item:</p>
+
+<pre><code>print result.items[39]
+</code></pre>
+
+<p>Remember, counting within a list begins at 0.</p>
+
+<p>Use the <a href="https://github.com/bibliotechy/DPyLA">documentation</a> and your table to add another parameter to get the information from page 3.</p>
+
+<h3 id="setting-up-a-variable">Setting Up a Variable</h3>
+
+<p>To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items all of the pages and we need a place to store them, so that as we get new items, our collections grows.</p>
+
+<p>Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. For example, I could create a list "fruit" that has the values "apple, orange, banana" by doing the following:</p>
+
+<pre><code>fruit = ["apple", "orange", "banana"]
+</code></pre>
+
+<p>now if I ask for the second item in fruit</p>
+
+<pre><code>fruit[1]
+</code></pre>
+
+<p>I will get back "orange".</p>
+
+<p>We are going to use a similar structure to save all of the items we get back from the DPLA.</p>
+
+<p>Go back to "my_first_script.py". Comment out the line <span class="command">result = dpla.search('cooking', page_size=50)</span> by placing a # sign at the front of the line. This tells the computer to skip this line. Also comment out the line you wrote to print out one of the items.</p>
+
+<p>Your file should look something like this: </p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('YourKeyHere')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+</code></pre>
+
+<p>Now, let's create a new variable, "all_records" and set it equal to an empty list.</p>
+
+<p>To do this, add a new line:</p>
+
+<pre><code>all_records = []
+</code></pre>
+
+<p>This tells the computer that we have a variable, "all_records", that this variable will hold a list, and that we currently have no items in that list.</p>
+
+<p>Now that we have a place to store our values, we now have to tell the computer to get the search results from each page and save those results to the "all_records" list.</p>
+
+<h3 id="what-we-learned">What We Learned</h3>
+
+<ul>
+  <li>To add additional parameters to our API call</li>
+  <li>To create an empty list</li>
+  <li>To comment-out code that we don't want to run, but want to keep</li>
+</ul>
+
+  <h3><a href="/modules/module05-use_editor.html">Write Python in Script Files</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.</p>
+
+<h3 id="writing-and-executing-script-files">Writing and Executing Script Files</h3>
+
+<p>First, exit out of the Python Interactive Shell by running <span class="command">exit()</span>.</p>
+
+<p>You should still be in the folder we made at the beginning of the day. Check using <span class="command">pwd</span>. </p>
+
+<p>Now remember we created a file called "my_first_script.py"? Let's open that file again and remind ourselves of what we wrote.</p>
+
+<pre><code>open my_first_script.py
+</code></pre>
+
+<p>It should say 'print "Hello World"'. Now that you know something about Python functions, what do you expect this script to do?</p>
+
+<p>Let's test it out! To execute a Python file, run the following in terminal:</p>
+
+<pre><code>python my_first_script.py
+</code></pre>
+
+<p>Your terminal window should look something like:</p>
+
+<pre><code>jeriwieringa$ python my_first_script.py
+Hello World
+jeriwieringa$
+</code></pre>
+
+<p>Excellent! You just executed your first Python script!</p>
+
+<h3 id="writing-our-dpyla-script">Writing our DPyLA Script</h3>
+
+<p>Now let's recreate some of the work we did in the Interactive Shell in this script file.</p>
+
+<p>Delete <span class="command">print "Hello World"</span> so that you're working with a clean file. </p>
+
+<p>First, at the beginning of a Python file you need to list the libraries that we will be using. Similar to HTML, the computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. </p>
+
+<pre><code>from dpla.api import DPLA
+</code></pre>
+
+<p>Then we need to store our API key:</p>
+
+<pre><code>dpla = DPLA('YourAPIKey')
+</code></pre>
+
+<p>Then we can write our search query:</p>
+
+<pre><code>result = dpla.search('cooking')
+</code></pre>
+
+<p>Save the file and go back to Terminal. Run </p>
+
+<pre><code>python my_first_script.py
+</code></pre>
+
+<p>You should notice that your computer works for awhile and then returns to normal, but doesn't tell you anything about what it did. To see results, we can use the print function again.</p>
+
+<p>Open your script file again (<span class="command">open my_first_script.py</span>). </p>
+
+<p>Work with your group to add another line to the file that uses the print function to display one item from your search. </p>
+
+<p>Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. </p>
+
+<h3 id="what-weve-learned">What We've Learned</h3>
+
+<ul>
+  <li>To execute Python scripts in the Terminal</li>
+  <li>To write our commands in the order they should be executed</li>
+  <li>To use print to display the results of our scripts</li>
+</ul>
+
+
+  <h3><a href="/modules/module04-complex_requests.html">Working with the API</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>Now that we've learned to make a simple request using the DPyLA library, let's spend some time exploring the different kinds of requests we can make. </p>
+
+<h3 id="constructing-api-requests">Constructing API Requests</h3>
+
+<p>Open up the <a href="https://github.com/bibliotechy/DPyLA">documentation for the DPyLA library</a> and for the <a href="http://dp.la/info/developers/codex/requests/">DPLA API</a>.</p>
+
+<p>First, let's get some contextual data about the search results. Run <span class="command">result.count</span>. This tells you how many items total fit the search term. </p>
+
+<p>Now run <span class="command">result.limit</span>. This tells you how many results the API returned. By default, the API will give you 10 results at a time. Look at the DPyLA documentation and try to construct a request that gets you 50 results.</p>
+
+<p>You can also limit your search results by a variety of variables. </p>
+
+<p>For example, you can sort by geography:</p>
+
+<pre><code>result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
+</code></pre>
+
+<p>You can also be more specific with your search, such as limiting your query to cooking in the title of an item. </p>
+
+<pre><code>result = dpla.search("cooking", fields=["sourceResource:title"])
+</code></pre>
+
+<p>These types of commands help you focus the search results so that you have less noisy data - so that more of the data fits the questions you want to ask.</p>
+
+<p>Work with the documentation and your table to construct some more targeted queries. </p>
+
+<ul>
+  <li>In what ways would you want to narrow the data for different questions?</li>
+  <li>Do you see any additional strengths or weaknesses with the data when trying to limit your search results?</li>
+</ul>
+
+<h3 id="what-we-learned">What we learned</h3>
+
+<ul>
+  <li>Reading API documentation to understand the possible queries</li>
+</ul>
+
+  <h3><a href="/modules/module03-get_data.html">Getting Data</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>In this module, we will use Pip to install the DPyLA Python library to make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.</p>
+
+<h3 id="install-dpyla-library">Install DPyLA Library</h3>
+
+<p>We talked earlier about libraries, those bundles of code that we can load and use in creating our own scripts. Just like in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to get the same results. </p>
+
+<p>One library that makes it easy to work with the DPLA API with Python is <a href="https://github.com/bibliotechy/DPyLA">DPyLA</a>, which you can look at on Github.</p>
+
+<p>We can easily get this library for use with our own code using Pip.</p>
+
+<p>Type <span class="command">pip install dpla</span>. </p>
+
+<p>If you get a permissions error and you're a Mac user, type <span class="command">sudo pip install dpla</span> and enter your password. If you get a permissions error and you're a Windows user, type <span class="command">Start-Process powershell -Verb runAs</span> to open Powershell as an administrator then type <span class="command">pip install dpla</span>.</p>
+
+<p>You have just installed your first Python library.</p>
+
+<h3 id="introducing-the-python-interactive-shell">Introducing the Python Interactive Shell</h3>
+
+<p>Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the Interactive Shell, we can experiment with lines of Python and see what the language can do. </p>
+
+<p>To start up the interactive shell, go to your Terminal window and type <span class="command">python</span> and press "Enter".</p>
+
+<p>Your Terminal should now look like this:</p>
+
+<pre><code>jeriwieringa$ python
+Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt;
+</code></pre>
+
+<p>Everything you type will now be processed by Python. Let's try it out a bit. Type <span class="command">print "Hello World"</span> and press "Enter". Now type <span class="command">print "My Name is [Your Name]"</span> and press "Enter". Now type <span class="command">print 5 + 8</span></p>
+
+<p>Here you have discovered a couple of very useful things with programming languages. </p>
+
+<p>"print" is a function in Python that returns whatever follows it next. </p>
+
+<p>The content contained inside "" marks is called a string. This is especially important for humanities research, since we work with strings a lot.</p>
+
+<p>Finally, if we input numbers or equations into Python, it will compute them. If you don't want Python to compute, you should treat the numbers like a string. Experiment in the Interactive Shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.</p>
+
+<h3 id="loading-dpyla-in-the-shell-and-make-an-api-request">Loading DPyLA in the Shell and Make an API Request</h3>
+
+<p>Let's start using our new DPyLA library to make an API call to the DPLA. Following the <a href="https://github.com/bibliotechy/DPyLA">library documentation</a>, run (type the following and press "Enter") </p>
+
+<pre><code>from dpla.api import DPLA 
+</code></pre>
+
+<p>You just loaded the DPyLA library into your Python shell, making all of it's code available for you to use.</p>
+
+<p>Next run:</p>
+
+<pre><code>dpla = DPLA('your-key-here')
+</code></pre>
+
+<p>What you have just done is create what is called a "variable", dpla, that stores your api key.</p>
+
+<p>Next run:</p>
+
+<pre><code>result = dpla.search('cooking')
+</code></pre>
+
+<p>You have just created a new variable, "result" that stores the result of a dpla search for "cooking". Now, you might be wondering what happened to your api key. This is part of the magic of using a library. When you save your key as dpla, you make it known to the library. Then, when you call dpla.search, you're combining your key with code in the DPyLA library that executes the search and saving all of the data in a new variable called "result". </p>
+
+<p>But we still haven't seen any of the results from the API. To show the results, run:</p>
+
+<pre><code>result.items
+</code></pre>
+
+<p>You should see something like this:</p>
+
+<pre><code>[{u'_id': u'digitalnc--urn:brevard.lib.unc.eduecu_c5:oai:digital.lib.ecu.edu/7394', u'admin': {u'sourceResource': {u'title': u'Cooking'}, u'validation_message': None, u'valid_after_enrich': True}, u'sourceResource': {u'isPartOf': [u'https://digital.lib.ecu.edu/encore/ncgre000/00000008/00007394/00007394_tn_0001.gif'], u'description': [u'Boys and girls cooking during home economics class. Dates from negative sleeve.'], u'language': [{u'iso639_3': u'eng', u'name': u'English'}], u'rights': u'Copyright held by Joyner Library. Permission to reuse this work is granted for all non-commercial purposes.', u'@id': u'http://dp.la/api/items/7cb32765b538a57a35fbdbfad03be57b#sourceResource', u'format': u'negatives (photographic)'
+</code></pre>
+
+<p>You just asked the computer to give you all of the items it got back from the search for "cooking". </p>
+
+<p>Notice the structure of this data. Can you find the key:value pairs? </p>
+
+<p>You might notice the " u' " in front of each string. This is a feature of python 2. The u' indicates that what follows is a unicode string. Don't worry too much about what that means - it is information about how the data is being encoded - but if you want to really geek out, you can read all about encoding in the <a href="https://docs.python.org/2/tutorial/introduction.html#unicode-strings">language documentation</a>.</p>
+
+<p>But what if you only want to see one item at a time?</p>
+
+<p>The information you get back from the DPLA API comes in the form of an <strong>array</strong>, or <strong>list</strong> ("array" is the general programming word for a series of things, "list" is Python's name for a series of things). Lists are a super powerful, enabling us to load up a lot of information and then work through each bit individually.</p>
+
+<p>One general things we can do with lists is get items by their position in the list. </p>
+
+<p>For example, if you want the first item only:</p>
+
+<pre><code>result.items[0]
+</code></pre>
+
+<p>You should now see a much smaller dump of data. You might be wondering why we used 0. Programming languages start counting with 0 rather than one.</p>
+
+<p>Try to get the 3rd item in the search results. </p>
+
+<p>Can you use <a href="http://effbot.org/zone/python-list.htm">this tutorial</a> to figure out how to get items 1 - 3?	</p>
+
+<h3 id="what-you-have-learned">What You Have Learned</h3>
+
+<p>In this module, you have learned:</p>
+
+<ul>
+  <li>to install new libraries using Pip</li>
+  <li>to use the Python Interactive Shell to run basic Python commands</li>
+  <li>to load and use those libraries</li>
+  <li>to make an API request using a Python script</li>
+  <li>to work with variables and lists</li>
+</ul>
+
+  <h3><a href="/modules/module02-data.html">Thinking about Data</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>For this module, we will be using data from the <a href="http://dp.la">Digital Public Library of America</a>. We will walk through requesting an API key using the Terminal, learn how to talk to the API in our browsers, and think about the structure of the data we get back.</p>
+
+<h3 id="get-an-api-key">Get an API Key</h3>
+
+<p>The DPLA is an incredible resource for computational research. By bringing together information from a growing number of partners and making that information available through an API, the DPLA has made it easy to survey vast amounts of data housed in various cultural heritage institutions around the country.</p>
+
+<p>Go to <a href="http://dp.la/info/developers/codex/">http://dp.la/info/developers/codex/</a>. This is the documentation for the dp.la API. Remember from our earlier conversation that an API is like a direct link between your browser and a server: if you format your request in a particular way, you will get back the data from the server in a particular data format without the HTML interface.</p>
+
+<p>First, you will need an API key. </p>
+
+<p>If you are on a Mac, there is a utility built into your system called "cURL". To use cURL to request your key, type:</p>
+
+<pre><code>curl -v -XPOST http://api.dp.la/v2/api_key/YOUR_EMAIL@example.com
+</code></pre>
+
+<p>into your Terminal, replacing "YOUR_EMAIL@example.com" with your actual email address.</p>
+
+<p>If you are on Windows, your utility is called "Invoke-WebRequest". To use Invoke-WebRequest to request your key, type:</p>
+
+<pre><code>Invoke-WebRequest -Uri ("http://api.dp.la/v2/api_key/YOUR_EMAIL@example.com") -Method POST -Verbose 
+</code></pre>
+
+<p>into your Powershell, replacing "YOUR_EMAIL@example.com" with your actual email address.</p>
+
+<p>You should get an email from the DPLA with your key. </p>
+
+<h3 id="examining-data-in-browser">Examining Data in Browser</h3>
+
+<p>To get a sense of how the API key works and what the data we get back looks like, let's use the web-browser. </p>
+
+<p>In your browser, type:</p>
+
+<pre><code>http://api.dp.la/v2/items?q=cooking&amp;api_key=YOURAPIKEY
+</code></pre>
+
+<p>The first part of this url ("http://api.dp.la/v2/") is the "base" url. This must go at the beginning of all API requests. Next, we are telling the server that we want to see "items" and we want to see the items that match the keyword "cooking". The "?q=" is the grammar of the API – this is how we signal to the server that we want to query for the word following the "=". To see additional options for the API, go to <a href="http://dp.la/info/developers/codex/requests/">http://dp.la/info/developers/codex/requests/</a>.</p>
+
+<p>You should see something that looks like:</p>
+
+<pre><code>{"count":10646,"start":0,"limit":10,"docs":[{"@context":"http://dp.la/api/items/context","isShownAt":"https://digital.lib.ecu.edu/7394","dataProvider":"East Carolina University","@type":"ore:Aggregation","provider":{"@id":"http://dp.la/api/contributor/digitalnc","name":"North Carolina Digital Heritage Center"},"object":"https://digital.lib.ecu.edu/encore/ncgre000/00000008/00007394/00007394_tn_0001.gif","ingestionSequence":14,"id":"7cb32765b538a57a35fbdbfad03be57b","ingestDate":"2014-08-19T10:45:46.393447","_rev":"2-1b21f198053a2727bffece028cd30a6d","aggregatedCHO":"#sourceResource","_id":"digitalnc--urn:brevard.lib.unc.eduecu_c5:oai:digital.lib.ecu.edu/7394"
+</code></pre>
+
+<p>Now try the same thing using Chrome and a very handy extension called <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">JSONView</a>, which will make the output display like:</p>
+
+<pre><code>{
+count: 10646,
+start: 0,
+limit: 10,
+docs: [
+	{
+	@context: "http://dp.la/api/items/context",
+	isShownAt: "https://digital.lib.ecu.edu/7394",
+	dataProvider: "East Carolina University",
+	@type: "ore:Aggregation",
+	provider: {
+		@id: "http://dp.la/api/contributor/digitalnc",
+		name: "North Carolina Digital Heritage Center"
+	},
+</code></pre>
+
+<p>Well done! You have just made a successful API request.</p>
+
+<h3 id="thinking-about-json">Thinking about JSON</h3>
+
+<p>What you are looking at is a JSON document. In a JSON object, all the information is given in "key : value" pairs. On the left-hand side is the "key". This is a standardized description of a bit of information, such as "provider" or "ingestData". On right-hand side is the "value", or the information that applies for a particular object. With your table, work through the document and try to answer the following questions:</p>
+
+<ol>
+  <li>How many objects are displayed here? How do you know?</li>
+  <li>How many objects in the DPLA database fit our query for cooking? </li>
+  <li>Which key:value pairs do you find the most interesting?</li>
+  <li>What questions can you ask of this dataset? Which key:value pairs would be most helpful for answering those questions?</li>
+  <li>What questions would be hard to answer with this dataset? What additional information would you need?</li>
+</ol>
+
+<h3 id="what-you-have-learned">What You Have Learned</h3>
+
+<p>In this module, you've learned:</p>
+
+<ul>
+  <li>to use cURL or Invoke-WebRequest to talk to a server</li>
+  <li>to use an API to request data</li>
+  <li>to read JSON documents and think about how data is structured</li>
+</ul>
+
+
+  <h3><a href="/modules/module01-terminal.html">Working with Your Computer</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>Throughout this tutorial, we will be spending a lot of time in Terminal/PowerShell as our primary way of talking to our computers. In order to do this, however, it is necessary to take some time to get comfortable working with the command line.</p>
+
+<p>So let's walk through some basic commands while setting up our computer for the rest of the tutorial.</p>
+
+<p>First, let's get a sense of where we are in the file structure of our computer. </p>
+
+<p>Type <span class="command">pwd</span> and press enter. </p>
+
+<p>The command, which stands for "print working directory," does exactly, tells you which directory you are in. Navigating the computer through the Terminal sometimes feels like tunneling, and 'pwd' is very helpful for seeing where you are at. You should see something like:</p>
+
+<pre><code>/Users/yourusername
+</code></pre>
+
+<p>if you're on a Mac or</p>
+
+<pre><code>C:\Users\username
+</code></pre>
+
+<p>for Windows.</p>
+
+<p>Type <span class="command">ls</span> and press enter. </p>
+
+<p>This is another super helpful command for orienting yourself. This commands lists all the files in your current directory. If you need to see hidden files, type 'ls -a' (Mac) or 'ls -Hidden' (Windows). </p>
+
+<p>You should see something like:</p>
+
+<pre><code>jeris-mbp:~ jeriwieringa$ ls
+Applications		Dropbox		Music
+Desktop			Envs		Pictures
+Documents		Library		Public
+Downloads		Movies		Sites		
+</code></pre>
+
+<p>Now that we know where we are, we now need to learn how to move around the different files. This is done with 'cd' or "change directory." If you just type 'cd', you will move back to the root of your user directory. To move forward, type 'cd [Directory_Name]'. You can also move multiple directories at a time with 'cd [Directory_Name/Directory_Name/Directory_Name]'. This way you can dig down through your files. Let's give it a try.</p>
+
+<p>Type <span class="command">cd Documents</span> and press enter. Now type <span class="command">ls</span> and press enter.</p>
+
+<p>You can also move backwards by typing <span class="command">cd ../</span> and to move back multiple directories, type <span class="command">cd ../../../</span>. </p>
+
+<p>Go ahead and give that a try. After moving around, work your way back to the "Documents" folder.</p>
+
+<p>Let's create a folder for our work today. </p>
+
+<p>Type <span class="command">mkdir dhb_awesome</span> and press enter. Now type <span class="command">ls</span> and you should see your 'dhb_awesome' folder. Use 'cd' to move into that folder.</p>
+
+<p>Folders are great but it is also helpful to know how to make files. For that, we'll use a command called 'touch' on OSX and 'New-Item' on Windows.</p>
+
+<p>If you're on a Mac, type:</p>
+
+<pre><code>touch my_first_script.py
+</code></pre>
+
+<p>and press enter. </p>
+
+<p>If you're on Windows, type:</p>
+
+<pre><code>New-Item -ItemType file my_first_script.py
+</code></pre>
+
+<p>and press enter. </p>
+
+<p>Type <span class="command">ls</span> to see your file. </p>
+
+<p>To edit your new file in your default text-editor, type </p>
+
+<pre><code>open my_first_script.py
+</code></pre>
+
+<p>on your Mac or</p>
+
+<pre><code>Invoke-Item my_first_script.py
+</code></pre>
+
+<p>on your Windows machine. This should launch your default text editor. Type <span class="command">print "Hello World"</span> into the text file and save. We will do something with that later.</p>
+
+<p>If you want to know more commands, like removing files, copying files, and renaming files, checkout the <a href="http://praxis.scholarslab.org/scratchpad/bash/">Scholars' Lab Command Line Bootcamp</a>. But this is enough to start!</p>
+
+<h3 id="terminology-and-mapping-the-computer">Terminology and Mapping the Computer</h3>
+
+<p>Now we're going to take a step back to think about the different layers of the computer that we will be working with and about how we move data from one process to another. </p>
+
+<p>At your table, there is paper and many different drawing implements. We're going to talk through the tools and technologies we're using.  While we do that, your job is to diagram those connections using whatever metaphors or graphics that make sense to you.</p>
+
+<p>The topics we will cover include:</p>
+
+<ul>
+  <li>Working from terminal rather than interface</li>
+  <li>Levels of Programming Languages</li>
+  <li>Programming Libraries</li>
+  <li>Servers</li>
+  <li>API</li>
+</ul>
+
+<h3 id="what-you-have-learned">What You Have Learned</h3>
+
+<p>In this module, you have learned:</p>
+
+<ul>
+  <li>to navigate and manipulate the computer using the Terminal </li>
+  <li>to conceptualize your computer as a computing machine connected to other computing machines</li>
+</ul>
+
+<h3 id="credits">Credits</h3>
+<p>This tutorial is based on the <a href="http://praxis.scholarslab.org/scratchpad/bash/">Praxis Program's Command Line Bootcamp</a> and Greg Bloom's post, <a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/">Draw an API</a>.</p>
+
+  <h3><a href="/modules/installation.html">Installation</a></h3>
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <p>Welcome to DH Bridge. This one day workshop will introduce you to basic programming concepts for use in humanities research. We will be working with Python, a programming language that combines a human-readable syntax with robust support for statistical analysis and graphing. The data for the day will be gleaned from the Digital Public Library of America. We are excited that you will be joining us.</p>
+
+<h2 id="step-one-required-supplies">Step One: Required Supplies</h2>
+
+<p>For the workshop you will need to bring:</p>
+
+<ul>
+  <li><strong>Your Laptop:</strong>
+    <ul>
+      <li>You need to have a working wifi connection (we will provide access to Mason's wireless)</li>
+      <li>We recommend that you update your operating system to the latest version your machine can support. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. </li>
+    </ul>
+  </li>
+  <li><strong>Your Powercord</strong></li>
+</ul>
+
+<p>You might also want to bring:</p>
+
+<ul>
+  <li>An Extension Cord</li>
+  <li>Snacks</li>
+</ul>
+
+<h2 id="step-two-overview">Step Two: Overview</h2>
+
+<p>You will be installing or checking the status of the following tools:</p>
+
+<ul>
+  <li>Python</li>
+  <li>Pip</li>
+  <li>Text Editor</li>
+</ul>
+
+<h3 id="a-note-on-python-versions">A Note on Python Versions</h3>
+<p>For this workshop, we will be using Python 2.7. This is for two reasons: first, using the default Python version enables us to teach basic programming concepts without the additional complexity of managing Python versions; and second, most of the existing tutorials for learning Python, including <em>The Programming Historian</em> and <em>Learn Python the Hard Way</em>, still use 2.7. Starting with 2.7 will enable you to use these materials smoothly. We would like to also offer a Python3 version of this tutorial, so that those who wish to start with the newer syntax can do so.</p>
+
+<h2 id="step-three-install-go-to-your-operating-system-below">Step Three: Install (Go To Your Operating System Below)</h2>
+
+<ul>
+  <li><a href="#mac">Mac</a></li>
+  <li><a href="#windows">Windows</a></li>
+</ul>
+
+<h3 id="mac">Mac</h3>
+
+<h4 id="install-text-editor">1. Install Text Editor</h4>
+
+<p>For this tutorial, we recommend using TextWrangler, which is a free editor from BareBones software. To get TextWrangler, go to <a href="http://www.barebones.com/products/textwrangler/">http://www.barebones.com/products/textwrangler/</a> and download. </p>
+
+<p>We recommend keeping TextWrangler in your Dock so that it is easy to access.</p>
+
+<p>You are welcome to use another text editor if you wish. Just make sure that it is a plain text editor (do not use TextEdit).</p>
+
+<h4 id="check-your-python-version">2. Check your Python Version</h4>
+<p>Search your computer for "Terminal." This program allows you to give your computer commands without using the interface. Select to keep Terminal in your dock. </p>
+
+<p>Open up Terminal. It should give you a screen that looks similar to this: </p>
+
+<p>[image of terminal screen]</p>
+
+<p>To check your Python version, type <span class="command">python</span> into the terminal window and press "Enter". You should see something that looks like:</p>
+
+<pre><code>Python 2.7.5 (default, Mar  9 2014, 22:15:05) 
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; 
+</code></pre>
+
+<p>Make note of your Python version. </p>
+
+<p>You are now in the Python Shell. This is an interactive environment that allows you to give Python commands directly inside Terminal. We will come back to this during the workshop.</p>
+
+<p>Exit the shell by typing <span class="command">quit()</span> and pressing "Enter".</p>
+
+<h4 id="install-pip">3. Install Pip</h4>
+
+<p>One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.</p>
+
+<p>To download Pip, we are going to use another tool called cURL, which is already part of your operating system. cURL allows us to transfer data using the command line.</p>
+
+<p>Type <span class="command">curl -O https://bootstrap.pypa.io/get-pip.py</span> and press "Enter". This will download a file titled "get-pip.py" onto your machine.</p>
+
+<p>To install Pip, you need to run that file with Python. To do that, type <span class="command">python get-pip.py</span> into Terminal and press "Enter". </p>
+
+<p>If Terminal turns red and you get errors that say <span class="command"> OSError: [Errno 13] Permission denied</span>, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give Python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the Python command.</p>
+
+<p>Type <span class="command">sudo python get-pip.py</span> into the Termainal window.</p>
+
+<p>The computer will prompt you for your password. This is the password you use to log onto your computer. The terminal will give no indication that you are typing as you enter your password.</p>
+
+<p>If everything goes well, you should see something similar to the following in your Terminal window:</p>
+
+<pre><code>Downloading/unpacking pip from https://pypi.python.org/packages/py2.py3/p/pip/pip-1.5.6-py2.py3-none-any.whl#md5=4d4fb4b69df6731c7aeaadd6300bc1f2
+  	Downloading pip-1.5.6-py2.py3-none-any.whl (1.0MB): 1.0MB downloaded
+Installing collected packages: pip
+Successfully installed pip
+Cleaning up...
+</code></pre>
+
+<p>To check that everything installed, type <span class="command">pip</span> into your Terminal and press "Enter". This will give you information on the different commands that available for you to use with "pip".</p>
+
+<h4 id="well-done-your-computer-is-now-ready-for-the-workshop">Well done! Your computer is now ready for the workshop!</h4>
+
+<h3 id="windows">Windows</h3>
+
+<h4 id="install-text-editor-1">1. Install Text Editor</h4>
+
+<p>For this tutorial, we recommend using NotePad++, which is a free editor. To get Notepad++, go to <a href="http://notepad-plus-plus.org/">http://notepad-plus-plus.org/</a> and download. </p>
+
+<p>To easily access NotePad++, be sure to add it to your Desktop and/or Quick Launch.</p>
+
+<h4 id="install-python">2. Install Python</h4>
+
+<p>Search your computer for "PowerShell." This program allows you to give your computer commands without using the interface. </p>
+
+<p>Open up PowerShell. It should give you a screen that looks similar to this: </p>
+
+<p>[Image of PowerShell]</p>
+
+<p>In PowerShell, type <span class="command">python</span> and press "Enter". You will most get back a message that says <span class="command">python is not recognized..</span>.</p>
+
+<p>If this is the case, download and install python from <a href="https://www.python.org/download/">https://www.python.org/download/</a>. Choose the "Python 2.7.8 Windows Installer" or "Python 2.7.8 Windows X86-64 Installer", depending on your system. Run the installer and accept the default settings.</p>
+
+<p>Once Python is installed, we have to tell the computer a bit about where to look for it. In PowerShell, enter:</p>
+
+<pre><code>[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")
+</code></pre>
+
+<p>Close PowerShell and re-open. To check if Python installed properly, type <span class="command">python</span> and press "Enter". You should get something that looks like this back:</p>
+
+<pre><code>Python 2.7.8  (default, Jun 30 2014, 14:24) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or license for more information.
+&gt;&gt;&gt; 
+</code></pre>
+
+<p>You are now in the Python Shell. This is an interactive environment that allows you to give python commands directly inside PowerShell. We will come back to this during the workshop.</p>
+
+<p>Exit the shell by typing <span class="command">quit()</span> and pressing "Enter".</p>
+
+<h4 id="install-pip-1">3. Install Pip</h4>
+
+<p>One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.</p>
+
+<p>The easiest way to install Pip is through the use of a Python program called get-pip.py, which you can download here: <a href="https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py">https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py</a>. When you open this link, you might be scared of the massive jumble of code that awaits you–don’t be! Simply use your browser to save this page under its default name, which is get-pip.py.</p>
+
+<p>Open PowerShell with administrator privileges by right-clicking on the PowerShell icon and select "Run as Admin." </p>
+
+<p>Enter the following commands in PowerShell to download the bootstrap scripts for Pip:</p>
+
+<pre><code>mkdir c:\envs
+cd c:\envs
+   
+
+(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
+   
+
+python c:\envs\get-pip.py
+</code></pre>
+
+<p>Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python27\Scripts with the correct location of your Python installation:</p>
+
+<pre><code>setx PATH "%PATH%;C:\Python27\Scripts"
+&gt;&gt;&gt;
+</code></pre>
+
+<p>Close and reopen PowerShell after running this command.</p>
+
+<h3 id="credits">Credits</h3>
+<p>These instructions are modifications of the Python installation instruction at <a href="http://learnpythonthehardway.org/book/ex0.html"><em>Learn Python the Hard Way</em></a> and Fred Gibb's <a href="http://fredgibbs.net/tutorials/tutorial/install-python-modules/">tutorial on installing Pip</a> as well as the <a href="http://docs.railsbridge.org/installfest/">InstallFest docs of RailsBridge</a>.</p>
 
 
 

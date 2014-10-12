@@ -10,15 +10,353 @@
     <name>Blog Author</name>
   </author>
   <entry>
-    <title>Create Data from Text Files</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module11-create.html"/>
-    <id>http://blog.url.com/modules/module11-create.html</id>
+    <title>Save Results to File</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module13-save.html"/>
+    <id>http://blog.url.com/modules/module13-save.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-09-25T17:35:57-04:00</updated>
+    <updated>2014-10-11T20:12:51-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module, we will be thinking about how we can use the skills we just learned to create data from our primary source material. &lt;/p&gt;
+    <content type="html">
+</content>
+  </entry>
+  <entry>
+    <title>Analyzing a Subset of the Data</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module12-analyze.html"/>
+    <id>http://blog.url.com/modules/module12-analyze.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-11T23:38:54-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;// Code we need to get them to
+from dpla.api import DPLA
+import json
+from collections import Counter
+from nltk.corpus import stopwords&lt;/p&gt;
+
+&lt;p&gt;description_words = []
+stop = stopwords.words('english')&lt;/p&gt;
+
+&lt;p&gt;with open("cooking_results.txt") as json_file:
+	json_data = json.load(json_file)&lt;/p&gt;
+
+&lt;p&gt;print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))&lt;/p&gt;
+
+&lt;p&gt;def get_words():
+	for each in json_data:
+		try:
+			description = each['sourceResource']['description']
+			words = description.split()
+			for each in words:
+				if each.lower() not in stop:
+					if not each.isdigit():
+						description_words.append(each.lower())&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	except:
+		print "no description"
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;get_words()&lt;/p&gt;
+
+</content>
+  </entry>
+  <entry>
+    <title>Gathering a Subset of the Data</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module11-subset.html"/>
+    <id>http://blog.url.com/modules/module11-subset.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-12T00:11:19-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;In this module, we will learn how to collect and store the description data from each item in our "json_data" variable. To do this, we will first identify the location of the description with the data structure and then loop through each item, saving each of the words in the description into a new list.&lt;/p&gt;
+
+&lt;h3 id="identifying-our-target-fields"&gt;Identifying Our Target Fields&lt;/h3&gt;
+
+&lt;p&gt;Remember back to JSON and how it organizes data using key:value pairs? One of the most powerful features of JSON is that we are able to nest features and create lists within key:value pairs. This is useful for creating complex data structures. It also means that we have work within the hierarchy of key:value pairs to isolate particular values.&lt;/p&gt;
+
+&lt;p&gt;In order to better see that hierarchy, let's &lt;strong&gt;Pretty Print&lt;/strong&gt; the JSON results, or print with the indentations and hierarchies visually displayed. &lt;/p&gt;
+
+&lt;p&gt;Open "my_second_script.py" and &lt;strong&gt;comment out&lt;/strong&gt; "print jason_data[0]" by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work.&lt;/p&gt;
+
+&lt;p&gt;At the bottom of your script, add the line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save and run in Terminal. &lt;/p&gt;
+
+&lt;p&gt;Work with your table to map out what this command did.&lt;/p&gt;
+
+&lt;p&gt;We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F". &lt;/p&gt;
+
+&lt;p&gt;Looking at the "description" field, work with your table to identify the field name it is nested under. &lt;/p&gt;
+
+&lt;p&gt;The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using &lt;span class="command"&gt;json_data[0]&lt;/span&gt;. This form means we want the first item in the json_data object. &lt;/p&gt;
+
+&lt;p&gt;If we want the value associated with the "description" key, we use a similar format. &lt;/p&gt;
+
+&lt;p&gt;To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print json_data[0]['sourceResource']['description']
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Work with your table to print only the titles. What about only the subject headings?&lt;/p&gt;
+
+&lt;h3 id="saving-the-descriptions"&gt;Saving the Descriptions&lt;/h3&gt;
+
+&lt;p&gt;One way to look at the descriptions is to consider them as a collection, or list, of words. If we take all of the collections as a whole, we can ask if there are any noticable patterns in the words being used to describe these items related to cooking.&lt;/p&gt;
+
+&lt;p&gt;One common way of dealing with text computationally is to translate the text into a "bag of words". In a bag of words approach, the order does not matter. What we are looking at instead is the collection of words and their frequencies.&lt;/p&gt;
+
+&lt;p&gt;To create a "bag of words" from the descriptions we need to 1) create a list to store the words and 2) write a loop that takes every description and adds the words to the list.&lt;/p&gt;
+
+&lt;p&gt;See if you can use the information in module 7 (functions and loops) to create an empty list.&lt;/p&gt;
+
+&lt;p&gt;Currently our "my_second_script.py" file should look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+  json_data = json.load(json_file)
+	
+#print json_data[0]
+#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+print json_data[0]['sourceResource']['description']
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I will use "description_words" as the variable for my empty list of stopwords. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;description_words = []
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, we will create a new function called "get_words"&lt;/p&gt;
+
+&lt;p&gt;Declare the function by adding:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_words():
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, tab in once and add a for-loop to move through each item in the json_data list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_words():
+  for each in json_data:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, let's set up a variable to grab the descriptions:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+    for line in descriptions:
+      words = line.split()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To see what just happened, let's add a print statement and call the function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+    for line in descriptions:
+      words = line.split()
+      print words
+
+get_words()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your file should now look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+  json_data = json.load(json_file)
+	
+#print json_data[1]
+#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+print json_data[0]['sourceResource']['description']
+
+description_words = []
+
+def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+    for line in descriptions:
+      words = line.split()
+      print words
+
+get_words()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save the file and run it in the terminal.&lt;/p&gt;
+
+&lt;p&gt;You might first notice that this script threw an error, saying:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;KeyError: 'description'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jeriwieringa$ python my_second_script.py
+[u'This book is published to give greater publicity to the exceptional qualities of Crisco."--Introd.']
+[u'This', u'book', u'is', u'published', u'to', u'give', u'greater', u'publicity', u'to', u'the', u'exceptional', u'qualities', u'of', u'Crisco."--Introd.']
+Traceback (most recent call last):
+  	File "my_second_script.py", line 21, in &amp;lt;module&amp;gt;
+	get_words()
+  	File "my_second_script.py", line 16, in get_words
+	descriptions = each['sourceResource']['description']
+KeyError: 'description'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;First, we got a print out of the description sentence and then the words of that description as a list. This is good!&lt;/p&gt;
+
+&lt;p&gt;Then we got a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". &lt;/p&gt;
+
+&lt;p&gt;Let's see what is going. Comment out the call to "get_words" function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# get_words()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now let's print the second object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 0 to 1, the save and run the file.&lt;/p&gt;
+
+&lt;p&gt;Search for 'description' under 'sourceResource'. If you can't find it, it's because this item appears to be missing "description" information. Because the computer can't find the description, it returns an error and stops.&lt;/p&gt;
+
+&lt;p&gt;Getting around this problem requires what is called "handling exceptions". We had expected a particular pattern in our data (that there was "description" keys nested under "sourceResource" keys) but we've encountered an exception to that general pattern. &lt;/p&gt;
+
+&lt;p&gt;To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_words():
+  for each in json_data:
+    try:
+      descriptions = each['sourceResource']['description']
+      for line in descriptions:
+      words = line.split()
+        print words
+    except KeyError:
+      print "Description Missing"
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Un-comment "get_words()", save, and run the file.&lt;/p&gt;
+
+&lt;p&gt;Our script should no longer error.&lt;/p&gt;
+
+&lt;p&gt;But, it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.&lt;/p&gt;
+
+&lt;p&gt;To check if the value in "descriptions" in a string, we can add the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_words():
+  for each in json_data:
+    try:
+    descriptions = each['sourceResource']['description']
+    if isinstance(descriptions, basestring):
+      words = descriptions.split()
+    else:
+      for line in descriptions:
+        words = line.split()
+        print words
+  except KeyError:
+    print "Description Missing"
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.&lt;/p&gt;
+
+&lt;h3 id="adding-the-words-to-our-bag-of-words"&gt;Adding the words to our "bag of words"&lt;/h3&gt;
+
+&lt;p&gt;The final step in creating our subset of data is to add the words into our "description_words" list.&lt;/p&gt;
+
+&lt;p&gt;To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def get_words():
+for each in json_data:
+  try:
+    descriptions = each['sourceResource']['description']
+    if isinstance(descriptions, basestring):
+      words = descriptions.split()
+    else:
+      for line in descriptions:
+        words = line.split()
+    print words
+
+    for word in words:
+      description_words.append(word)
+
+  except KeyError:
+    print "Description Missing"
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+json_data = json.load(json_file)
+	
+#print json_data[1]
+#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+#print json_data[0]['sourceResource']['description']
+
+description_words = []
+
+def get_words():
+for each in json_data:
+  try:
+    descriptions = each['sourceResource']['description']
+    if isinstance(descriptions, basestring):
+      words = descriptions.split()
+    else:
+      for line in descriptions:
+        words = line.split()
+    print words
+
+    for word in words:
+      description_words.append(word)
+
+  except KeyError:
+    print "Description Missing"
+  
+get_words()
+print description_words[999]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bonus Challenges: &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Can you modify the function to also add the words of the title to our bag of words?&lt;/li&gt;
+  &lt;li&gt;Can you also add the subject headings?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
+
+&lt;p&gt;In this module, we learned:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to pretty-print json with Python&lt;/li&gt;
+  &lt;li&gt;to identify the nested key:value pairs we want to analyze&lt;/li&gt;
+  &lt;li&gt;to split a list &lt;/li&gt;
+  &lt;li&gt;to trouble shoot from an error report&lt;/li&gt;
+  &lt;li&gt;to handle exceptions&lt;/li&gt;
+  &lt;li&gt;to check type and use an "if/else" statement&lt;/li&gt;
+&lt;/ul&gt;
 </content>
   </entry>
   <entry>
@@ -276,13 +614,13 @@ pull_records(2, 3, 50)
     <link rel="alternate" href="http://blog.url.com/modules/module06-phasetwo.html"/>
     <id>http://blog.url.com/modules/module06-phasetwo.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-11T16:17:52-04:00</updated>
+    <updated>2014-10-11T19:11:19-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;At the half-way point, it is stop briefly and think through what we have already learned. So far, you have learned to talk to your computer using the terminal. You've interacted with Python, a programming language and used Python to execute a few commands. You've also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks or cake mix to create new programs. &lt;/p&gt;
+    <content type="html">&lt;p&gt;We are at the half-way point, so it is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks or cake mix to create new programs. &lt;/p&gt;
 
-&lt;p&gt;You've also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.&lt;/p&gt;
+&lt;p&gt;We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.&lt;/p&gt;
 
 &lt;p&gt;Well Done!&lt;/p&gt;
 
@@ -364,135 +702,6 @@ dpla = DPLA('YourKeyHere')
   &lt;li&gt;To add additional parameters to our API call&lt;/li&gt;
   &lt;li&gt;To create an empty list&lt;/li&gt;
   &lt;li&gt;To comment-out code that we don't want to run, but want to keep&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Write Python in Script Files</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module05-use_editor.html"/>
-    <id>http://blog.url.com/modules/module05-use_editor.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-11T10:46:54-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.&lt;/p&gt;
-
-&lt;h3 id="writing-and-executing-script-files"&gt;Writing and Executing Script Files&lt;/h3&gt;
-
-&lt;p&gt;First, exit out of the Python Interactive Shell by running &lt;span class="command"&gt;exit()&lt;/span&gt;.&lt;/p&gt;
-
-&lt;p&gt;You should still be in the folder we made at the beginning of the day. Check using &lt;span class="command"&gt;pwd&lt;/span&gt;. &lt;/p&gt;
-
-&lt;p&gt;Now remember we created a file called "my_first_script.py"? Let's open that file again and remind ourselves of what we wrote.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;open my_first_script.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It should say 'print "Hello World"'. Now that you know something about Python functions, what do you expect this script to do?&lt;/p&gt;
-
-&lt;p&gt;Let's test it out! To execute a Python file, run the following in terminal:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;python my_first_script.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Your terminal window should look something like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;jeriwieringa$ python my_first_script.py
-Hello World
-jeriwieringa$
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Excellent! You just executed your first Python script!&lt;/p&gt;
-
-&lt;h3 id="writing-our-dpyla-script"&gt;Writing our DPyLA Script&lt;/h3&gt;
-
-&lt;p&gt;Now let's recreate some of the work we did in the Interactive Shell in this script file.&lt;/p&gt;
-
-&lt;p&gt;Delete &lt;span class="command"&gt;print "Hello World"&lt;/span&gt; so that you're working with a clean file. &lt;/p&gt;
-
-&lt;p&gt;First, at the beginning of a Python file you need to list the libraries that we will be using. Similar to HTML, the computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then we need to store our API key:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dpla = DPLA('YourAPIKey')
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then we can write our search query:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking')
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Save the file and go back to Terminal. Run &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;python my_first_script.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You should notice that your computer works for awhile and then returns to normal, but doesn't tell you anything about what it did. To see results, we can use the print function again.&lt;/p&gt;
-
-&lt;p&gt;Open your script file again (&lt;span class="command"&gt;open my_first_script.py&lt;/span&gt;). &lt;/p&gt;
-
-&lt;p&gt;Work with your group to add another line to the file that uses the print function to display one item from your search. &lt;/p&gt;
-
-&lt;p&gt;Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. &lt;/p&gt;
-
-&lt;h3 id="what-weve-learned"&gt;What We've Learned&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To execute Python scripts in the Terminal&lt;/li&gt;
-  &lt;li&gt;To write our commands in the order they should be executed&lt;/li&gt;
-  &lt;li&gt;To use print to display the results of our scripts&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-  </entry>
-  <entry>
-    <title>Working with the API</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module04-complex_requests.html"/>
-    <id>http://blog.url.com/modules/module04-complex_requests.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-06T23:55:11-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;Now that we've learned to make a simple request using the DPyLA library, let's spend some time exploring the different kinds of requests we can make. &lt;/p&gt;
-
-&lt;h3 id="constructing-api-requests"&gt;Constructing API Requests&lt;/h3&gt;
-
-&lt;p&gt;Open up the &lt;a href="https://github.com/bibliotechy/DPyLA"&gt;documentation for the DPyLA library&lt;/a&gt; and for the &lt;a href="http://dp.la/info/developers/codex/requests/"&gt;DPLA API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;First, let's get some contextual data about the search results. Run &lt;span class="command"&gt;result.count&lt;/span&gt;. This tells you how many items total fit the search term. &lt;/p&gt;
-
-&lt;p&gt;Now run &lt;span class="command"&gt;result.limit&lt;/span&gt;. This tells you how many results the API returned. By default, the API will give you 10 results at a time. Look at the DPyLA documentation and try to construct a request that gets you 50 results.&lt;/p&gt;
-
-&lt;p&gt;You can also limit your search results by a variety of variables. &lt;/p&gt;
-
-&lt;p&gt;For example, you can sort by geography:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can also be more specific with your search, such as limiting your query to cooking in the title of an item. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;result = dpla.search("cooking", fields=["sourceResource:title"])
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;These types of commands help you focus the search results so that you have less noisy data - so that more of the data fits the questions you want to ask.&lt;/p&gt;
-
-&lt;p&gt;Work with the documentation and your table to construct some more targeted queries. &lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;In what ways would you want to narrow the data for different questions?&lt;/li&gt;
-  &lt;li&gt;Do you see any additional strengths or weaknesses with the data when trying to limit your search results?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id="what-we-learned"&gt;What we learned&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Reading API documentation to understand the possible queries&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>

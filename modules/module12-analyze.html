@@ -10,14 +10,14 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Nova+Square' rel='stylesheet' type='text/css'>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <title>DH Bridge</title>
+    <title>Analyzing a Subset of the Data</title>
     
 <!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
  -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
     
   </head>
 
-  <body class="modules modules_2014">
+  <body class="modules modules_module12-analyze">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -53,25 +53,39 @@
 		</section>
 
                 <section id="content">
-                  <h1>Archive for
-    2014
-</h1>
+                        <h3>
+          Analyzing a Subset of the Data
+      </h3>
+       <p>// Code we need to get them to
+from dpla.api import DPLA
+import json
+from collections import Counter
+from nltk.corpus import stopwords</p>
 
+<p>description_words = []
+stop = stopwords.words('english')</p>
 
-<ul>
-    <li><a href="/modules/module13-save.html">Save Results to File</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module12-analyze.html">Analyzing a Subset of the Data</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module11-subset.html">Gathering a Subset of the Data</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module08-whileloop.html">Looping through the Pages</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module07-functionsandloops.html">Functions and Loops</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module06-phasetwo.html">Moving to Phase Two</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module05-use_editor.html">Write Python in Script Files</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module04-complex_requests.html">Working with the API</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module03-get_data.html">Getting Data</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module02-data.html">Thinking about Data</a> <span>Sep 19</span></li>
-    <li><a href="/modules/module01-terminal.html">Working with Your Computer</a> <span>Sep 19</span></li>
-    <li><a href="/modules/installation.html">Installation</a> <span>Sep 19</span></li>
-</ul>
+<p>with open("cooking_results.txt") as json_file:
+	json_data = json.load(json_file)</p>
+
+<p>print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))</p>
+
+<p>def get_words():
+	for each in json_data:
+		try:
+			description = each['sourceResource']['description']
+			words = description.split()
+			for each in words:
+				if each.lower() not in stop:
+					if not each.isdigit():
+						description_words.append(each.lower())</p>
+
+<pre><code>	except:
+		print "no description"
+</code></pre>
+
+<p>get_words()</p>
+
 
 
                 </section>

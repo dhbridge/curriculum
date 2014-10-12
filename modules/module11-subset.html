@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="" />
+	  <meta name="viewport" content="width=device-width, user-scalable=no">
+	
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Nova+Square' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>Gathering a Subset of the Data</title>
+    
+<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+ -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
+    
+  </head>
+
+  <body class="modules modules_module11-subset">
+    <!-- HEADER -->
+        <header>
+				<div class="wrap">
+	    <h1 id="project_title">DH Bridge</h1>
+	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
+
+	    <nav id="pages">
+	    	<a href="http://dhbridge.org/curriculum">Computational Thinking</a>
+	    	<a href="http://dhbridge.org">About DH Bridge</a>
+	    </nav>
+	</div>
+        </header> 
+        <!-- MAIN CONTENT -->
+        <div class="wrap">
+            <div id="main">
+              <article>
+                		<section id="sidebar">
+			<h3>Modules</h3>
+			<ul>
+				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module01-terminal.html">Working with your Computer</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module02-data.html">Thinking about Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module03-get_data.html">Getting Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
+			</ul>
+		</section>
+
+                <section id="content">
+                        <h3>
+          Gathering a Subset of the Data
+      </h3>
+       <p>In this module, we will learn how to collect and store the description data from each item in our "json_data" variable. To do this, we will first identify the location of the description with the data structure and then loop through each item, saving each of the words in the description into a new list.</p>
+
+<h3 id="identifying-our-target-fields">Identifying Our Target Fields</h3>
+
+<p>Remember back to JSON and how it organizes data using key:value pairs? One of the most powerful features of JSON is that we are able to nest features and create lists within key:value pairs. This is useful for creating complex data structures. It also means that we have work within the hierarchy of key:value pairs to isolate particular values.</p>
+
+<p>In order to better see that hierarchy, let's <strong>Pretty Print</strong> the JSON results, or print with the indentations and hierarchies visually displayed. </p>
+
+<p>Open "my_second_script.py" and <strong>comment out</strong> "print jason_data[0]" by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work.</p>
+
+<p>At the bottom of your script, add the line:</p>
+
+<pre><code>print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+</code></pre>
+
+<p>Save and run in Terminal. </p>
+
+<p>Work with your table to map out what this command did.</p>
+
+<p>We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F". </p>
+
+<p>Looking at the "description" field, work with your table to identify the field name it is nested under. </p>
+
+<p>The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using <span class="command">json_data[0]</span>. This form means we want the first item in the json_data object. </p>
+
+<p>If we want the value associated with the "description" key, we use a similar format. </p>
+
+<p>To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:</p>
+
+<pre><code>print json_data[0]['sourceResource']['description']
+</code></pre>
+
+<p>Work with your table to print only the titles. What about only the subject headings?</p>
+
+<h3 id="saving-the-descriptions">Saving the Descriptions</h3>
+
+<p>One way to look at the descriptions is to consider them as a collection, or list, of words. If we take all of the collections as a whole, we can ask if there are any noticable patterns in the words being used to describe these items related to cooking.</p>
+
+<p>One common way of dealing with text computationally is to translate the text into a "bag of words". In a bag of words approach, the order does not matter. What we are looking at instead is the collection of words and their frequencies.</p>
+
+<p>To create a "bag of words" from the descriptions we need to 1) create a list to store the words and 2) write a loop that takes every description and adds the words to the list.</p>
+
+<p>See if you can use the information in module 7 (functions and loops) to create an empty list.</p>
+
+<p>Currently our "my_second_script.py" file should look like this:</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+  json_data = json.load(json_file)
+	
+#print json_data[0]
+#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+print json_data[0]['sourceResource']['description']
+</code></pre>
+
+<p>I will use "description_words" as the variable for my empty list of stopwords. </p>
+
+<pre><code>description_words = []
+</code></pre>
+
+<p>Next, we will create a new function called "get_words"</p>
+
+<p>Declare the function by adding:</p>
+
+<pre><code>def get_words():
+</code></pre>
+
+<p>Next, tab in once and add a for-loop to move through each item in the json_data list:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+</code></pre>
+
+<p>Next, let's set up a variable to grab the descriptions:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+</code></pre>
+
+<p>Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+    for line in descriptions:
+      words = line.split()
+</code></pre>
+
+<p>To see what just happened, let's add a print statement and call the function:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+    for line in descriptions:
+      words = line.split()
+      print words
+
+get_words()
+</code></pre>
+
+<p>Your file should now look like this:</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+  json_data = json.load(json_file)
+	
+#print json_data[1]
+#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+print json_data[0]['sourceResource']['description']
+
+description_words = []
+
+def get_words():
+  for each in json_data:
+    descriptions = each['sourceResource']['description']
+    for line in descriptions:
+      words = line.split()
+      print words
+
+get_words()
+</code></pre>
+
+<p>Save the file and run it in the terminal.</p>
+
+<p>You might first notice that this script threw an error, saying:</p>
+
+<pre><code>KeyError: 'description'
+</code></pre>
+
+<p>One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:</p>
+
+<pre><code>jeriwieringa$ python my_second_script.py
+[u'This book is published to give greater publicity to the exceptional qualities of Crisco."--Introd.']
+[u'This', u'book', u'is', u'published', u'to', u'give', u'greater', u'publicity', u'to', u'the', u'exceptional', u'qualities', u'of', u'Crisco."--Introd.']
+Traceback (most recent call last):
+  	File "my_second_script.py", line 21, in &lt;module&gt;
+	get_words()
+  	File "my_second_script.py", line 16, in get_words
+	descriptions = each['sourceResource']['description']
+KeyError: 'description'
+</code></pre>
+
+<p>First, we got a print out of the description sentence and then the words of that description as a list. This is good!</p>
+
+<p>Then we got a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". </p>
+
+<p>Let's see what is going. Comment out the call to "get_words" function.</p>
+
+<pre><code># get_words()
+</code></pre>
+
+<p>Now let's print the second object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 0 to 1, the save and run the file.</p>
+
+<p>Search for 'description' under 'sourceResource'. If you can't find it, it's because this item appears to be missing "description" information. Because the computer can't find the description, it returns an error and stops.</p>
+
+<p>Getting around this problem requires what is called "handling exceptions". We had expected a particular pattern in our data (that there was "description" keys nested under "sourceResource" keys) but we've encountered an exception to that general pattern. </p>
+
+<p>To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    try:
+      descriptions = each['sourceResource']['description']
+      for line in descriptions:
+      words = line.split()
+        print words
+    except KeyError:
+      print "Description Missing"
+</code></pre>
+
+<p>Un-comment "get_words()", save, and run the file.</p>
+
+<p>Our script should no longer error.</p>
+
+<p>But, it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.</p>
+
+<p>To check if the value in "descriptions" in a string, we can add the following:</p>
+
+<pre><code>def get_words():
+  for each in json_data:
+    try:
+    descriptions = each['sourceResource']['description']
+    if isinstance(descriptions, basestring):
+      words = descriptions.split()
+    else:
+      for line in descriptions:
+        words = line.split()
+        print words
+  except KeyError:
+    print "Description Missing"
+</code></pre>
+
+<p>Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.</p>
+
+<h3 id="adding-the-words-to-our-bag-of-words">Adding the words to our "bag of words"</h3>
+
+<p>The final step in creating our subset of data is to add the words into our "description_words" list.</p>
+
+<p>To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function.</p>
+
+<pre><code>def get_words():
+for each in json_data:
+  try:
+    descriptions = each['sourceResource']['description']
+    if isinstance(descriptions, basestring):
+      words = descriptions.split()
+    else:
+      for line in descriptions:
+        words = line.split()
+    print words
+
+    for word in words:
+      description_words.append(word)
+
+  except KeyError:
+    print "Description Missing"
+</code></pre>
+
+<p>Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+json_data = json.load(json_file)
+	
+#print json_data[1]
+#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+
+#print json_data[0]['sourceResource']['description']
+
+description_words = []
+
+def get_words():
+for each in json_data:
+  try:
+    descriptions = each['sourceResource']['description']
+    if isinstance(descriptions, basestring):
+      words = descriptions.split()
+    else:
+      for line in descriptions:
+        words = line.split()
+    print words
+
+    for word in words:
+      description_words.append(word)
+
+  except KeyError:
+    print "Description Missing"
+  
+get_words()
+print description_words[999]
+</code></pre>
+
+<p>Bonus Challenges: </p>
+
+<ul>
+  <li>Can you modify the function to also add the words of the title to our bag of words?</li>
+  <li>Can you also add the subject headings?</li>
+</ul>
+
+<h3 id="what-we-learned">What We Learned</h3>
+
+<p>In this module, we learned:</p>
+
+<ul>
+  <li>to pretty-print json with Python</li>
+  <li>to identify the nested key:value pairs we want to analyze</li>
+  <li>to split a list </li>
+  <li>to trouble shoot from an error report</li>
+  <li>to handle exceptions</li>
+  <li>to check type and use an "if/else" statement</li>
+</ul>
+
+
+                </section>
+              </article>
+  			   </div>
+  		</div>
+  		
+  		<footer>
+  				<div class="wrap">
+		<div id="rights">
+		    <p>&copy; CC-BY 2014</p>
+		    <p>The DH Bridge curriculum is supported by a microgrant from the <a href="http://ach.org/"><img src="http://dhbridge.org/images/ach-logo.png" width=50px ></a></p>
+		</div>
+
+	    <div id="contact">
+	        <a href="mailto:bridgingdh@gmail.com"><i class="fa fa-paper-plane"></i></a>
+	        <a href="https://twitter.com/dhbridge"><i class="fa fa-twitter"></i></a>
+	        <a href="https://github.com/dhbridge/curriculum"><i class="fa fa-github"></i></a>
+	    </div>
+	</div>
+  		</footer>
+
+  </body>
+</html>
