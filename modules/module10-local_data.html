@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="" />
+	  <meta name="viewport" content="width=device-width, user-scalable=no">
+	
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Nova+Square' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>Working with Local Data</title>
+    
+<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+ -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
+    
+  </head>
+
+  <body class="modules modules_module10-local_data">
+    <!-- HEADER -->
+        <header>
+				<div class="wrap">
+	    <h1 id="project_title">DH Bridge</h1>
+	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
+
+	    <nav id="pages">
+	    	<a href="http://dhbridge.org/curriculum">Computational Thinking</a>
+	    	<a href="http://dhbridge.org">About DH Bridge</a>
+	    </nav>
+	</div>
+        </header> 
+        <!-- MAIN CONTENT -->
+        <div class="wrap">
+            <div id="main">
+              <article>
+                		<section id="sidebar">
+			<h3>Modules</h3>
+			<ul>
+				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module01-terminal.html">Working with your Computer</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module02-data.html">Thinking about Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module03-get_data.html">Getting Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
+			</ul>
+		</section>
+
+                <section id="content">
+                        <h3>
+          Working with Local Data
+      </h3>
+       <p>Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. </p>
+
+<p>In this module, we will create a new script and learn how to load data from our "search_results.json" file. We will also install the Natural Language ToolKit library in order to do some text analysis on our data.</p>
+
+<h3 id="loading-from-a-local-file">Loading from a Local File</h3>
+
+<p>It is time to create a new script file!</p>
+
+<p>Go to terminal and type:</p>
+
+<pre><code>touch my_second_script.py
+</code></pre>
+
+<p>To open your new script file, type:</p>
+
+<pre><code>open my_second_script.py
+</code></pre>
+
+<p>To begin, let's load in some of the libraries we will need for this next phase of the workshop.</p>
+
+<p>First, we will need the json library again. To add this, type <span class="command">import json</span> at the very top of the file.</p>
+
+<p>We are also going to use a library called "collections" and a specific part of that library called "Counter". To import this, type <span class="command">from collections import Counter</span> on the next line.</p>
+
+<p>The next thing is to load up the data from our "search_results.json" file.</p>
+
+<p>The structure for this is:</p>
+
+<pre><code>with open("search_results.json") as json_file:
+	json_data = json.load(json_file)
+</code></pre>
+
+<p>Here, we tell Python to "open" our "search_results.json" file and assign it to the variable "json_file". The we use the "load" method in the "json.library" to load up the data and save it as the variable "json_data". </p>
+
+<p>To make sure this worked, let's print out one item from the json data. Work with our table to add a print statement to print the first item in the json_data list.</p>
+
+<h3 id="installing-nltk">Installing NLTK</h3>
+
+<p>We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).</p>
+
+<p>To install NLTK, let's go back to our terminal and use pip.</p>
+
+<p>Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.</p>
+
+<p>Now, go back to your file and import nltk at the top of the file.</p>
+
+<p>There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
+
+<p>To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:</p>
+
+<pre><code>Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; 
+</code></pre>
+
+<p>Type <span class="command">import nltk</span> and press enter.</p>
+
+<p>Next type <span class="command">nltk.download('stopwords')</span> and press enter.</p>
+
+<p>Great!</p>
+
+<p>Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add <span class="command">from nltk.corpus import stopwords</span>.</p>
+
+<p>We are now ready to start working with our data.</p>
+
+<h3 id="what-we-learned">What We Learned</h3>
+
+<p>In this module, we have reviewed and learned:</p>
+
+<ul>
+  <li>to create new files using terminal</li>
+  <li>to load json data from a file </li>
+  <li>to download libraries using pip</li>
+  <li>to download datasets within libraries</li>
+  <li>to load libraries into our scripts</li>
+</ul>
+
+
+
+                </section>
+              </article>
+  			   </div>
+  		</div>
+  		
+  		<footer>
+  				<div class="wrap">
+		<div id="rights">
+		    <p>&copy; CC-BY 2014</p>
+		    <p>The DH Bridge curriculum is supported by a microgrant from the <a href="http://ach.org/"><img src="http://dhbridge.org/images/ach-logo.png" width=50px ></a></p>
+		</div>
+
+	    <div id="contact">
+	        <a href="mailto:bridgingdh@gmail.com"><i class="fa fa-paper-plane"></i></a>
+	        <a href="https://twitter.com/dhbridge"><i class="fa fa-twitter"></i></a>
+	        <a href="https://github.com/dhbridge/curriculum"><i class="fa fa-github"></i></a>
+	    </div>
+	</div>
+  		</footer>
+
+  </body>
+</html>

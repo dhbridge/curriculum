@@ -360,6 +360,199 @@ print description_words[999]
 </content>
   </entry>
   <entry>
+    <title>Working with Local Data</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module10-local_data.html"/>
+    <id>http://blog.url.com/modules/module10-local_data.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-12T00:16:04-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. &lt;/p&gt;
+
+&lt;p&gt;In this module, we will create a new script and learn how to load data from our "search_results.json" file. We will also install the Natural Language ToolKit library in order to do some text analysis on our data.&lt;/p&gt;
+
+&lt;h3 id="loading-from-a-local-file"&gt;Loading from a Local File&lt;/h3&gt;
+
+&lt;p&gt;It is time to create a new script file!&lt;/p&gt;
+
+&lt;p&gt;Go to terminal and type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;touch my_second_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To open your new script file, type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;open my_second_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To begin, let's load in some of the libraries we will need for this next phase of the workshop.&lt;/p&gt;
+
+&lt;p&gt;First, we will need the json library again. To add this, type &lt;span class="command"&gt;import json&lt;/span&gt; at the very top of the file.&lt;/p&gt;
+
+&lt;p&gt;We are also going to use a library called "collections" and a specific part of that library called "Counter". To import this, type &lt;span class="command"&gt;from collections import Counter&lt;/span&gt; on the next line.&lt;/p&gt;
+
+&lt;p&gt;The next thing is to load up the data from our "search_results.json" file.&lt;/p&gt;
+
+&lt;p&gt;The structure for this is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;with open("search_results.json") as json_file:
+	json_data = json.load(json_file)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here, we tell Python to "open" our "search_results.json" file and assign it to the variable "json_file". The we use the "load" method in the "json.library" to load up the data and save it as the variable "json_data". &lt;/p&gt;
+
+&lt;p&gt;To make sure this worked, let's print out one item from the json data. Work with our table to add a print statement to print the first item in the json_data list.&lt;/p&gt;
+
+&lt;h3 id="installing-nltk"&gt;Installing NLTK&lt;/h3&gt;
+
+&lt;p&gt;We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).&lt;/p&gt;
+
+&lt;p&gt;To install NLTK, let's go back to our terminal and use pip.&lt;/p&gt;
+
+&lt;p&gt;Run &lt;span class="command"&gt;pip install nltk&lt;/span&gt;. You may need to use &lt;span class="command"&gt;sudo pip install nltk&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, go back to your file and import nltk at the top of the file.&lt;/p&gt;
+
+&lt;p&gt;There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but browse the list of all the datasets you could download and use at &lt;a href="http://www.nltk.org/nltk_data/"&gt;http://www.nltk.org/nltk_data/&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;To download the stopwords, we are going to go back into the Python Interactive Shell. Run &lt;span class="command"&gt;python&lt;/span&gt;. Your terminal window should now look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&amp;gt;&amp;gt;&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Type &lt;span class="command"&gt;import nltk&lt;/span&gt; and press enter.&lt;/p&gt;
+
+&lt;p&gt;Next type &lt;span class="command"&gt;nltk.download('stopwords')&lt;/span&gt; and press enter.&lt;/p&gt;
+
+&lt;p&gt;Great!&lt;/p&gt;
+
+&lt;p&gt;Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add &lt;span class="command"&gt;from nltk.corpus import stopwords&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;We are now ready to start working with our data.&lt;/p&gt;
+
+&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
+
+&lt;p&gt;In this module, we have reviewed and learned:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to create new files using terminal&lt;/li&gt;
+  &lt;li&gt;to load json data from a file &lt;/li&gt;
+  &lt;li&gt;to download libraries using pip&lt;/li&gt;
+  &lt;li&gt;to download datasets within libraries&lt;/li&gt;
+  &lt;li&gt;to load libraries into our scripts&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+  </entry>
+  <entry>
+    <title>Writings Search Results to a File</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module09-write.html"/>
+    <id>http://blog.url.com/modules/module09-write.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-12T00:16:01-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;In this module, we will focus on writing the results of our functions to a text file. This gives us a local copy of the data so that we only hit the DPLA servers once for the entire collection of files.&lt;/p&gt;
+
+&lt;h3 id="opening-a-new-file"&gt;Opening a new file&lt;/h3&gt;
+
+&lt;p&gt;Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right after you declare the "all_records" variable, add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;f = open("search_results.json", "w")
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here you are combining a function - open("search_results.json") - with the declaration of a variable. "Open" also creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. &lt;/p&gt;
+
+&lt;h3 id="creating-a-write-function"&gt;Creating a "Write" Function&lt;/h3&gt;
+
+&lt;p&gt;Now that we have a file to write to, let's create a third function to write our search results to the file. You can put this after &lt;span class="command"&gt;f = open("search_results.json", "w")&lt;/span&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def save_results():
+	data = json.dumps(all_records)
+	f.write(data)
+	f.close
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;First, we are creating a variable called "data". Working with json objects in python requires the use of another library, called "json", and json.dumps is an operation that helps python know how to interact with all the data in "all_records". Now, because we are using a new library, we also need to import that library at the beginning of the file. Add &lt;span class="command"&gt;import json&lt;/span&gt; to the top of the file. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.&lt;/p&gt;
+
+&lt;h3 id="calling-the-write-function"&gt;Calling the "Write" Function&lt;/h3&gt;
+
+&lt;p&gt;To run the "save_results" function, we can now call the function at the end of our file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;save_results()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Our file should now look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
+import json
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+	
+all_records = []
+f = open('search_results.json', 'w')
+
+def save_results():
+	data = json.dumps(all_records)
+	f.write(data)
+	f.close
+
+def pull_records(pages, end, size):
+	while(pages &amp;lt;= end):
+		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		save_each(paged_search)
+		print "finished page " + str(pages)
+		pages = pages + 1
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 5, 50)
+
+print all_records[150]
+
+save_results()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test that everything is working by running your "my_first_script.py" in terminal.
+You can open the "search_results.json" file to check that 200 items made it in.&lt;/p&gt;
+
+&lt;h3 id="saving-all-the-search-results"&gt;Saving all the Search Results&lt;/h3&gt;
+
+&lt;p&gt;Now, let's change the parameters we pass to the "pull_records" function to get all of the search results.&lt;/p&gt;
+
+&lt;p&gt;Remember, the number we pass to "pull_records" is the first page, the second number is the last page, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take '500' for our third variable. We also want to start with the first page, so '1' is our first variable.&lt;/p&gt;
+
+&lt;p&gt;To figure out the value we want for "end", we need to do a little math. If we have 10,909 items and can get 500 items a page, how many pages do we have to work through?&lt;/p&gt;
+
+&lt;p&gt;Update your "pull_records" line to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pull_records(1, 22, 500)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save and run your script. This will take a bit of time, so get up, stretch, and get some coffee!&lt;/p&gt;
+
+&lt;p&gt;Bonus Challege: Can you write a function that determines the total number of pages from the search results?&lt;/p&gt;
+
+&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To create and open a new file&lt;/li&gt;
+  &lt;li&gt;The difference between "write" and "append" as ways of opening a file&lt;/li&gt;
+  &lt;li&gt;To write json to a file&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
     <title>Looping through the Pages</title>
     <link rel="alternate" href="http://blog.url.com/modules/module08-whileloop.html"/>
     <id>http://blog.url.com/modules/module08-whileloop.html</id>
@@ -449,259 +642,6 @@ print all_records[40]
   &lt;li&gt;To use a while loop and counter&lt;/li&gt;
   &lt;li&gt;To test on a subset of the data&lt;/li&gt;
   &lt;li&gt;To use "print" to check our functions along the way&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Functions and Loops</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module07-functionsandloops.html"/>
-    <id>http://blog.url.com/modules/module07-functionsandloops.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-11T16:17:55-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;We now have a file that looks as follows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
-
-dpla = DPLA('Your-Key-Here')
-
-# result = dpla.search('cooking')
-# print result.items[1]
-
-all_records = []
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We will now add a function that handles the query for any given page number.&lt;/p&gt;
-
-&lt;h3 id="creating-a-pull-records-function"&gt;Creating a "Pull Records" Function&lt;/h3&gt;
-
-&lt;p&gt;To write a function, we set of the function with the word "def" and then indent all of the commands that are part of the function.&lt;/p&gt;
-
-&lt;p&gt;In your "my_first_script.py" file, add the line&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def pull_records(pages, end, size):
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.&lt;/p&gt;
-
-&lt;p&gt;Tab in one space on the next line and type:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;paged_search = dpla.search(q='cooking', page_size=size, page=pages)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Your file should now look like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
-
-dpla = DPLA('Your-Key-Here')
-
-# result = dpla.search('cooking')
-# print result.items[1]
-
-all_records = []
-
-def pull_records(pages, end, size):
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.&lt;/p&gt;
-
-&lt;p&gt;Let's add a print statement and test out the first stage of this function. At the same tab as "paged_search…", add:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;print paged_search.items[2]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now to run the function, we will call the function name and give it values. On a new line and outside of the function, add the line:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pull_records(2, 3, 50)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Save the file and go to terminal to run it.&lt;/p&gt;
-
-&lt;h3 id="saving-items-to-all-records"&gt;Saving Items to "All Records"&lt;/h3&gt;
-
-&lt;p&gt;You have written and executed your first function! Well done!&lt;/p&gt;
-
-&lt;p&gt;Now we need to add another function to store those results to the empty "all records" array we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.&lt;/p&gt;
-
-&lt;p&gt;To set up our new "Save Each" function, we will define a new function:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def save_each(n):
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in and to take that variable and plug it in for 'n' throughout the function.&lt;/p&gt;
-
-&lt;p&gt;We now need to add our first loop. With how we currently have framed our request, there are 50 items in our paged_search item. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, take the item and add it to "all_records". &lt;/p&gt;
-
-&lt;p&gt;Tabbing in one space on the next line under &lt;span class="command"&gt;def save_each(n):&lt;/span&gt;s add:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;for each in n.items:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is called a "for loop". It tells the computer to iterate through each item in the list 'n'. We use n.items because this is the syntax from the DPyLA library. &lt;/p&gt;
-
-&lt;p&gt;Now we tab in one more space and tell the computer what we want done to each item. To add the item to the "all_records" array, we use the "append" command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;all_records.append(each)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The "save each" function should now look like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def save_each(n):
-	for each in n.items:
-		all_records.append(each)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now we can use this function in our "pull records" function. Currently, our "pull records" looks as follows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def pull_records (pages, end, size):
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
-	print paged_search.items[2]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Let's delete the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;save_each(paged_search)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Our file should now look like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
-
-dpla = DPLA('Your-Key-Here')
-
-# result = dpla.search('cooking')
-# print result.items[1]
-
-all_records = []
-
-def pull_records(pages, end, size):
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
-	save_each(paged_search)
-
-def save_each(n):
-	for each in n.items:
-		all_records.append(each)
-
-pull_records(2, 3, 50)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To test this, let's now add a print statement to the end of the file, after the pull_records function has been run, to make sure that the items are going into the "all_records" variable.&lt;/p&gt;
-
-&lt;p&gt;Add:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;print all_records[30]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Save and run your script.&lt;/p&gt;
-
-&lt;p&gt;We have made great progress! We now have two functions to handle making the query and saving the results, but we are still only working with one "page" of search results at a time. In the next module, we will add yet another kind of loop in order to move through the different pages.&lt;/p&gt;
-
-&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To create and call functions&lt;/li&gt;
-  &lt;li&gt;To pass variables into functions&lt;/li&gt;
-  &lt;li&gt;To create a "for loop"&lt;/li&gt;
-  &lt;li&gt;To "append" items into a list&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Moving to Phase Two</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module06-phasetwo.html"/>
-    <id>http://blog.url.com/modules/module06-phasetwo.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-11T19:11:19-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;We are at the half-way point, so it is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks or cake mix to create new programs. &lt;/p&gt;
-
-&lt;p&gt;We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.&lt;/p&gt;
-
-&lt;p&gt;Well Done!&lt;/p&gt;
-
-&lt;p&gt;So far you have been writing code that does one thing: it get search results or prints a particular item. The power of code, however, is being able to do the same thing to a series of items and it is thinking in terms of iterating through a series that is at the core of computational thinking. To do this, we will learn two very powerful programming concepts: functions and loops.&lt;/p&gt;
-
-&lt;h3 id="asking-questions-of-our-data"&gt;Asking Questions of Our Data&lt;/h3&gt;
-
-&lt;p&gt;We have been able to do a lot with filtering the data by subject headings, by geographic space, and by contributor. But what if we want to ask questions about how the materials are described across all 10,000+ items associated with "cooking"? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking"?&lt;/p&gt;
-
-&lt;p&gt;There are many ways one could go about investigating the descriptions. Work with your table to brain-storm a couple of approaches.&lt;/p&gt;
-
-&lt;h3 id="adding-parameters-to-the-query"&gt;Adding Parameters to the Query&lt;/h3&gt;
-
-&lt;p&gt;To start, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can pass a variable to get up to 500 items at a time, but there were 10,909 items associated with "cooking".&lt;/p&gt;
-
-&lt;p&gt;Open your "my_first_script.py" file. Looking at the line that says &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking')
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;we can change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is &lt;span class="command"&gt;page_size=&lt;/span&gt; and the number of items we want. To get 50 items rather than 10, change that line to:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;result = dpla.search('cooking', page_size=50)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To check that this worked, let's add a line telling the computer to print out the 40th item:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;print result.items[39]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Remember, counting within a list begins at 0.&lt;/p&gt;
-
-&lt;p&gt;Use the &lt;a href="https://github.com/bibliotechy/DPyLA"&gt;documentation&lt;/a&gt; and your table to add another parameter to get the information from page 3.&lt;/p&gt;
-
-&lt;h3 id="setting-up-a-variable"&gt;Setting Up a Variable&lt;/h3&gt;
-
-&lt;p&gt;To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items all of the pages and we need a place to store them, so that as we get new items, our collections grows.&lt;/p&gt;
-
-&lt;p&gt;Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. For example, I could create a list "fruit" that has the values "apple, orange, banana" by doing the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;fruit = ["apple", "orange", "banana"]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;now if I ask for the second item in fruit&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;fruit[1]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I will get back "orange".&lt;/p&gt;
-
-&lt;p&gt;We are going to use a similar structure to save all of the items we get back from the DPLA.&lt;/p&gt;
-
-&lt;p&gt;Go back to "my_first_script.py". Comment out the line &lt;span class="command"&gt;result = dpla.search('cooking', page_size=50)&lt;/span&gt; by placing a # sign at the front of the line. This tells the computer to skip this line. Also comment out the line you wrote to print out one of the items.&lt;/p&gt;
-
-&lt;p&gt;Your file should look something like this: &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
-
-dpla = DPLA('YourKeyHere')
-
-# result = dpla.search('cooking')
-# print result.items[1]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, let's create a new variable, "all_records" and set it equal to an empty list.&lt;/p&gt;
-
-&lt;p&gt;To do this, add a new line:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;all_records = []
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This tells the computer that we have a variable, "all_records", that this variable will hold a list, and that we currently have no items in that list.&lt;/p&gt;
-
-&lt;p&gt;Now that we have a place to store our values, we now have to tell the computer to get the search results from each page and save those results to the "all_records" list.&lt;/p&gt;
-
-&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To add additional parameters to our API call&lt;/li&gt;
-  &lt;li&gt;To create an empty list&lt;/li&gt;
-  &lt;li&gt;To comment-out code that we don't want to run, but want to keep&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>

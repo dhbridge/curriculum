@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="" />
+	  <meta name="viewport" content="width=device-width, user-scalable=no">
+	
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Nova+Square' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>Writings Search Results to a File</title>
+    
+<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+ -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
+    
+  </head>
+
+  <body class="modules modules_module09-write">
+    <!-- HEADER -->
+        <header>
+				<div class="wrap">
+	    <h1 id="project_title">DH Bridge</h1>
+	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
+
+	    <nav id="pages">
+	    	<a href="http://dhbridge.org/curriculum">Computational Thinking</a>
+	    	<a href="http://dhbridge.org">About DH Bridge</a>
+	    </nav>
+	</div>
+        </header> 
+        <!-- MAIN CONTENT -->
+        <div class="wrap">
+            <div id="main">
+              <article>
+                		<section id="sidebar">
+			<h3>Modules</h3>
+			<ul>
+				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module01-terminal.html">Working with your Computer</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module02-data.html">Thinking about Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module03-get_data.html">Getting Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Functions and Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">While Loops</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
+				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
+			</ul>
+		</section>
+
+                <section id="content">
+                        <h3>
+          Writings Search Results to a File
+      </h3>
+       <p>In this module, we will focus on writing the results of our functions to a text file. This gives us a local copy of the data so that we only hit the DPLA servers once for the entire collection of files.</p>
+
+<h3 id="opening-a-new-file">Opening a new file</h3>
+
+<p>Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right after you declare the "all_records" variable, add:</p>
+
+<pre><code>f = open("search_results.json", "w")
+</code></pre>
+
+<p>Here you are combining a function - open("search_results.json") - with the declaration of a variable. "Open" also creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. </p>
+
+<h3 id="creating-a-write-function">Creating a "Write" Function</h3>
+
+<p>Now that we have a file to write to, let's create a third function to write our search results to the file. You can put this after <span class="command">f = open("search_results.json", "w")</span>.</p>
+
+<pre><code>def save_results():
+	data = json.dumps(all_records)
+	f.write(data)
+	f.close
+</code></pre>
+
+<p>First, we are creating a variable called "data". Working with json objects in python requires the use of another library, called "json", and json.dumps is an operation that helps python know how to interact with all the data in "all_records". Now, because we are using a new library, we also need to import that library at the beginning of the file. Add <span class="command">import json</span> to the top of the file. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.</p>
+
+<h3 id="calling-the-write-function">Calling the "Write" Function</h3>
+
+<p>To run the "save_results" function, we can now call the function at the end of our file.</p>
+
+<pre><code>save_results()
+</code></pre>
+
+<p>Our file should now look like this:</p>
+
+<pre><code>from dpla.api import DPLA
+import json
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+	
+all_records = []
+f = open('search_results.json', 'w')
+
+def save_results():
+	data = json.dumps(all_records)
+	f.write(data)
+	f.close
+
+def pull_records(pages, end, size):
+	while(pages &lt;= end):
+		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		save_each(paged_search)
+		print "finished page " + str(pages)
+		pages = pages + 1
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 5, 50)
+
+print all_records[150]
+
+save_results()
+</code></pre>
+
+<p>Test that everything is working by running your "my_first_script.py" in terminal.
+You can open the "search_results.json" file to check that 200 items made it in.</p>
+
+<h3 id="saving-all-the-search-results">Saving all the Search Results</h3>
+
+<p>Now, let's change the parameters we pass to the "pull_records" function to get all of the search results.</p>
+
+<p>Remember, the number we pass to "pull_records" is the first page, the second number is the last page, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take '500' for our third variable. We also want to start with the first page, so '1' is our first variable.</p>
+
+<p>To figure out the value we want for "end", we need to do a little math. If we have 10,909 items and can get 500 items a page, how many pages do we have to work through?</p>
+
+<p>Update your "pull_records" line to:</p>
+
+<pre><code>pull_records(1, 22, 500)
+</code></pre>
+
+<p>Save and run your script. This will take a bit of time, so get up, stretch, and get some coffee!</p>
+
+<p>Bonus Challege: Can you write a function that determines the total number of pages from the search results?</p>
+
+<h3 id="what-we-learned">What We Learned</h3>
+
+<ul>
+  <li>To create and open a new file</li>
+  <li>The difference between "write" and "append" as ways of opening a file</li>
+  <li>To write json to a file</li>
+</ul>
+
+
+                </section>
+              </article>
+  			   </div>
+  		</div>
+  		
+  		<footer>
+  				<div class="wrap">
+		<div id="rights">
+		    <p>&copy; CC-BY 2014</p>
+		    <p>The DH Bridge curriculum is supported by a microgrant from the <a href="http://ach.org/"><img src="http://dhbridge.org/images/ach-logo.png" width=50px ></a></p>
+		</div>
+
+	    <div id="contact">
+	        <a href="mailto:bridgingdh@gmail.com"><i class="fa fa-paper-plane"></i></a>
+	        <a href="https://twitter.com/dhbridge"><i class="fa fa-twitter"></i></a>
+	        <a href="https://github.com/dhbridge/curriculum"><i class="fa fa-github"></i></a>
+	    </div>
+	</div>
+  		</footer>
+
+  </body>
+</html>
