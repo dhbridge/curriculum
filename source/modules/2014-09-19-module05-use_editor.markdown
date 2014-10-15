@@ -15,6 +15,10 @@ Now remember we created a file called "my_first_script.py"? Let's open that file
 
 	open my_first_script.py
 
+and on Windows:
+
+	Start notepad++ my_first_script.py
+
 It should say 'print "Hello World"'. Now that you know something about Python functions, what do you expect this script to do?
 
 Let's test it out! To execute a Python file, run the following in terminal:
@@ -53,11 +57,26 @@ Save the file and go back to Terminal. Run
 
 You should notice that your computer works for awhile and then returns to normal, but doesn't tell you anything about what it did. To see results, we can use the print function again.
 
-Open your script file again (<span class="command">open my_first_script.py</span>). 
+Open your script file again (<span class="command">open my_first_script.py</span>or <span class="command">Start notepad++ my_first_script.py</span>). 
 
 Work with your group to add another line to the file that uses the print function to display one item from your search. 
 
 Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. 
+
+### Anatomy of a Python Script File
+
+Just like when we are writing papers or structuring an argument, order matters in our script files. The computer will execute the code in the order it encounters it.
+
+One good way to keep your code organized and avoid some organization caused bugs is to follow a set pattern when constructing your scripts. 
+
+First, at the top of your files, place the list of libraries you're importing. This way they are ready for use throughout the script. We did then when we started with <span class="command">from dpla.api import DPLA</span>.
+
+Next, declare (or set) the variables (names) that you will use through the script. In code-speak, these are set at the "global scope" meaning that they are available to all functions in the file. We did this when we assigned our api key to the "dpla" variable with <span class="command">dpla = DPLA("YourAPIKey")</span> and when we saved our search to "results" with <span class="command">result = dpla.search('cooking')</span>.
+
+After the variables, we will put our functions. Functions are like mini-scripts or packets of code that do one job. We can then combine functions to create more complicated programs. We will add some functions to our script in the next  modules.
+
+Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) a "()". One exception is the print function, which doesn't require the () marks in this version of Python.* We called the print function to print one item from our search results. It is important to include the functions in the order that you want them to be run.
+
 
 ### What We've Learned
 
@@ -66,4 +85,4 @@ Print is a very useful tool for checking on your script as it moves through your
 - To use print to display the results of our scripts
 
 
-
+*Python 3 does require the use of () for print, making it more consistent with the Python sytax for functions.

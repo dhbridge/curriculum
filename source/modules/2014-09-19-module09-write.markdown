@@ -7,7 +7,7 @@ In this module, we will focus on writing the results of our functions to a text 
 
 ### Opening a new file
 
-Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right after you declare the "all_records" variable, add:
+Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right under the "all_records" variable, add:
 
 	f = open("search_results.json", "w")
 
@@ -50,7 +50,7 @@ Our file should now look like this:
 
 	def pull_records(pages, end, size):
 		while(pages <= end):
-			paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+			paged_search = dpla.search('cooking', page_size=size, page=pages)
 			save_each(paged_search)
 			print "finished page " + str(pages)
 			pages = pages + 1
@@ -66,7 +66,7 @@ Our file should now look like this:
 	save_results()
 
 Test that everything is working by running your "my_first_script.py" in terminal.
-You can open the "search_results.json" file to check that 200 items made it in.
+Use terminal and the same process you use to open your script file to open the "search_results.json" file and check that 200 items made it in. Close the file once you're done.
 
 ### Saving all the Search Results
 
@@ -82,7 +82,9 @@ Update your "pull_records" line to:
 
 Save and run your script. This will take a bit of time, so get up, stretch, and get some coffee!
 
-Bonus Challege: Can you write a function that determines the total number of pages from the search results?
+### Group Challege
+
+Can you write a function that determines the total number of pages from the search results?
 
 ### What We Learned
 

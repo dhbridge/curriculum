@@ -13,11 +13,19 @@ It is time to create a new script file!
 
 Go to terminal and type:
 
-	touch my_second_script.py
+	touch my_second_script.py 
+
+or on Windows: 
+
+    New-Item -ItemType file my_first_script.py
 
 To open your new script file, type:
 
 	open my_second_script.py
+
+or on Windows:
+
+    Start notepad++ my_first_script.py
 
 To begin, let's load in some of the libraries we will need for this next phase of the workshop.
 
@@ -47,7 +55,7 @@ Run <span class = "command">pip install nltk</span>. You may need to use <span c
 
 Now, go back to your file and import nltk at the top of the file.
 
-There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/). 
+There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/). 
 
 To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:
 
@@ -60,9 +68,29 @@ Type <span class="command">import nltk</span> and press enter.
 
 Next type <span class="command">nltk.download('stopwords')</span> and press enter.
 
+Once you see 
+    
+    True
+    >>>
+
+you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span>
+
 Great!
 
 Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add <span class="command">from nltk.corpus import stopwords</span> to the top of the file.
+
+Your file should now look like:
+
+    import json
+    from collections import Counter
+    import nltk
+    from nltk.corpus import stopwords
+
+    with open("search_results.json") as json_file:
+        json_data = json.load(json_file)
+
+    #print json_data[1]
+
 
 We are now ready to start working with our data.
 

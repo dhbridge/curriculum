@@ -26,9 +26,9 @@ In your "my_first_script.py" file, add the line
 
 You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.
 
-Tab in one space on the next line and type:
+Tab in once on the next line and type:
 
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', page_size=size, page=pages)
 
 Your file should now look like this:
 
@@ -42,11 +42,11 @@ Your file should now look like this:
 	all_records = []
 
 	def pull_records(pages, end, size):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 
 It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.
 
-Let's add a print statement and test out the first stage of this function. At the same tab as "paged_search...", add:
+Let's add a print statement and test out the first stage of this function. Press return. Your curser should be at the same level as "paged_search...". Add a new line:
 
 	print paged_search.items[2]
 
@@ -54,6 +54,23 @@ Now to run the function, we will call the function name and give it values. On a
 
 	pull_records(2, 3, 50)
 	
+Your file should now look like:
+
+	from dpla.api import DPLA
+
+	dpla = DPLA('Your-Key-Here')
+
+	# result = dpla.search('cooking')
+	# print result.items[1]
+	
+	all_records = []
+
+	def pull_records(pages, end, size):
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
+		print paged_search.items[2]
+
+	pull_records(2, 3, 50)
+
 Save the file and go to terminal to run it.
 
 ### Saving Items to "All Records"
@@ -62,13 +79,13 @@ You have written and executed your first function! Well done!
 
 Now we need to add another function to store those results to the empty "all records" array we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.
 
-To set up our new "Save Each" function, we will define a new function:
+To set up our new "Save Each" function, we will define a new function in our my_first_script.py file. Good practice is to group our functions together toward the top of the file, so put the "save_each" function after we defined "pull_records" but before we call the "pull_records" function:
 
 	def save_each(n):
 
 The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in and to take that variable and plug it in for 'n' throughout the function.
 
-We now need to add our first loop. With how we currently have framed our request, there are 50 items in our paged_search item. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, take the item and add it to "all_records". 
+We now need to add our first loop. With our current search, there are 50 items in our paged_search variable. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, take the item and add it to "all_records". 
 
 Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:
 
@@ -89,7 +106,7 @@ The "save each" function should now look like this:
 Now we can use this function in our "pull records" function. Currently, our "pull records" looks as follows:
 
 	def pull_records (pages, end, size):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		print paged_search.items[2]
 
 Let's delete the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:
@@ -108,7 +125,7 @@ Our file should now look like:
 	all_records = []
 
 	def pull_records(pages, end, size):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 
 	def save_each(n):
@@ -126,6 +143,11 @@ Add:
 Save and run your script.
 
 We have made great progress! We now have two functions to handle making the query and saving the results, but we are still only working with one "page" of search results at a time. In the next module, we will add yet another kind of loop in order to move through the different pages.
+
+### Group Challenge
+
+Break out the paper and pencils. Work as a group to create a diagram or metaphor for a "for loop". What are some of the advantages of using a loop to process a set of data?
+
 
 ### What We Learned
 

@@ -12,7 +12,7 @@ The "for loop" allows us to do something to each item in a list. The "while loop
 To use a while loop, let's look again at our "pull records" function.
 
 	def pull_records(pages, end, size):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 
 Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.
@@ -25,7 +25,7 @@ so that our function now looks like this:
 
 	def pull_records(pages, end, size):
 		while(pages <= end):
-			paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+			paged_search = dpla.search('cooking', page_size=size, page=pages)
 			save_each(paged_search)
 
 ### Adding a Counter
@@ -55,7 +55,7 @@ Our file should now look like this:
 
 	def pull_records(pages, end, size):
 		while(pages <= end):
-			paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+			paged_search = dpla.search('cooking', page_size=size, page=pages)
 			save_each(paged_search)
 			print "finished page " + str(pages)
 			pages = pages + 1
@@ -66,11 +66,16 @@ Our file should now look like this:
 
 	pull_records(2, 3, 50)
 
-	print all_records[40]
+	print all_records[30]
 
-Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[40]</span> to <span class="command">print all_records[150]</span>
+Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[30]</span> to <span class="command">print all_records[150]</span>
 
 Save and run in Terminal.
+
+### Group Challenge: 
+
+Go back to your pen and paper and diagram a "while loop". 
+
 
 ### What We Learned:
 

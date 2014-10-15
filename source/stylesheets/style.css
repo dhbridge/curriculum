@@ -72,6 +72,9 @@ pre {
   background-color:#515861;
   color:#fafafa;
   margin-top:0;
+  -moz-tab-size: 2;
+  -o-tab-size:   2;
+  tab-size:      2;
 }
 
 
@@ -229,7 +232,7 @@ nav a:last-of-type {
 }
 
 #sidebar {
-  width:30%;
+  width:27%;
   float:left;
   margin-right:3%;
 }
@@ -237,7 +240,7 @@ nav a:last-of-type {
   padding-left:1em;
 }
 #content {
-  width: 65%;
+  width: 70%;
   float:left;
 }
 

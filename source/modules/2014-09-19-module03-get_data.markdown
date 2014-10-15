@@ -39,7 +39,7 @@ Here you have discovered a couple of very useful things with programming languag
 
 "print" is a function in Python that returns whatever follows it next. 
 
-The content contained inside "" marks is called a string. This is especially important for humanities research, since we work with strings a lot.
+The content contained inside " " marks is called a string. This is especially important for humanities research, because often when we work with texts, or metadata, we are working with strings.
 
 Finally, if we input numbers or equations into Python, it will compute them. If you don't want Python to compute, you should treat the numbers like a string. Experiment in the Interactive Shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.
 
@@ -90,6 +90,8 @@ For example, if you want the first item only:
 You should now see a much smaller dump of data. You might be wondering why we used 0. Programming languages start counting with 0 rather than one.
 
 Try to get the 3rd item in the search results. 
+
+### Group Challenge
 
 Can you use [this tutorial](http://effbot.org/zone/python-list.htm) to figure out how to get items 1 - 3?	
 

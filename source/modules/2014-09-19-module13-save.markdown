@@ -1,5 +1,5 @@
 ---
-title: Save Results to File
+title: Save Results to a File
 date: 2014-09-19
 ---
 
@@ -41,7 +41,6 @@ Currently our script should look something like this:
                 else:
                     for line in descriptions:
                         words = line.split()
-                #print words
                 
                 for word in words:
                     remove_stops_and_add(word)

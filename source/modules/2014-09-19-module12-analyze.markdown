@@ -15,9 +15,9 @@ Add a new line to the bottom of "my_second_script.py" as follows:
 
 Notice the capitalization here. Because the library has the name of "Counter", we need to keep that "C" uppercase whenever we use the library. 
 
-Now we will use the method "most_common" and let's start with the top 25 words:
+Now we will use the method "most_common" and let's start with the top 200 words:
 
-    print c.most_common(25)
+    print c.most_common(200)
 
 Comment out the "print words" statements from the last module (so that we can see what is going on), then save and run the file.
 
@@ -58,21 +58,20 @@ Here we are loading up the collection of english stop words from the stopwords l
 Finally, we need to call this new function inside our "get_words()" function. 
 
     def get_words():
-      for each in json_data:
-        try:
-          descriptions = each['sourceResource']['description']
-          if isinstance(descriptions, basestring):
-            words = descriptions.split()
-          else:
-            for line in descriptions:
-              words = line.split()
-            #print words
-            
-          for word in words:
-            remove_stops_and_add(word)
+        for each in json_data:
+            try:
+                descriptions = each['sourceResource']['description']
+                if isinstance(descriptions, basestring):
+                    words = descriptions.split()
+                else:
+                    for line in descriptions:
+                        words = line.split()
+                
+                for word in words:
+                    remove_stops_and_add(word)
 
-        except KeyError:
-          print "Description Missing"
+            except KeyError:
+                print "Description Missing"
 
 Save and run your script.
 
@@ -100,7 +99,7 @@ This checks to see if the words is a digit and if it is not, then it allows it t
 
 And well done! We now have a very interesting list of description words and their frequencies across all of the "cooking" items in the DPLA's holdings.
 
-### Bonus Challege
+### Group Challege
 
 You can also use "stemming" to combine multipe forms of the same word, such as "photograph" and "photographs". Can you use the [NLTK documentation](http://www.nltk.org/api/nltk.stem.html) to add another filter that stems the words before adding them to "description_words"?
 

@@ -23,7 +23,7 @@ for Windows.
 
 Type <span class="command">ls</span> and press enter. 
 
-This is another super helpful command for orienting yourself. This commands lists all the files in your current directory. If you need to see hidden files, type 'ls -a' (Mac) or 'ls -Hidden' (Windows). 
+This is another super helpful command for orienting yourself. This commands lists all the files in your current directory. If you need to see hidden files, type <span class="command">ls -a</span> (Mac) or <span class="command">ls -Hidden</span> (Windows). 
 
 You should see something like:
 
@@ -33,7 +33,7 @@ You should see something like:
 	Documents		Library		Public
 	Downloads		Movies		Sites		
 
-Now that we know where we are, we now need to learn how to move around the different files. This is done with 'cd' or "change directory." If you just type 'cd', you will move back to the root of your user directory. To move forward, type 'cd [Directory_Name]'. You can also move multiple directories at a time with 'cd [Directory_Name/Directory_Name/Directory_Name]'. This way you can dig down through your files. Let's give it a try.
+Now that we know where we are, we now need to learn how to move around the different files. This is done with 'cd' or "change directory". If you just type 'cd', you will move back to the root of your user directory. To move forward, type 'cd [Directory_Name]'. You can also move multiple directories at a time with 'cd [Directory_Name/Directory_Name/Directory_Name]'. This way you can dig down through your files. Let's give it a try.
 
 Type <span class="command">cd Documents</span> and press enter. Now type <span class="command">ls</span> and press enter.
 
@@ -59,7 +59,7 @@ If you're on Windows, type:
 
 and press enter. 
 
-Type <span class="command">ls</span> to see your file. 
+Run <span class="command">ls</span> to see your file. 
 
 To edit your new file in your default text-editor, type 
 	
@@ -67,7 +67,7 @@ To edit your new file in your default text-editor, type
 
 on your Mac or
 
-	Invoke-Item my_first_script.py
+	Start notepad++ my_first_script.py
 
 on your Windows machine. This should launch your default text editor. Type <span class="command">print "Hello World"</span> into the text file and save. We will do something with that later.
 

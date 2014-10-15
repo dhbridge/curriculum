@@ -19,9 +19,18 @@ For example, you can sort by geography:
 
 	result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
 
+To see your updated search results, run:
+
+    result.items[0:3]
+
+
 You can also be more specific with your search, such as limiting your query to cooking in the title of an item. 
 
-	result = dpla.search("cooking", fields=["sourceResource:title"])
+	result = dpla.search("cooking", fields=["sourceResource.title"])
+
+To see the results, run:
+
+    result.items[0:3]
 
 These types of commands help you focus the search results so that you have less noisy data - so that more of the data fits the questions you want to ask.
 
@@ -30,6 +39,9 @@ Work with the documentation and your table to construct some more targeted queri
 - In what ways would you want to narrow the data for different questions?
 - Do you see any additional strengths or weaknesses with the data when trying to limit your search results?
 
+### Group Challenge
+
+How would you save one of your limited searches to a different variable? How then would you show the items?
 
 ### What we learned
 
