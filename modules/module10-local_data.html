@@ -68,12 +68,22 @@
 
 <p>Go to terminal and type:</p>
 
-<pre><code>touch my_second_script.py
+<pre><code>touch my_second_script.py 
+</code></pre>
+
+<p>or on Windows: </p>
+
+<pre><code>New-Item -ItemType file my_first_script.py
 </code></pre>
 
 <p>To open your new script file, type:</p>
 
 <pre><code>open my_second_script.py
+</code></pre>
+
+<p>or on Windows:</p>
+
+<pre><code>Start notepad++ my_first_script.py
 </code></pre>
 
 <p>To begin, let's load in some of the libraries we will need for this next phase of the workshop.</p>
@@ -104,7 +114,7 @@
 
 <p>Now, go back to your file and import nltk at the top of the file.</p>
 
-<p>There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
+<p>There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
 
 <p>To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:</p>
 
@@ -118,9 +128,30 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Next type <span class="command">nltk.download('stopwords')</span> and press enter.</p>
 
+<p>Once you see </p>
+
+<pre><code>True
+&gt;&gt;&gt;
+</code></pre>
+
+<p>you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span></p>
+
 <p>Great!</p>
 
 <p>Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add <span class="command">from nltk.corpus import stopwords</span> to the top of the file.</p>
+
+<p>Your file should now look like:</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+
+#print json_data[1]
+</code></pre>
 
 <p>We are now ready to start working with our data.</p>
 

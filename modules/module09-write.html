@@ -62,7 +62,7 @@
 
 <h3 id="opening-a-new-file">Opening a new file</h3>
 
-<p>Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right after you declare the "all_records" variable, add:</p>
+<p>Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right under the "all_records" variable, add:</p>
 
 <pre><code>f = open("search_results.json", "w")
 </code></pre>
@@ -108,7 +108,7 @@ def save_results():
 
 def pull_records(pages, end, size):
 	while(pages &lt;= end):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 		print "finished page " + str(pages)
 		pages = pages + 1
@@ -125,7 +125,7 @@ save_results()
 </code></pre>
 
 <p>Test that everything is working by running your "my_first_script.py" in terminal.
-You can open the "search_results.json" file to check that 200 items made it in.</p>
+Use terminal and the same process you use to open your script file to open the "search_results.json" file and check that 200 items made it in. Close the file once you're done.</p>
 
 <h3 id="saving-all-the-search-results">Saving all the Search Results</h3>
 
@@ -142,7 +142,9 @@ You can open the "search_results.json" file to check that 200 items made it in.<
 
 <p>Save and run your script. This will take a bit of time, so get up, stretch, and get some coffee!</p>
 
-<p>Bonus Challege: Can you write a function that determines the total number of pages from the search results?</p>
+<h3 id="group-challege">Group Challege</h3>
+
+<p>Can you write a function that determines the total number of pages from the search results?</p>
 
 <h3 id="what-we-learned">What We Learned</h3>
 

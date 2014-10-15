@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/modules/module13-save.html"/>
     <id>http://blog.url.com/modules/module13-save.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-12T13:32:26-04:00</updated>
+    <updated>2014-10-14T19:46:32-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -56,7 +56,6 @@ def get_words():
             else:
                 for line in descriptions:
                     words = line.split()
-            #print words
             
             for word in words:
                 remove_stops_and_add(word)
@@ -128,7 +127,7 @@ for key, count in c.most_common(200):
     <link rel="alternate" href="http://blog.url.com/modules/module12-analyze.html"/>
     <id>http://blog.url.com/modules/module12-analyze.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-12T11:23:28-04:00</updated>
+    <updated>2014-10-14T19:46:04-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -145,9 +144,9 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;Notice the capitalization here. Because the library has the name of "Counter", we need to keep that "C" uppercase whenever we use the library. &lt;/p&gt;
 
-&lt;p&gt;Now we will use the method "most_common" and let's start with the top 25 words:&lt;/p&gt;
+&lt;p&gt;Now we will use the method "most_common" and let's start with the top 200 words:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;print c.most_common(25)
+&lt;pre&gt;&lt;code&gt;print c.most_common(200)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Comment out the "print words" statements from the last module (so that we can see what is going on), then save and run the file.&lt;/p&gt;
@@ -192,21 +191,20 @@ for key, count in c.most_common(200):
 &lt;p&gt;Finally, we need to call this new function inside our "get_words()" function. &lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_words():
-  for each in json_data:
-    try:
-      descriptions = each['sourceResource']['description']
-      if isinstance(descriptions, basestring):
-        words = descriptions.split()
-      else:
-        for line in descriptions:
-          words = line.split()
-        #print words
-        
-      for word in words:
-        remove_stops_and_add(word)
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
+            
+            for word in words:
+                remove_stops_and_add(word)
 
-    except KeyError:
-      print "Description Missing"
+        except KeyError:
+            print "Description Missing"
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Save and run your script.&lt;/p&gt;
@@ -237,7 +235,7 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;And well done! We now have a very interesting list of description words and their frequencies across all of the "cooking" items in the DPLA's holdings.&lt;/p&gt;
 
-&lt;h3 id="bonus-challege"&gt;Bonus Challege&lt;/h3&gt;
+&lt;h3 id="group-challege"&gt;Group Challege&lt;/h3&gt;
 
 &lt;p&gt;You can also use "stemming" to combine multipe forms of the same word, such as "photograph" and "photographs". Can you use the &lt;a href="http://www.nltk.org/api/nltk.stem.html"&gt;NLTK documentation&lt;/a&gt; to add another filter that stems the words before adding them to "description_words"?&lt;/p&gt;
 
@@ -255,7 +253,7 @@ for key, count in c.most_common(200):
     <link rel="alternate" href="http://blog.url.com/modules/module11-subset.html"/>
     <id>http://blog.url.com/modules/module11-subset.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-12T09:49:08-04:00</updated>
+    <updated>2014-10-14T19:43:41-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -265,9 +263,9 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;Remember back to JSON and how it organizes data using key:value pairs? One of the most powerful features of JSON is that we are able to nest features and create lists within key:value pairs. This is useful for creating complex data structures. It also means that we have work within the hierarchy of key:value pairs to isolate particular values.&lt;/p&gt;
 
-&lt;p&gt;In order to better see that hierarchy, let's &lt;strong&gt;Pretty Print&lt;/strong&gt; the JSON results, or print with the indentations and hierarchies visually displayed. &lt;/p&gt;
+&lt;p&gt;In order to better see that hierarchy, let's "Pretty Print" the JSON results, or print with the indentations and hierarchies visually displayed. &lt;/p&gt;
 
-&lt;p&gt;Open "my_second_script.py" and &lt;strong&gt;comment out&lt;/strong&gt; "print jason_data[0]" by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work.&lt;/p&gt;
+&lt;p&gt;Open "my_second_script.py" and "comment out" "print jason_data[0]" by putting # at the beginning of the line.&lt;/p&gt;
 
 &lt;p&gt;At the bottom of your script, add the line:&lt;/p&gt;
 
@@ -278,9 +276,9 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;Work with your table to map out what this command did.&lt;/p&gt;
 
-&lt;p&gt;We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F". &lt;/p&gt;
+&lt;p&gt;We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F" on a Mac and Windows, click the menu button and go to Edit -&amp;gt; Find. &lt;/p&gt;
 
-&lt;p&gt;Looking at the "description" field, work with your table to identify the field name it is nested under. &lt;/p&gt;
+&lt;p&gt;Looking at the "description" field, work with your table to identify the key name it is nested under. &lt;/p&gt;
 
 &lt;p&gt;The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using &lt;span class="command"&gt;json_data[1]&lt;/span&gt;. This form means we want the first item in the json_data object. &lt;/p&gt;
 
@@ -311,7 +309,7 @@ import nltk
 from nltk.corpus import stopwords
 
 with open("search_results.json") as json_file:
-  json_data = json.load(json_file)
+   json_data = json.load(json_file)
 	
 #print json_data[1]
 #print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
@@ -319,7 +317,7 @@ with open("search_results.json") as json_file:
 print json_data[1]['sourceResource']['description']
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;I will use "description_words" as the variable for my empty list of stopwords. &lt;/p&gt;
+&lt;p&gt;Let's use "description_words" as the variable for our empty list of stopwords. Remember that variables go after we import the libraries and before our functions. &lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;description_words = []
 &lt;/code&gt;&lt;/pre&gt;
@@ -334,36 +332,36 @@ print json_data[1]['sourceResource']['description']
 &lt;p&gt;Next, tab in once and add a for-loop to move through each item in the json_data list:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_words():
-  for each in json_data:
+   for each in json_data:
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Next, let's set up a variable to grab the descriptions:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_words():
-  for each in json_data:
-    descriptions = each['sourceResource']['description']
+    for each in json_data:
+        descriptions = each['sourceResource']['description']
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_words():
-  for each in json_data:
-    descriptions = each['sourceResource']['description']
-    for line in descriptions:
-      words = line.split()
+    for each in json_data:
+        descriptions = each['sourceResource']['description']
+        for line in descriptions:
+            words = line.split()
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;To see what just happened, let's add a print statement and call the function:&lt;/p&gt;
+&lt;p&gt;To see what just happened, let's add a print statement:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_words():
-  for each in json_data:
-    descriptions = each['sourceResource']['description']
-    for line in descriptions:
-      words = line.split()
-      print words
-
-get_words()
+    for each in json_data:
+        descriptions = each['sourceResource']['description']
+        for line in descriptions:
+            words = line.split()
+            print words
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now "call the function" by adding &lt;span class="command"&gt;get_words()&lt;/span&gt; to the end of the file.	&lt;/p&gt;
 
 &lt;p&gt;Your file should now look like this:&lt;/p&gt;
 
@@ -373,21 +371,21 @@ import nltk
 from nltk.corpus import stopwords
 
 with open("search_results.json") as json_file:
-  json_data = json.load(json_file)
-	
+    json_data = json.load(json_file)
+
+description_words = []	
+
+def get_words():
+    for each in json_data:
+        descriptions = each['sourceResource']['description']
+        for line in descriptions:
+            words = line.split()
+            print words
+
 #print json_data[1]
 #print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 
 print json_data[1]['sourceResource']['description']
-
-description_words = []
-
-def get_words():
-  for each in json_data:
-    descriptions = each['sourceResource']['description']
-    for line in descriptions:
-      words = line.split()
-      print words
 
 get_words()
 &lt;/code&gt;&lt;/pre&gt;
@@ -426,62 +424,75 @@ KeyError: 'description'
 &lt;p&gt;To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_words():
-  for each in json_data:
-    try:
-      descriptions = each['sourceResource']['description']
-      for line in descriptions:
-      words = line.split()
-        print words
-    except KeyError:
-      print "Description Missing"
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            for line in descriptions:
+                words = line.split()
+                print words
+        except KeyError:
+            print "Description Missing"
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Un-comment "get_words()", save, and run the file.&lt;/p&gt;
 
-&lt;p&gt;Our script should no longer error.&lt;/p&gt;
+&lt;p&gt;Our script should no longer error. If your script is spitting out letters forever, you can stop the process with "control + c" or "command + c"&lt;/p&gt;
 
 &lt;p&gt;But, now it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.&lt;/p&gt;
 
 &lt;p&gt;To check if the value in "descriptions" in a string, we can add the following:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_words():
-  for each in json_data:
-    try:
-    descriptions = each['sourceResource']['description']
-    if isinstance(descriptions, basestring):
-      words = descriptions.split()
-    else:
-      for line in descriptions:
-        words = line.split()
-        print words
-  except KeyError:
-    print "Description Missing"
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
+            print words
+        except KeyError:
+            print "Description Missing"
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.&lt;/p&gt;
+
+&lt;p&gt;This is an example of creating a work around when working with data that is beyond our control. What has happened is that some institutions have a description field that looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;'description': 'A wonderful description sentence or two giving you a summary of the item'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And some have used the description field like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;'description': [
+    "one line of information", 
+    "another line of information"
+] 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To accommodate this, we create one process for the first case, by checking if the value is a string and a second process for the second case.&lt;/p&gt;
 
 &lt;h3 id="adding-the-words-to-our-bag-of-words"&gt;Adding the words to our "bag of words"&lt;/h3&gt;
 
 &lt;p&gt;The final step in creating our subset of data is to add the words into our "description_words" list.&lt;/p&gt;
 
-&lt;p&gt;To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function.&lt;/p&gt;
+&lt;p&gt;To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function. Also, now that we know that our words are parsing correctly, we can remove "print words".&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def get_words():
-for each in json_data:
-  try:
-    descriptions = each['sourceResource']['description']
-    if isinstance(descriptions, basestring):
-      words = descriptions.split()
-    else:
-      for line in descriptions:
-        words = line.split()
-    print words
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
+                    for word in words:
+                        description_words.append(word)
 
-    for word in words:
-      description_words.append(word)
-
-  except KeyError:
-    print "Description Missing"
+        except KeyError:
+            print "Description Missing"
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"&lt;/p&gt;
@@ -492,8 +503,8 @@ import nltk
 from nltk.corpus import stopwords
 
 with open("search_results.json") as json_file:
-json_data = json.load(json_file)
-	
+    json_data = json.load(json_file)
+
 #print json_data[1]
 #print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
 
@@ -502,27 +513,26 @@ json_data = json.load(json_file)
 description_words = []
 
 def get_words():
-for each in json_data:
-  try:
-    descriptions = each['sourceResource']['description']
-    if isinstance(descriptions, basestring):
-      words = descriptions.split()
-    else:
-      for line in descriptions:
-        words = line.split()
-    print words
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
 
-    for word in words:
-      description_words.append(word)
+            for word in words:
+                description_words.append(word)
 
-  except KeyError:
-    print "Description Missing"
-  
+        except KeyError:
+            print "Description Missing"
+
 get_words()
 print description_words[999]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id="bonus-challenges"&gt;Bonus Challenges:&lt;/h3&gt;
+&lt;h3 id="group-challenge"&gt;Group Challenge:&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Can you modify the function to also add the words of the title to our bag of words?&lt;/li&gt;
@@ -548,7 +558,7 @@ print description_words[999]
     <link rel="alternate" href="http://blog.url.com/modules/module10-local_data.html"/>
     <id>http://blog.url.com/modules/module10-local_data.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-12T11:37:26-04:00</updated>
+    <updated>2014-10-14T18:59:09-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -562,12 +572,22 @@ print description_words[999]
 
 &lt;p&gt;Go to terminal and type:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;touch my_second_script.py
+&lt;pre&gt;&lt;code&gt;touch my_second_script.py 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or on Windows: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;New-Item -ItemType file my_first_script.py
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;To open your new script file, type:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;open my_second_script.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or on Windows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Start notepad++ my_first_script.py
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;To begin, let's load in some of the libraries we will need for this next phase of the workshop.&lt;/p&gt;
@@ -598,7 +618,7 @@ print description_words[999]
 
 &lt;p&gt;Now, go back to your file and import nltk at the top of the file.&lt;/p&gt;
 
-&lt;p&gt;There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but browse the list of all the datasets you could download and use at &lt;a href="http://www.nltk.org/nltk_data/"&gt;http://www.nltk.org/nltk_data/&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at &lt;a href="http://www.nltk.org/nltk_data/"&gt;http://www.nltk.org/nltk_data/&lt;/a&gt;. &lt;/p&gt;
 
 &lt;p&gt;To download the stopwords, we are going to go back into the Python Interactive Shell. Run &lt;span class="command"&gt;python&lt;/span&gt;. Your terminal window should now look something like this:&lt;/p&gt;
 
@@ -612,9 +632,30 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;Next type &lt;span class="command"&gt;nltk.download('stopwords')&lt;/span&gt; and press enter.&lt;/p&gt;
 
+&lt;p&gt;Once you see &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;True
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using &lt;span class="command"&gt;quit()&lt;/span&gt;&lt;/p&gt;
+
 &lt;p&gt;Great!&lt;/p&gt;
 
 &lt;p&gt;Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add &lt;span class="command"&gt;from nltk.corpus import stopwords&lt;/span&gt; to the top of the file.&lt;/p&gt;
+
+&lt;p&gt;Your file should now look like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+
+#print json_data[1]
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;We are now ready to start working with our data.&lt;/p&gt;
 
@@ -637,7 +678,7 @@ Type "help", "copyright", "credits" or "license" for more information.
     <link rel="alternate" href="http://blog.url.com/modules/module09-write.html"/>
     <id>http://blog.url.com/modules/module09-write.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-12T00:16:01-04:00</updated>
+    <updated>2014-10-14T19:43:55-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -645,7 +686,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;h3 id="opening-a-new-file"&gt;Opening a new file&lt;/h3&gt;
 
-&lt;p&gt;Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right after you declare the "all_records" variable, add:&lt;/p&gt;
+&lt;p&gt;Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right under the "all_records" variable, add:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;f = open("search_results.json", "w")
 &lt;/code&gt;&lt;/pre&gt;
@@ -691,7 +732,7 @@ def save_results():
 
 def pull_records(pages, end, size):
 	while(pages &amp;lt;= end):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 		print "finished page " + str(pages)
 		pages = pages + 1
@@ -708,7 +749,7 @@ save_results()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Test that everything is working by running your "my_first_script.py" in terminal.
-You can open the "search_results.json" file to check that 200 items made it in.&lt;/p&gt;
+Use terminal and the same process you use to open your script file to open the "search_results.json" file and check that 200 items made it in. Close the file once you're done.&lt;/p&gt;
 
 &lt;h3 id="saving-all-the-search-results"&gt;Saving all the Search Results&lt;/h3&gt;
 
@@ -725,7 +766,9 @@ You can open the "search_results.json" file to check that 200 items made it in.&
 
 &lt;p&gt;Save and run your script. This will take a bit of time, so get up, stretch, and get some coffee!&lt;/p&gt;
 
-&lt;p&gt;Bonus Challege: Can you write a function that determines the total number of pages from the search results?&lt;/p&gt;
+&lt;h3 id="group-challege"&gt;Group Challege&lt;/h3&gt;
+
+&lt;p&gt;Can you write a function that determines the total number of pages from the search results?&lt;/p&gt;
 
 &lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
 
@@ -741,7 +784,7 @@ You can open the "search_results.json" file to check that 200 items made it in.&
     <link rel="alternate" href="http://blog.url.com/modules/module08-whileloop.html"/>
     <id>http://blog.url.com/modules/module08-whileloop.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-11T16:54:00-04:00</updated>
+    <updated>2014-10-14T20:01:20-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -754,7 +797,7 @@ You can open the "search_results.json" file to check that 200 items made it in.&
 &lt;p&gt;To use a while loop, let's look again at our "pull records" function.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def pull_records(pages, end, size):
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', page_size=size, page=pages)
 	save_each(paged_search)
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -769,7 +812,7 @@ You can open the "search_results.json" file to check that 200 items made it in.&
 
 &lt;pre&gt;&lt;code&gt;def pull_records(pages, end, size):
 	while(pages &amp;lt;= end):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -802,7 +845,7 @@ all_records = []
 
 def pull_records(pages, end, size):
 	while(pages &amp;lt;= end):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 		print "finished page " + str(pages)
 		pages = pages + 1
@@ -813,12 +856,16 @@ def save_each(n):
 
 pull_records(2, 3, 50)
 
-print all_records[40]
+print all_records[30]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Let's test our function on a subset of the pages. Change &lt;span class="command"&gt;pull_records(2, 3, 50)&lt;/span&gt; to &lt;span class="command"&gt;pull_records(2, 5, 50)&lt;/span&gt; and change &lt;span class="command"&gt;print all_records[40]&lt;/span&gt; to &lt;span class="command"&gt;print all_records[150]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Let's test our function on a subset of the pages. Change &lt;span class="command"&gt;pull_records(2, 3, 50)&lt;/span&gt; to &lt;span class="command"&gt;pull_records(2, 5, 50)&lt;/span&gt; and change &lt;span class="command"&gt;print all_records[30]&lt;/span&gt; to &lt;span class="command"&gt;print all_records[150]&lt;/span&gt;&lt;/p&gt;
 
 &lt;p&gt;Save and run in Terminal.&lt;/p&gt;
+
+&lt;h3 id="group-challenge"&gt;Group Challenge:&lt;/h3&gt;
+
+&lt;p&gt;Go back to your pen and paper and diagram a "while loop". &lt;/p&gt;
 
 &lt;h3 id="what-we-learned"&gt;What We Learned:&lt;/h3&gt;
 

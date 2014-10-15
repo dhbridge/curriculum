@@ -97,7 +97,6 @@ def get_words():
             else:
                 for line in descriptions:
                     words = line.split()
-            #print words
             
             for word in words:
                 remove_stops_and_add(word)
@@ -179,9 +178,9 @@ for key, count in c.most_common(200):
 
 <p>Notice the capitalization here. Because the library has the name of "Counter", we need to keep that "C" uppercase whenever we use the library. </p>
 
-<p>Now we will use the method "most_common" and let's start with the top 25 words:</p>
+<p>Now we will use the method "most_common" and let's start with the top 200 words:</p>
 
-<pre><code>print c.most_common(25)
+<pre><code>print c.most_common(200)
 </code></pre>
 
 <p>Comment out the "print words" statements from the last module (so that we can see what is going on), then save and run the file.</p>
@@ -226,21 +225,20 @@ for key, count in c.most_common(200):
 <p>Finally, we need to call this new function inside our "get_words()" function. </p>
 
 <pre><code>def get_words():
-  for each in json_data:
-    try:
-      descriptions = each['sourceResource']['description']
-      if isinstance(descriptions, basestring):
-        words = descriptions.split()
-      else:
-        for line in descriptions:
-          words = line.split()
-        #print words
-        
-      for word in words:
-        remove_stops_and_add(word)
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
+            
+            for word in words:
+                remove_stops_and_add(word)
 
-    except KeyError:
-      print "Description Missing"
+        except KeyError:
+            print "Description Missing"
 </code></pre>
 
 <p>Save and run your script.</p>
@@ -271,7 +269,7 @@ for key, count in c.most_common(200):
 
 <p>And well done! We now have a very interesting list of description words and their frequencies across all of the "cooking" items in the DPLA's holdings.</p>
 
-<h3 id="bonus-challege">Bonus Challege</h3>
+<h3 id="group-challege">Group Challege</h3>
 
 <p>You can also use "stemming" to combine multipe forms of the same word, such as "photograph" and "photographs". Can you use the <a href="http://www.nltk.org/api/nltk.stem.html">NLTK documentation</a> to add another filter that stems the words before adding them to "description_words"?</p>
 
@@ -292,9 +290,9 @@ for key, count in c.most_common(200):
 
 <p>Remember back to JSON and how it organizes data using key:value pairs? One of the most powerful features of JSON is that we are able to nest features and create lists within key:value pairs. This is useful for creating complex data structures. It also means that we have work within the hierarchy of key:value pairs to isolate particular values.</p>
 
-<p>In order to better see that hierarchy, let's <strong>Pretty Print</strong> the JSON results, or print with the indentations and hierarchies visually displayed. </p>
+<p>In order to better see that hierarchy, let's "Pretty Print" the JSON results, or print with the indentations and hierarchies visually displayed. </p>
 
-<p>Open "my_second_script.py" and <strong>comment out</strong> "print jason_data[0]" by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work.</p>
+<p>Open "my_second_script.py" and "comment out" "print jason_data[0]" by putting # at the beginning of the line.</p>
 
 <p>At the bottom of your script, add the line:</p>
 
@@ -305,9 +303,9 @@ for key, count in c.most_common(200):
 
 <p>Work with your table to map out what this command did.</p>
 
-<p>We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F". </p>
+<p>We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F" on a Mac and Windows, click the menu button and go to Edit -&gt; Find. </p>
 
-<p>Looking at the "description" field, work with your table to identify the field name it is nested under. </p>
+<p>Looking at the "description" field, work with your table to identify the key name it is nested under. </p>
 
 <p>The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using <span class="command">json_data[1]</span>. This form means we want the first item in the json_data object. </p>
 
@@ -338,7 +336,7 @@ import nltk
 from nltk.corpus import stopwords
 
 with open("search_results.json") as json_file:
-  json_data = json.load(json_file)
+   json_data = json.load(json_file)
 	
 #print json_data[1]
 #print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
@@ -346,7 +344,7 @@ with open("search_results.json") as json_file:
 print json_data[1]['sourceResource']['description']
 </code></pre>
 
-<p>I will use "description_words" as the variable for my empty list of stopwords. </p>
+<p>Let's use "description_words" as the variable for our empty list of stopwords. Remember that variables go after we import the libraries and before our functions. </p>
 
 <pre><code>description_words = []
 </code></pre>
@@ -361,36 +359,36 @@ print json_data[1]['sourceResource']['description']
 <p>Next, tab in once and add a for-loop to move through each item in the json_data list:</p>
 
 <pre><code>def get_words():
-  for each in json_data:
+   for each in json_data:
 </code></pre>
 
 <p>Next, let's set up a variable to grab the descriptions:</p>
 
 <pre><code>def get_words():
-  for each in json_data:
-    descriptions = each['sourceResource']['description']
+    for each in json_data:
+        descriptions = each['sourceResource']['description']
 </code></pre>
 
 <p>Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.</p>
 
 <pre><code>def get_words():
-  for each in json_data:
-    descriptions = each['sourceResource']['description']
-    for line in descriptions:
-      words = line.split()
+    for each in json_data:
+        descriptions = each['sourceResource']['description']
+        for line in descriptions:
+            words = line.split()
 </code></pre>
 
-<p>To see what just happened, let's add a print statement and call the function:</p>
+<p>To see what just happened, let's add a print statement:</p>
 
 <pre><code>def get_words():
-  for each in json_data:
-    descriptions = each['sourceResource']['description']
-    for line in descriptions:
-      words = line.split()
-      print words
-
-get_words()
+    for each in json_data:
+        descriptions = each['sourceResource']['description']
+        for line in descriptions:
+            words = line.split()
+            print words
 </code></pre>
+
+<p>Now "call the function" by adding <span class="command">get_words()</span> to the end of the file.	</p>
 
 <p>Your file should now look like this:</p>
 
@@ -400,21 +398,21 @@ import nltk
 from nltk.corpus import stopwords
 
 with open("search_results.json") as json_file:
-  json_data = json.load(json_file)
-	
+    json_data = json.load(json_file)
+
+description_words = []	
+
+def get_words():
+    for each in json_data:
+        descriptions = each['sourceResource']['description']
+        for line in descriptions:
+            words = line.split()
+            print words
+
 #print json_data[1]
 #print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 
 print json_data[1]['sourceResource']['description']
-
-description_words = []
-
-def get_words():
-  for each in json_data:
-    descriptions = each['sourceResource']['description']
-    for line in descriptions:
-      words = line.split()
-      print words
 
 get_words()
 </code></pre>
@@ -453,62 +451,75 @@ KeyError: 'description'
 <p>To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:</p>
 
 <pre><code>def get_words():
-  for each in json_data:
-    try:
-      descriptions = each['sourceResource']['description']
-      for line in descriptions:
-      words = line.split()
-        print words
-    except KeyError:
-      print "Description Missing"
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            for line in descriptions:
+                words = line.split()
+                print words
+        except KeyError:
+            print "Description Missing"
 </code></pre>
 
 <p>Un-comment "get_words()", save, and run the file.</p>
 
-<p>Our script should no longer error.</p>
+<p>Our script should no longer error. If your script is spitting out letters forever, you can stop the process with "control + c" or "command + c"</p>
 
 <p>But, now it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.</p>
 
 <p>To check if the value in "descriptions" in a string, we can add the following:</p>
 
 <pre><code>def get_words():
-  for each in json_data:
-    try:
-    descriptions = each['sourceResource']['description']
-    if isinstance(descriptions, basestring):
-      words = descriptions.split()
-    else:
-      for line in descriptions:
-        words = line.split()
-        print words
-  except KeyError:
-    print "Description Missing"
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
+            print words
+        except KeyError:
+            print "Description Missing"
 </code></pre>
 
 <p>Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.</p>
+
+<p>This is an example of creating a work around when working with data that is beyond our control. What has happened is that some institutions have a description field that looks like this:</p>
+
+<pre><code>'description': 'A wonderful description sentence or two giving you a summary of the item'
+</code></pre>
+
+<p>And some have used the description field like this:</p>
+
+<pre><code>'description': [
+    "one line of information", 
+    "another line of information"
+] 
+</code></pre>
+
+<p>To accommodate this, we create one process for the first case, by checking if the value is a string and a second process for the second case.</p>
 
 <h3 id="adding-the-words-to-our-bag-of-words">Adding the words to our "bag of words"</h3>
 
 <p>The final step in creating our subset of data is to add the words into our "description_words" list.</p>
 
-<p>To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function.</p>
+<p>To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function. Also, now that we know that our words are parsing correctly, we can remove "print words".</p>
 
 <pre><code>def get_words():
-for each in json_data:
-  try:
-    descriptions = each['sourceResource']['description']
-    if isinstance(descriptions, basestring):
-      words = descriptions.split()
-    else:
-      for line in descriptions:
-        words = line.split()
-    print words
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
+                    for word in words:
+                        description_words.append(word)
 
-    for word in words:
-      description_words.append(word)
-
-  except KeyError:
-    print "Description Missing"
+        except KeyError:
+            print "Description Missing"
 </code></pre>
 
 <p>Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"</p>
@@ -519,8 +530,8 @@ import nltk
 from nltk.corpus import stopwords
 
 with open("search_results.json") as json_file:
-json_data = json.load(json_file)
-	
+    json_data = json.load(json_file)
+
 #print json_data[1]
 #print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
 
@@ -529,27 +540,26 @@ json_data = json.load(json_file)
 description_words = []
 
 def get_words():
-for each in json_data:
-  try:
-    descriptions = each['sourceResource']['description']
-    if isinstance(descriptions, basestring):
-      words = descriptions.split()
-    else:
-      for line in descriptions:
-        words = line.split()
-    print words
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
 
-    for word in words:
-      description_words.append(word)
+            for word in words:
+                description_words.append(word)
 
-  except KeyError:
-    print "Description Missing"
-  
+        except KeyError:
+            print "Description Missing"
+
 get_words()
 print description_words[999]
 </code></pre>
 
-<h3 id="bonus-challenges">Bonus Challenges:</h3>
+<h3 id="group-challenge">Group Challenge:</h3>
 
 <ul>
   <li>Can you modify the function to also add the words of the title to our bag of words?</li>
@@ -582,12 +592,22 @@ print description_words[999]
 
 <p>Go to terminal and type:</p>
 
-<pre><code>touch my_second_script.py
+<pre><code>touch my_second_script.py 
+</code></pre>
+
+<p>or on Windows: </p>
+
+<pre><code>New-Item -ItemType file my_first_script.py
 </code></pre>
 
 <p>To open your new script file, type:</p>
 
 <pre><code>open my_second_script.py
+</code></pre>
+
+<p>or on Windows:</p>
+
+<pre><code>Start notepad++ my_first_script.py
 </code></pre>
 
 <p>To begin, let's load in some of the libraries we will need for this next phase of the workshop.</p>
@@ -618,7 +638,7 @@ print description_words[999]
 
 <p>Now, go back to your file and import nltk at the top of the file.</p>
 
-<p>There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
+<p>There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
 
 <p>To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:</p>
 
@@ -632,9 +652,30 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Next type <span class="command">nltk.download('stopwords')</span> and press enter.</p>
 
+<p>Once you see </p>
+
+<pre><code>True
+&gt;&gt;&gt;
+</code></pre>
+
+<p>you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span></p>
+
 <p>Great!</p>
 
 <p>Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add <span class="command">from nltk.corpus import stopwords</span> to the top of the file.</p>
+
+<p>Your file should now look like:</p>
+
+<pre><code>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+
+#print json_data[1]
+</code></pre>
 
 <p>We are now ready to start working with our data.</p>
 
@@ -658,7 +699,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <h3 id="opening-a-new-file">Opening a new file</h3>
 
-<p>Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right after you declare the "all_records" variable, add:</p>
+<p>Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right under the "all_records" variable, add:</p>
 
 <pre><code>f = open("search_results.json", "w")
 </code></pre>
@@ -704,7 +745,7 @@ def save_results():
 
 def pull_records(pages, end, size):
 	while(pages &lt;= end):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 		print "finished page " + str(pages)
 		pages = pages + 1
@@ -721,7 +762,7 @@ save_results()
 </code></pre>
 
 <p>Test that everything is working by running your "my_first_script.py" in terminal.
-You can open the "search_results.json" file to check that 200 items made it in.</p>
+Use terminal and the same process you use to open your script file to open the "search_results.json" file and check that 200 items made it in. Close the file once you're done.</p>
 
 <h3 id="saving-all-the-search-results">Saving all the Search Results</h3>
 
@@ -738,7 +779,9 @@ You can open the "search_results.json" file to check that 200 items made it in.<
 
 <p>Save and run your script. This will take a bit of time, so get up, stretch, and get some coffee!</p>
 
-<p>Bonus Challege: Can you write a function that determines the total number of pages from the search results?</p>
+<h3 id="group-challege">Group Challege</h3>
+
+<p>Can you write a function that determines the total number of pages from the search results?</p>
 
 <h3 id="what-we-learned">What We Learned</h3>
 
@@ -760,7 +803,7 @@ You can open the "search_results.json" file to check that 200 items made it in.<
 <p>To use a while loop, let's look again at our "pull records" function.</p>
 
 <pre><code>def pull_records(pages, end, size):
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', page_size=size, page=pages)
 	save_each(paged_search)
 </code></pre>
 
@@ -775,7 +818,7 @@ You can open the "search_results.json" file to check that 200 items made it in.<
 
 <pre><code>def pull_records(pages, end, size):
 	while(pages &lt;= end):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 </code></pre>
 
@@ -808,7 +851,7 @@ all_records = []
 
 def pull_records(pages, end, size):
 	while(pages &lt;= end):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 		print "finished page " + str(pages)
 		pages = pages + 1
@@ -819,12 +862,16 @@ def save_each(n):
 
 pull_records(2, 3, 50)
 
-print all_records[40]
+print all_records[30]
 </code></pre>
 
-<p>Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[40]</span> to <span class="command">print all_records[150]</span></p>
+<p>Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[30]</span> to <span class="command">print all_records[150]</span></p>
 
 <p>Save and run in Terminal.</p>
+
+<h3 id="group-challenge">Group Challenge:</h3>
+
+<p>Go back to your pen and paper and diagram a "while loop". </p>
 
 <h3 id="what-we-learned">What We Learned:</h3>
 
@@ -862,9 +909,9 @@ all_records = []
 
 <p>You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.</p>
 
-<p>Tab in one space on the next line and type:</p>
+<p>Tab in once on the next line and type:</p>
 
-<pre><code>paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+<pre><code>paged_search = dpla.search('cooking', page_size=size, page=pages)
 </code></pre>
 
 <p>Your file should now look like this:</p>
@@ -879,12 +926,12 @@ dpla = DPLA('Your-Key-Here')
 all_records = []
 
 def pull_records(pages, end, size):
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', page_size=size, page=pages)
 </code></pre>
 
 <p>It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.</p>
 
-<p>Let's add a print statement and test out the first stage of this function. At the same tab as "paged_search…", add:</p>
+<p>Let's add a print statement and test out the first stage of this function. Press return. Your curser should be at the same level as "paged_search…". Add a new line:</p>
 
 <pre><code>print paged_search.items[2]
 </code></pre>
@@ -892,6 +939,24 @@ def pull_records(pages, end, size):
 <p>Now to run the function, we will call the function name and give it values. On a new line and outside of the function, add the line:</p>
 
 <pre><code>pull_records(2, 3, 50)
+</code></pre>
+
+<p>Your file should now look like:</p>
+
+<pre><code>from dpla.api import DPLA
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+def pull_records(pages, end, size):
+	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	print paged_search.items[2]
+
+pull_records(2, 3, 50)
 </code></pre>
 
 <p>Save the file and go to terminal to run it.</p>
@@ -902,14 +967,14 @@ def pull_records(pages, end, size):
 
 <p>Now we need to add another function to store those results to the empty "all records" array we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.</p>
 
-<p>To set up our new "Save Each" function, we will define a new function:</p>
+<p>To set up our new "Save Each" function, we will define a new function in our my_first_script.py file. Good practice is to group our functions together toward the top of the file, so put the "save_each" function after we defined "pull_records" but before we call the "pull_records" function:</p>
 
 <pre><code>def save_each(n):
 </code></pre>
 
 <p>The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in and to take that variable and plug it in for 'n' throughout the function.</p>
 
-<p>We now need to add our first loop. With how we currently have framed our request, there are 50 items in our paged_search item. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, take the item and add it to "all_records". </p>
+<p>We now need to add our first loop. With our current search, there are 50 items in our paged_search variable. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, take the item and add it to "all_records". </p>
 
 <p>Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:</p>
 
@@ -933,7 +998,7 @@ def pull_records(pages, end, size):
 <p>Now we can use this function in our "pull records" function. Currently, our "pull records" looks as follows:</p>
 
 <pre><code>def pull_records (pages, end, size):
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', page_size=size, page=pages)
 	print paged_search.items[2]
 </code></pre>
 
@@ -954,7 +1019,7 @@ dpla = DPLA('Your-Key-Here')
 all_records = []
 
 def pull_records(pages, end, size):
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', page_size=size, page=pages)
 	save_each(paged_search)
 
 def save_each(n):
@@ -975,6 +1040,10 @@ pull_records(2, 3, 50)
 
 <p>We have made great progress! We now have two functions to handle making the query and saving the results, but we are still only working with one "page" of search results at a time. In the next module, we will add yet another kind of loop in order to move through the different pages.</p>
 
+<h3 id="group-challenge">Group Challenge</h3>
+
+<p>Break out the paper and pencils. Work as a group to create a diagram or metaphor for a "for loop". What are some of the advantages of using a loop to process a set of data?</p>
+
 <h3 id="what-we-learned">What We Learned</h3>
 
 <ul>
@@ -987,7 +1056,7 @@ pull_records(2, 3, 50)
   <h3><a href="/modules/module06-phasetwo.html">Moving to Phase Two</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>We are at the half-way point, so it is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks or cake mix to create new programs. </p>
+  <p>We are at the half-way point, so it is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks to create new programs. </p>
 
 <p>We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.</p>
 
@@ -997,13 +1066,13 @@ pull_records(2, 3, 50)
 
 <h3 id="asking-questions-of-our-data">Asking Questions of Our Data</h3>
 
-<p>We have been able to do a lot with filtering the data by subject headings, by geographic space, and by contributor. But what if we want to ask questions about how the materials are described across all 10,000+ items associated with "cooking"? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking"?</p>
+<p>We have been able to do a lot with filtering the data by subject headings, by geographic space, and by contributor. But what if we want to ask questions about how the objects associated with "cooking" are described across all 10,000+ items? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking"?</p>
 
 <p>There are many ways one could go about investigating the descriptions. Work with your table to brain-storm a couple of approaches.</p>
 
 <h3 id="adding-parameters-to-the-query">Adding Parameters to the Query</h3>
 
-<p>To start, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can pass a variable to get up to 500 items at a time, but there were 10,909 items associated with "cooking".</p>
+<p>To start, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can add a parameter to our query to get up to 500 items at a time, but there were 10,909 items associated with "cooking".</p>
 
 <p>Open your "my_first_script.py" file. Looking at the line that says </p>
 
@@ -1022,27 +1091,23 @@ pull_records(2, 3, 50)
 
 <p>Remember, counting within a list begins at 0.</p>
 
+<h3 id="group-challenge">Group Challenge</h3>
+
 <p>Use the <a href="https://github.com/bibliotechy/DPyLA">documentation</a> and your table to add another parameter to get the information from page 3.</p>
 
 <h3 id="setting-up-a-variable">Setting Up a Variable</h3>
 
 <p>To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items all of the pages and we need a place to store them, so that as we get new items, our collections grows.</p>
 
-<p>Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. For example, I could create a list "fruit" that has the values "apple, orange, banana" by doing the following:</p>
+<p>Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. </p>
 
-<pre><code>fruit = ["apple", "orange", "banana"]
-</code></pre>
-
-<p>now if I ask for the second item in fruit</p>
-
-<pre><code>fruit[1]
-</code></pre>
-
-<p>I will get back "orange".</p>
+<p>For example, you could create a list "fruit" that has the values "apple, orange, banana" by doing the following: fruit = ["apple", "orange", "banana"] either within a script or in the Python Interactive Shell. Now if you ask for the second item in fruit by typing "fruit[1]", you would get back "orange".</p>
 
 <p>We are going to use a similar structure to save all of the items we get back from the DPLA.</p>
 
-<p>Go back to "my_first_script.py". Comment out the line <span class="command">result = dpla.search('cooking', page_size=50)</span> by placing a # sign at the front of the line. This tells the computer to skip this line. Also comment out the line you wrote to print out one of the items.</p>
+<p>Go back to "my_first_script.py". "Comment out" the line <span class="command">result = dpla.search('cooking', page_size=50)</span> by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work and tells the computer to skip this line. </p>
+
+<p>Also comment out the line you wrote to print out one of the items.</p>
 
 <p>Your file should look something like this: </p>
 
@@ -1089,6 +1154,11 @@ dpla = DPLA('YourKeyHere')
 <pre><code>open my_first_script.py
 </code></pre>
 
+<p>and on Windows:</p>
+
+<pre><code>Start notepad++ my_first_script.py
+</code></pre>
+
 <p>It should say 'print "Hello World"'. Now that you know something about Python functions, what do you expect this script to do?</p>
 
 <p>Let's test it out! To execute a Python file, run the following in terminal:</p>
@@ -1133,11 +1203,25 @@ jeriwieringa$
 
 <p>You should notice that your computer works for awhile and then returns to normal, but doesn't tell you anything about what it did. To see results, we can use the print function again.</p>
 
-<p>Open your script file again (<span class="command">open my_first_script.py</span>). </p>
+<p>Open your script file again (<span class="command">open my_first_script.py</span>or <span class="command">Start notepad++ my_first_script.py</span>). </p>
 
 <p>Work with your group to add another line to the file that uses the print function to display one item from your search. </p>
 
 <p>Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. </p>
+
+<h3 id="anatomy-of-a-python-script-file">Anatomy of a Python Script File</h3>
+
+<p>Just like when we are writing papers or structuring an argument, order matters in our script files. The computer will execute the code in the order it encounters it.</p>
+
+<p>One good way to keep your code organized and avoid some organization caused bugs is to follow a set pattern when constructing your scripts. </p>
+
+<p>First, at the top of your files, place the list of libraries you're importing. This way they are ready for use throughout the script. We did then when we started with <span class="command">from dpla.api import DPLA</span>.</p>
+
+<p>Next, declare (or set) the variables (names) that you will use through the script. In code-speak, these are set at the "global scope" meaning that they are available to all functions in the file. We did this when we assigned our api key to the "dpla" variable with <span class="command">dpla = DPLA("YourAPIKey")</span> and when we saved our search to "results" with <span class="command">result = dpla.search('cooking')</span>.</p>
+
+<p>After the variables, we will put our functions. Functions are like mini-scripts or packets of code that do one job. We can then combine functions to create more complicated programs. We will add some functions to our script in the next  modules.</p>
+
+<p>Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) a "()". One exception is the print function, which doesn't require the () marks in this version of Python.* We called the print function to print one item from our search results. It is important to include the functions in the order that you want them to be run.</p>
 
 <h3 id="what-weve-learned">What We've Learned</h3>
 
@@ -1147,6 +1231,7 @@ jeriwieringa$
   <li>To use print to display the results of our scripts</li>
 </ul>
 
+<p>*Python 3 does require the use of () for print, making it more consistent with the Python sytax for functions.</p>
 
   <h3><a href="/modules/module04-complex_requests.html">Working with the API</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -1168,9 +1253,19 @@ jeriwieringa$
 <pre><code>result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
 </code></pre>
 
+<p>To see your updated search results, run:</p>
+
+<pre><code>result.items[0:3]
+</code></pre>
+
 <p>You can also be more specific with your search, such as limiting your query to cooking in the title of an item. </p>
 
-<pre><code>result = dpla.search("cooking", fields=["sourceResource:title"])
+<pre><code>result = dpla.search("cooking", fields=["sourceResource.title"])
+</code></pre>
+
+<p>To see the results, run:</p>
+
+<pre><code>result.items[0:3]
 </code></pre>
 
 <p>These types of commands help you focus the search results so that you have less noisy data - so that more of the data fits the questions you want to ask.</p>
@@ -1181,6 +1276,10 @@ jeriwieringa$
   <li>In what ways would you want to narrow the data for different questions?</li>
   <li>Do you see any additional strengths or weaknesses with the data when trying to limit your search results?</li>
 </ul>
+
+<h3 id="group-challenge">Group Challenge</h3>
+
+<p>How would you save one of your limited searches to a different variable? How then would you show the items?</p>
 
 <h3 id="what-we-learned">What we learned</h3>
 
@@ -1228,7 +1327,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>"print" is a function in Python that returns whatever follows it next. </p>
 
-<p>The content contained inside "" marks is called a string. This is especially important for humanities research, since we work with strings a lot.</p>
+<p>The content contained inside " " marks is called a string. This is especially important for humanities research, because often when we work with texts, or metadata, we are working with strings.</p>
 
 <p>Finally, if we input numbers or equations into Python, it will compute them. If you don't want Python to compute, you should treat the numbers like a string. Experiment in the Interactive Shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.</p>
 
@@ -1285,6 +1384,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 <p>You should now see a much smaller dump of data. You might be wondering why we used 0. Programming languages start counting with 0 rather than one.</p>
 
 <p>Try to get the 3rd item in the search results. </p>
+
+<h3 id="group-challenge">Group Challenge</h3>
 
 <p>Can you use <a href="http://effbot.org/zone/python-list.htm">this tutorial</a> to figure out how to get items 1 - 3?	</p>
 
@@ -1452,7 +1553,7 @@ Downloads		Movies		Sites
 
 <p>and press enter. </p>
 
-<p>Type <span class="command">ls</span> to see your file. </p>
+<p>Run <span class="command">ls</span> to see your file. </p>
 
 <p>To edit your new file in your default text-editor, type </p>
 
@@ -1461,7 +1562,7 @@ Downloads		Movies		Sites
 
 <p>on your Mac or</p>
 
-<pre><code>Invoke-Item my_first_script.py
+<pre><code>Start notepad++ my_first_script.py
 </code></pre>
 
 <p>on your Windows machine. This should launch your default text editor. Type <span class="command">print "Hello World"</span> into the text file and save. We will do something with that later.</p>
@@ -1642,29 +1743,36 @@ Type "help", "copyright", "credits" or license for more information.
 
 <p>One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.</p>
 
-<p>The easiest way to install Pip is through the use of a Python program called get-pip.py, which you can download here: <a href="https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py">https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py</a>. When you open this link, you might be scared of the massive jumble of code that awaits you–don’t be! Simply use your browser to save this page under its default name, which is get-pip.py.</p>
+<p>The easiest way to install Pip is through the use of a Python program called get-pip.py. </p>
 
-<p>Open PowerShell with administrator privileges by right-clicking on the PowerShell icon and select "Run as Admin." </p>
-
-<p>Enter the following commands in PowerShell to download the bootstrap scripts for Pip:</p>
+<p>First, make a new directory "envs" at your root level:</p>
 
 <pre><code>mkdir c:\envs
-cd c:\envs
-   
+</code></pre>
 
-(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
-   
+<p>"Cd" into that directory:</p>
 
-python c:\envs\get-pip.py
+<pre><code>cd c:\envs
+</code></pre>
+
+<p>Use the following to download "get-pip.py":  </p>
+
+<pre><code>(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
+</code></pre>
+
+<p>Finally, run the "get-pip.py" script:</p>
+
+<pre><code>python c:\envs\get-pip.py  
 </code></pre>
 
 <p>Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python27\Scripts with the correct location of your Python installation:</p>
 
 <pre><code>setx PATH "%PATH%;C:\Python27\Scripts"
-&gt;&gt;&gt;
 </code></pre>
 
-<p>Close and reopen PowerShell after running this command.</p>
+<p>Close and reopen PowerShell after running this command. </p>
+
+<p>To test, run <span class="command">pip</span> in PowerShell.</p>
 
 <h3 id="credits">Credits</h3>
 <p>These instructions are modifications of the Python installation instruction at <a href="http://learnpythonthehardway.org/book/ex0.html"><em>Learn Python the Hard Way</em></a> and Fred Gibb's <a href="http://fredgibbs.net/tutorials/tutorial/install-python-modules/">tutorial on installing Pip</a> as well as the <a href="http://docs.railsbridge.org/installfest/">InstallFest docs of RailsBridge</a>.</p>

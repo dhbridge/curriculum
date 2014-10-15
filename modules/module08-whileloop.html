@@ -67,7 +67,7 @@
 <p>To use a while loop, let's look again at our "pull records" function.</p>
 
 <pre><code>def pull_records(pages, end, size):
-	paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', page_size=size, page=pages)
 	save_each(paged_search)
 </code></pre>
 
@@ -82,7 +82,7 @@
 
 <pre><code>def pull_records(pages, end, size):
 	while(pages &lt;= end):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 </code></pre>
 
@@ -115,7 +115,7 @@ all_records = []
 
 def pull_records(pages, end, size):
 	while(pages &lt;= end):
-		paged_search = dpla.search(q='cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
 		print "finished page " + str(pages)
 		pages = pages + 1
@@ -126,12 +126,16 @@ def save_each(n):
 
 pull_records(2, 3, 50)
 
-print all_records[40]
+print all_records[30]
 </code></pre>
 
-<p>Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[40]</span> to <span class="command">print all_records[150]</span></p>
+<p>Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[30]</span> to <span class="command">print all_records[150]</span></p>
 
 <p>Save and run in Terminal.</p>
+
+<h3 id="group-challenge">Group Challenge:</h3>
+
+<p>Go back to your pen and paper and diagram a "while loop". </p>
 
 <h3 id="what-we-learned">What We Learned:</h3>
 

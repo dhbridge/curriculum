@@ -71,9 +71,9 @@
 
 <p>Notice the capitalization here. Because the library has the name of "Counter", we need to keep that "C" uppercase whenever we use the library. </p>
 
-<p>Now we will use the method "most_common" and let's start with the top 25 words:</p>
+<p>Now we will use the method "most_common" and let's start with the top 200 words:</p>
 
-<pre><code>print c.most_common(25)
+<pre><code>print c.most_common(200)
 </code></pre>
 
 <p>Comment out the "print words" statements from the last module (so that we can see what is going on), then save and run the file.</p>
@@ -118,21 +118,20 @@
 <p>Finally, we need to call this new function inside our "get_words()" function. </p>
 
 <pre><code>def get_words():
-  for each in json_data:
-    try:
-      descriptions = each['sourceResource']['description']
-      if isinstance(descriptions, basestring):
-        words = descriptions.split()
-      else:
-        for line in descriptions:
-          words = line.split()
-        #print words
-        
-      for word in words:
-        remove_stops_and_add(word)
+    for each in json_data:
+        try:
+            descriptions = each['sourceResource']['description']
+            if isinstance(descriptions, basestring):
+                words = descriptions.split()
+            else:
+                for line in descriptions:
+                    words = line.split()
+            
+            for word in words:
+                remove_stops_and_add(word)
 
-    except KeyError:
-      print "Description Missing"
+        except KeyError:
+            print "Description Missing"
 </code></pre>
 
 <p>Save and run your script.</p>
@@ -163,7 +162,7 @@
 
 <p>And well done! We now have a very interesting list of description words and their frequencies across all of the "cooking" items in the DPLA's holdings.</p>
 
-<h3 id="bonus-challege">Bonus Challege</h3>
+<h3 id="group-challege">Group Challege</h3>
 
 <p>You can also use "stemming" to combine multipe forms of the same word, such as "photograph" and "photographs". Can you use the <a href="http://www.nltk.org/api/nltk.stem.html">NLTK documentation</a> to add another filter that stems the words before adding them to "description_words"?</p>
 

@@ -201,29 +201,36 @@ Type "help", "copyright", "credits" or license for more information.
 
 <p>One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.</p>
 
-<p>The easiest way to install Pip is through the use of a Python program called get-pip.py, which you can download here: <a href="https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py">https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py</a>. When you open this link, you might be scared of the massive jumble of code that awaits you–don’t be! Simply use your browser to save this page under its default name, which is get-pip.py.</p>
+<p>The easiest way to install Pip is through the use of a Python program called get-pip.py. </p>
 
-<p>Open PowerShell with administrator privileges by right-clicking on the PowerShell icon and select "Run as Admin." </p>
-
-<p>Enter the following commands in PowerShell to download the bootstrap scripts for Pip:</p>
+<p>First, make a new directory "envs" at your root level:</p>
 
 <pre><code>mkdir c:\envs
-cd c:\envs
-   
+</code></pre>
 
-(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
-   
+<p>"Cd" into that directory:</p>
 
-python c:\envs\get-pip.py
+<pre><code>cd c:\envs
+</code></pre>
+
+<p>Use the following to download "get-pip.py":  </p>
+
+<pre><code>(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
+</code></pre>
+
+<p>Finally, run the "get-pip.py" script:</p>
+
+<pre><code>python c:\envs\get-pip.py  
 </code></pre>
 
 <p>Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python27\Scripts with the correct location of your Python installation:</p>
 
 <pre><code>setx PATH "%PATH%;C:\Python27\Scripts"
-&gt;&gt;&gt;
 </code></pre>
 
-<p>Close and reopen PowerShell after running this command.</p>
+<p>Close and reopen PowerShell after running this command. </p>
+
+<p>To test, run <span class="command">pip</span> in PowerShell.</p>
 
 <h3 id="credits">Credits</h3>
 <p>These instructions are modifications of the Python installation instruction at <a href="http://learnpythonthehardway.org/book/ex0.html"><em>Learn Python the Hard Way</em></a> and Fred Gibb's <a href="http://fredgibbs.net/tutorials/tutorial/install-python-modules/">tutorial on installing Pip</a> as well as the <a href="http://docs.railsbridge.org/installfest/">InstallFest docs of RailsBridge</a>.</p>

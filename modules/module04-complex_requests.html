@@ -75,9 +75,19 @@
 <pre><code>result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
 </code></pre>
 
+<p>To see your updated search results, run:</p>
+
+<pre><code>result.items[0:3]
+</code></pre>
+
 <p>You can also be more specific with your search, such as limiting your query to cooking in the title of an item. </p>
 
-<pre><code>result = dpla.search("cooking", fields=["sourceResource:title"])
+<pre><code>result = dpla.search("cooking", fields=["sourceResource.title"])
+</code></pre>
+
+<p>To see the results, run:</p>
+
+<pre><code>result.items[0:3]
 </code></pre>
 
 <p>These types of commands help you focus the search results so that you have less noisy data - so that more of the data fits the questions you want to ask.</p>
@@ -88,6 +98,10 @@
   <li>In what ways would you want to narrow the data for different questions?</li>
   <li>Do you see any additional strengths or weaknesses with the data when trying to limit your search results?</li>
 </ul>
+
+<h3 id="group-challenge">Group Challenge</h3>
+
+<p>How would you save one of your limited searches to a different variable? How then would you show the items?</p>
 
 <h3 id="what-we-learned">What we learned</h3>
 
