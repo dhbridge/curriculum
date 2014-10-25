@@ -82,3 +82,6 @@ Go back to your pen and paper and diagram a "while loop".
 - To use a while loop and counter
 - To test on a subset of the data
 - To use "print" to check our functions along the way
+
+<span class="left">[Previous Module](module07.html)</span>
+<span class="right">[Next Module](module09.html)</span>

@@ -151,6 +151,24 @@ strong {
   font-weight: 700;
 }
 
+.left{
+  float:left;
+  width:10em;
+}
+.left:before {
+  content: "\21E0";
+  margin-right:5px;
+}
+.right {
+  float:right;
+  width:10em;
+}
+.right:after {
+  content: "\21E2";
+  margin-left:5px;
+}
+
+
 /*Section Styles */
 header,
 footer {

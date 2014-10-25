@@ -86,3 +86,6 @@ Finally, at the send of the file, we put the "calls to the functions" or command
 
 
 *Python 3 does require the use of () for print, making it more consistent with the Python sytax for functions.
+
+<span class="left">[Previous Module](module04.html)</span>
+<span class="right">[Next Module](module06.html)</span>

@@ -104,3 +104,5 @@ In this module, we have reviewed and learned:
 - to download datasets within libraries
 - to load libraries into our scripts
 
+<span class="left">[Previous Module](module09.html)</span>
+<span class="right">[Next Module](module11.html)</span>

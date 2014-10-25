@@ -108,3 +108,6 @@ You can also use "stemming" to combine multipe forms of the same word, such as "
 In this module, we learned:
 
 - to use stopwords and filters to clean up noisy data
+
+<span class="left">[Previous Module](module11.html)</span>
+<span class="right">[Next Module](module13.html)</span>

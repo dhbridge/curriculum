@@ -46,3 +46,6 @@ How would you save one of your limited searches to a different variable? How the
 ### What we learned
 
 - Reading API documentation to understand the possible queries
+
+<span class="left">[Previous Module](module03.html)</span>
+<span class="right">[Next Module](module05.html)</span>

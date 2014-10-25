@@ -155,3 +155,6 @@ Break out the paper and pencils. Work as a group to create a diagram or metaphor
 - To pass variables into functions
 - To create a "for loop"
 - To "append" items into a list
+
+<span class="left">[Previous Module](module06.html)</span>
+<span class="right">[Next Module](module08.html)</span>

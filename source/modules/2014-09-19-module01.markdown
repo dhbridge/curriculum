@@ -103,4 +103,4 @@ We will talk more about moving from graphical interface to the terminal interfac
 ### Credits
 This tutorial is based on the [Praxis Program's Command Line Bootcamp](http://praxis.scholarslab.org/scratchpad/bash/) and Greg Bloom's post, <a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/">Draw an API</a>.
 
-#### [Next Module](module01.html)
+<span class="right">[Next Module](module02.html)</span>

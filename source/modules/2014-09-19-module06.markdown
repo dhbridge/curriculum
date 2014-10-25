@@ -80,3 +80,6 @@ Now that we have a place to store our values, we now have to tell the computer t
 - To add additional parameters to our API call
 - To create an empty list
 - To comment-out code that we don't want to run, but want to keep
+
+<span class="left">[Previous Module](module05.html)</span>
+<span class="right">[Next Module](module07.html)</span>

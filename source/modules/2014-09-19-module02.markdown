@@ -78,4 +78,5 @@ In this module, you've learned:
 - to use an API to request data
 - to read JSON documents and think about how data is structured
 
-
+<span class="left">[Previous Module](module01.html)</span>
+<span class="right">[Next Module](module03.html)</span>

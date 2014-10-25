@@ -91,3 +91,6 @@ Can you write a function that determines the total number of pages from the sear
 - To create and open a new file
 - The difference between "write" and "append" as ways of opening a file
 - To write json to a file
+
+<span class="left">[Previous Module](module09.html)</span>
+<span class="right">[Next Module](module10.html)</span>

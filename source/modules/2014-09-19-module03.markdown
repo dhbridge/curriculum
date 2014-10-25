@@ -105,3 +105,6 @@ In this module, you have learned:
 - to load and use those libraries
 - to make an API request using a Python script
 - to work with variables and lists
+
+<span class="left">[Previous Module](module02.html)</span>
+<span class="right">[Next Module](module04.html)</span>

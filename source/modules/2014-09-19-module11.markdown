@@ -279,3 +279,6 @@ In this module, we learned:
 - to trouble shoot from an error report
 - to handle exceptions
 - to check type and use an "if/else" statement
+
+<span class="left">[Previous Module](module10.html)</span>
+<span class="right">[Next Module](module12.html)</span>
