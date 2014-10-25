@@ -37,7 +37,7 @@ into your Powershell, replacing "YOUR_EMAIL@example.com" with your actual email 
 
 You should get an email from the DPLA with your key. 
 
-### Examining Data in Browser
+### 2. Examining Data in Browser
 
 To get a sense of how the API key works and what the data we get back looks like, let's use the web-browser. If you can, please use Chrome.
 
@@ -70,7 +70,7 @@ Now try the same thing using a very handy Chrome extension called [JSONView](htt
 			name: "North Carolina Digital Heritage Center"
 		},
 
-### Thinking about JSON
+### 3. Thinking about JSON
 
 What you are looking at is a JSON document. In JSON, all the information is given in "key : value" pairs. On the left-hand side is the "key". This is a standardized description of bits of information, such as "provider" or "ingestData". On right-hand side is the "value", or the information that applies for a particular item. With your table, look at the JSON document in your browser and try to answer the following questions:
 
