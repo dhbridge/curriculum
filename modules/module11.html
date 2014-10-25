@@ -11,13 +11,12 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title>Gathering a Subset of the Data</title>
-    
-<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
- -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
-    
+
+    <link href="../stylesheets/codes.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" rel="stylesheet" type="text/css" />
   </head>
 
-  <body class="modules modules_module11-subset">
+  <body class="modules modules_module11">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -35,29 +34,28 @@
             <div id="main">
               <article>
                 		<section id="sidebar">
-			<h3>Modules</h3>
+			<h2>Modules</h2>
 			<ul>
-				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module01-terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module02-data.html">Thinking about Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module03-get_data.html">Getting Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Using Functions and Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">Using While-Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module12-analyze.html">Analyzing a Subset of the Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module13-save.html">Saving Results to a File</a></li>
+			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<li><a href="/modules/module02.html">Thinking about Data</a></li>
+			<li><a href="/modules/module03.html">Getting Data</a></li>
+			<li><a href="/modules/module04.html">Working with the API</a></li>
+			<li><a href="/modules/module05.html">Writing Script Files</a></li>
+			<li><a href="/modules/module06.html">Phase Two</a></li>
+			<li><a href="/modules/module07.html">Using Functions and Loops</a></li>
+			<li><a href="/modules/module08.html">Using While-Loops</a></li>
+			<li><a href="/modules/module09.html">Writing Results to File</a></li>
+			<li><a href="/modules/module10.html">Working with Local Data</a></li>
+			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
+			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
+			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
 			</ul>
 		</section>
 
                 <section id="content">
-                        <h3>
+                        <h2>
           Gathering a Subset of the Data
-      </h3>
+      </h2>
        <p>In this module, we will learn how to collect and store the description data from each item in our "json_data" variable. To do this, we will first identify the location of the description with the data structure and then loop through each item, saving each of the words in the description into a new list.</p>
 
 <h3 id="identifying-our-target-fields">Identifying Our Target Fields</h3>
@@ -70,8 +68,9 @@
 
 <p>At the bottom of your script, add the line:</p>
 
-<pre><code>print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Save and run in Terminal. </p>
 
@@ -87,8 +86,9 @@
 
 <p>To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:</p>
 
-<pre><code>print json_data[1]['sourceResource']['description']
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print json_data[1]['sourceResource']['description']
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Work with your table to print only the titles. What about only the subject headings?</p>
 
@@ -104,7 +104,18 @@
 
 <p>Currently our "my_second_script.py" file should look like this:</p>
 
-<pre><code>import json
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -116,57 +127,98 @@ with open("search_results.json") as json_file:
 #print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 
 print json_data[1]['sourceResource']['description']
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Let's use "description_words" as the variable for our empty list of stopwords. Remember that variables go after we import the libraries and before our functions. </p>
 
-<pre><code>description_words = []
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>description_words = []
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Next, we will create a new function called "get_words"</p>
 
 <p>Declare the function by adding:</p>
 
-<pre><code>def get_words():
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>def get_words():
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Next, tab in once and add a for-loop to move through each item in the json_data list:</p>
 
-<pre><code>def get_words():
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>def get_words():
    for each in json_data:
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Next, let's set up a variable to grab the descriptions:</p>
 
-<pre><code>def get_words():
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>def get_words():
     for each in json_data:
         descriptions = each['sourceResource']['description']
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.</p>
 
-<pre><code>def get_words():
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>def get_words():
     for each in json_data:
         descriptions = each['sourceResource']['description']
         for line in descriptions:
             words = line.split()
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To see what just happened, let's add a print statement:</p>
 
-<pre><code>def get_words():
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>def get_words():
     for each in json_data:
         descriptions = each['sourceResource']['description']
         for line in descriptions:
             words = line.split()
             print words
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now "call the function" by adding <span class="command">get_words()</span> to the end of the file.	</p>
 
 <p>Your file should now look like this:</p>
 
-<pre><code>import json
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre>import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -189,32 +241,42 @@ def get_words():
 print json_data[1]['sourceResource']['description']
 
 get_words()
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Save the file and run it in the terminal.</p>
 
 <p>You might first notice that this script threw an error, saying:</p>
 
-<pre><code>KeyError: 'description'
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KeyError: 'description'
+</pre></td></tr></tbody></table>
+</div>
 
 <p>One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:</p>
 
-<pre><code>jeriwieringa$ python my_second_script.py
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>jeriwieringa$ python my_second_script.py
 Traceback (most recent call last):
   	File "my_second_script.py", line 21, in &lt;module&gt;
 	get_words()
   	File "my_second_script.py", line 16, in get_words
 	descriptions = each['sourceResource']['description']
 KeyError: 'description'
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>We have a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". </p>
 
 <p>Let's see what is going. Comment out the call to "get_words" function.</p>
 
-<pre><code># get_words()
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre># get_words()
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now let's print the first object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 1 to 0, the save and run the file.</p>
 
@@ -224,7 +286,15 @@ KeyError: 'description'
 
 <p>To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:</p>
 
-<pre><code>def get_words():
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>def get_words():
     for each in json_data:
         try:
             descriptions = each['sourceResource']['description']
@@ -233,7 +303,8 @@ KeyError: 'description'
                 print words
         except KeyError:
             print "Description Missing"
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Un-comment "get_words()", save, and run the file.</p>
 
@@ -243,7 +314,18 @@ KeyError: 'description'
 
 <p>To check if the value in "descriptions" in a string, we can add the following:</p>
 
-<pre><code>def get_words():
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>def get_words():
     for each in json_data:
         try:
             descriptions = each['sourceResource']['description']
@@ -255,22 +337,28 @@ KeyError: 'description'
             print words
         except KeyError:
             print "Description Missing"
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.</p>
 
 <p>This is an example of creating a work around when working with data that is beyond our control. What has happened is that some institutions have a description field that looks like this:</p>
 
-<pre><code>'description': 'A wonderful description sentence or two giving you a summary of the item'
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>'description': 'A wonderful description sentence or two giving you a summary of the item'
+</pre></td></tr></tbody></table>
+</div>
 
 <p>And some have used the description field like this:</p>
 
-<pre><code>'description': [
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>'description': [
     "one line of information", 
     "another line of information"
 ] 
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To accommodate this, we create one process for the first case, by checking if the value is a string and a second process for the second case.</p>
 
@@ -280,7 +368,20 @@ KeyError: 'description'
 
 <p>To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function. Also, now that we know that our words are parsing correctly, we can remove "print words".</p>
 
-<pre><code>def get_words():
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>def get_words():
     for each in json_data:
         try:
             descriptions = each['sourceResource']['description']
@@ -294,11 +395,44 @@ KeyError: 'description'
 
         except KeyError:
             print "Description Missing"
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"</p>
 
-<pre><code>import json
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></td><td class="code"><pre>import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -331,7 +465,8 @@ def get_words():
 
 get_words()
 print description_words[999]
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <h3 id="group-challenge">Group Challenge:</h3>
 
@@ -352,6 +487,7 @@ print description_words[999]
   <li>to handle exceptions</li>
   <li>to check type and use an "if/else" statement</li>
 </ul>
+
 
 
                 </section>

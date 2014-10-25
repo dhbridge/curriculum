@@ -11,13 +11,12 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title>Save Results to a File</title>
-    
-<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
- -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
-    
+
+    <link href="../stylesheets/codes.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" rel="stylesheet" type="text/css" />
   </head>
 
-  <body class="modules modules_module13-save">
+  <body class="modules modules_module13">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -35,29 +34,28 @@
             <div id="main">
               <article>
                 		<section id="sidebar">
-			<h3>Modules</h3>
+			<h2>Modules</h2>
 			<ul>
-				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module01-terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module02-data.html">Thinking about Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module03-get_data.html">Getting Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Using Functions and Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">Using While-Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module12-analyze.html">Analyzing a Subset of the Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module13-save.html">Saving Results to a File</a></li>
+			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<li><a href="/modules/module02.html">Thinking about Data</a></li>
+			<li><a href="/modules/module03.html">Getting Data</a></li>
+			<li><a href="/modules/module04.html">Working with the API</a></li>
+			<li><a href="/modules/module05.html">Writing Script Files</a></li>
+			<li><a href="/modules/module06.html">Phase Two</a></li>
+			<li><a href="/modules/module07.html">Using Functions and Loops</a></li>
+			<li><a href="/modules/module08.html">Using While-Loops</a></li>
+			<li><a href="/modules/module09.html">Writing Results to File</a></li>
+			<li><a href="/modules/module10.html">Working with Local Data</a></li>
+			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
+			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
+			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
 			</ul>
 		</section>
 
                 <section id="content">
-                        <h3>
+                        <h2>
           Save Results to a File
-      </h3>
+      </h2>
        <p>We are almost there! We have been creating some interesting data on the word frequencies within the description fields. But so far, all of our results are stuck in terminal, which makes it difficult for us to reuse them. So for this final module, we will write out the results of our count to a CSV (comma separated value) file.</p>
 
 <h3 id="create-a-new-csv-file">Create a New CSV File</h3>
@@ -66,7 +64,50 @@
 
 <p>Currently our script should look something like this:</p>
 
-<pre><code>import json
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre></td><td class="code"><pre>import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -110,28 +151,47 @@ get_words()
 c = Counter(description_words)
 
 print c.most_common(200)
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.</p>
 
-<pre><code>import json
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
 import csv
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now, we can create our CSV file right after the line where we opened the json file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.</p>
 
-<pre><code>with open("search_results.json") as json_file:
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>with open("search_results.json") as json_file:
     json_data = json.load(json_file)
 
 file = csv.writer(open("word_frequencies.csv", "w"))
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file.</p>
 
-<pre><code>get_words()
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>get_words()
 
 #print description_words[999] 
 
@@ -141,12 +201,14 @@ print c.most_common(200)
 
 for key, count in c.most_common(200):
     file.writerow([key, count])
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>You can now open your csv file using terminal by typing:</p>
 
-<pre><code>open word_frequencies.csv
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>open word_frequencies.csv
+</pre></td></tr></tbody></table>
+</div>
 
 <p>This will most likely open in excel or a similar program. </p>
 
@@ -159,6 +221,7 @@ for key, count in c.most_common(200):
 <ul>
   <li>to use the CSV library to save our results in csv format</li>
 </ul>
+
 
 
 

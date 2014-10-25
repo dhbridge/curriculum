@@ -11,10 +11,9 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title>Installation</title>
-    
-<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
- -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
-    
+
+    <link href="../stylesheets/codes.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body class="modules modules_installation">
@@ -35,32 +34,31 @@
             <div id="main">
               <article>
                 		<section id="sidebar">
-			<h3>Modules</h3>
+			<h2>Modules</h2>
 			<ul>
-				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module01-terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module02-data.html">Thinking about Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module03-get_data.html">Getting Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Using Functions and Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">Using While-Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module12-analyze.html">Analyzing a Subset of the Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module13-save.html">Saving Results to a File</a></li>
+			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<li><a href="/modules/module02.html">Thinking about Data</a></li>
+			<li><a href="/modules/module03.html">Getting Data</a></li>
+			<li><a href="/modules/module04.html">Working with the API</a></li>
+			<li><a href="/modules/module05.html">Writing Script Files</a></li>
+			<li><a href="/modules/module06.html">Phase Two</a></li>
+			<li><a href="/modules/module07.html">Using Functions and Loops</a></li>
+			<li><a href="/modules/module08.html">Using While-Loops</a></li>
+			<li><a href="/modules/module09.html">Writing Results to File</a></li>
+			<li><a href="/modules/module10.html">Working with Local Data</a></li>
+			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
+			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
+			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
 			</ul>
 		</section>
 
                 <section id="content">
-                        <h3>
+                        <h2>
           Installation
-      </h3>
+      </h2>
        <p>Welcome to DH Bridge. This one day workshop will introduce you to basic programming concepts for use in humanities research. We will be working with Python, a programming language that combines a human-readable syntax with robust support for statistical analysis and graphing. The data for the day will be gleaned from the Digital Public Library of America. We are excited that you will be joining us.</p>
 
-<h2 id="step-one-required-supplies">Step One: Required Supplies</h2>
+<h3 id="step-one-required-supplies">Step One: Required Supplies</h3>
 
 <p>For the workshop you will need to bring:</p>
 
@@ -69,6 +67,7 @@
     <ul>
       <li>You need to have a working wifi connection (we will provide access to Mason's wireless)</li>
       <li>We recommend that you update your operating system to the latest version your machine can support. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. </li>
+      <li>We recommend that you install the Chrome browser, as we will be using some Chrome extensions along the way.</li>
     </ul>
   </li>
   <li><strong>Your Powercord</strong></li>
@@ -81,7 +80,7 @@
   <li>Snacks</li>
 </ul>
 
-<h2 id="step-two-overview">Step Two: Overview</h2>
+<h3 id="step-two-overview">Step Two: Overview</h3>
 
 <p>You will be installing or checking the status of the following tools:</p>
 
@@ -94,7 +93,7 @@
 <h3 id="a-note-on-python-versions">A Note on Python Versions</h3>
 <p>For this workshop, we will be using Python 2.7. This is for two reasons: first, using the default Python version enables us to teach basic programming concepts without the additional complexity of managing Python versions; and second, most of the existing tutorials for learning Python, including <em>The Programming Historian</em> and <em>Learn Python the Hard Way</em>, still use 2.7. Starting with 2.7 will enable you to use these materials smoothly. We would like to also offer a Python3 version of this tutorial, so that those who wish to start with the newer syntax can do so.</p>
 
-<h2 id="step-three-install-go-to-your-operating-system-below">Step Three: Install (Go To Your Operating System Below)</h2>
+<h3 id="step-three-install-go-to-your-operating-system-below">Step Three: Install (Go To Your Operating System Below)</h3>
 
 <ul>
   <li><a href="#mac">Mac</a></li>
@@ -107,24 +106,28 @@
 
 <p>For this tutorial, we recommend using TextWrangler, which is a free editor from BareBones software. To get TextWrangler, go to <a href="http://www.barebones.com/products/textwrangler/">http://www.barebones.com/products/textwrangler/</a> and download. </p>
 
-<p>We recommend keeping TextWrangler in your Dock so that it is easy to access.</p>
+<p>We recommend keeping TextWrangler in your Dock (Mac) or Quick Launch toolbar (Windows) so that it is easy to access.</p>
 
-<p>You are welcome to use another text editor if you wish. Just make sure that it is a plain text editor (do not use TextEdit).</p>
+<p>You are welcome to use another text editor if you wish. Just make sure that it is a plain text editor (do not use Word).</p>
 
 <h4 id="check-your-python-version">2. Check your Python Version</h4>
 <p>Search your computer for "Terminal." This program allows you to give your computer commands without using the interface. Select to keep Terminal in your dock. </p>
 
 <p>Open up Terminal. It should give you a screen that looks similar to this: </p>
 
-<p>[image of terminal screen]</p>
+<p><img alt="image of terminal screen" src="../images/terminal.png" /></p>
 
 <p>To check your Python version, type <span class="command">python</span> into the terminal window and press "Enter". You should see something that looks like:</p>
 
-<pre><code>Python 2.7.5 (default, Mar  9 2014, 22:15:05) 
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>Python 2.7.5 (default, Mar  9 2014, 22:15:05) 
 [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 &gt;&gt;&gt; 
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Make note of your Python version. </p>
 
@@ -150,12 +153,17 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>If everything goes well, you should see something similar to the following in your Terminal window:</p>
 
-<pre><code>Downloading/unpacking pip from https://pypi.python.org/packages/py2.py3/p/pip/pip-1.5.6-py2.py3-none-any.whl#md5=4d4fb4b69df6731c7aeaadd6300bc1f2
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>Downloading/unpacking pip from https://pypi.python.org/packages/py2.py3/p/pip/pip-1.5.6-py2.py3-none-any.whl#md5=4d4fb4b69df6731c7aeaadd6300bc1f2
   	Downloading pip-1.5.6-py2.py3-none-any.whl (1.0MB): 1.0MB downloaded
 Installing collected packages: pip
 Successfully installed pip
 Cleaning up...
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To check that everything installed, type <span class="command">pip</span> into your Terminal and press "Enter". This will give you information on the different commands that available for you to use with "pip".</p>
 
@@ -183,15 +191,19 @@ Cleaning up...
 
 <p>Once Python is installed, we have to tell the computer a bit about where to look for it. In PowerShell, enter:</p>
 
-<pre><code>[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Close PowerShell and re-open. To check if Python installed properly, type <span class="command">python</span> and press "Enter". You should get something that looks like this back:</p>
 
-<pre><code>Python 2.7.8  (default, Jun 30 2014, 14:24) [MSC v.1500 32 bit (Intel)] on win32
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>Python 2.7.8  (default, Jun 30 2014, 14:24) [MSC v.1500 32 bit (Intel)] on win32
 Type "help", "copyright", "credits" or license for more information.
 &gt;&gt;&gt; 
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>You are now in the Python Shell. This is an interactive environment that allows you to give python commands directly inside PowerShell. We will come back to this during the workshop.</p>
 
@@ -205,28 +217,33 @@ Type "help", "copyright", "credits" or license for more information.
 
 <p>First, make a new directory "envs" at your root level:</p>
 
-<pre><code>mkdir c:\envs
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mkdir c:\envs
+</pre></td></tr></tbody></table>
+</div>
 
 <p>"Cd" into that directory:</p>
 
-<pre><code>cd c:\envs
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>cd c:\envs
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Use the following to download "get-pip.py":  </p>
 
-<pre><code>(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Finally, run the "get-pip.py" script:</p>
 
-<pre><code>python c:\envs\get-pip.py  
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>python c:\envs\get-pip.py  
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python27\Scripts with the correct location of your Python installation:</p>
 
-<pre><code>setx PATH "%PATH%;C:\Python27\Scripts"
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>setx PATH "%PATH%;C:\Python27\Scripts"
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Close and reopen PowerShell after running this command. </p>
 
@@ -234,6 +251,8 @@ Type "help", "copyright", "credits" or license for more information.
 
 <h3 id="credits">Credits</h3>
 <p>These instructions are modifications of the Python installation instruction at <a href="http://learnpythonthehardway.org/book/ex0.html"><em>Learn Python the Hard Way</em></a> and Fred Gibb's <a href="http://fredgibbs.net/tutorials/tutorial/install-python-modules/">tutorial on installing Pip</a> as well as the <a href="http://docs.railsbridge.org/installfest/">InstallFest docs of RailsBridge</a>.</p>
+
+
 
 
                 </section>

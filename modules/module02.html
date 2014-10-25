@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="" />
+	  <meta name="viewport" content="width=device-width, user-scalable=no">
+	
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Nova+Square' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>Thinking about Data</title>
+
+    <link href="../stylesheets/codes.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body class="modules modules_module02">
+    <!-- HEADER -->
+        <header>
+				<div class="wrap">
+	    <h1 id="project_title">DH Bridge</h1>
+	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
+
+	    <nav id="pages">
+	    	<a href="http://dhbridge.org/curriculum">Computational Thinking</a>
+	    	<a href="http://dhbridge.org">About DH Bridge</a>
+	    </nav>
+	</div>
+        </header> 
+        <!-- MAIN CONTENT -->
+        <div class="wrap">
+            <div id="main">
+              <article>
+                		<section id="sidebar">
+			<h2>Modules</h2>
+			<ul>
+			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<li><a href="/modules/module02.html">Thinking about Data</a></li>
+			<li><a href="/modules/module03.html">Getting Data</a></li>
+			<li><a href="/modules/module04.html">Working with the API</a></li>
+			<li><a href="/modules/module05.html">Writing Script Files</a></li>
+			<li><a href="/modules/module06.html">Phase Two</a></li>
+			<li><a href="/modules/module07.html">Using Functions and Loops</a></li>
+			<li><a href="/modules/module08.html">Using While-Loops</a></li>
+			<li><a href="/modules/module09.html">Writing Results to File</a></li>
+			<li><a href="/modules/module10.html">Working with Local Data</a></li>
+			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
+			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
+			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
+			</ul>
+		</section>
+
+                <section id="content">
+                        <h2>
+          Thinking about Data
+      </h2>
+       <p>For this module, we will be using data from the <a href="http://dp.la">Digital Public Library of America</a>. We will walk through requesting an API key using the Terminal, learn how to talk to the API in our browsers, and think about the structure of the data we get back.</p>
+
+<h3 id="get-an-api-key">Get an API Key</h3>
+
+<p>The DPLA is an incredible resource for computational research. By bringing together information from a growing number of partners and making that information available through an API, the DPLA has made it easy to survey vast amounts of data housed in various cultural heritage institutions around the country.</p>
+
+<p>Go to <a href="http://dp.la/info/developers/codex/">http://dp.la/info/developers/codex/</a>. This is the documentation for the dp.la API. Remember from our earlier conversation that an API is like a direct link between your browser and a server: if you format your request in a particular way, you will get back the data from the server in a particular data format without the HTML interface.</p>
+
+<p>First, you will need an API key. </p>
+
+<p>If you are on a Mac, there is a utility built into your system called "cURL". To use cURL to request your key, type:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>curl -v -XPOST http://api.dp.la/v2/api_key/YOUR_EMAIL@example.com
+</pre></td></tr></tbody></table>
+</div>
+
+<p>into your Terminal, replacing "YOUR_EMAIL@example.com" with your actual email address.</p>
+
+<p>If you are on Windows, your utility is called "Invoke-WebRequest". To use Invoke-WebRequest to request your key, type:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Invoke-WebRequest -Uri ("http://api.dp.la/v2/api_key/YOUR_EMAIL@example.com") -Method POST -Verbose 
+</pre></td></tr></tbody></table>
+</div>
+
+<p>into your Powershell, replacing "YOUR_EMAIL@example.com" with your actual email address.</p>
+
+<p>You should get an email from the DPLA with your key. </p>
+
+<h3 id="examining-data-in-browser">Examining Data in Browser</h3>
+
+<p>To get a sense of how the API key works and what the data we get back looks like, let's use the web-browser. </p>
+
+<p>In your browser, type:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>http://api.dp.la/v2/items?q=cooking&amp;api_key=YOURAPIKEY
+</pre></td></tr></tbody></table>
+</div>
+
+<p>The first part of this url ("http://api.dp.la/v2/") is the "base" url. This must go at the beginning of all API requests. Next, we are telling the server that we want to see "items" and we want to see the items that match the keyword "cooking". The "?q=" is the grammar of the API – this is how we signal to the server that we want to query for the word following the "=". To see additional options for the API, go to <a href="http://dp.la/info/developers/codex/requests/">http://dp.la/info/developers/codex/requests/</a>.</p>
+
+<p>You should see something that looks like:</p>
+
+<div class="highlight json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="p">{</span><span class="s2">"count"</span><span class="p">:</span><span class="mi">10646</span><span class="p">,</span><span class="s2">"start"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">"limit"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="s2">"docs"</span><span class="p">:[{</span><span class="s2">"@context"</span><span class="p">:</span><span class="s2">"http://dp.la/api/items/context"</span><span class="p">,</span><span class="s2">"isShownAt"</span><span class="p">:</span><span class="s2">"https://digital.lib.ecu.edu/7394"</span><span class="p">,</span><span class="s2">"dataProvider"</span><span class="p">:</span><span class="s2">"East Carolina University"</span><span class="p">,</span><span class="s2">"@type"</span><span class="p">:</span><span class="s2">"ore:Aggregation"</span><span class="p">,</span><span class="s2">"provider"</span><span class="p">:{</span><span class="s2">"@id"</span><span class="p">:</span><span class="s2">"http://dp.la/api/contributor/digitalnc"</span><span class="p">,</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"North Carolina Digital Heritage Center"</span><span class="p">},</span><span class="s2">"object"</span><span class="p">:</span><span class="s2">"https://digital.lib.ecu.edu/encore/ncgre000/00000008/00007394/00007394_tn_0001.gif"</span><span class="p">,</span><span class="s2">"ingestionSequence"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"7cb32765b538a57a35fbdbfad03be57b"</span><span class="p">,</span><span class="s2">"ingestDate"</span><span class="p">:</span><span class="s2">"2014-08-19T10:45:46.393447"</span><span class="p">,</span><span class="s2">"_rev"</span><span class="p">:</span><span class="s2">"2-1b21f198053a2727bffece028cd30a6d"</span><span class="p">,</span><span class="s2">"aggregatedCHO"</span><span class="p">:</span><span class="s2">"#sourceResource"</span><span class="p">,</span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"digitalnc--urn:brevard.lib.unc.eduecu_c5:oai:digital.lib.ecu.edu/7394"</span><span class="w">
+</span></pre></td></tr></tbody></table>
+</div>
+
+<p>Now try the same thing using Chrome and a very handy extension called <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">JSONView</a>, which will make the output display like:</p>
+
+<div class="highlight json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+</span><span class="err">count</span><span class="p">:</span><span class="w"> </span><span class="mi">10646</span><span class="p">,</span><span class="w">
+</span><span class="err">start</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="err">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="err">docs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+	</span><span class="p">{</span><span class="w">
+	</span><span class="err">@context</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://dp.la/api/items/context"</span><span class="p">,</span><span class="w">
+	</span><span class="err">isShownAt</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://digital.lib.ecu.edu/7394"</span><span class="p">,</span><span class="w">
+	</span><span class="err">dataProvider</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Carolina University"</span><span class="p">,</span><span class="w">
+	</span><span class="err">@type</span><span class="p">:</span><span class="w"> </span><span class="s2">"ore:Aggregation"</span><span class="p">,</span><span class="w">
+	</span><span class="err">provider</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="err">@id</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://dp.la/api/contributor/digitalnc"</span><span class="p">,</span><span class="w">
+		</span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"North Carolina Digital Heritage Center"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+</span></pre></td></tr></tbody></table>
+</div>
+
+<p>Well done! You have just made a successful API request.</p>
+
+<h3 id="thinking-about-json">Thinking about JSON</h3>
+
+<p>What you are looking at is a JSON document. In a JSON object, all the information is given in "key : value" pairs. On the left-hand side is the "key". This is a standardized description of a bit of information, such as "provider" or "ingestData". On right-hand side is the "value", or the information that applies for a particular object. With your table, work through the document and try to answer the following questions:</p>
+
+<ol>
+  <li>How many objects are displayed here? How do you know?</li>
+  <li>How many objects in the DPLA database fit our query for cooking? </li>
+  <li>Which key:value pairs do you find the most interesting?</li>
+  <li>What questions can you ask of this dataset? Which key:value pairs would be most helpful for answering those questions?</li>
+  <li>What questions would be hard to answer with this dataset? What additional information would you need?</li>
+</ol>
+
+<h3 id="what-you-have-learned">What You Have Learned</h3>
+
+<p>In this module, you've learned:</p>
+
+<ul>
+  <li>to use cURL or Invoke-WebRequest to talk to a server</li>
+  <li>to use an API to request data</li>
+  <li>to read JSON documents and think about how data is structured</li>
+</ul>
+
+
+
+
+                </section>
+              </article>
+  			   </div>
+  		</div>
+  		
+  		<footer>
+  				<div class="wrap">
+		<div id="rights">
+		    <p>&copy; CC-BY 2014</p>
+		    <p>The DH Bridge curriculum is supported by a microgrant from the <a href="http://ach.org/"><img src="http://dhbridge.org/images/ach-logo.png" width=50px ></a></p>
+		</div>
+
+	    <div id="contact">
+	        <a href="mailto:bridgingdh@gmail.com"><i class="fa fa-paper-plane"></i></a>
+	        <a href="https://twitter.com/dhbridge"><i class="fa fa-twitter"></i></a>
+	        <a href="https://github.com/dhbridge/curriculum"><i class="fa fa-github"></i></a>
+	    </div>
+	</div>
+  		</footer>
+
+  </body>
+</html>

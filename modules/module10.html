@@ -11,13 +11,12 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title>Working with Local Data</title>
-    
-<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
- -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
-    
+
+    <link href="../stylesheets/codes.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" rel="stylesheet" type="text/css" />
   </head>
 
-  <body class="modules modules_module10-local_data">
+  <body class="modules modules_module10">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -35,29 +34,28 @@
             <div id="main">
               <article>
                 		<section id="sidebar">
-			<h3>Modules</h3>
+			<h2>Modules</h2>
 			<ul>
-				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module01-terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module02-data.html">Thinking about Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module03-get_data.html">Getting Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Using Functions and Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">Using While-Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module12-analyze.html">Analyzing a Subset of the Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module13-save.html">Saving Results to a File</a></li>
+			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<li><a href="/modules/module02.html">Thinking about Data</a></li>
+			<li><a href="/modules/module03.html">Getting Data</a></li>
+			<li><a href="/modules/module04.html">Working with the API</a></li>
+			<li><a href="/modules/module05.html">Writing Script Files</a></li>
+			<li><a href="/modules/module06.html">Phase Two</a></li>
+			<li><a href="/modules/module07.html">Using Functions and Loops</a></li>
+			<li><a href="/modules/module08.html">Using While-Loops</a></li>
+			<li><a href="/modules/module09.html">Writing Results to File</a></li>
+			<li><a href="/modules/module10.html">Working with Local Data</a></li>
+			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
+			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
+			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
 			</ul>
 		</section>
 
                 <section id="content">
-                        <h3>
+                        <h2>
           Working with Local Data
-      </h3>
+      </h2>
        <p>Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. </p>
 
 <p>In this module, we will create a new script and learn how to load data from our "search_results.json" file. We will also install the Natural Language ToolKit library in order to do some text analysis on our data.</p>
@@ -68,23 +66,27 @@
 
 <p>Go to terminal and type:</p>
 
-<pre><code>touch my_second_script.py 
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>touch my_second_script.py 
+</pre></td></tr></tbody></table>
+</div>
 
 <p>or on Windows: </p>
 
-<pre><code>New-Item -ItemType file my_first_script.py
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>New-Item -ItemType file my_first_script.py
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To open your new script file, type:</p>
 
-<pre><code>open my_second_script.py
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>open my_second_script.py
+</pre></td></tr></tbody></table>
+</div>
 
 <p>or on Windows:</p>
 
-<pre><code>Start notepad++ my_first_script.py
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Start notepad++ my_first_script.py
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To begin, let's load in some of the libraries we will need for this next phase of the workshop.</p>
 
@@ -96,9 +98,11 @@
 
 <p>The structure for this is:</p>
 
-<pre><code>with open("search_results.json") as json_file:
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>with open("search_results.json") as json_file:
 	json_data = json.load(json_file)
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Here, we tell Python to "open" our "search_results.json" file and assign it to the variable "json_file". The we use the "load" method in the "json.library" to load up the data and save it as the variable "json_data". </p>
 
@@ -118,11 +122,15 @@
 
 <p>To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:</p>
 
-<pre><code>Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>Python 2.7.5 (default, Mar  9 2014, 22:15:05)
 [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 &gt;&gt;&gt; 
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Type <span class="command">import nltk</span> and press enter.</p>
 
@@ -130,9 +138,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Once you see </p>
 
-<pre><code>True
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>True
 &gt;&gt;&gt;
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span></p>
 
@@ -142,7 +152,15 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Your file should now look like:</p>
 
-<pre><code>import json
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -151,7 +169,8 @@ with open("search_results.json") as json_file:
     json_data = json.load(json_file)
 
 #print json_data[1]
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>We are now ready to start working with our data.</p>
 
@@ -166,6 +185,7 @@ with open("search_results.json") as json_file:
   <li>to download datasets within libraries</li>
   <li>to load libraries into our scripts</li>
 </ul>
+
 
 
 

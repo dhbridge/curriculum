@@ -11,13 +11,12 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title>Moving to Phase Two</title>
-    
-<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
- -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
-    
+
+    <link href="../stylesheets/codes.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" rel="stylesheet" type="text/css" />
   </head>
 
-  <body class="modules modules_module06-phasetwo">
+  <body class="modules modules_module06">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -35,29 +34,28 @@
             <div id="main">
               <article>
                 		<section id="sidebar">
-			<h3>Modules</h3>
+			<h2>Modules</h2>
 			<ul>
-				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module01-terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module02-data.html">Thinking about Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module03-get_data.html">Getting Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Using Functions and Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">Using While-Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module12-analyze.html">Analyzing a Subset of the Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module13-save.html">Saving Results to a File</a></li>
+			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<li><a href="/modules/module02.html">Thinking about Data</a></li>
+			<li><a href="/modules/module03.html">Getting Data</a></li>
+			<li><a href="/modules/module04.html">Working with the API</a></li>
+			<li><a href="/modules/module05.html">Writing Script Files</a></li>
+			<li><a href="/modules/module06.html">Phase Two</a></li>
+			<li><a href="/modules/module07.html">Using Functions and Loops</a></li>
+			<li><a href="/modules/module08.html">Using While-Loops</a></li>
+			<li><a href="/modules/module09.html">Writing Results to File</a></li>
+			<li><a href="/modules/module10.html">Working with Local Data</a></li>
+			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
+			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
+			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
 			</ul>
 		</section>
 
                 <section id="content">
-                        <h3>
+                        <h2>
           Moving to Phase Two
-      </h3>
+      </h2>
        <p>We are at the half-way point, so it is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks to create new programs. </p>
 
 <p>We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.</p>
@@ -78,18 +76,21 @@
 
 <p>Open your "my_first_script.py" file. Looking at the line that says </p>
 
-<pre><code>result = dpla.search('cooking')
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search('cooking')
+</pre></td></tr></tbody></table>
+</div>
 
 <p>we can change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:</p>
 
-<pre><code>result = dpla.search('cooking', page_size=50)
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search('cooking', page_size=50)
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To check that this worked, let's add a line telling the computer to print out the 40th item:</p>
 
-<pre><code>print result.items[39]
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print result.items[39]
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Remember, counting within a list begins at 0.</p>
 
@@ -113,20 +114,27 @@
 
 <p>Your file should look something like this: </p>
 
-<pre><code>from dpla.api import DPLA
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>from dpla.api import DPLA
 
 dpla = DPLA('YourKeyHere')
 
 # result = dpla.search('cooking')
 # print result.items[1]
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now, let's create a new variable, "all_records" and set it equal to an empty list.</p>
 
 <p>To do this, add a new line:</p>
 
-<pre><code>all_records = []
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>all_records = []
+</pre></td></tr></tbody></table>
+</div>
 
 <p>This tells the computer that we have a variable, "all_records", that this variable will hold a list, and that we currently have no items in that list.</p>
 
@@ -139,6 +147,7 @@ dpla = DPLA('YourKeyHere')
   <li>To create an empty list</li>
   <li>To comment-out code that we don't want to run, but want to keep</li>
 </ul>
+
 
 
                 </section>

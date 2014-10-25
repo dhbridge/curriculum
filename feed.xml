@@ -11,8 +11,8 @@
   </author>
   <entry>
     <title>Save Results to a File</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module13-save.html"/>
-    <id>http://blog.url.com/modules/module13-save.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module13.html"/>
+    <id>http://blog.url.com/modules/module13.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-14T19:46:32-04:00</updated>
     <author>
@@ -26,7 +26,50 @@
 
 &lt;p&gt;Currently our script should look something like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;import json
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -70,28 +113,47 @@ get_words()
 c = Counter(description_words)
 
 print c.most_common(200)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in python. To do that, add &lt;span class="command"&gt;import csv&lt;/span&gt; to our list of libraries at the top of the file.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;import json
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
 import csv
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Now, we can create our CSV file right after the line where we opened the json file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;with open("search_results.json") as json_file:
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;with open("search_results.json") as json_file:
     json_data = json.load(json_file)
 
 file = csv.writer(open("word_frequencies.csv", "w"))
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;get_words()
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;get_words()
 
 #print description_words[999] 
 
@@ -101,12 +163,14 @@ print c.most_common(200)
 
 for key, count in c.most_common(200):
     file.writerow([key, count])
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;You can now open your csv file using terminal by typing:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;open word_frequencies.csv
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;open word_frequencies.csv
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;This will most likely open in excel or a similar program. &lt;/p&gt;
 
@@ -124,8 +188,8 @@ for key, count in c.most_common(200):
   </entry>
   <entry>
     <title>Analyzing a Subset of the Data</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module12-analyze.html"/>
-    <id>http://blog.url.com/modules/module12-analyze.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module12.html"/>
+    <id>http://blog.url.com/modules/module12.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-14T19:46:04-04:00</updated>
     <author>
@@ -139,22 +203,25 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;Add a new line to the bottom of "my_second_script.py" as follows:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;c = Counter(description_words)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;c = Counter(description_words)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Notice the capitalization here. Because the library has the name of "Counter", we need to keep that "C" uppercase whenever we use the library. &lt;/p&gt;
 
 &lt;p&gt;Now we will use the method "most_common" and let's start with the top 200 words:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;print c.most_common(200)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print c.most_common(200)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Comment out the "print words" statements from the last module (so that we can see what is going on), then save and run the file.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of words and frequencies that looks like this: &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;(u'the', 11873), (u'of', 8435), (u'and', 7689), (u'in', 5553), (u'a', 4542), (u'to', 4375), (u'is', 2150), (u'1', 2090), (u'for', 2080), (u'on', 1897), (u'The', 1808), (u'was', 1632), (u'with', 1590), (u';', 1440), (u'by', 1408), (u':', 1389), (u'photograph', 1324), (u'from', 1191), (u'at', 1179), (u'as', 1140), (u'that', 1136), (u'are', 1035), (u'x', 1023), (u'be', 990), (u'or', 979), (u'2', 877), (u'0', 776), (u'2014', 740), (u'I', 734), (u'were', 714), (u'b&amp;amp;w', 691), (u'cooking', 685), (u'3', 685), (u'in.', 675), (u'4', 674), (u'it', 665), (u'this', 663), (u'which', 632), (u'5', 578), (u'have', 571), (u'.', 543), (u'cm.', 513), (u'an', 501), (u'their', 494), (u'about', 489), (u'This', 488), (u'not', 477), (u'col.', 468), (u'negative,', 460), (u'It', 441), (u'these', 438), (u'12', 429), (u'A', 425), (u'will', 423), (u'35', 415), (u'has', 413), (u'In', 411), (u'mm.', 395), (u'Jun', 391), (u'p.', 386), (u'they', 384), (u'food', 381), (u'had', 379), (u'all', 376), (u'we', 368), (u'he', 367)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;(u'the', 11873), (u'of', 8435), (u'and', 7689), (u'in', 5553), (u'a', 4542), (u'to', 4375), (u'is', 2150), (u'1', 2090), (u'for', 2080), (u'on', 1897), (u'The', 1808), (u'was', 1632), (u'with', 1590), (u';', 1440), (u'by', 1408), (u':', 1389), (u'photograph', 1324), (u'from', 1191), (u'at', 1179), (u'as', 1140), (u'that', 1136), (u'are', 1035), (u'x', 1023), (u'be', 990), (u'or', 979), (u'2', 877), (u'0', 776), (u'2014', 740), (u'I', 734), (u'were', 714), (u'b&amp;amp;w', 691), (u'cooking', 685), (u'3', 685), (u'in.', 675), (u'4', 674), (u'it', 665), (u'this', 663), (u'which', 632), (u'5', 578), (u'have', 571), (u'.', 543), (u'cm.', 513), (u'an', 501), (u'their', 494), (u'about', 489), (u'This', 488), (u'not', 477), (u'col.', 468), (u'negative,', 460), (u'It', 441), (u'these', 438), (u'12', 429), (u'A', 425), (u'will', 423), (u'35', 415), (u'has', 413), (u'In', 411), (u'mm.', 395), (u'Jun', 391), (u'p.', 386), (u'they', 384), (u'food', 381), (u'had', 379), (u'all', 376), (u'we', 368), (u'he', 367)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;But for the most part, these words are not terribly interesting to us. The prevalence of "the" and "of" doesn't tell us much about how "cooking" is described and are making it hard to a pattern in the nouns and verbs. &lt;/p&gt;
 
@@ -170,10 +237,13 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;To do this, let's create a second function for checking the stopwords.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def remove_stops_and_add(word):
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def remove_stops_and_add(word):
     if word.lower() not in stop:
         description_words.append(word.lower())
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Here we are combining two steps in one. We transform each word as it comes in to the lower case with ".lower()" before we check it against the stop words. Then we transform it again before we append it to our "description_words" list. &lt;/p&gt;
 
@@ -183,14 +253,29 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;On the line after we set up our "description_words" list, add:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;stop = stopwords.words('english')
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;stop = stopwords.words('english')
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Here we are loading up the collection of english stop words from the stopwords library.&lt;/p&gt;
 
 &lt;p&gt;Finally, we need to call this new function inside our "get_words()" function. &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def get_words():
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
     for each in json_data:
         try:
             descriptions = each['sourceResource']['description']
@@ -205,33 +290,44 @@ for key, count in c.most_common(200):
 
         except KeyError:
             print "Description Missing"
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Save and run your script.&lt;/p&gt;
 
 &lt;p&gt;Now our results should look something like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;[(u'1', 2090), (u'photograph', 1520), (u';', 1440), (u':', 1389), (u'x', 1057), (u'2', 877), (u'cooking', 779), (u'0', 776), (u'2014', 740), (u'b&amp;amp;w', 691), (u'3', 685), (u'in.', 675), (u'4', 674), (u'5', 578), (u'.', 543), (u'cm.', 513), (u'food', 471), (u'col.', 468), (u'may', 462), (u'negative,', 460), (u'one', 440), (u'12', 429), (u'35', 415), (u'p.', 408), (u'also', 404), (u'mm.', 396), (u'two', 393), (u'jun', 391), (u'6', 358), (u'would', 347), (u'clark', 345), (u'includes', 332), (u'time', 327), (u'molasses', 325), (u'new', 324), (u'people', 315), (u'20', 306), (u'well', 301), (u'state', 301), (u'early', 288), (u'work', 284), (u'water', 283), (u'university', 282), (u'positive,', 280), (u'home', 276), (u'joe', 275), (u'per', 270), (u'farm', 269), (u'information', 263), (u'school', 251), (u'three', 251), (u'-', 250), (u'first', 243), (u'8', 238), (u'used', 237), (u'7', 235), (u'good', 231), (u'10', 227), (u'large', 217), (u'no.', 216), (u'published', 213), (u'library', 207), (u'9', 206)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;[(u'1', 2090), (u'photograph', 1520), (u';', 1440), (u':', 1389), (u'x', 1057), (u'2', 877), (u'cooking', 779), (u'0', 776), (u'2014', 740), (u'b&amp;amp;w', 691), (u'3', 685), (u'in.', 675), (u'4', 674), (u'5', 578), (u'.', 543), (u'cm.', 513), (u'food', 471), (u'col.', 468), (u'may', 462), (u'negative,', 460), (u'one', 440), (u'12', 429), (u'35', 415), (u'p.', 408), (u'also', 404), (u'mm.', 396), (u'two', 393), (u'jun', 391), (u'6', 358), (u'would', 347), (u'clark', 345), (u'includes', 332), (u'time', 327), (u'molasses', 325), (u'new', 324), (u'people', 315), (u'20', 306), (u'well', 301), (u'state', 301), (u'early', 288), (u'work', 284), (u'water', 283), (u'university', 282), (u'positive,', 280), (u'home', 276), (u'joe', 275), (u'per', 270), (u'farm', 269), (u'information', 263), (u'school', 251), (u'three', 251), (u'-', 250), (u'first', 243), (u'8', 238), (u'used', 237), (u'7', 235), (u'good', 231), (u'10', 227), (u'large', 217), (u'no.', 216), (u'published', 213), (u'library', 207), (u'9', 206)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;This is much better! But now we have some distracting numbers and punctuation marks. So let's get rid of those too.&lt;/p&gt;
 
 &lt;p&gt;Going back to our new "remove_stops_and_add()" function, let's add a few more filters that the words must pass through before we add it to the bag.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def remove_stops_and_add(word):
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def remove_stops_and_add(word):
     if word.lower() not in stop:
         if not word.isdigit():
             description_words.append(word.lower())
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;This checks to see if the words is a digit and if it is not, then it allows it to pass. We also had some punctuation marks and abbreviations. To remove these, we can allow only those words that are alphanumeric to pass before we add to "description_words". &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def remove_stops_and_add(word):
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def remove_stops_and_add(word):
     if word.lower() not in stop:
         if not word.isdigit():
             if word.isalnum():
                 description_words.append(word.lower())
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;And well done! We now have a very interesting list of description words and their frequencies across all of the "cooking" items in the DPLA's holdings.&lt;/p&gt;
 
@@ -250,8 +346,8 @@ for key, count in c.most_common(200):
   </entry>
   <entry>
     <title>Gathering a Subset of the Data</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module11-subset.html"/>
-    <id>http://blog.url.com/modules/module11-subset.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module11.html"/>
+    <id>http://blog.url.com/modules/module11.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-14T19:43:41-04:00</updated>
     <author>
@@ -269,8 +365,9 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;At the bottom of your script, add the line:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Save and run in Terminal. &lt;/p&gt;
 
@@ -286,8 +383,9 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;print json_data[1]['sourceResource']['description']
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print json_data[1]['sourceResource']['description']
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Work with your table to print only the titles. What about only the subject headings?&lt;/p&gt;
 
@@ -303,7 +401,18 @@ for key, count in c.most_common(200):
 
 &lt;p&gt;Currently our "my_second_script.py" file should look like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;import json
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -315,57 +424,98 @@ with open("search_results.json") as json_file:
 #print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
 
 print json_data[1]['sourceResource']['description']
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Let's use "description_words" as the variable for our empty list of stopwords. Remember that variables go after we import the libraries and before our functions. &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;description_words = []
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;description_words = []
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Next, we will create a new function called "get_words"&lt;/p&gt;
 
 &lt;p&gt;Declare the function by adding:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def get_words():
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Next, tab in once and add a for-loop to move through each item in the json_data list:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def get_words():
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
    for each in json_data:
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Next, let's set up a variable to grab the descriptions:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def get_words():
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
     for each in json_data:
         descriptions = each['sourceResource']['description']
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def get_words():
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
     for each in json_data:
         descriptions = each['sourceResource']['description']
         for line in descriptions:
             words = line.split()
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;To see what just happened, let's add a print statement:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def get_words():
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
     for each in json_data:
         descriptions = each['sourceResource']['description']
         for line in descriptions:
             words = line.split()
             print words
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Now "call the function" by adding &lt;span class="command"&gt;get_words()&lt;/span&gt; to the end of the file.	&lt;/p&gt;
 
 &lt;p&gt;Your file should now look like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;import json
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -388,32 +538,42 @@ def get_words():
 print json_data[1]['sourceResource']['description']
 
 get_words()
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Save the file and run it in the terminal.&lt;/p&gt;
 
 &lt;p&gt;You might first notice that this script threw an error, saying:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;KeyError: 'description'
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;KeyError: 'description'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;jeriwieringa$ python my_second_script.py
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;jeriwieringa$ python my_second_script.py
 Traceback (most recent call last):
   	File "my_second_script.py", line 21, in &amp;lt;module&amp;gt;
 	get_words()
   	File "my_second_script.py", line 16, in get_words
 	descriptions = each['sourceResource']['description']
 KeyError: 'description'
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;We have a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". &lt;/p&gt;
 
 &lt;p&gt;Let's see what is going. Comment out the call to "get_words" function.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# get_words()
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# get_words()
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Now let's print the first object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 1 to 0, the save and run the file.&lt;/p&gt;
 
@@ -423,7 +583,15 @@ KeyError: 'description'
 
 &lt;p&gt;To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def get_words():
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
     for each in json_data:
         try:
             descriptions = each['sourceResource']['description']
@@ -432,7 +600,8 @@ KeyError: 'description'
                 print words
         except KeyError:
             print "Description Missing"
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Un-comment "get_words()", save, and run the file.&lt;/p&gt;
 
@@ -442,7 +611,18 @@ KeyError: 'description'
 
 &lt;p&gt;To check if the value in "descriptions" in a string, we can add the following:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def get_words():
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
     for each in json_data:
         try:
             descriptions = each['sourceResource']['description']
@@ -454,22 +634,28 @@ KeyError: 'description'
             print words
         except KeyError:
             print "Description Missing"
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.&lt;/p&gt;
 
 &lt;p&gt;This is an example of creating a work around when working with data that is beyond our control. What has happened is that some institutions have a description field that looks like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;'description': 'A wonderful description sentence or two giving you a summary of the item'
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;'description': 'A wonderful description sentence or two giving you a summary of the item'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;And some have used the description field like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;'description': [
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;'description': [
     "one line of information", 
     "another line of information"
 ] 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;To accommodate this, we create one process for the first case, by checking if the value is a string and a second process for the second case.&lt;/p&gt;
 
@@ -479,7 +665,20 @@ KeyError: 'description'
 
 &lt;p&gt;To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function. Also, now that we know that our words are parsing correctly, we can remove "print words".&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def get_words():
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
     for each in json_data:
         try:
             descriptions = each['sourceResource']['description']
@@ -493,11 +692,44 @@ KeyError: 'description'
 
         except KeyError:
             print "Description Missing"
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;import json
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -530,7 +762,8 @@ def get_words():
 
 get_words()
 print description_words[999]
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;h3 id="group-challenge"&gt;Group Challenge:&lt;/h3&gt;
 
@@ -555,8 +788,8 @@ print description_words[999]
   </entry>
   <entry>
     <title>Working with Local Data</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module10-local_data.html"/>
-    <id>http://blog.url.com/modules/module10-local_data.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module10.html"/>
+    <id>http://blog.url.com/modules/module10.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-14T18:59:09-04:00</updated>
     <author>
@@ -572,23 +805,27 @@ print description_words[999]
 
 &lt;p&gt;Go to terminal and type:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;touch my_second_script.py 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;touch my_second_script.py 
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;or on Windows: &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;New-Item -ItemType file my_first_script.py
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;New-Item -ItemType file my_first_script.py
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;To open your new script file, type:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;open my_second_script.py
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;open my_second_script.py
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;or on Windows:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Start notepad++ my_first_script.py
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;Start notepad++ my_first_script.py
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;To begin, let's load in some of the libraries we will need for this next phase of the workshop.&lt;/p&gt;
 
@@ -600,9 +837,11 @@ print description_words[999]
 
 &lt;p&gt;The structure for this is:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;with open("search_results.json") as json_file:
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;with open("search_results.json") as json_file:
 	json_data = json.load(json_file)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Here, we tell Python to "open" our "search_results.json" file and assign it to the variable "json_file". The we use the "load" method in the "json.library" to load up the data and save it as the variable "json_data". &lt;/p&gt;
 
@@ -622,11 +861,15 @@ print description_words[999]
 
 &lt;p&gt;To download the stopwords, we are going to go back into the Python Interactive Shell. Run &lt;span class="command"&gt;python&lt;/span&gt;. Your terminal window should now look something like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;Python 2.7.5 (default, Mar  9 2014, 22:15:05)
 [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 &amp;gt;&amp;gt;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Type &lt;span class="command"&gt;import nltk&lt;/span&gt; and press enter.&lt;/p&gt;
 
@@ -634,9 +877,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;Once you see &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;True
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;True
 &amp;gt;&amp;gt;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using &lt;span class="command"&gt;quit()&lt;/span&gt;&lt;/p&gt;
 
@@ -646,7 +891,15 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;Your file should now look like:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;import json
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
@@ -655,7 +908,8 @@ with open("search_results.json") as json_file:
     json_data = json.load(json_file)
 
 #print json_data[1]
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;We are now ready to start working with our data.&lt;/p&gt;
 
@@ -675,8 +929,8 @@ with open("search_results.json") as json_file:
   </entry>
   <entry>
     <title>Writings Search Results to a File</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module09-write.html"/>
-    <id>http://blog.url.com/modules/module09-write.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module09.html"/>
+    <id>http://blog.url.com/modules/module09.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-14T19:43:55-04:00</updated>
     <author>
@@ -688,8 +942,9 @@ with open("search_results.json") as json_file:
 
 &lt;p&gt;Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right under the "all_records" variable, add:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;f = open("search_results.json", "w")
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;f = open("search_results.json", "w")
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Here you are combining a function - open("search_results.json") - with the declaration of a variable. "Open" also creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. &lt;/p&gt;
 
@@ -697,11 +952,15 @@ with open("search_results.json") as json_file:
 
 &lt;p&gt;Now that we have a file to write to, let's create a third function to write our search results to the file. You can put this after &lt;span class="command"&gt;f = open("search_results.json", "w")&lt;/span&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def save_results():
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def save_results():
 	data = json.dumps(all_records)
 	f.write(data)
 	f.close
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;First, we are creating a variable called "data". Working with json objects in python requires the use of another library, called "json", and json.dumps is an operation that helps python know how to interact with all the data in "all_records". Now, because we are using a new library, we also need to import that library at the beginning of the file. Add &lt;span class="command"&gt;import json&lt;/span&gt; to the top of the file. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.&lt;/p&gt;
 
@@ -709,12 +968,44 @@ with open("search_results.json") as json_file:
 
 &lt;p&gt;To run the "save_results" function, we can now call the function at the end of our file.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;save_results()
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;save_results()
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Our file should now look like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from dpla.api import DPLA
 import json
 
 dpla = DPLA('Your-Key-Here')
@@ -746,7 +1037,8 @@ pull_records(2, 5, 50)
 print all_records[150]
 
 save_results()
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Test that everything is working by running your "my_first_script.py" in terminal.
 Use terminal and the same process you use to open your script file to open the "search_results.json" file and check that 200 items made it in. Close the file once you're done.&lt;/p&gt;
@@ -761,8 +1053,9 @@ Use terminal and the same process you use to open your script file to open the "
 
 &lt;p&gt;Update your "pull_records" line to:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;pull_records(1, 22, 500)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;pull_records(1, 22, 500)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Save and run your script. This will take a bit of time, so get up, stretch, and get some coffee!&lt;/p&gt;
 
@@ -781,8 +1074,8 @@ Use terminal and the same process you use to open your script file to open the "
   </entry>
   <entry>
     <title>Looping through the Pages</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module08-whileloop.html"/>
-    <id>http://blog.url.com/modules/module08-whileloop.html</id>
+    <link rel="alternate" href="http://blog.url.com/modules/module08.html"/>
+    <id>http://blog.url.com/modules/module08.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
     <updated>2014-10-14T20:01:20-04:00</updated>
     <author>
@@ -796,25 +1089,33 @@ Use terminal and the same process you use to open your script file to open the "
 
 &lt;p&gt;To use a while loop, let's look again at our "pull records" function.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def pull_records(pages, end, size):
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
 	paged_search = dpla.search('cooking', page_size=size, page=pages)
 	save_each(paged_search)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.&lt;/p&gt;
 
 &lt;p&gt;To write this logic in code, we will add:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;while(pages &amp;lt;= end):
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;while(pages &amp;lt;= end):
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;so that our function now looks like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;def pull_records(pages, end, size):
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
 	while(pages &amp;lt;= end):
 		paged_search = dpla.search('cooking', page_size=size, page=pages)
 		save_each(paged_search)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;h3 id="adding-a-counter"&gt;Adding a Counter&lt;/h3&gt;
 
@@ -824,17 +1125,41 @@ Use terminal and the same process you use to open your script file to open the "
 
 &lt;p&gt;After &lt;span class="command"&gt;save_each(paged_search)&lt;/span&gt; add:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;pages = pages + 1
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;pages = pages + 1
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Let's also add a print command to check that things are working as we expect. Above &lt;span class="command"&gt;pages = pages + 1&lt;/span&gt; add:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;print "finished page " + str(pages)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print "finished page " + str(pages)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Our file should now look like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;from dpla.api import DPLA
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from dpla.api import DPLA
 
 dpla = DPLA('Your-Key-Here')
 
@@ -857,7 +1182,8 @@ def save_each(n):
 pull_records(2, 3, 50)
 
 print all_records[30]
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Let's test our function on a subset of the pages. Change &lt;span class="command"&gt;pull_records(2, 3, 50)&lt;/span&gt; to &lt;span class="command"&gt;pull_records(2, 5, 50)&lt;/span&gt; and change &lt;span class="command"&gt;print all_records[30]&lt;/span&gt; to &lt;span class="command"&gt;print all_records[150]&lt;/span&gt;&lt;/p&gt;
 

@@ -56,33 +56,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-pre {
-  font-family: monospace;
-  width:100%;
-  float:left;
-  white-space: pre-wrap;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
-  font-size:.85em;
-  box-shadow: 1px 1px 4px 0px #515861;
-  -moz-box-shadow: 1px 1px 4px 0px #515861;
-  -webkit-box-shadow: 1px 1px 4px 0px #515861;
-  padding-left:.5em;
-  background-color:#515861;
-  color:#fafafa;
-  margin-top:0;
-  -moz-tab-size: 2;
-  -o-tab-size:   2;
-  tab-size:      2;
-}
-
-
 
 /* Setting up the Grid */
 .wrap {
-  *zoom: 1;
+  zoom: 1;
   max-width: 58em;
   _width: 58em;
   padding-left: 1em;
@@ -152,15 +129,19 @@ h1 {
 }
 
 h2 {
-  font-size: 31.5px;
-  margin-bottom: 1em;
+  font-size: 28px;
+  margin: .5em 0;
+  color: #509997;
+  border-bottom: 3px double #509997;
+  padding-bottom:10px;
 }
 
 h3 {
   font-size: 22.5px;
   color: #509997;
-  border-bottom: 3px double #509997;
   padding-top: 1em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #509997;
 }
 
 h4 {
@@ -193,7 +174,6 @@ p {
 }
 .command {
   font-family: monospace;
-  font-size: .85em;
   padding:0 .5em;
   margin:0 .5em;
   background-color:#515861;
@@ -215,6 +195,7 @@ header h1 {
 header h2 {
   color: #ced9de;
   font-size: 22.5px;
+  border-bottom:none;
 }
 
 nav a{

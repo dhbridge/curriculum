@@ -11,13 +11,12 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title>Functions and Loops</title>
-    
-<!--     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
- -->    <link href="http://dhbridge.org/curriculum/stylesheets/style.css" rel="stylesheet" type="text/css">
-    
+
+    <link href="../stylesheets/codes.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" rel="stylesheet" type="text/css" />
   </head>
 
-  <body class="modules modules_module07-functionsandloops">
+  <body class="modules modules_module07">
     <!-- HEADER -->
         <header>
 				<div class="wrap">
@@ -35,32 +34,38 @@
             <div id="main">
               <article>
                 		<section id="sidebar">
-			<h3>Modules</h3>
+			<h2>Modules</h2>
 			<ul>
-				<li><a href="http://dhbridge.org/curriculum/modules/installation.html">Installation</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module01-terminal.html">Working with your Computer</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module02-data.html">Thinking about Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module03-get_data.html">Getting Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module04-complex_requests.html">Working with the API</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module05-use_editor.html">Writing Script Files</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module06-phasetwo.html">Phase Two</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module07-functionsandloops.html">Using Functions and Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module08-whileloop.html">Using While-Loops</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module09-write.html">Writing Results to File</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module10-local_data.html">Working with Local Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module11-subset.html">Gathering a Subset of Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module12-analyze.html">Analyzing a Subset of the Data</a></li>
-				<li><a href="http://dhbridge.org/curriculum/modules/module13-save.html">Saving Results to a File</a></li>
+			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<li><a href="/modules/module02.html">Thinking about Data</a></li>
+			<li><a href="/modules/module03.html">Getting Data</a></li>
+			<li><a href="/modules/module04.html">Working with the API</a></li>
+			<li><a href="/modules/module05.html">Writing Script Files</a></li>
+			<li><a href="/modules/module06.html">Phase Two</a></li>
+			<li><a href="/modules/module07.html">Using Functions and Loops</a></li>
+			<li><a href="/modules/module08.html">Using While-Loops</a></li>
+			<li><a href="/modules/module09.html">Writing Results to File</a></li>
+			<li><a href="/modules/module10.html">Working with Local Data</a></li>
+			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
+			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
+			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
 			</ul>
 		</section>
 
                 <section id="content">
-                        <h3>
+                        <h2>
           Functions and Loops
-      </h3>
+      </h2>
        <p>We now have a file that looks as follows:</p>
 
-<pre><code>from dpla.api import DPLA
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>from dpla.api import DPLA
 
 dpla = DPLA('Your-Key-Here')
 
@@ -68,7 +73,8 @@ dpla = DPLA('Your-Key-Here')
 # print result.items[1]
 
 all_records = []
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>We will now add a function that handles the query for any given page number.</p>
 
@@ -78,19 +84,31 @@ all_records = []
 
 <p>In your "my_first_script.py" file, add the line</p>
 
-<pre><code>def pull_records(pages, end, size):
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>def pull_records(pages, end, size):
+</pre></td></tr></tbody></table>
+</div>
 
 <p>You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.</p>
 
 <p>Tab in once on the next line and type:</p>
 
-<pre><code>paged_search = dpla.search('cooking', page_size=size, page=pages)
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>paged_search = dpla.search('cooking', page_size=size, page=pages)
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Your file should now look like this:</p>
 
-<pre><code>from dpla.api import DPLA
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>from dpla.api import DPLA
 
 dpla = DPLA('Your-Key-Here')
 
@@ -101,23 +119,39 @@ all_records = []
 
 def pull_records(pages, end, size):
 	paged_search = dpla.search('cooking', page_size=size, page=pages)
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.</p>
 
 <p>Let's add a print statement and test out the first stage of this function. Press return. Your curser should be at the same level as "paged_search…". Add a new line:</p>
 
-<pre><code>print paged_search.items[2]
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print paged_search.items[2]
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now to run the function, we will call the function name and give it values. On a new line and outside of the function, add the line:</p>
 
-<pre><code>pull_records(2, 3, 50)
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>pull_records(2, 3, 50)
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Your file should now look like:</p>
 
-<pre><code>from dpla.api import DPLA
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>from dpla.api import DPLA
 
 dpla = DPLA('Your-Key-Here')
 
@@ -131,7 +165,8 @@ def pull_records(pages, end, size):
 	print paged_search.items[2]
 
 pull_records(2, 3, 50)
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Save the file and go to terminal to run it.</p>
 
@@ -143,8 +178,9 @@ pull_records(2, 3, 50)
 
 <p>To set up our new "Save Each" function, we will define a new function in our my_first_script.py file. Good practice is to group our functions together toward the top of the file, so put the "save_each" function after we defined "pull_records" but before we call the "pull_records" function:</p>
 
-<pre><code>def save_each(n):
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>def save_each(n):
+</pre></td></tr></tbody></table>
+</div>
 
 <p>The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in and to take that variable and plug it in for 'n' throughout the function.</p>
 
@@ -152,38 +188,64 @@ pull_records(2, 3, 50)
 
 <p>Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:</p>
 
-<pre><code>for each in n.items:
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>for each in n.items:
+</pre></td></tr></tbody></table>
+</div>
 
 <p>This is called a "for loop". It tells the computer to iterate through each item in the list 'n'. We use n.items because this is the syntax from the DPyLA library. </p>
 
 <p>Now we tab in one more space and tell the computer what we want done to each item. To add the item to the "all_records" array, we use the "append" command:</p>
 
-<pre><code>all_records.append(each)
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>all_records.append(each)
+</pre></td></tr></tbody></table>
+</div>
 
 <p>The "save each" function should now look like this:</p>
 
-<pre><code>def save_each(n):
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>def save_each(n):
 	for each in n.items:
 		all_records.append(each)
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Now we can use this function in our "pull records" function. Currently, our "pull records" looks as follows:</p>
 
-<pre><code>def pull_records (pages, end, size):
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>def pull_records (pages, end, size):
 	paged_search = dpla.search('cooking', page_size=size, page=pages)
 	print paged_search.items[2]
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Let's delete the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:</p>
 
-<pre><code>save_each(paged_search)
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>save_each(paged_search)
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Our file should now look like:</p>
 
-<pre><code>from dpla.api import DPLA
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre>from dpla.api import DPLA
 
 dpla = DPLA('Your-Key-Here')
 
@@ -201,14 +263,16 @@ def save_each(n):
 		all_records.append(each)
 
 pull_records(2, 3, 50)
-</code></pre>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To test this, let's now add a print statement to the end of the file, after the pull_records function has been run, to make sure that the items are going into the "all_records" variable.</p>
 
 <p>Add:</p>
 
-<pre><code>print all_records[30]
-</code></pre>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print all_records[30]
+</pre></td></tr></tbody></table>
+</div>
 
 <p>Save and run your script.</p>
 
@@ -226,6 +290,7 @@ pull_records(2, 3, 50)
   <li>To create a "for loop"</li>
   <li>To "append" items into a list</li>
 </ul>
+
 
 
                 </section>
