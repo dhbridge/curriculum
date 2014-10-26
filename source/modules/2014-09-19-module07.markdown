@@ -9,7 +9,7 @@ We now have a file that looks as follows:
 
 	dpla = DPLA('Your-Key-Here')
 
-	# result = dpla.search('cooking')
+	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	# print result.items[1]
 	
 	all_records = []
@@ -27,8 +27,9 @@ In your "my_first_script.py" file, add the line
 You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.
 
 Tab in once on the next line and type:
-
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	
+	def pull_records(pages, end, size):
+		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
 
 Your file should now look like this:
 
@@ -36,19 +37,21 @@ Your file should now look like this:
 
 	dpla = DPLA('Your-Key-Here')
 
-	# result = dpla.search('cooking')
+	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	# print result.items[1]
 	
 	all_records = []
 
 	def pull_records(pages, end, size):
-		paged_search = dpla.search('cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
 
 It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.
 
 Let's add a print statement and test out the first stage of this function. Press return. Your curser should be at the same level as "paged_search...". Add a new line:
 
-	print paged_search.items[2]
+	def pull_records(pages, end, size):
+		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
+		print paged_search.items[2]
 
 Now to run the function, we will call the function name and give it values. On a new line and outside of the function, add the line:
 
@@ -60,13 +63,13 @@ Your file should now look like:
 
 	dpla = DPLA('Your-Key-Here')
 
-	# result = dpla.search('cooking')
+	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	# print result.items[1]
 	
 	all_records = []
 
 	def pull_records(pages, end, size):
-		paged_search = dpla.search('cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking',fields=['sourceResource'],  page_size=size, page=pages)
 		print paged_search.items[2]
 
 	pull_records(2, 3, 50)
@@ -106,10 +109,10 @@ The "save each" function should now look like this:
 Now we can use this function in our "pull records" function. Currently, our "pull records" looks as follows:
 
 	def pull_records (pages, end, size):
-		paged_search = dpla.search('cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
 		print paged_search.items[2]
 
-Let's delete the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:
+Let's comment out the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:
 
 	save_each(paged_search)
 
@@ -119,13 +122,13 @@ Our file should now look like:
 
 	dpla = DPLA('Your-Key-Here')
 
-	# result = dpla.search('cooking')
+	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	# print result.items[1]
 	
 	all_records = []
 
 	def pull_records(pages, end, size):
-		paged_search = dpla.search('cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking',fields=['sourceResource'],   page_size=size, page=pages)
 		save_each(paged_search)
 
 	def save_each(n):
