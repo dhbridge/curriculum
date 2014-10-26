@@ -3,9 +3,15 @@ title: Write Python in Script Files
 date: 2014-09-19
 ---
 
+In this module, we will learn: 
+
+1. to write and execute a Python script in the Terminal
+2. to organize our script files
+3. how programming language relate to our machines and to the available libraries.
+
 In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.
 
-### Writing and Executing Script Files
+### 1. Writing and Executing Script Files
 
 First, exit out of the Python Interactive Shell by running <span class="command">exit()</span>.
 
@@ -31,7 +37,7 @@ Your terminal window should look something like:
 	Hello World
 	jeriwieringa$
 
-Excellent! You just executed your first Python script!
+Congratulations! You just executed your first Python script!
 
 ### Writing our DPyLA Script
 
@@ -51,6 +57,14 @@ Then we can write our search query:
 
 	result = dpla.search('cooking')
 
+Your file should look like this:
+
+	from dpla.ap import DPLA
+
+	dpla = DPLA('YourAPIKey')
+	result = dpla.search('cooking')
+
+
 Save the file and go back to Terminal. Run 
 	
 	python my_first_script.py
@@ -59,11 +73,13 @@ You should notice that your computer works for awhile and then returns to normal
 
 Open your script file again (<span class="command">open my_first_script.py</span>or <span class="command">Start notepad++ my_first_script.py</span>). 
 
-Work with your group to add another line to the file that uses the print function to display one item from your search. 
-
 Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. 
 
-### Anatomy of a Python Script File
+### Group Challenge
+
+Work with your group to add another line to the file that uses the print function to display one item from your search. 
+
+### 2. Anatomy of a Python Script File
 
 Just like when we are writing papers or structuring an argument, order matters in our script files. The computer will execute the code in the order it encounters it.
 
@@ -77,13 +93,26 @@ After the variables, we will put our functions. Functions are like mini-scripts 
 
 Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) a "()". One exception is the print function, which doesn't require the () marks in this version of Python.* We called the print function to print one item from our search results. It is important to include the functions in the order that you want them to be run.
 
+	# Load Libraries
+	import [library name]
 
-### What We've Learned
+	# Set Variables
+	my_string = "information to be stored in my_var"
 
-- To execute Python scripts in the Terminal
-- To write our commands in the order they should be executed
-- To use print to display the results of our scripts
+	# Define Functions
+	def my_function(my_string):
+		#do something to "my_string"
+		my_list = str.split(my_string)
+		return my_list
 
+	# Make Function Calls
+	my_var = my_function()
+
+	print my_var[1]
+
+### 3. Programming Languages
+
+It is time to return to the pen and paper! Work with your group and your coach to talk about Python as a programming language and how it fits in the ecosystem of your computer.
 
 *Python 3 does require the use of () for print, making it more consistent with the Python sytax for functions.
 
