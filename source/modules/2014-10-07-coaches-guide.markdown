@@ -69,7 +69,7 @@ Check to make sure that participants have the following installed and ready to g
 
 If possible, please have participants pin the text editor and Chrome to their Dock (Mac)/Taskbar (Windows), or at least have them easily accessible. 
 
-### Module 1
+### Module 1 (to be done with full group)
 
 Learning Checks:
 
@@ -89,7 +89,7 @@ Learning Checks:
 
 Learning Checks: 
 
-1. make sure participants are clear on difference between Python Interactive Shell and Terminal.
+1. Make sure participants are clear on difference between Python Interactive Shell and Terminal.
 2. Terminology check: string, variable, array/list
 
 ### Module 4
@@ -107,12 +107,12 @@ Learning Checks: programming languages and libraries
 
 -High-level programming languages (like Python) enable you to write commands for your computer in something that approximates English. Those commands are then translated down to machine language, executed by the hardware, and the results are translated back to generate the desired output. Your computer is constantly processing commands from the applications on your machine in multiple programming languages. Just like those applications, you can use the terminal interface to send commands to your computer.
 
-2. Discuss everyone's diagrams and make sure the concepts are clear in everyone's mind.
+2. Discuss everyone's diagrams and make sure the concepts are clear.
 3. Mapping Exercise #2: have participants diagram the following, similar to the API exercise from earlier in the day:
 
 -A Python module or library is a bundle of code, including variables and functions (defined processes), that does a particular task. Many Python modules already exist out in the world, ready to be used, and new ones are developed by programmers all the time. Python scripts, which combine these modules with additional python commands, give the computer new, and more complicated, tasks that can be completed.
 
-4. Discuss everyone's diagrams and make sure the concepts are clear in everyone's mind.
+4. Discuss everyone's diagrams and make sure the concepts are clear.
 
 ### Module 6
 
@@ -122,27 +122,47 @@ Before your group jumps into the code-heavy part of the module, start off with t
 3. functions
 4. calls/commands to execute the functions
 
+Terminology related to functions: from now on the tutorials will use new phrases to describe how the functions work in relation to the data. These phrases are part of programming vernacular, and so they're not jarring to participants, here are some basic definitions:
+1. call: to execute 
+2. declare: set up a new function
+3. pass: to run data through the function/loop
+
 Learning Checks:
-1. Verify that participants understand setting variables and how they can hold lists (an empty list so far). 
+1. Have a quick discussion about the merits of commenting out versus deleting lines
+2. Verify that participants understand setting variables and how they can hold lists (an empty list so far.
+2. Group challenge, "for loop" exercise: check that the participants have a solid grasp on the function and purpose of a "for loop"
 
 ### Module 7
-Talk about commenting out versus deleting--why to do one versus the other (for the purposes of the workshop and future)
 
-
+Learning Checks: 
+1. Review and explain in a group discussion: how functions can be combined to solve problems, with the example of the two functions written so far and how they work together.
+2. Review what "append" does.
+3. Group challenge: talk through the functionality and uses for a "for loop"
 
 ### Module 8
 
+Learning Checks: 
+1. Group challenge: along with talking through how a "while loop" works, also review why the "while loop" is added into the function where it is. 
+2. Cover why an "infinite loop" is bad.
 
 ### Module 9
 
+Learning Checks:
+1. 
 
 ### Module 10
 
+Learning Checks:
+1. 
 
 ### Module 11
 
+Learning Checks: 
+
 
 ### Module 12
+
+Learning Checks:
 
 
 ### Module 13
