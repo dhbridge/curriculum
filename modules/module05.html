@@ -24,7 +24,7 @@
 	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
 
 	    <nav id="pages">
-	    	<a href="http://curriculum.dhbridge.org">Computational Thinking</a>
+	    	<a href="/">Computational Thinking</a>
 	    	<a href="http://dhbridge.org">About DH Bridge</a>
 	    </nav>
 	</div>
@@ -35,8 +35,10 @@
               <article>
                 		<section id="sidebar">
 			<h2>Modules</h2>
-			<ul>
-			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<a href="/modules/installation.html">Installation Instructions</a>
+
+			<ol>
+			<li><a href="/modules/module01.html">Working with your Computer</a></li>
 			<li><a href="/modules/module02.html">Thinking about Data</a></li>
 			<li><a href="/modules/module03.html">Getting Data</a></li>
 			<li><a href="/modules/module04.html">Working with the API</a></li>
@@ -49,16 +51,24 @@
 			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
 			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
 			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
-			</ul>
+			</ol>
 		</section>
 
                 <section id="content">
                         <h2>
           Write Python in Script Files
       </h2>
-       <p>In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.</p>
+       <p>In this module, we will learn: </p>
 
-<h3 id="writing-and-executing-script-files">Writing and Executing Script Files</h3>
+<ol>
+  <li>to write and execute a Python script in the Terminal</li>
+  <li>to organize our script files</li>
+  <li>how programming language relate to our machines and to the available libraries.</li>
+</ol>
+
+<p>In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.</p>
+
+<h3 id="writing-and-executing-script-files">1. Writing and Executing Script Files</h3>
 
 <p>First, exit out of the Python Interactive Shell by running <span class="command">exit()</span>.</p>
 
@@ -94,7 +104,7 @@ jeriwieringa$
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Excellent! You just executed your first Python script!</p>
+<p>Congratulations! You just executed your first Python script!</p>
 
 <h3 id="writing-our-dpyla-script">Writing our DPyLA Script</h3>
 
@@ -120,6 +130,18 @@ jeriwieringa$
 </pre></td></tr></tbody></table>
 </div>
 
+<p>Your file should look like this:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>from dpla.ap import DPLA
+
+dpla = DPLA('YourAPIKey')
+result = dpla.search('cooking')
+</pre></td></tr></tbody></table>
+</div>
+
 <p>Save the file and go back to Terminal. Run </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>python my_first_script.py
@@ -130,11 +152,13 @@ jeriwieringa$
 
 <p>Open your script file again (<span class="command">open my_first_script.py</span>or <span class="command">Start notepad++ my_first_script.py</span>). </p>
 
-<p>Work with your group to add another line to the file that uses the print function to display one item from your search. </p>
-
 <p>Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. </p>
 
-<h3 id="anatomy-of-a-python-script-file">Anatomy of a Python Script File</h3>
+<h3 id="group-challenge">Group Challenge</h3>
+
+<p>Work with your group to add another line to the file that uses the print function to display one item from your search. </p>
+
+<h3 id="anatomy-of-a-python-script-file">2. Anatomy of a Python Script File</h3>
 
 <p>Just like when we are writing papers or structuring an argument, order matters in our script files. The computer will execute the code in the order it encounters it.</p>
 
@@ -148,15 +172,48 @@ jeriwieringa$
 
 <p>Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) a "()". One exception is the print function, which doesn't require the () marks in this version of Python.* We called the print function to print one item from our search results. It is important to include the functions in the order that you want them to be run.</p>
 
-<h3 id="what-weve-learned">What We've Learned</h3>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre># Load Libraries
+import [library name]
 
-<ul>
-  <li>To execute Python scripts in the Terminal</li>
-  <li>To write our commands in the order they should be executed</li>
-  <li>To use print to display the results of our scripts</li>
-</ul>
+# Set Variables
+my_string = "information to be stored in my_var"
+
+# Define Functions
+def my_function(my_string):
+	#do something to "my_string"
+	my_list = str.split(my_string)
+	return my_list
+
+# Make Function Calls
+my_var = my_function()
+
+print my_var[1]
+</pre></td></tr></tbody></table>
+</div>
+
+<h3 id="programming-languages">3. Programming Languages</h3>
+
+<p>It is time to return to the pen and paper! Work with your group and your coach to talk about Python as a programming language and how it fits in the ecosystem of your computer.</p>
 
 <p>*Python 3 does require the use of () for print, making it more consistent with the Python sytax for functions.</p>
+
+<p><span class="left"><a href="module04.html">Previous Module</a></span>
+<span class="right"><a href="module06.html">Next Module</a></span></p>
 
 
 

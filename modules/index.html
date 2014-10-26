@@ -24,7 +24,7 @@
 	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
 
 	    <nav id="pages">
-	    	<a href="http://curriculum.dhbridge.org">Computational Thinking</a>
+	    	<a href="/">Computational Thinking</a>
 	    	<a href="http://dhbridge.org">About DH Bridge</a>
 	    </nav>
 	</div>
@@ -35,8 +35,10 @@
               <article>
                 		<section id="sidebar">
 			<h2>Modules</h2>
-			<ul>
-			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<a href="/modules/installation.html">Installation Instructions</a>
+
+			<ol>
+			<li><a href="/modules/module01.html">Working with your Computer</a></li>
 			<li><a href="/modules/module02.html">Thinking about Data</a></li>
 			<li><a href="/modules/module03.html">Getting Data</a></li>
 			<li><a href="/modules/module04.html">Working with the API</a></li>
@@ -49,7 +51,7 @@
 			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
 			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
 			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
-			</ul>
+			</ol>
 		</section>
 
                 <section id="content">
@@ -223,6 +225,7 @@ for key, count in c.most_common(200):
   <li>to use the CSV library to save our results in csv format</li>
 </ul>
 
+<p><span class="left"><a href="module12.html">Previous Module</a></span></p>
 
   <h3><a href="/modules/module12.html">Analyzing a Subset of the Data</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -374,6 +377,9 @@ for key, count in c.most_common(200):
 <ul>
   <li>to use stopwords and filters to clean up noisy data</li>
 </ul>
+
+<p><span class="left"><a href="module11.html">Previous Module</a></span>
+<span class="right"><a href="module13.html">Next Module</a></span></p>
 
   <h3><a href="/modules/module11.html">Gathering a Subset of the Data</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -810,6 +816,9 @@ print description_words[999]
   <li>to check type and use an "if/else" statement</li>
 </ul>
 
+<p><span class="left"><a href="module10.html">Previous Module</a></span>
+<span class="right"><a href="module12.html">Next Module</a></span></p>
+
   <h3><a href="/modules/module10.html">Working with Local Data</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
@@ -943,6 +952,8 @@ with open("search_results.json") as json_file:
   <li>to load libraries into our scripts</li>
 </ul>
 
+<p><span class="left"><a href="module09.html">Previous Module</a></span>
+<span class="right"><a href="module11.html">Next Module</a></span></p>
 
   <h3><a href="/modules/module09.html">Writings Search Results to a File</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -1082,6 +1093,9 @@ Use terminal and the same process you use to open your script file to open the "
   <li>To write json to a file</li>
 </ul>
 
+<p><span class="left"><a href="module09.html">Previous Module</a></span>
+<span class="right"><a href="module10.html">Next Module</a></span></p>
+
   <h3><a href="/modules/module08.html">Looping through the Pages</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
@@ -1205,10 +1219,23 @@ print all_records[30]
   <li>To use "print" to check our functions along the way</li>
 </ul>
 
+<p><span class="left"><a href="module07.html">Previous Module</a></span>
+<span class="right"><a href="module09.html">Next Module</a></span></p>
+
   <h3><a href="/modules/module07.html">Functions and Loops</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>We now have a file that looks as follows:</p>
+  <p>In this module, we will learn</p>
+
+<ol>
+  <li>to create and call functions</li>
+  <li>to create a "for loop"</li>
+  <li>to "append" or add items into a list</li>
+</ol>
+
+<p>We are now ready to start writing a function to gather all of the information we want from the DPLA.</p>
+
+<p>We now have a file that looks as follows:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -1221,7 +1248,7 @@ print all_records[30]
 
 dpla = DPLA('Your-Key-Here')
 
-# result = dpla.search('cooking')
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 # print result.items[1]
 
 all_records = []
@@ -1230,9 +1257,11 @@ all_records = []
 
 <p>We will now add a function that handles the query for any given page number.</p>
 
-<h3 id="creating-a-pull-records-function">Creating a "Pull Records" Function</h3>
+<h3 id="creating-a-pull-records-function">1. Creating a "Pull Records" Function</h3>
 
-<p>To write a function, we set of the function with the word "def" and then indent all of the commands that are part of the function.</p>
+<p>Functions are little packets of code that do particular tasks. They involve variables, and processes, and the take what is given to them, and spit out a result. </p>
+
+<p>To write a function, we start with the word "def", then give our function a name, and finally end with '():' Inside the parenthese, we can indicate how many pieces of information are going into the function.</p>
 
 <p>In your "my_first_script.py" file, add the line</p>
 
@@ -1240,11 +1269,15 @@ all_records = []
 </pre></td></tr></tbody></table>
 </div>
 
-<p>You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.</p>
+<p>In this line, you have declared a 'pull_records' function, and told the computer that this function will involve three variables (pages, end, and size).These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page. </p>
+
+<p>We are now ready to add the steps involving in getting the search records. </p>
 
 <p>Tab in once on the next line and type:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>paged_search = dpla.search('cooking', page_size=size, page=pages)
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>def pull_records(pages, end, size):
+	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
 </pre></td></tr></tbody></table>
 </div>
 
@@ -1264,21 +1297,25 @@ all_records = []
 
 dpla = DPLA('Your-Key-Here')
 
-# result = dpla.search('cooking')
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 # print result.items[1]
 
 all_records = []
 
 def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
 </pre></td></tr></tbody></table>
 </div>
 
 <p>It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.</p>
 
-<p>Let's add a print statement and test out the first stage of this function. Press return. Your curser should be at the same level as "paged_search…". Add a new line:</p>
+<p>Let's add a print statement to our function and test out the first stage of this function. Add the following print statement after 'paged_search…':</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print paged_search.items[2]
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>def pull_records(pages, end, size):
+	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
+	print paged_search.items[2]
 </pre></td></tr></tbody></table>
 </div>
 
@@ -1307,22 +1344,22 @@ def pull_records(pages, end, size):
 
 dpla = DPLA('Your-Key-Here')
 
-# result = dpla.search('cooking')
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 # print result.items[1]
 
 all_records = []
 
 def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking',fields=['sourceResource'],  page_size=size, page=pages)
 	print paged_search.items[2]
 
 pull_records(2, 3, 50)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Save the file and go to terminal to run it.</p>
+<p>Save the file and go to terminal to run it. Then come back to the function and work with your table to understand how the function worked.</p>
 
-<h3 id="saving-items-to-all-records">Saving Items to "All Records"</h3>
+<h3 id="using-a-for-loop-to-save-items-to-allrecords">2. Using a 'for loop' to save items to 'all_records'</h3>
 
 <p>You have written and executed your first function! Well done!</p>
 
@@ -1367,12 +1404,12 @@ pull_records(2, 3, 50)
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre>def pull_records (pages, end, size):
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
 	print paged_search.items[2]
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Let's delete the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:</p>
+<p>Let's comment out the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>save_each(paged_search)
 </pre></td></tr></tbody></table>
@@ -1401,13 +1438,13 @@ pull_records(2, 3, 50)
 
 dpla = DPLA('Your-Key-Here')
 
-# result = dpla.search('cooking')
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 # print result.items[1]
 
 all_records = []
 
 def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking',fields=['sourceResource'],   page_size=size, page=pages)
 	save_each(paged_search)
 
 def save_each(n):
@@ -1434,35 +1471,37 @@ pull_records(2, 3, 50)
 
 <p>Break out the paper and pencils. Work as a group to create a diagram or metaphor for a "for loop". What are some of the advantages of using a loop to process a set of data?</p>
 
-<h3 id="what-we-learned">What We Learned</h3>
-
-<ul>
-  <li>To create and call functions</li>
-  <li>To pass variables into functions</li>
-  <li>To create a "for loop"</li>
-  <li>To "append" items into a list</li>
-</ul>
+<p><span class="left"><a href="module06.html">Previous Module</a></span>
+<span class="right"><a href="module08.html">Next Module</a></span></p>
 
   <h3><a href="/modules/module06.html">Moving to Phase Two</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>We are at the half-way point, so it is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks to create new programs. </p>
+  <p>In this module we will learn: </p>
 
-<p>We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.</p>
+<ul>
+  <li>To add additional parameters to our API call</li>
+  <li>To create an empty list</li>
+  <li>To comment-out code that we don't want to run, but want to keep</li>
+</ul>
+
+<p>We are at the half-way point, so it is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about how we can combine libraries to create new programs. </p>
+
+<p>We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA API and learned how to leverage libraries like DPyLA to use the API in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.</p>
 
 <p>Well Done!</p>
 
-<p>So far you have been writing code that does one thing: it get search results or prints a particular item. The power of code, however, is being able to do the same thing to a series of items and it is thinking in terms of iterating through a series that is at the core of computational thinking. To do this, we will learn two very powerful programming concepts: functions and loops.</p>
+<p>So far you have been writing code that does one thing: it get search results or prints a particular item. The power of computation, however, is being able to do the same thing to a series of items. This means thinking in terms of iterating through a series of items, doing the same thing to each in order to work to an answer. To do this, we will learn two very powerful programming concepts: functions and loops.</p>
 
 <h3 id="asking-questions-of-our-data">Asking Questions of Our Data</h3>
 
-<p>We have been able to do a lot with filtering the data by subject headings, by geographic space, and by contributor. But what if we want to ask questions about how the objects associated with "cooking" are described across all 10,000+ items? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking"?</p>
+<p>We have been able to do a lot with filtering the data. But what if we want to ask questions about how the objects associated with "cooking" are described across all 10,000+ items? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking"?</p>
 
 <p>There are many ways one could go about investigating the descriptions. Work with your table to brain-storm a couple of approaches.</p>
 
 <h3 id="adding-parameters-to-the-query">Adding Parameters to the Query</h3>
 
-<p>To start, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can add a parameter to our query to get up to 500 items at a time, but there were 10,909 items associated with "cooking".</p>
+<p>The first step is to get all of the relevant data. To do that, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can add a parameter to our query to get up to 500 items at a time, but there were nearly 11,000 items associated with "cooking".</p>
 
 <p>Open your "my_first_script.py" file. Looking at the line that says </p>
 
@@ -1470,9 +1509,17 @@ pull_records(2, 3, 50)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>we can change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:</p>
+<p>First, let's narrow down the information we get back for each item from the DPLA. Looking at the documentation, we can do this by identifying the field names we are interested. Looking at the search results, the description information, along with the titles and subject headings, are all found under 'sourceResource'. We can limit our results by adding <span class="command">fields=['sourceResource']</span> to our search:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search('cooking', page_size=50)
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search('cooking', fields=['sourceResource'])
+</pre></td></tr></tbody></table>
+</div>
+
+<p>This gives us a smaller set of data that is applicable to our questions, but with enough context incase we need to work back to the original item.</p>
+
+<p>Next, let's change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 </pre></td></tr></tbody></table>
 </div>
 
@@ -1490,19 +1537,17 @@ pull_records(2, 3, 50)
 
 <h3 id="setting-up-a-variable">Setting Up a Variable</h3>
 
-<p>To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items all of the pages and we need a place to store them, so that as we get new items, our collections grows.</p>
+<p>To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items from all of the pages and we need a place to store them, so that as we get new items, our collections grows.</p>
 
-<p>Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. </p>
-
-<p>For example, you could create a list "fruit" that has the values "apple, orange, banana" by doing the following: fruit = ["apple", "orange", "banana"] either within a script or in the Python Interactive Shell. Now if you ask for the second item in fruit by typing "fruit[1]", you would get back "orange".</p>
+<p>Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. A list holds a series of items, such as <span class="command">fruit = ['apple', 'orange', 'banana']</span></p>
 
 <p>We are going to use a similar structure to save all of the items we get back from the DPLA.</p>
 
-<p>Go back to "my_first_script.py". "Comment out" the line <span class="command">result = dpla.search('cooking', page_size=50)</span> by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work and tells the computer to skip this line. </p>
+<p>Go back to "my_first_script.py". "Comment out" the line <span class="command">result = dpla.search('cooking', fields=['sourceResource'], page_size=50)</span> by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work and tells the computer to skip this line. </p>
 
 <p>Also comment out the line you wrote to print out one of the items.</p>
 
-<p>Your file should look something like this: </p>
+<p>Your file should look like: </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -1513,8 +1558,8 @@ pull_records(2, 3, 50)
 
 dpla = DPLA('YourKeyHere')
 
-# result = dpla.search('cooking')
-# print result.items[1]
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
+# print result.items[39]
 </pre></td></tr></tbody></table>
 </div>
 
@@ -1530,20 +1575,23 @@ dpla = DPLA('YourKeyHere')
 
 <p>Now that we have a place to store our values, we now have to tell the computer to get the search results from each page and save those results to the "all_records" list.</p>
 
-<h3 id="what-we-learned">What We Learned</h3>
-
-<ul>
-  <li>To add additional parameters to our API call</li>
-  <li>To create an empty list</li>
-  <li>To comment-out code that we don't want to run, but want to keep</li>
-</ul>
+<p><span class="left"><a href="module05.html">Previous Module</a></span>
+<span class="right"><a href="module07.html">Next Module</a></span></p>
 
   <h3><a href="/modules/module05.html">Write Python in Script Files</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.</p>
+  <p>In this module, we will learn: </p>
 
-<h3 id="writing-and-executing-script-files">Writing and Executing Script Files</h3>
+<ol>
+  <li>to write and execute a Python script in the Terminal</li>
+  <li>to organize our script files</li>
+  <li>how programming language relate to our machines and to the available libraries.</li>
+</ol>
+
+<p>In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.</p>
+
+<h3 id="writing-and-executing-script-files">1. Writing and Executing Script Files</h3>
 
 <p>First, exit out of the Python Interactive Shell by running <span class="command">exit()</span>.</p>
 
@@ -1579,7 +1627,7 @@ jeriwieringa$
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Excellent! You just executed your first Python script!</p>
+<p>Congratulations! You just executed your first Python script!</p>
 
 <h3 id="writing-our-dpyla-script">Writing our DPyLA Script</h3>
 
@@ -1605,6 +1653,18 @@ jeriwieringa$
 </pre></td></tr></tbody></table>
 </div>
 
+<p>Your file should look like this:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>from dpla.ap import DPLA
+
+dpla = DPLA('YourAPIKey')
+result = dpla.search('cooking')
+</pre></td></tr></tbody></table>
+</div>
+
 <p>Save the file and go back to Terminal. Run </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>python my_first_script.py
@@ -1615,11 +1675,13 @@ jeriwieringa$
 
 <p>Open your script file again (<span class="command">open my_first_script.py</span>or <span class="command">Start notepad++ my_first_script.py</span>). </p>
 
-<p>Work with your group to add another line to the file that uses the print function to display one item from your search. </p>
-
 <p>Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. </p>
 
-<h3 id="anatomy-of-a-python-script-file">Anatomy of a Python Script File</h3>
+<h3 id="group-challenge">Group Challenge</h3>
+
+<p>Work with your group to add another line to the file that uses the print function to display one item from your search. </p>
+
+<h3 id="anatomy-of-a-python-script-file">2. Anatomy of a Python Script File</h3>
 
 <p>Just like when we are writing papers or structuring an argument, order matters in our script files. The computer will execute the code in the order it encounters it.</p>
 
@@ -1633,15 +1695,48 @@ jeriwieringa$
 
 <p>Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) a "()". One exception is the print function, which doesn't require the () marks in this version of Python.* We called the print function to print one item from our search results. It is important to include the functions in the order that you want them to be run.</p>
 
-<h3 id="what-weve-learned">What We've Learned</h3>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre># Load Libraries
+import [library name]
 
-<ul>
-  <li>To execute Python scripts in the Terminal</li>
-  <li>To write our commands in the order they should be executed</li>
-  <li>To use print to display the results of our scripts</li>
-</ul>
+# Set Variables
+my_string = "information to be stored in my_var"
+
+# Define Functions
+def my_function(my_string):
+	#do something to "my_string"
+	my_list = str.split(my_string)
+	return my_list
+
+# Make Function Calls
+my_var = my_function()
+
+print my_var[1]
+</pre></td></tr></tbody></table>
+</div>
+
+<h3 id="programming-languages">3. Programming Languages</h3>
+
+<p>It is time to return to the pen and paper! Work with your group and your coach to talk about Python as a programming language and how it fits in the ecosystem of your computer.</p>
 
 <p>*Python 3 does require the use of () for print, making it more consistent with the Python sytax for functions.</p>
+
+<p><span class="left"><a href="module04.html">Previous Module</a></span>
+<span class="right"><a href="module06.html">Next Module</a></span></p>
 
   <h3><a href="/modules/module04.html">Working with the API</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -1701,12 +1796,25 @@ jeriwieringa$
   <li>Reading API documentation to understand the possible queries</li>
 </ul>
 
+<p><span class="left"><a href="module03.html">Previous Module</a></span>
+<span class="right"><a href="module05.html">Next Module</a></span></p>
+
   <h3><a href="/modules/module03.html">Getting Data</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>In this module, we will use Pip to install the DPyLA Python library to make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.</p>
+  <p>In this module, you will learn:</p>
 
-<h3 id="install-dpyla-library">Install DPyLA Library</h3>
+<ol>
+  <li>to install new libraries using Pip</li>
+  <li>to use the Python Interactive Shell to run basic Python commands</li>
+  <li>to load the DPyLA library and make an API request</li>
+</ol>
+
+<p>So far, we have looked at the data in our browser and have a sense of the scope of the information we can work with and the questions we might want to ask. But  </p>
+
+<p>In this module, we will use Pip to install the DPyLA Python library to make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.</p>
+
+<h3 id="install-dpyla-library">1. Install DPyLA Library</h3>
 
 <p>We talked earlier about libraries, those bundles of code that we can load and use in creating our own scripts. Just like in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to get the same results. </p>
 
@@ -1720,7 +1828,7 @@ jeriwieringa$
 
 <p>You have just installed your first Python library.</p>
 
-<h3 id="introducing-the-python-interactive-shell">Introducing the Python Interactive Shell</h3>
+<h3 id="introducing-the-python-interactive-shell">2. Introducing the Python Interactive Shell</h3>
 
 <p>Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the Interactive Shell, we can experiment with lines of Python and see what the language can do. </p>
 
@@ -1750,7 +1858,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Finally, if we input numbers or equations into Python, it will compute them. If you don't want Python to compute, you should treat the numbers like a string. Experiment in the Interactive Shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.</p>
 
-<h3 id="loading-dpyla-in-the-shell-and-make-an-api-request">Loading DPyLA in the Shell and Make an API Request</h3>
+<h3 id="loading-dpyla-in-the-shell-and-make-an-api-request">3. Loading DPyLA in the Shell and Make an API Request</h3>
 
 <p>Let's start using our new DPyLA library to make an API call to the DPLA. Following the <a href="https://github.com/bibliotechy/DPyLA">library documentation</a>, run (type the following and press "Enter") </p>
 
@@ -1814,28 +1922,31 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Can you use <a href="http://effbot.org/zone/python-list.htm">this tutorial</a> to figure out how to get items 1 - 3?	</p>
 
-<h3 id="what-you-have-learned">What You Have Learned</h3>
-
-<p>In this module, you have learned:</p>
-
-<ul>
-  <li>to install new libraries using Pip</li>
-  <li>to use the Python Interactive Shell to run basic Python commands</li>
-  <li>to load and use those libraries</li>
-  <li>to make an API request using a Python script</li>
-  <li>to work with variables and lists</li>
-</ul>
+<p><span class="left"><a href="module02.html">Previous Module</a></span>
+<span class="right"><a href="module04.html">Next Module</a></span></p>
 
   <h3><a href="/modules/module02.html">Thinking about Data</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>For this module, we will be using data from the <a href="http://dp.la">Digital Public Library of America</a>. We will walk through requesting an API key using the Terminal, learn how to talk to the API in our browsers, and think about the structure of the data we get back.</p>
+  <p>In this module, we will learn:</p>
 
-<h3 id="get-an-api-key">Get an API Key</h3>
+<ol>
+  <li>to use cURL or Invoke-WebRequest to talk to a server</li>
+  <li>to use an API to request data</li>
+  <li>to read JSON documents and think about how data can be structured</li>
+</ol>
 
-<p>The DPLA is an incredible resource for computational research. By bringing together information from a growing number of partners and making that information available through an API, the DPLA has made it easy to survey vast amounts of data housed in various cultural heritage institutions around the country.</p>
+<p>Doing computational work in the humanities requires data. One useful definition of data from the <a href="https://www.lib.umn.edu/datamanagement/whatdata">Univeristy of Minnesota</a> is "[a] reinterpretable representation of information in a formalized manner suitable for communication, interpretation, or processing." While there are different types of data, the data that we can use for computational work is data that is digital. </p>
 
-<p>Go to <a href="http://dp.la/info/developers/codex/">http://dp.la/info/developers/codex/</a>. This is the documentation for the dp.la API. Remember from our earlier conversation that an API is like a direct link between your browser and a server: if you format your request in a particular way, you will get back the data from the server in a particular data format without the HTML interface.</p>
+<p>Finding useful, digital, data for humanities research is still a challenge. Fortunately, there are a growing number of sources making data, and metadata, related to items of interest to humanities scholars available for use.</p>
+
+<p>For this workshop, we will be using data from the <a href="http://dp.la">Digital Public Library of America</a>, which is working to aggregate and make available data from cultural heritage institutions around the United States. We can take this data and use it to find items of interest and to find trends across the contributing organizations. </p>
+
+<p>To do that, we first need to get a key from the DPLA so that we can gain access to the data. We will then interaction with the API through our browsers and examine just what this data looks like to think about the types of questions we can explore using it.</p>
+
+<h3 id="get-an-api-key">1. Get an API Key</h3>
+
+<p>Go to <a href="http://dp.la/info/developers/codex/">http://dp.la/info/developers/codex/</a>. This is the documentation for the dp.la API. Remember from our earlier conversation that an API is an interface that allows computer programs to talk to one another: if you format your request in a particular way, you will get back the data from the server in a particular data format without the surrounding HTML.</p>
 
 <p>First, you will need an API key. </p>
 
@@ -1857,9 +1968,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>You should get an email from the DPLA with your key. </p>
 
-<h3 id="examining-data-in-browser">Examining Data in Browser</h3>
+<h3 id="examining-data-in-browser">2. Examining Data in Browser</h3>
 
-<p>To get a sense of how the API key works and what the data we get back looks like, let's use the web-browser. </p>
+<p>To get a sense of how the API key works and what the data we get back looks like, let's use the web-browser. If you can, please use Chrome.</p>
 
 <p>In your browser, type:</p>
 
@@ -1875,7 +1986,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 </span></pre></td></tr></tbody></table>
 </div>
 
-<p>Now try the same thing using Chrome and a very handy extension called <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">JSONView</a>, which will make the output display like:</p>
+<p>Well done! You have just made a successful API request.</p>
+
+<p>Now try the same thing using a very handy Chrome extension called <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">JSONView</a>, which will make the output display like:</p>
 
 <div class="highlight json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -1907,30 +2020,20 @@ Type "help", "copyright", "credits" or "license" for more information.
 </span></pre></td></tr></tbody></table>
 </div>
 
-<p>Well done! You have just made a successful API request.</p>
+<h3 id="thinking-about-json">3. Thinking about JSON</h3>
 
-<h3 id="thinking-about-json">Thinking about JSON</h3>
-
-<p>What you are looking at is a JSON document. In a JSON object, all the information is given in "key : value" pairs. On the left-hand side is the "key". This is a standardized description of a bit of information, such as "provider" or "ingestData". On right-hand side is the "value", or the information that applies for a particular object. With your table, work through the document and try to answer the following questions:</p>
+<p>What you are looking at is a JSON document. In JSON, all the information is given in "key : value" pairs. On the left-hand side is the "key". This is a standardized description of bits of information, such as "provider" or "ingestData". On right-hand side is the "value", or the information that applies for a particular item. With your table, look at the JSON document in your browser and try to answer the following questions:</p>
 
 <ol>
   <li>How many objects are displayed here? How do you know?</li>
-  <li>How many objects in the DPLA database fit our query for cooking? </li>
+  <li>How many objects in the DPLA database fit the query for cooking? </li>
   <li>Which key:value pairs do you find the most interesting?</li>
-  <li>What questions can you ask of this dataset? Which key:value pairs would be most helpful for answering those questions?</li>
+  <li>What questions might you ask of this dataset? Which key:value pairs would be most helpful for answering those questions?</li>
   <li>What questions would be hard to answer with this dataset? What additional information would you need?</li>
 </ol>
 
-<h3 id="what-you-have-learned">What You Have Learned</h3>
-
-<p>In this module, you've learned:</p>
-
-<ul>
-  <li>to use cURL or Invoke-WebRequest to talk to a server</li>
-  <li>to use an API to request data</li>
-  <li>to read JSON documents and think about how data is structured</li>
-</ul>
-
+<p><span class="left"><a href="module01.html">Previous Module</a></span>
+<span class="right"><a href="module03.html">Next Module</a></span></p>
 
   <h3><a href="/modules/module01.html">Working with Your Computer</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -2057,7 +2160,7 @@ Downloads		Movies		Sites
 <h3 id="credits">Credits</h3>
 <p>This tutorial is based on the <a href="http://praxis.scholarslab.org/scratchpad/bash/">Praxis Program's Command Line Bootcamp</a> and Greg Bloom's post, <a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/">Draw an API</a>.</p>
 
-<h4 id="next-modulemodule01html"><a href="module01.html">Next Module</a></h4>
+<p><span class="right"><a href="module02.html">Next Module</a></span></p>
 
   <h3><a href="/modules/installation.html">Installation</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -2072,7 +2175,7 @@ Downloads		Movies		Sites
   <li><strong>Your Laptop:</strong>
     <ul>
       <li>You need to have a working wifi connection (we will provide access to Mason's wireless)</li>
-      <li>We recommend that you update your operating system to the latest version your machine can support. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. </li>
+      <li>We recommend that you update your operating system to at least Mavericks or Mountain Lion if running a Mac (no need to rush to Yosemite though), if your machine can support it. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. </li>
       <li>We recommend that you install the Chrome browser, as we will be using some Chrome extensions along the way.</li>
     </ul>
   </li>

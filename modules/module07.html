@@ -24,7 +24,7 @@
 	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
 
 	    <nav id="pages">
-	    	<a href="http://curriculum.dhbridge.org">Computational Thinking</a>
+	    	<a href="/">Computational Thinking</a>
 	    	<a href="http://dhbridge.org">About DH Bridge</a>
 	    </nav>
 	</div>
@@ -35,8 +35,10 @@
               <article>
                 		<section id="sidebar">
 			<h2>Modules</h2>
-			<ul>
-			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<a href="/modules/installation.html">Installation Instructions</a>
+
+			<ol>
+			<li><a href="/modules/module01.html">Working with your Computer</a></li>
 			<li><a href="/modules/module02.html">Thinking about Data</a></li>
 			<li><a href="/modules/module03.html">Getting Data</a></li>
 			<li><a href="/modules/module04.html">Working with the API</a></li>
@@ -49,14 +51,24 @@
 			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
 			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
 			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
-			</ul>
+			</ol>
 		</section>
 
                 <section id="content">
                         <h2>
           Functions and Loops
       </h2>
-       <p>We now have a file that looks as follows:</p>
+       <p>In this module, we will learn</p>
+
+<ol>
+  <li>to create and call functions</li>
+  <li>to create a "for loop"</li>
+  <li>to "append" or add items into a list</li>
+</ol>
+
+<p>We are now ready to start writing a function to gather all of the information we want from the DPLA.</p>
+
+<p>We now have a file that looks as follows:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -69,7 +81,7 @@
 
 dpla = DPLA('Your-Key-Here')
 
-# result = dpla.search('cooking')
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 # print result.items[1]
 
 all_records = []
@@ -78,9 +90,11 @@ all_records = []
 
 <p>We will now add a function that handles the query for any given page number.</p>
 
-<h3 id="creating-a-pull-records-function">Creating a "Pull Records" Function</h3>
+<h3 id="creating-a-pull-records-function">1. Creating a "Pull Records" Function</h3>
 
-<p>To write a function, we set of the function with the word "def" and then indent all of the commands that are part of the function.</p>
+<p>Functions are little packets of code that do particular tasks. They involve variables, and processes, and the take what is given to them, and spit out a result. </p>
+
+<p>To write a function, we start with the word "def", then give our function a name, and finally end with '():' Inside the parenthese, we can indicate how many pieces of information are going into the function.</p>
 
 <p>In your "my_first_script.py" file, add the line</p>
 
@@ -88,11 +102,15 @@ all_records = []
 </pre></td></tr></tbody></table>
 </div>
 
-<p>You have declared a pull_records function, told the computer that this function will involve three variables (pages, end, and size) and are now ready to add the steps involving in getting the search records. These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page.</p>
+<p>In this line, you have declared a 'pull_records' function, and told the computer that this function will involve three variables (pages, end, and size).These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page. </p>
+
+<p>We are now ready to add the steps involving in getting the search records. </p>
 
 <p>Tab in once on the next line and type:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>paged_search = dpla.search('cooking', page_size=size, page=pages)
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>def pull_records(pages, end, size):
+	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
 </pre></td></tr></tbody></table>
 </div>
 
@@ -112,21 +130,25 @@ all_records = []
 
 dpla = DPLA('Your-Key-Here')
 
-# result = dpla.search('cooking')
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 # print result.items[1]
 
 all_records = []
 
 def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
 </pre></td></tr></tbody></table>
 </div>
 
 <p>It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.</p>
 
-<p>Let's add a print statement and test out the first stage of this function. Press return. Your curser should be at the same level as "paged_search…". Add a new line:</p>
+<p>Let's add a print statement to our function and test out the first stage of this function. Add the following print statement after 'paged_search…':</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print paged_search.items[2]
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>def pull_records(pages, end, size):
+	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
+	print paged_search.items[2]
 </pre></td></tr></tbody></table>
 </div>
 
@@ -155,22 +177,22 @@ def pull_records(pages, end, size):
 
 dpla = DPLA('Your-Key-Here')
 
-# result = dpla.search('cooking')
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 # print result.items[1]
 
 all_records = []
 
 def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking',fields=['sourceResource'],  page_size=size, page=pages)
 	print paged_search.items[2]
 
 pull_records(2, 3, 50)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Save the file and go to terminal to run it.</p>
+<p>Save the file and go to terminal to run it. Then come back to the function and work with your table to understand how the function worked.</p>
 
-<h3 id="saving-items-to-all-records">Saving Items to "All Records"</h3>
+<h3 id="using-a-for-loop-to-save-items-to-allrecords">2. Using a 'for loop' to save items to 'all_records'</h3>
 
 <p>You have written and executed your first function! Well done!</p>
 
@@ -215,12 +237,12 @@ pull_records(2, 3, 50)
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre>def pull_records (pages, end, size):
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
 	print paged_search.items[2]
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Let's delete the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:</p>
+<p>Let's comment out the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. Where the "print" command used to be, add:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>save_each(paged_search)
 </pre></td></tr></tbody></table>
@@ -249,13 +271,13 @@ pull_records(2, 3, 50)
 
 dpla = DPLA('Your-Key-Here')
 
-# result = dpla.search('cooking')
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 # print result.items[1]
 
 all_records = []
 
 def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+	paged_search = dpla.search('cooking',fields=['sourceResource'],   page_size=size, page=pages)
 	save_each(paged_search)
 
 def save_each(n):
@@ -282,14 +304,8 @@ pull_records(2, 3, 50)
 
 <p>Break out the paper and pencils. Work as a group to create a diagram or metaphor for a "for loop". What are some of the advantages of using a loop to process a set of data?</p>
 
-<h3 id="what-we-learned">What We Learned</h3>
-
-<ul>
-  <li>To create and call functions</li>
-  <li>To pass variables into functions</li>
-  <li>To create a "for loop"</li>
-  <li>To "append" items into a list</li>
-</ul>
+<p><span class="left"><a href="module06.html">Previous Module</a></span>
+<span class="right"><a href="module08.html">Next Module</a></span></p>
 
 
 

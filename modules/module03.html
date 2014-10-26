@@ -24,7 +24,7 @@
 	    <h2 class="tag">Encouraging Computational Thinking and Digital Skills in the Humanities</h2>
 
 	    <nav id="pages">
-	    	<a href="http://curriculum.dhbridge.org">Computational Thinking</a>
+	    	<a href="/">Computational Thinking</a>
 	    	<a href="http://dhbridge.org">About DH Bridge</a>
 	    </nav>
 	</div>
@@ -35,8 +35,10 @@
               <article>
                 		<section id="sidebar">
 			<h2>Modules</h2>
-			<ul>
-			<li><a href="/modules/installation.html">Installation</a></li><li><a href="/modules/module01.html">Working with your Computer</a></li>
+			<a href="/modules/installation.html">Installation Instructions</a>
+
+			<ol>
+			<li><a href="/modules/module01.html">Working with your Computer</a></li>
 			<li><a href="/modules/module02.html">Thinking about Data</a></li>
 			<li><a href="/modules/module03.html">Getting Data</a></li>
 			<li><a href="/modules/module04.html">Working with the API</a></li>
@@ -49,16 +51,26 @@
 			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
 			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
 			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
-			</ul>
+			</ol>
 		</section>
 
                 <section id="content">
                         <h2>
           Getting Data
       </h2>
-       <p>In this module, we will use Pip to install the DPyLA Python library to make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.</p>
+       <p>In this module, you will learn:</p>
 
-<h3 id="install-dpyla-library">Install DPyLA Library</h3>
+<ol>
+  <li>to install new libraries using Pip</li>
+  <li>to use the Python Interactive Shell to run basic Python commands</li>
+  <li>to load the DPyLA library and make an API request</li>
+</ol>
+
+<p>So far, we have looked at the data in our browser and have a sense of the scope of the information we can work with and the questions we might want to ask. But  </p>
+
+<p>In this module, we will use Pip to install the DPyLA Python library to make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.</p>
+
+<h3 id="install-dpyla-library">1. Install DPyLA Library</h3>
 
 <p>We talked earlier about libraries, those bundles of code that we can load and use in creating our own scripts. Just like in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to get the same results. </p>
 
@@ -72,7 +84,7 @@
 
 <p>You have just installed your first Python library.</p>
 
-<h3 id="introducing-the-python-interactive-shell">Introducing the Python Interactive Shell</h3>
+<h3 id="introducing-the-python-interactive-shell">2. Introducing the Python Interactive Shell</h3>
 
 <p>Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the Interactive Shell, we can experiment with lines of Python and see what the language can do. </p>
 
@@ -102,7 +114,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Finally, if we input numbers or equations into Python, it will compute them. If you don't want Python to compute, you should treat the numbers like a string. Experiment in the Interactive Shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.</p>
 
-<h3 id="loading-dpyla-in-the-shell-and-make-an-api-request">Loading DPyLA in the Shell and Make an API Request</h3>
+<h3 id="loading-dpyla-in-the-shell-and-make-an-api-request">3. Loading DPyLA in the Shell and Make an API Request</h3>
 
 <p>Let's start using our new DPyLA library to make an API call to the DPLA. Following the <a href="https://github.com/bibliotechy/DPyLA">library documentation</a>, run (type the following and press "Enter") </p>
 
@@ -166,17 +178,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Can you use <a href="http://effbot.org/zone/python-list.htm">this tutorial</a> to figure out how to get items 1 - 3?	</p>
 
-<h3 id="what-you-have-learned">What You Have Learned</h3>
-
-<p>In this module, you have learned:</p>
-
-<ul>
-  <li>to install new libraries using Pip</li>
-  <li>to use the Python Interactive Shell to run basic Python commands</li>
-  <li>to load and use those libraries</li>
-  <li>to make an API request using a Python script</li>
-  <li>to work with variables and lists</li>
-</ul>
+<p><span class="left"><a href="module02.html">Previous Module</a></span>
+<span class="right"><a href="module04.html">Next Module</a></span></p>
 
 
 

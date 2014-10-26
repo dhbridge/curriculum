@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/modules/module13.html"/>
     <id>http://blog.url.com/modules/module13.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-14T19:46:32-04:00</updated>
+    <updated>2014-10-26T10:00:22-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -184,6 +184,7 @@ for key, count in c.most_common(200):
   &lt;li&gt;to use the CSV library to save our results in csv format&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module12.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -191,7 +192,7 @@ for key, count in c.most_common(200):
     <link rel="alternate" href="http://blog.url.com/modules/module12.html"/>
     <id>http://blog.url.com/modules/module12.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-14T19:46:04-04:00</updated>
+    <updated>2014-10-26T10:00:22-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -342,6 +343,9 @@ for key, count in c.most_common(200):
 &lt;ul&gt;
   &lt;li&gt;to use stopwords and filters to clean up noisy data&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module11.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
+&lt;span class="right"&gt;&lt;a href="module13.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -349,7 +353,7 @@ for key, count in c.most_common(200):
     <link rel="alternate" href="http://blog.url.com/modules/module11.html"/>
     <id>http://blog.url.com/modules/module11.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-14T19:43:41-04:00</updated>
+    <updated>2014-10-26T10:00:22-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -784,6 +788,9 @@ print description_words[999]
   &lt;li&gt;to handle exceptions&lt;/li&gt;
   &lt;li&gt;to check type and use an "if/else" statement&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module10.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
+&lt;span class="right"&gt;&lt;a href="module12.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -791,7 +798,7 @@ print description_words[999]
     <link rel="alternate" href="http://blog.url.com/modules/module10.html"/>
     <id>http://blog.url.com/modules/module10.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-14T18:59:09-04:00</updated>
+    <updated>2014-10-26T10:00:22-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -925,6 +932,8 @@ with open("search_results.json") as json_file:
   &lt;li&gt;to load libraries into our scripts&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module09.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
+&lt;span class="right"&gt;&lt;a href="module11.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -932,7 +941,7 @@ with open("search_results.json") as json_file:
     <link rel="alternate" href="http://blog.url.com/modules/module09.html"/>
     <id>http://blog.url.com/modules/module09.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-14T19:43:55-04:00</updated>
+    <updated>2014-10-26T10:00:22-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1070,6 +1079,9 @@ Use terminal and the same process you use to open your script file to open the "
   &lt;li&gt;The difference between "write" and "append" as ways of opening a file&lt;/li&gt;
   &lt;li&gt;To write json to a file&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module09.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
+&lt;span class="right"&gt;&lt;a href="module10.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -1077,7 +1089,7 @@ Use terminal and the same process you use to open your script file to open the "
     <link rel="alternate" href="http://blog.url.com/modules/module08.html"/>
     <id>http://blog.url.com/modules/module08.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-14T20:01:20-04:00</updated>
+    <updated>2014-10-26T10:00:22-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1200,6 +1212,9 @@ print all_records[30]
   &lt;li&gt;To test on a subset of the data&lt;/li&gt;
   &lt;li&gt;To use "print" to check our functions along the way&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module07.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
+&lt;span class="right"&gt;&lt;a href="module09.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
