@@ -941,25 +941,143 @@ with open("search_results.json") as json_file:
     <link rel="alternate" href="http://blog.url.com/modules/module09.html"/>
     <id>http://blog.url.com/modules/module09.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-26T10:00:22-04:00</updated>
+    <updated>2014-10-26T14:30:59-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module, we will focus on writing the results of our functions to a text file. This gives us a local copy of the data so that we only hit the DPLA servers once for the entire collection of files.&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module we will learn:&lt;/p&gt;
 
-&lt;h3 id="opening-a-new-file"&gt;Opening a new file&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;how to save our results to a file&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;Our first step is to create and open a new file that we will save our search results to. In your "my_first_script.py" file, right under the "all_records" variable, add:&lt;/p&gt;
+&lt;p&gt;In this module, we will focus on writing the results of our functions to a text file. This gives us a local copy of the data so that we only hit the DPLA servers once for the entire collection of files.&lt;/p&gt;
+
+&lt;h3 id="saving-our-search-results"&gt;Saving our Search Results&lt;/h3&gt;
+
+&lt;p&gt;In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable, add:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;f = open("search_results.json", "w")
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Here you are combining a function - open("search_results.json") - with the declaration of a variable. "Open" also creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. &lt;/p&gt;
+&lt;p&gt;Your file should now look like this:&lt;/p&gt;
 
-&lt;h3 id="creating-a-write-function"&gt;Creating a "Write" Function&lt;/h3&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from dpla.api import DPLA
 
-&lt;p&gt;Now that we have a file to write to, let's create a third function to write our search results to the file. You can put this after &lt;span class="command"&gt;f = open("search_results.json", "w")&lt;/span&gt;.&lt;/p&gt;
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+f = open("search_results.json", "w")
+
+def pull_records(pages, end, size):
+	while(pages &amp;lt;= end):
+		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+		# print paged_search.items[2]
+		save_each(paged_search)
+		print "finished page " + str(pages)
+		pages = pages + 1
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 3, 50)
+
+print all_records[30]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here you are combining a function - open("search_results.json") - with the declaration of a variable. The "open" function both opens an existing file and  creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. &lt;/p&gt;
+
+&lt;p&gt;Python has libraries for working with JSON, but because these are more specialized libraries, they are not automatically loaded with Python. Since we need to write a JSON object, let's load that library into our file with &lt;span class="command"&gt;import json&lt;/span&gt;:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from dpla.api import DPLA
+import json
+
+dpla = DPLA('Your-Key-Here')
+
+# result = dpla.search('cooking')
+# print result.items[1]
+
+all_records = []
+
+f = open("search_results.json", "w")
+
+def pull_records(pages, end, size):
+	while(pages &amp;lt;= end):
+		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+		# print paged_search.items[2]
+		save_each(paged_search)
+		print "finished page " + str(pages)
+		pages = pages + 1
+
+def save_each(n):
+	for each in n.items:
+		all_records.append(each)
+
+pull_records(2, 3, 50)
+
+print all_records[30]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'pull_records' function.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -971,7 +1089,7 @@ with open("search_results.json") as json_file:
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;First, we are creating a variable called "data". Working with json objects in python requires the use of another library, called "json", and json.dumps is an operation that helps python know how to interact with all the data in "all_records". Now, because we are using a new library, we also need to import that library at the beginning of the file. Add &lt;span class="command"&gt;import json&lt;/span&gt; to the top of the file. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.&lt;/p&gt;
+&lt;p&gt;What did this function do? First, we are creating a variable called "data" which we made using json.dumps, which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.&lt;/p&gt;
 
 &lt;h3 id="calling-the-write-function"&gt;Calling the "Write" Function&lt;/h3&gt;
 
@@ -1014,25 +1132,24 @@ with open("search_results.json") as json_file:
 29
 30
 31
-32&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from dpla.api import DPLA
+32
+33
+34&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from dpla.api import DPLA
 import json
 
 dpla = DPLA('Your-Key-Here')
 
 # result = dpla.search('cooking')
 # print result.items[1]
-	
-all_records = []
-f = open('search_results.json', 'w')
 
-def save_results():
-	data = json.dumps(all_records)
-	f.write(data)
-	f.close
+all_records = []
+
+f = open("search_results.json", "w")
 
 def pull_records(pages, end, size):
 	while(pages &amp;lt;= end):
-		paged_search = dpla.search('cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+		# print paged_search.items[2]
 		save_each(paged_search)
 		print "finished page " + str(pages)
 		pages = pages + 1
@@ -1041,22 +1158,30 @@ def save_each(n):
 	for each in n.items:
 		all_records.append(each)
 
-pull_records(2, 5, 50)
+def save_results():
+	data = json.dumps(all_records)
+	f.write(data)
+	f.close
 
-print all_records[150]
+pull_records(2, 3, 50)
+
+print all_records[30]
 
 save_results()
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Test that everything is working by running your "my_first_script.py" in terminal.
-Use terminal and the same process you use to open your script file to open the "search_results.json" file and check that 200 items made it in. Close the file once you're done.&lt;/p&gt;
+&lt;p&gt;Test that everything is working by running your "my_first_script.py" in terminal.&lt;/p&gt;
+
+&lt;p&gt;Open your new "search_results.json" file and check that 200 items made it in. Close the file once you're done.&lt;/p&gt;
+
+&lt;p&gt;Congratulations! You've written your first results file!&lt;/p&gt;
 
 &lt;h3 id="saving-all-the-search-results"&gt;Saving all the Search Results&lt;/h3&gt;
 
-&lt;p&gt;Now, let's change the parameters we pass to the "pull_records" function to get all of the search results.&lt;/p&gt;
+&lt;p&gt;Finally, let's change the parameters we pass to the "pull_records" function to get all of the search results.&lt;/p&gt;
 
-&lt;p&gt;Remember, the number we pass to "pull_records" is the first page, the second number is the last page, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take '500' for our third variable. We also want to start with the first page, so '1' is our first variable.&lt;/p&gt;
+&lt;p&gt;Remember, the first number we pass to "pull_records" corresponds to the first page of search results, the second number to the last page of search results, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take '500' for our third variable. We also want to start with the first page, so '1' is our first variable.&lt;/p&gt;
 
 &lt;p&gt;To figure out the value we want for "end", we need to do a little math. If we have 10,909 items and can get 500 items a page, how many pages do we have to work through?&lt;/p&gt;
 
@@ -1066,19 +1191,13 @@ Use terminal and the same process you use to open your script file to open the "
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Save and run your script. This will take a bit of time, so get up, stretch, and get some coffee!&lt;/p&gt;
+&lt;p&gt;Save and run your script. &lt;/p&gt;
 
-&lt;h3 id="group-challege"&gt;Group Challege&lt;/h3&gt;
+&lt;p&gt;Well done! You now have a local copy of all the data that we want to analyze! You have done a lot of work! Take a moment, refresh your brain with some coffee and sugar, and come back when you're ready for the last leg of the tutorial!&lt;/p&gt;
+
+&lt;h3 id="bonus-challege-if-that-felt-too-easy"&gt;Bonus Challege (if that felt too easy…)&lt;/h3&gt;
 
 &lt;p&gt;Can you write a function that determines the total number of pages from the search results?&lt;/p&gt;
-
-&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To create and open a new file&lt;/li&gt;
-  &lt;li&gt;The difference between "write" and "append" as ways of opening a file&lt;/li&gt;
-  &lt;li&gt;To write json to a file&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;p&gt;&lt;span class="left"&gt;&lt;a href="module09.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
 &lt;span class="right"&gt;&lt;a href="module10.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
@@ -1089,13 +1208,21 @@ Use terminal and the same process you use to open your script file to open the "
     <link rel="alternate" href="http://blog.url.com/modules/module08.html"/>
     <id>http://blog.url.com/modules/module08.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-26T10:00:22-04:00</updated>
+    <updated>2014-10-26T11:44:44-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module, we will add another loop to our "pull records" function that allows us to move through more than one page of search results.&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module, we will learn:&lt;/p&gt;
 
-&lt;h3 id="introducing-the-while-loop"&gt;Introducing the While Loop&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;To use a while loop and counter&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We are almost there! We have a function to gather all of the search results on any given page. We now need a way to work systematically through all of the pages available. &lt;/p&gt;
+
+&lt;p&gt;To do that, we will add another loop to our "pull_records" function that allows us to move through more than one page of search results.&lt;/p&gt;
+
+&lt;h3 id="introducing-the-while-loop"&gt;1. Introducing the While Loop&lt;/h3&gt;
 
 &lt;p&gt;The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the while loop and a "counter" to work through all of the pages of search results.&lt;/p&gt;
 
@@ -1103,15 +1230,17 @@ Use terminal and the same process you use to open your script file to open the "
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', page_size=size, page=pages)
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
+	paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+	# print paged_search.items[2]			
 	save_each(paged_search)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.&lt;/p&gt;
 
-&lt;p&gt;To write this logic in code, we will add:&lt;/p&gt;
+&lt;p&gt;To write this logic into our existing function code, we will add:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;while(pages &amp;lt;= end):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -1122,22 +1251,32 @@ Use terminal and the same process you use to open your script file to open the "
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
 3
-4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
 	while(pages &amp;lt;= end):
-		paged_search = dpla.search('cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+		# print paged_search.items[2]					
 		save_each(paged_search)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
-
-&lt;h3 id="adding-a-counter"&gt;Adding a Counter&lt;/h3&gt;
 
 &lt;p&gt;Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now.&lt;/p&gt;
 
 &lt;p&gt;To avoid the infinite loop, we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".&lt;/p&gt;
 
-&lt;p&gt;After &lt;span class="command"&gt;save_each(paged_search)&lt;/span&gt; add:&lt;/p&gt;
+&lt;p&gt;Add 'pages = pages +1' after &lt;span class="command"&gt;save_each(paged_search)&lt;/span&gt; like this:&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;pages = pages + 1
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
+		while(pages &amp;lt;= end):
+			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+			# print paged_search.items[2]					
+			save_each(paged_search)
+			pages = pages + 1
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
@@ -1171,7 +1310,8 @@ Use terminal and the same process you use to open your script file to open the "
 20
 21
 22
-23&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from dpla.api import DPLA
+23
+24&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from dpla.api import DPLA
 
 dpla = DPLA('Your-Key-Here')
 
@@ -1182,7 +1322,8 @@ all_records = []
 
 def pull_records(pages, end, size):
 	while(pages &amp;lt;= end):
-		paged_search = dpla.search('cooking', page_size=size, page=pages)
+		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+		# print paged_search.items[2]
 		save_each(paged_search)
 		print "finished page " + str(pages)
 		pages = pages + 1
@@ -1204,14 +1345,6 @@ print all_records[30]
 &lt;h3 id="group-challenge"&gt;Group Challenge:&lt;/h3&gt;
 
 &lt;p&gt;Go back to your pen and paper and diagram a "while loop". &lt;/p&gt;
-
-&lt;h3 id="what-we-learned"&gt;What We Learned:&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To use a while loop and counter&lt;/li&gt;
-  &lt;li&gt;To test on a subset of the data&lt;/li&gt;
-  &lt;li&gt;To use "print" to check our functions along the way&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;p&gt;&lt;span class="left"&gt;&lt;a href="module07.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
 &lt;span class="right"&gt;&lt;a href="module09.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
