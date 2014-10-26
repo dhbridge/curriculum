@@ -3,6 +3,12 @@ title: Moving to Phase Two
 date: 2014-09-19
 ---
 
+In this module we will learn: 
+
+- To add additional parameters to our API call
+- To create an empty list
+- To comment-out code that we don't want to run, but want to keep
+
 We are at the half-way point, so it is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about using libraries like lego blocks to create new programs. 
 
 We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA api and learned how to leverage libraries like DPyLA to use those APIs in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.
@@ -27,9 +33,15 @@ Open your "my_first_script.py" file. Looking at the line that says
 
 	result = dpla.search('cooking')
 
-we can change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:
+First, let's narrow down the information we get back for each item from the DPLA. Looking at the documentation, we can do this by identifying the field names we are interested. Looking at the search results, the description information, along with the titles and subject headings, are all found under 'sourceResource'. We can limit our results by adding <span class="command">fields=['sourceResource']</span> to our search:
 
-	result = dpla.search('cooking', page_size=50)
+	result = dpla.search('cooking', fields=['sourceResource'])
+
+This gives us a smaller set of data that is applicable to our questions, but with enough context incase we need to work back to the original item.
+
+We can also change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:
+
+	result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 
 To check that this worked, let's add a line telling the computer to print out the 40th item:
 
@@ -46,9 +58,7 @@ Use the [documentation](https://github.com/bibliotechy/DPyLA) and your table to 
 
 To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items all of the pages and we need a place to store them, so that as we get new items, our collections grows.
 
-Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. 
-
-For example, you could create a list "fruit" that has the values "apple, orange, banana" by doing the following: fruit = ["apple", "orange", "banana"] either within a script or in the Python Interactive Shell. Now if you ask for the second item in fruit by typing "fruit[1]", you would get back "orange".
+Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. A list holds a series of items, such as <span class='command'>fruit = ['apple', 'orange', 'banana']</span>
 
 We are going to use a similar structure to save all of the items we get back from the DPLA.
 
@@ -56,14 +66,14 @@ Go back to "my_first_script.py". "Comment out" the line <span class="command">re
 
 Also comment out the line you wrote to print out one of the items.
 
-Your file should look something like this: 
+Your file should look like: 
 
 	from dpla.api import DPLA
 
 	dpla = DPLA('YourKeyHere')
 	
-	# result = dpla.search('cooking')
-	# print result.items[1]
+	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
+	# print result.items[39]
 
 Now, let's create a new variable, "all_records" and set it equal to an empty list.
 
@@ -74,12 +84,6 @@ To do this, add a new line:
 This tells the computer that we have a variable, "all_records", that this variable will hold a list, and that we currently have no items in that list.
 
 Now that we have a place to store our values, we now have to tell the computer to get the search results from each page and save those results to the "all_records" list.
-
-### What We Learned
-
-- To add additional parameters to our API call
-- To create an empty list
-- To comment-out code that we don't want to run, but want to keep
 
 <span class="left">[Previous Module](module05.html)</span>
 <span class="right">[Next Module](module07.html)</span>
