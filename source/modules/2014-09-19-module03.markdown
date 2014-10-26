@@ -3,9 +3,18 @@ title: Getting Data
 date: 2014-09-19
 ---
 
+In this module, you will learn:
+
+1. to install new libraries using Pip
+2. to use the Python Interactive Shell to run basic Python commands
+3. to load the DPyLA library and make an API request
+
+So far, we have looked at the data in our browser and have a sense of the scope of the information we can work with and the questions we might want to ask. But  
+
+
 In this module, we will use Pip to install the DPyLA Python library to make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.
 
-### Install DPyLA Library
+### 1. Install DPyLA Library
 
 We talked earlier about libraries, those bundles of code that we can load and use in creating our own scripts. Just like in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to get the same results. 
 
@@ -19,7 +28,7 @@ If you get a permissions error and you're a Mac user, type <span class="command"
 
 You have just installed your first Python library.
 
-### Introducing the Python Interactive Shell
+### 2. Introducing the Python Interactive Shell
 
 Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the Interactive Shell, we can experiment with lines of Python and see what the language can do. 
 
@@ -43,7 +52,7 @@ The content contained inside " " marks is called a string. This is especially im
 
 Finally, if we input numbers or equations into Python, it will compute them. If you don't want Python to compute, you should treat the numbers like a string. Experiment in the Interactive Shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.
 
-### Loading DPyLA in the Shell and Make an API Request
+### 3. Loading DPyLA in the Shell and Make an API Request
 
 Let's start using our new DPyLA library to make an API call to the DPLA. Following the [library documentation](https://github.com/bibliotechy/DPyLA), run (type the following and press "Enter") 
 
@@ -95,16 +104,6 @@ Try to get the 3rd item in the search results.
 
 Can you use [this tutorial](http://effbot.org/zone/python-list.htm) to figure out how to get items 1 - 3?	
 
-
-### What You Have Learned
-
-In this module, you have learned:
-
-- to install new libraries using Pip
-- to use the Python Interactive Shell to run basic Python commands
-- to load and use those libraries
-- to make an API request using a Python script
-- to work with variables and lists
 
 <span class="left">[Previous Module](module02.html)</span>
 <span class="right">[Next Module](module04.html)</span>
