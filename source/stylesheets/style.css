@@ -153,7 +153,7 @@ strong {
 
 .left{
   float:left;
-  width:10em;
+  width:9em;
 }
 .left:before {
   content: "\21E0";
@@ -161,7 +161,7 @@ strong {
 }
 .right {
   float:right;
-  width:10em;
+  width:7em;
 }
 .right:after {
   content: "\21E2";
@@ -191,6 +191,7 @@ p {
 }
 .command {
   font-family: monospace;
+  font-size:.85em;
   padding:0 .5em;
   margin:0 .5em;
   background-color:#515861;
@@ -231,15 +232,15 @@ nav a:last-of-type {
 }
 
 #sidebar {
-  width:27%;
+  width:28%;
   float:left;
   margin-right:3%;
 }
-#sidebar ul {
+#sidebar ul, ol {
   padding-left:1em;
 }
 #content {
-  width: 70%;
+  width: 69%;
   float:left;
 }
 
