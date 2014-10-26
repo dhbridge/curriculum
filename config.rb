@@ -103,6 +103,7 @@ end
 
 activate :deploy do |deploy|
   deploy.method = :git
+  deploy.clean = false
   # Optional Settings
   # deploy.remote   = 'custom-remote' # remote name or git url, default: origin
   # deploy.branch   = 'custom-branch' # default: gh-pages
