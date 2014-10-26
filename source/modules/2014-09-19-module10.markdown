@@ -3,11 +3,14 @@ title: Working with Local Data
 date: 2014-09-19
 ---
 
-Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. 
+In this module we will learn:
+1. to create a new script file and load in our JSON data
+2. to select data from particular fields and deal with missing data
+3. to convert our JSON data to strings of text
 
-In this module, we will create a new script and learn how to load data from our "search_results.json" file. We will also install the Natural Language ToolKit library in order to do some text analysis on our data.
+Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of 'cooking' items are gendered, our next step is to filter down that data and save it as text. In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.
 
-### Loading from a Local File
+### 1. Create a new script and load in our data
 
 It is time to create a new script file!
 
@@ -27,82 +30,330 @@ or on Windows:
 
     Start notepad++ my_first_script.py
 
-To begin, let's load in some of the libraries we will need for this next phase of the workshop.
+First, we will need the json library again. To add this, add <span class="command">import json</span> to the very top of the file.
 
-First, we will need the json library again. To add this, type <span class="command">import json</span> at the very top of the file.
-
-We are also going to use a library called "collections" and a specific part of that library called "Counter". To import this, type <span class="command">from collections import Counter</span> on the next line.
 
 The next thing is to load up the data from our "search_results.json" file.
 
 The structure for this is:
 
-	with open("search_results.json") as json_file:
-		json_data = json.load(json_file)
-
-Here, we tell Python to "open" our "search_results.json" file and assign it to the variable "json_file". The we use the "load" method in the "json.library" to load up the data and save it as the variable "json_data". 
-
-To make sure this worked, let's print out one item from the json data. Work with your table to add a print statement to print the second item in the json_data list.
-
-
-### Installing NLTK
-
-We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).
-
-To install NLTK, let's go back to our terminal and use pip.
-
-Run <span class = "command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.
-
-Now, go back to your file and import nltk at the top of the file.
-
-There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/). 
-
-To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:
-
-	Python 2.7.5 (default, Mar  9 2014, 22:15:05)
-	[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
-	Type "help", "copyright", "credits" or "license" for more information.
-	>>> 
-
-Type <span class="command">import nltk</span> and press enter.
-
-Next type <span class="command">nltk.download('stopwords')</span> and press enter.
-
-Once you see 
-    
-    True
-    >>>
-
-you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span>
-
-Great!
-
-Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add <span class="command">from nltk.corpus import stopwords</span> to the top of the file.
-
-Your file should now look like:
-
-    import json
-    from collections import Counter
-    import nltk
-    from nltk.corpus import stopwords
-
     with open("search_results.json") as json_file:
         json_data = json.load(json_file)
 
-    #print json_data[1]
+Here, we tell Python to "open" our "search_results.json" file and assign it to the variable "json_file". The we use the "load" method in the "json.library" to load up the data and save it as the variable "json_data". 
+
+Our second script file should now look like:
+
+    import json
+
+    with open("search_results.json") as json_file:
+        json_data = json.load(json_file)    
+
+To make sure this worked, let's print out one item from the json data. Work with your table to add a print statement to print the second item in the json_data list.
+
+### 2. Select the relevant text data
+
+The next step is to select the fields that will be most helpful for analyzing how 'cooking' items are described across the items in the DPLA.
+
+Looking at our items, there are three main fields containing description type information for our different 'cooking' items: the title, the description, and the subject headings. 
+
+Our question for these items is how, across the entire DPLA collection, the descriptions of items related to cooking are gendered. To do this, we need to do some basic text analysis, so let's save our search results in a format that makes it easy to do that: as text.
+
+To start, let's make a new function called 'get_text' that takes in our 'json_data' list:
+
+    def get_text(json_data):
+        # Do something to each item in json_data
+
+Next, for each item in that array, we want to look for the 'title', the 'description', and the 'subject heading fields'. This means using another 'for loop'. 
+
+    def get_text(json_data):
+        for each in json_data:
+            # Get the title
+
+            # Get the description
+
+            # Get the subject headings
+
+We can get the title, description, and subject headings by looking for those 'keys' within each item in our 'json_data' list. 
+
+    def get_text(json_data):
+        for each in json_data:
+            title = each['sourceResource.title']
+
+            description = each['sourceResource.description']
+
+            subject = each['sourceResource.subject']
+
+So far so good. But what if one of these fields is missing? Programming languages are very literal - if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line to call the function.
+
+    import json
+
+    with open("search_results.json") as json_file:
+        json_data = json.load(json_file) 
+
+    def get_text(json_data):
+        for each in json_data:
+            title = each['sourceResource.title']
+
+            description = each['sourceResource.description']
+
+            subject = each['sourceResource.subject']
+
+    get_text(json_data)
+
+Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key 'title' in one of the resources.
+
+To deal with this, we use 'try' and 'except' - we will tell the computer to try to find the keys, but if it doesn't, to assign the value to blank and move on.
+
+    def get_text(json_data):
+        for each in json_data:
+            try:
+                title = each['sourceResource.title']
+            except:
+                title = ' '
+            
+            try:
+                description = each['sourceResource.description']
+            except:
+                description = ' '
+
+            try:
+                subject = each['sourceResource.subject']
+            except:
+                subject = ' '
+
+There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is in the form of a string.
+
+    def get_text(json_data):
+        for each in json_data:
+            try:
+                title = each['sourceResource.title']
+                if isinstance(title, basestring):
+                    title = str(titles)
+                else:
+                    for each in title:
+                        title = str(each)
+            except:
+                title = ' '
+            
+            try:
+                description = each['sourceResource.description']
+
+                if isinstance(description, basestring):
+                    description = str(description)
+                else:
+                    for line in description:
+                        description = str(line)
+            except:
+                description = ' '
+
+            try:
+                subject = each['sourceResource.subject']
+
+                if isinstance(subject, basestring):
+                    subject = str(subject)
+                else:
+                    for each in subject:
+                        subject = []
+                        subject.append(each['name'])  
+            except:
+                subject = ' '
+
+You might notice two odd things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along. 
+
+Second, we are handling the subject field differently than title and description. This is because the subject key holds an additional list, rather than just values. Work in your groups to map out what is going on in the subject section of the funciton.
+
+The last is to save this data into a text file. Similar to last time, we need to set up the file that will receive that data:
+    
+    import json
+
+    with open("search_results.json") as json_file:
+        json_data = json.load(json_file) 
+
+    f = open('text_results.txt', 'a')
+
+The major difference here is that we are opening the file as append so that we can save each line of data as we loop, rather than storing it all and writing it all at once.
+
+Our whole file should now look like this:
+
+    import json
+
+    with open("search_results.json") as json_file:
+        json_data = json.load(json_file) 
+
+    f = open('text_results.txt', 'a')
 
 
-We are now ready to start working with our data.
+    def get_text(json_data):
+        for each in json_data:
+            try:
+                title = each['sourceResource.title']
+                if isinstance(title, basestring):
+                    title = str(titles)
+                else:
+                    for each in title:
+                        title = str(each)
+            except:
+                title = ' '
+            
+            try:
+                description = each['sourceResource.description']
 
-### What We Learned
+                if isinstance(description, basestring):
+                    description = str(description)
+                else:
+                    for line in description:
+                        description = str(line)
+            except:
+                description = ' '
 
-In this module, we have reviewed and learned:
+            try:
+                subject = each['sourceResource.subject']
 
-- to create new files using terminal
-- to load json data from a file 
-- to download libraries using pip
-- to download datasets within libraries
-- to load libraries into our scripts
+                if isinstance(subject, basestring):
+                    subject = str(subject)
+                else:
+                    for each in subject:
+                        subject = []
+                        subject.append(each['name'])  
+            except:
+                subject = ' '
+
+Now, let's go back to the function and put all our pieces together into a new variable.
+
+    def get_text(json_data):
+        for each in json_data:
+            try:
+                title = each['sourceResource.title']
+                if isinstance(title, basestring):
+                    title = str(titles)
+                else:
+                    for each in title:
+                        title = str(each)
+            except:
+                title = ' '
+            
+            try:
+                description = each['sourceResource.description']
+
+                if isinstance(description, basestring):
+                    description = str(description)
+                else:
+                    for line in description:
+                        description = str(line)
+            except:
+                description = ' '
+
+            try:
+                subject = each['sourceResource.subject']
+
+                if isinstance(subject, basestring):
+                    subject = str(subject)
+                else:
+                    for each in subject:
+                        subject = []
+                        subject.append(each['name'])  
+            except:
+                subject = ' '
+
+        data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
+
+This line takes the information held in title, adds a ';' and a space, takes the information in description, add '; and a space, and finally, takes the list held in subject and smashes it together into a string, separated by a comman and a space. Finally, the '\n' adds an 'enter' the end of the line, so that the information for each item appears on a new line.
+
+The last step is to write all the information within 'data' to our file.
+
+    def get_text(json_data):
+        for each in json_data:
+            try:
+                title = each['sourceResource.title']
+                if isinstance(title, basestring):
+                    title = str(titles)
+                else:
+                    for each in title:
+                        title = str(each)
+            except:
+                title = ' '
+            
+            try:
+                description = each['sourceResource.description']
+
+                if isinstance(description, basestring):
+                    description = str(description)
+                else:
+                    for line in description:
+                        description = str(line)
+            except:
+                description = ' '
+
+            try:
+                subject = each['sourceResource.subject']
+
+                if isinstance(subject, basestring):
+                    subject = str(subject)
+                else:
+                    for each in subject:
+                        subject = []
+                        subject.append(each['name'])  
+            except:
+                subject = ' '
+
+        data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
+
+        f.write(data.encode('utf-8'))
+
+Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem unusual characters.
+
+Now let's add a call to the function and run our code:
+    
+    import json
+
+    with open("search_results.json") as json_file:
+        json_data = json.load(json_file) 
+
+    f = open('text_results.txt', 'a')
+
+    def get_text(json_data):
+        for each in json_data:
+            try:
+                title = each['sourceResource.title']
+                if isinstance(title, basestring):
+                    title = str(titles)
+                else:
+                    for each in title:
+                        title = str(each)
+            except:
+                title = ' '
+            
+            try:
+                description = each['sourceResource.description']
+
+                if isinstance(description, basestring):
+                    description = str(description)
+                else:
+                    for line in description:
+                        description = str(line)
+            except:
+                description = ' '
+
+            try:
+                subject = each['sourceResource.subject']
+
+                if isinstance(subject, basestring):
+                    subject = str(subject)
+                else:
+                    for each in subject:
+                        subject = []
+                        subject.append(each['name'])  
+            except:
+                subject = ' '
+
+        data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
+
+        f.write(data.encode('utf-8'))
+
+    get_text(json_data)
+
+Save and run your second python script. You should now have a text file named 'text_results.txt' in your directory. If you open that file, you should see lines of beautiful text ready for analysis.
 
 <span class="left">[Previous Module](module09.html)</span>
 <span class="right">[Next Module](module11.html)</span>
