@@ -1,6 +1,6 @@
 ---
 title: Overview for Coaches
-date: 2014-10-06
+date: 2014-10-07
 ---
 
 Welcome to being a coach for a DH Bridge workshop! This document will orient you to the goals and objectives for the day (and beyond), how the tutorials have been scaffolded, and the places where your expertise will be needed to guide participants. 
