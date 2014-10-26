@@ -11,7 +11,7 @@ For the workshop you will need to bring:
 
 - **Your Laptop:**
 	- You need to have a working wifi connection (we will provide access to Mason's wireless)
-	- We recommend that you update your operating system to the latest version your machine can support. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. 
+	- We recommend that you update your operating system to at least Mavericks or Mountain Lion if running a Mac (no need to rush to Yosemite though), if your machine can support it. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. 
     - We recommend that you install the Chrome browser, as we will be using some Chrome extensions along the way.
 
 - **Your Powercord**
