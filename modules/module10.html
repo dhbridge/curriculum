@@ -58,11 +58,14 @@
                         <h2>
           Working with Local Data
       </h2>
-       <p>Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. </p>
+       <p>In this module we will learn:
+1. to create a new script file and load in our JSON data
+2. to select data from particular fields and deal with missing data
+3. to convert our JSON data to strings of text</p>
 
-<p>In this module, we will create a new script and learn how to load data from our "search_results.json" file. We will also install the Natural Language ToolKit library in order to do some text analysis on our data.</p>
+<p>Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of 'cooking' items are gendered, our next step is to filter down that data and save it as text. In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.</p>
 
-<h3 id="loading-from-a-local-file">Loading from a Local File</h3>
+<h3 id="create-a-new-script-and-load-in-our-data">1. Create a new script and load in our data</h3>
 
 <p>It is time to create a new script file!</p>
 
@@ -90,11 +93,7 @@
 </pre></td></tr></tbody></table>
 </div>
 
-<p>To begin, let's load in some of the libraries we will need for this next phase of the workshop.</p>
-
-<p>First, we will need the json library again. To add this, type <span class="command">import json</span> at the very top of the file.</p>
-
-<p>We are also going to use a library called "collections" and a specific part of that library called "Counter". To import this, type <span class="command">from collections import Counter</span> on the next line.</p>
+<p>First, we will need the json library again. To add this, add <span class="command">import json</span> to the very top of the file.</p>
 
 <p>The next thing is to load up the data from our "search_results.json" file.</p>
 
@@ -102,57 +101,79 @@
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre>with open("search_results.json") as json_file:
-	json_data = json.load(json_file)
+    json_data = json.load(json_file)
 </pre></td></tr></tbody></table>
 </div>
 
 <p>Here, we tell Python to "open" our "search_results.json" file and assign it to the variable "json_file". The we use the "load" method in the "json.library" to load up the data and save it as the variable "json_data". </p>
 
-<p>To make sure this worked, let's print out one item from the json data. Work with your table to add a print statement to print the second item in the json_data list.</p>
-
-<h3 id="installing-nltk">Installing NLTK</h3>
-
-<p>We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).</p>
-
-<p>To install NLTK, let's go back to our terminal and use pip.</p>
-
-<p>Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.</p>
-
-<p>Now, go back to your file and import nltk at the top of the file.</p>
-
-<p>There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
-
-<p>To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:</p>
+<p>Our second script file should now look like:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>Python 2.7.5 (default, Mar  9 2014, 22:15:05)
-[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-&gt;&gt;&gt; 
+4</pre></td><td class="code"><pre>import json
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file)    
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Type <span class="command">import nltk</span> and press enter.</p>
+<p>To make sure this worked, let's print out one item from the json data. Work with your table to add a print statement to print the second item in the json_data list.</p>
 
-<p>Next type <span class="command">nltk.download('stopwords')</span> and press enter.</p>
+<h3 id="select-the-relevant-text-data">2. Select the relevant text data</h3>
 
-<p>Once you see </p>
+<p>The next step is to select the fields that will be most helpful for analyzing how 'cooking' items are described across the items in the DPLA.</p>
+
+<p>Looking at our items, there are three main fields containing description type information for our different 'cooking' items: the title, the description, and the subject headings. </p>
+
+<p>Our question for these items is how, across the entire DPLA collection, the descriptions of items related to cooking are gendered. To do this, we need to do some basic text analysis, so let's save our search results in a format that makes it easy to do that: as text.</p>
+
+<p>To start, let's make a new function called 'get_text' that takes in our 'json_data' list:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>True
-&gt;&gt;&gt;
+2</pre></td><td class="code"><pre>def get_text(json_data):
+    # Do something to each item in json_data
 </pre></td></tr></tbody></table>
 </div>
 
-<p>you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span></p>
+<p>Next, for each item in that array, we want to look for the 'title', the 'description', and the 'subject heading fields'. This means using another 'for loop'. </p>
 
-<p>Great!</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>def get_text(json_data):
+    for each in json_data:
+        # Get the title
 
-<p>Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add <span class="command">from nltk.corpus import stopwords</span> to the top of the file.</p>
+        # Get the description
 
-<p>Your file should now look like:</p>
+        # Get the subject headings
+</pre></td></tr></tbody></table>
+</div>
+
+<p>We can get the title, description, and subject headings by looking for those 'keys' within each item in our 'json_data' list. </p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>def get_text(json_data):
+    for each in json_data:
+        title = each['sourceResource.title']
+
+        description = each['sourceResource.description']
+
+        subject = each['sourceResource.subject']
+</pre></td></tr></tbody></table>
+</div>
+
+<p>So far so good. But what if one of these fields is missing? Programming languages are very literal - if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line to call the function.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -162,31 +183,507 @@ Type "help", "copyright", "credits" or "license" for more information.
 6
 7
 8
-9</pre></td><td class="code"><pre>import json
-from collections import Counter
-import nltk
-from nltk.corpus import stopwords
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>import json
 
 with open("search_results.json") as json_file:
-    json_data = json.load(json_file)
+    json_data = json.load(json_file) 
 
-#print json_data[1]
+def get_text(json_data):
+    for each in json_data:
+        title = each['sourceResource.title']
+
+        description = each['sourceResource.description']
+
+        subject = each['sourceResource.subject']
+
+get_text(json_data)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>We are now ready to start working with our data.</p>
+<p>Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key 'title' in one of the resources.</p>
 
-<h3 id="what-we-learned">What We Learned</h3>
+<p>To deal with this, we use 'try' and 'except' - we will tell the computer to try to find the keys, but if it doesn't, to assign the value to blank and move on.</p>
 
-<p>In this module, we have reviewed and learned:</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>def get_text(json_data):
+    for each in json_data:
+        try:
+            title = each['sourceResource.title']
+        except:
+            title = ' '
+        
+        try:
+            description = each['sourceResource.description']
+        except:
+            description = ' '
 
-<ul>
-  <li>to create new files using terminal</li>
-  <li>to load json data from a file </li>
-  <li>to download libraries using pip</li>
-  <li>to download datasets within libraries</li>
-  <li>to load libraries into our scripts</li>
-</ul>
+        try:
+            subject = each['sourceResource.subject']
+        except:
+            subject = ' '
+</pre></td></tr></tbody></table>
+</div>
+
+<p>There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is in the form of a string.</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></td><td class="code"><pre>def get_text(json_data):
+    for each in json_data:
+        try:
+            title = each['sourceResource.title']
+            if isinstance(title, basestring):
+                title = str(titles)
+            else:
+                for each in title:
+                    title = str(each)
+        except:
+            title = ' '
+        
+        try:
+            description = each['sourceResource.description']
+
+            if isinstance(description, basestring):
+                description = str(description)
+            else:
+                for line in description:
+                    description = str(line)
+        except:
+            description = ' '
+
+        try:
+            subject = each['sourceResource.subject']
+
+            if isinstance(subject, basestring):
+                subject = str(subject)
+            else:
+                for each in subject:
+                    subject = []
+                    subject.append(each['name'])  
+        except:
+            subject = ' '
+</pre></td></tr></tbody></table>
+</div>
+
+<p>You might notice two odd things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along. </p>
+
+<p>Second, we are handling the subject field differently than title and description. This is because the subject key holds an additional list, rather than just values. Work in your groups to map out what is going on in the subject section of the funciton.</p>
+
+<p>The last is to save this data into a text file. Similar to last time, we need to set up the file that will receive that data:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>import json
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file) 
+
+f = open('text_results.txt', 'a')
+</pre></td></tr></tbody></table>
+</div>
+
+<p>The major difference here is that we are opening the file as append so that we can save each line of data as we loop, rather than storing it all and writing it all at once.</p>
+
+<p>Our whole file should now look like this:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></td><td class="code"><pre>import json
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file) 
+
+f = open('text_results.txt', 'a')
+
+
+def get_text(json_data):
+    for each in json_data:
+        try:
+            title = each['sourceResource.title']
+            if isinstance(title, basestring):
+                title = str(titles)
+            else:
+                for each in title:
+                    title = str(each)
+        except:
+            title = ' '
+        
+        try:
+            description = each['sourceResource.description']
+
+            if isinstance(description, basestring):
+                description = str(description)
+            else:
+                for line in description:
+                    description = str(line)
+        except:
+            description = ' '
+
+        try:
+            subject = each['sourceResource.subject']
+
+            if isinstance(subject, basestring):
+                subject = str(subject)
+            else:
+                for each in subject:
+                    subject = []
+                    subject.append(each['name'])  
+        except:
+            subject = ' '
+</pre></td></tr></tbody></table>
+</div>
+
+<p>Now, let's go back to the function and put all our pieces together into a new variable.</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></td><td class="code"><pre>def get_text(json_data):
+    for each in json_data:
+        try:
+            title = each['sourceResource.title']
+            if isinstance(title, basestring):
+                title = str(titles)
+            else:
+                for each in title:
+                    title = str(each)
+        except:
+            title = ' '
+        
+        try:
+            description = each['sourceResource.description']
+
+            if isinstance(description, basestring):
+                description = str(description)
+            else:
+                for line in description:
+                    description = str(line)
+        except:
+            description = ' '
+
+        try:
+            subject = each['sourceResource.subject']
+
+            if isinstance(subject, basestring):
+                subject = str(subject)
+            else:
+                for each in subject:
+                    subject = []
+                    subject.append(each['name'])  
+        except:
+            subject = ' '
+
+    data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
+</pre></td></tr></tbody></table>
+</div>
+
+<p>This line takes the information held in title, adds a ';' and a space, takes the information in description, add '; and a space, and finally, takes the list held in subject and smashes it together into a string, separated by a comman and a space. Finally, the '\n' adds an 'enter' the end of the line, so that the information for each item appears on a new line.</p>
+
+<p>The last step is to write all the information within 'data' to our file.</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></td><td class="code"><pre>def get_text(json_data):
+    for each in json_data:
+        try:
+            title = each['sourceResource.title']
+            if isinstance(title, basestring):
+                title = str(titles)
+            else:
+                for each in title:
+                    title = str(each)
+        except:
+            title = ' '
+        
+        try:
+            description = each['sourceResource.description']
+
+            if isinstance(description, basestring):
+                description = str(description)
+            else:
+                for line in description:
+                    description = str(line)
+        except:
+            description = ' '
+
+        try:
+            subject = each['sourceResource.subject']
+
+            if isinstance(subject, basestring):
+                subject = str(subject)
+            else:
+                for each in subject:
+                    subject = []
+                    subject.append(each['name'])  
+        except:
+            subject = ' '
+
+    data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
+
+    f.write(data.encode('utf-8'))
+</pre></td></tr></tbody></table>
+</div>
+
+<p>Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem unusual characters.</p>
+
+<p>Now let's add a call to the function and run our code:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre></td><td class="code"><pre>import json
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file) 
+
+f = open('text_results.txt', 'a')
+
+def get_text(json_data):
+    for each in json_data:
+        try:
+            title = each['sourceResource.title']
+            if isinstance(title, basestring):
+                title = str(titles)
+            else:
+                for each in title:
+                    title = str(each)
+        except:
+            title = ' '
+        
+        try:
+            description = each['sourceResource.description']
+
+            if isinstance(description, basestring):
+                description = str(description)
+            else:
+                for line in description:
+                    description = str(line)
+        except:
+            description = ' '
+
+        try:
+            subject = each['sourceResource.subject']
+
+            if isinstance(subject, basestring):
+                subject = str(subject)
+            else:
+                for each in subject:
+                    subject = []
+                    subject.append(each['name'])  
+        except:
+            subject = ' '
+
+    data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
+
+    f.write(data.encode('utf-8'))
+
+get_text(json_data)
+</pre></td></tr></tbody></table>
+</div>
+
+<p>Save and run your second python script. You should now have a text file named 'text_results.txt' in your directory. If you open that file, you should see lines of beautiful text ready for analysis.</p>
 
 <p><span class="left"><a href="module09.html">Previous Module</a></span>
 <span class="right"><a href="module11.html">Next Module</a></span></p>

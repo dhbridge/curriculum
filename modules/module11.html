@@ -58,7 +58,87 @@
                         <h2>
           Gathering a Subset of the Data
       </h2>
-       <p>In this module, we will learn how to collect and store the description data from each item in our "json_data" variable. To do this, we will first identify the location of the description with the data structure and then loop through each item, saving each of the words in the description into a new list.</p>
+       <p>We are also going to use a library called "collections" and a specific part of that library called "Counter". To import this, type <span class="command">from collections import Counter</span> on the next line.</p>
+
+<h3 id="installing-nltk">Installing NLTK</h3>
+
+<p>We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).</p>
+
+<p>To install NLTK, let's go back to our terminal and use pip.</p>
+
+<p>Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.</p>
+
+<p>Now, go back to your file and import nltk at the top of the file.</p>
+
+<p>There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
+
+<p>To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; 
+</pre></td></tr></tbody></table>
+</div>
+
+<p>Type <span class="command">import nltk</span> and press enter.</p>
+
+<p>Next type <span class="command">nltk.download('stopwords')</span> and press enter.</p>
+
+<p>Once you see </p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>True
+&gt;&gt;&gt;
+</pre></td></tr></tbody></table>
+</div>
+
+<p>you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span></p>
+
+<p>Great!</p>
+
+<p>Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add <span class="command">from nltk.corpus import stopwords</span> to the top of the file.</p>
+
+<p>Your file should now look like:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+
+#print json_data[1]
+</pre></td></tr></tbody></table>
+</div>
+
+<p>We are now ready to start working with our data.</p>
+
+<h3 id="what-we-learned">What We Learned</h3>
+
+<p>In this module, we have reviewed and learned:</p>
+
+<ul>
+  <li>to create new files using terminal</li>
+  <li>to load json data from a file </li>
+  <li>to download libraries using pip</li>
+  <li>to download datasets within libraries</li>
+  <li>to load libraries into our scripts</li>
+</ul>
+
+<p>In this module, we will learn how to collect and store the description data from each item in our "json_data" variable. To do this, we will first identify the location of the description with the data structure and then loop through each item, saving each of the words in the description into a new list.</p>
 
 <h3 id="identifying-our-target-fields">Identifying Our Target Fields</h3>
 
@@ -477,7 +557,7 @@ print description_words[999]
   <li>Can you also add the subject headings?</li>
 </ul>
 
-<h3 id="what-we-learned">What We Learned</h3>
+<h3 id="what-we-learned-1">What We Learned</h3>
 
 <p>In this module, we learned:</p>
 
