@@ -38,7 +38,7 @@ In this line, you have declared a 'pull_records' function, and told the computer
 
 We are now ready to add the steps involved in getting the search records. 
 
-Tab in once on the next line and type:
+On the next line, tab in once and type:
 	
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
@@ -59,7 +59,7 @@ Your file should now look like this:
 
 It is important to note that Python is white-space aware: when writing functions in Python, white space is used to designate what is in a function or within a loop and what is outside of it.
 
-Let's add a "print" statement to our function and test out the first stage of this function. Add the following "print" statement after "paged_search...":
+Let's add a "print" statement to our function and test out the first stage of this function. On the next line, tab in and add the following "print" statement after "paged_search...":
 
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
