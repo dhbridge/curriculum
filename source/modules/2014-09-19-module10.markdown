@@ -4,11 +4,12 @@ date: 2014-09-19
 ---
 
 In this module we will learn:
+
 1. to create a new script file and load in our JSON data
 2. to select data from particular fields and deal with missing data
 3. to convert our JSON data to strings of text
 
-Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of 'cooking' items are gendered, our next step is to filter down that data and save it as text. In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.
+Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of 'cooking' items are gendered, our task for this module is to filter down that data and save it as text. 
 
 ### 1. Create a new script and load in our data
 
@@ -359,6 +360,8 @@ Now let's add a call to the function and run our code:
     get_text(json_data)
 
 Save and run your second python script. You should now have a text file named 'text_results.txt' in your directory. If you open that file, you should see lines of beautiful text ready for analysis.
+
+In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.
 
 <span class="left">[Previous Module](module09.html)</span>
 <span class="right">[Next Module](module11.html)</span>
