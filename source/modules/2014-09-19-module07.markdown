@@ -5,13 +5,13 @@ date: 2014-09-19
 
 In this module, we will learn
 
-1. to create and call functions
-2. to create a "for loop"
-3. to "append" or add items into a list
+1. To create and call functions
+2. To create a "for loop"
+3. To "append" or add items to a list
 
 We are now ready to start writing a function to gather all of the information we want from the DPLA.
 
-We now have a file that looks as follows:
+We now have a file that looks like this:
 	
 	from dpla.api import DPLA
 
@@ -26,9 +26,9 @@ We will now add a function that handles the query for any given page number.
 
 ### 1. Creating a "Pull Records" Function
 
-Functions are little packets of code that do particular tasks. They involve variables, and processes, and the take what is given to them, and spit out a result. 
+Functions are little packets of code that do particular tasks. They involve variables and processes, they take what is given to them, and spit out a result. 
 
-To write a function, we start with the word "def", then give our function a name, and finally end with '():' Inside the parenthese, we can indicate how many pieces of information are going into the function.
+To write a function, we start with the word "def", then give our function a name, and finally end with '():' Inside the parentheses, we can indicate how many pieces of information are going into the function.
 
 In your "my_first_script.py" file, add the line
 
@@ -36,7 +36,7 @@ In your "my_first_script.py" file, add the line
 
 In this line, you have declared a 'pull_records' function, and told the computer that this function will involve three variables (pages, end, and size).These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page. 
 
-We are now ready to add the steps involving in getting the search records. 
+We are now ready to add the steps involved in getting the search records. 
 
 Tab in once on the next line and type:
 	
@@ -57,9 +57,9 @@ Your file should now look like this:
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
 
-It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.
+It is important to note that Python is white-space aware: when writing functions in Python, white space is used to designate what is in a function or within a loop and what is outside of it.
 
-Let's add a print statement to our function and test out the first stage of this function. Add the following print statement after 'paged_search...':
+Let's add a "print" statement to our function and test out the first stage of this function. Add the following "print" statement after "paged_search...":
 
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
@@ -86,7 +86,7 @@ Your file should now look like:
 
 	pull_records(2, 3, 50)
 
-Save the file and go to terminal to run it. Then come back to the function and work with your table to understand how the function worked.
+Save the file and go to Terminal to run it. Then come back to the function and work with your table to understand how the function worked.
 
 ### 2. Using a 'for loop' to save items to 'all_records'
 
@@ -94,19 +94,19 @@ You have written and executed your first function! Well done!
 
 Now we need to add another function to store those results to the empty 'all_records' array we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.
 
-To set up our new "Save Each" function, we will define a new function in our my_first_script.py file. Good practice is to group our functions together toward the top of the file, so put the "save_each" function after we defined "pull_records" but before we call the "pull_records" function:
+To set up our new "Save Each" function, we will define a new function in our my_first_script.py file. Good practice is to group our functions together toward the top of the file, so put the "save_each" function after "pull_records" but before we call the "pull_records" function:
 
 	def save_each(n):
 
-The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in and to take that variable and plug it in for 'n' throughout the function.
+The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in, and to take that variable and plug it in for 'n' throughout the function.
 
-We now need to add our first loop. With our current search, there are 50 items in our paged_search variable. We want to save each of those items separately to the 'all_records' list. This means the computer needs to move through each individual item, grab the item, and add it to 'all_records'. 
+We now need to add our first loop. With our current search, there are 50 items in our paged_search variable. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, grab the item, and add it to "all_records". 
 
 Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:
 
 	for each in n.items:
 
-This is called a "for loop". It tells the computer to iterate through each item in the list 'n'. 
+This is called a "for loop". It tells the computer to iterate through each item in the list "n". 
 
 Because this is a process inside a process, we need to tab in again. Each time we have a new loop or new function, we tab in all the lines associated with that process. To show that we're done listing steps for a particular process, we tab back out.
 
@@ -114,9 +114,9 @@ To add the item to the "all_records" array, we use the "append" command:
 
 	all_records.append(each)
 
-'append' grabs the value of 'each' and adds it to the series we are saving as a list.
+"append" grabs the value of "each" and adds it to the series we are saving as a list.
 
-Your 'save_each()' function should now look like this:
+Your "save_each()" function should now look like this:
 
 	def save_each(n):
 		for each in n.items:
@@ -128,7 +128,9 @@ Now we can use this function in our "pull records" function. Currently, our "pul
 		paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
 		print paged_search.items[2]
 
-Let's comment out the "print paged_search.item[2]" line, because that was just there to check that the first bit worked, and add a call to the "save_each" function, passing in our search results. 
+Let's comment out the "print paged_search.item[2]" line, because that was just there to check that the first bit worked. 
+
+Now add a call to the "save_each" function, that passes in our search results. 
 
 	def pull_records (pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
@@ -157,9 +159,9 @@ Our file should now look like:
 
 	pull_records(2, 3, 50)
 
-To test this, let's now add a print statement to the end of the file, after the pull_records function has been run, to make sure that the items are going into the "all_records" variable.
+To test this, let's now add a "print" statement to the end of the file, after the "pull_records" function has been run, to make sure that the items are going into the "all_records" variable.
 
-After 'pull_records()' add:
+After "pull_records()" add:
 
 	print all_records[30]
 
@@ -169,7 +171,7 @@ We have made great progress! We now have two functions to handle making the quer
 
 ### Group Challenge
 
-Break out the paper and pencils. Work as a group to create a diagram or metaphor for a "for loop". What types of situations would you use a 'for loop' in?  
+Break out the paper and pencils. Work as a group to create a diagram or metaphor for a "for loop". When would a "for loop" be useful?  
 
 <span class="left">[Previous Module](module06.html)</span>
 <span class="right">[Next Module](module08.html)</span>
