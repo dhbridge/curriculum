@@ -3,14 +3,14 @@ title: Installation
 date: 2014-09-19
 ---
 
-Welcome to DH Bridge. This one day workshop will introduce you to basic programming concepts for use in humanities research. We will be working with Python, a programming language that combines a human-readable syntax with robust support for statistical analysis and graphing. The data for the day will be gleaned from the Digital Public Library of America. We are excited that you will be joining us.
+Welcome to DH Bridge. This one day workshop will introduce you to basic programming concepts for use in humanities research. We will be working with Python, a programming language that combines a human-readable syntax with robust support for statistical analysis and graphing. The data for the day will be gleaned from the Digital Public Library of America. 
 
 ### Step One: Required Supplies
 
 For the workshop you will need to bring:
 
 - **Your Laptop:**
-	- You need to have a working wifi connection (we will provide access to Mason's wireless)
+	- You need to have a working WiFi connection (we will provide access to Mason's wireless)
 	- We recommend that you update your operating system to at least Mavericks or Mountain Lion if running a Mac (no need to rush to Yosemite though), if your machine can support it. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. 
     - We recommend that you install the Chrome browser, as we will be using some Chrome extensions along the way.
 
@@ -45,7 +45,7 @@ For this workshop, we will be using Python 2.7. This is for two reasons: first, 
 
 For this tutorial, we recommend using TextWrangler, which is a free editor from BareBones software. To get TextWrangler, go to [http://www.barebones.com/products/textwrangler/](http://www.barebones.com/products/textwrangler/) and download. 
 
-We recommend keeping TextWrangler in your Dock (Mac) or Quick Launch toolbar (Windows) so that it is easy to access.
+We recommend keeping TextWrangler in your dock so that it is easy to access.
 
 You are welcome to use another text editor if you wish. Just make sure that it is a plain text editor (do not use Word).
 
@@ -56,7 +56,7 @@ Open up Terminal. It should give you a screen that looks similar to this:
 
 ![image of terminal screen](/images/terminal.png)
 
-To check your Python version, type <span class="command">python</span> into the terminal window and press "Enter". You should see something that looks like:
+To check your Python version, type <span class="command">python</span> into the Terminal window and press "Enter". You should see something that looks like:
 
  
     Python 2.7.5 (default, Mar  9 2014, 22:15:05) 
@@ -68,7 +68,7 @@ Make note of your Python version.
 
 You are now in the Python Shell. This is an interactive environment that allows you to give Python commands directly inside Terminal. We will come back to this during the workshop.
 
-Exit the shell by typing <span class="command">quit()</span> and pressing "Enter".
+Exit the Python Shell by typing <span class="command">quit()</span> and pressing "Enter".
 
 #### 3. Install Pip
 
@@ -82,9 +82,9 @@ To install Pip, you need to run that file with Python. To do that, type <span cl
 
 If Terminal turns red and you get errors that say <span class="command"> OSError: [Errno 13] Permission denied</span>, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give Python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the Python command.
 
-Type <span class="command">sudo python get-pip.py</span> into the Termainal window.
+Type <span class="command">sudo python get-pip.py</span> into the Terminal window.
 
-The computer will prompt you for your password. This is the password you use to log onto your computer. The terminal will give no indication that you are typing as you enter your password.
+The computer will prompt you for your password. This is the password you use to log onto your computer. Terminal will give no indication that you are typing as you enter your password.
 
 If everything goes well, you should see something similar to the following in your Terminal window:
 	
@@ -94,7 +94,7 @@ If everything goes well, you should see something similar to the following in yo
 	Successfully installed pip
 	Cleaning up...
 
-To check that everything installed, type <span class="command">pip</span> into your Terminal and press "Enter". This will give you information on the different commands that available for you to use with "pip".
+To check that everything installed, type <span class="command">pip</span> into Terminal and press "Enter". This will give you information on the different commands that are available for you to use with "pip".
 
 
 #### Well done! Your computer is now ready for the workshop!
@@ -104,9 +104,9 @@ To check that everything installed, type <span class="command">pip</span> into y
 
 #### 1. Install Text Editor
 
-For this tutorial, we recommend using NotePad++, which is a free editor. To get Notepad++, go to [http://notepad-plus-plus.org/](http://notepad-plus-plus.org/) and download. 
+For this tutorial, we recommend using NotePad++, which is free to use. To get Notepad++, go to [http://notepad-plus-plus.org/](http://notepad-plus-plus.org/) and download. 
 
-To easily access NotePad++, be sure to add it to your Desktop and/or Quick Launch.
+To easily access NotePad++, be sure to add a shortcut to your Desktop and/or Quick Launch.
 
 #### 2. Install Python
 
@@ -114,25 +114,25 @@ Search your computer for "PowerShell." This program allows you to give your comp
 
 Open up PowerShell. It should give you a screen that looks similar to this: 
 
-[Image of PowerShell]
+![image of Powershell screen](/images/powershell.png)
 
-In PowerShell, type <span class="command">python</span> and press "Enter". You will most get back a message that says <span class="command">python is not recognized..</span>.
+In PowerShell, type <span class="command">python</span> and press "Enter". You will most likely get back a message that says <span class="command">python is not recognized..</span>.
 
-If this is the case, download and install python from [https://www.python.org/download/](https://www.python.org/download/). Choose the "Python 2.7.8 Windows Installer" or "Python 2.7.8 Windows X86-64 Installer", depending on your system. Run the installer and accept the default settings.
+If this is the case, download and install Python from [https://www.python.org/download/](https://www.python.org/download/). Choose the "Python 2.7.8 Windows Installer" or "Python 2.7.8 Windows X86-64 Installer", depending on your system. Run the installer and accept the default settings.
 
-Once Python is installed, we have to tell the computer a bit about where to look for it. In PowerShell, enter:
+Once Python is installed, you will have to tell the computer where to look for it. In PowerShell, enter:
 	
 	[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")
 
-Close PowerShell and re-open. To check if Python installed properly, type <span class="command">python</span> and press "Enter". You should get something that looks like this back:
+Close PowerShell and re-open it. To check if Python installed properly, type <span class="command">python</span> and press "Enter". You should get something that looks like this back:
 
 	Python 2.7.8  (default, Jun 30 2014, 14:24) [MSC v.1500 32 bit (Intel)] on win32
 	Type "help", "copyright", "credits" or license for more information.
 	>>> 
 
-You are now in the Python Shell. This is an interactive environment that allows you to give python commands directly inside PowerShell. We will come back to this during the workshop.
+You are now in the Python Shell. This is an interactive environment that allows you to give Python commands directly inside PowerShell. We will come back to this during the workshop.
 
-Exit the shell by typing <span class="command">quit()</span> and pressing "Enter".
+To exit the Python Shell, type <span class="command">quit()</span> and press "Enter".
 
 
 #### 3. Install Pip
@@ -145,23 +145,23 @@ First, make a new directory "envs" at your root level:
 
     mkdir c:\envs
 
-"Cd" into that directory:
+Move into that directory:
 
     cd c:\envs
 
-Use the following to download "get-pip.py":  
+Enter the following to download "get-pip.py":  
 
     (new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
    
-Finally, run the "get-pip.py" script:
+Finally, enter the following to install the "get-pip.py" script:
 
     python c:\envs\get-pip.py  
 
-Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python27\Scripts with the correct location of your Python installation:
+Now typing <span class="command">pip</span> should work. If it doesn’t, that means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). 
 
     setx PATH "%PATH%;C:\Python27\Scripts"
 
-Close and reopen PowerShell after running this command. 
+Next, close and re-open PowerShell. 
 
 To test, run <span class="command">pip</span> in PowerShell.
 
