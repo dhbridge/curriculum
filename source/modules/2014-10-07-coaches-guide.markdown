@@ -149,7 +149,7 @@ Learning Checks:
 ### Module 9
 
 Learning Checks:
-1. 
+1. Review ordering of elements in a Python program.
 
 ### Module 10
 
