@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/modules/coaches-guide.html"/>
     <id>http://blog.url.com/modules/coaches-guide.html</id>
     <published>2014-10-06T20:00:00-04:00</published>
-    <updated>2014-10-26T16:47:08-04:00</updated>
+    <updated>2014-10-26T19:52:57-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -89,7 +89,7 @@ Directories and Folders = Folders &lt;/p&gt;
 
 &lt;p&gt;If possible, please have participants pin the text editor and Chrome to their Dock (Mac)/Taskbar (Windows), or at least have them easily accessible. &lt;/p&gt;
 
-&lt;h3 id="module-1"&gt;Module 1&lt;/h3&gt;
+&lt;h3 id="module-1-to-be-done-with-full-group"&gt;Module 1 (to be done with full group)&lt;/h3&gt;
 
 &lt;p&gt;Learning Checks:&lt;/p&gt;
 
@@ -113,7 +113,7 @@ Directories and Folders = Folders &lt;/p&gt;
 &lt;p&gt;Learning Checks: &lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;make sure participants are clear on difference between Python Interactive Shell and Terminal.&lt;/li&gt;
+  &lt;li&gt;Make sure participants are clear on difference between Python Interactive Shell and Terminal.&lt;/li&gt;
   &lt;li&gt;Terminology check: string, variable, array/list&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -137,14 +137,14 @@ Directories and Folders = Folders &lt;/p&gt;
 &lt;p&gt;-High-level programming languages (like Python) enable you to write commands for your computer in something that approximates English. Those commands are then translated down to machine language, executed by the hardware, and the results are translated back to generate the desired output. Your computer is constantly processing commands from the applications on your machine in multiple programming languages. Just like those applications, you can use the terminal interface to send commands to your computer.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Discuss everyone's diagrams and make sure the concepts are clear in everyone's mind.&lt;/li&gt;
+  &lt;li&gt;Discuss everyone's diagrams and make sure the concepts are clear.&lt;/li&gt;
   &lt;li&gt;Mapping Exercise #2: have participants diagram the following, similar to the API exercise from earlier in the day:&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;-A Python module or library is a bundle of code, including variables and functions (defined processes), that does a particular task. Many Python modules already exist out in the world, ready to be used, and new ones are developed by programmers all the time. Python scripts, which combine these modules with additional python commands, give the computer new, and more complicated, tasks that can be completed.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Discuss everyone's diagrams and make sure the concepts are clear in everyone's mind.&lt;/li&gt;
+  &lt;li&gt;Discuss everyone's diagrams and make sure the concepts are clear.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id="module-6"&gt;Module 6&lt;/h3&gt;
@@ -155,21 +155,46 @@ Directories and Folders = Folders &lt;/p&gt;
 3. functions
 4. calls/commands to execute the functions&lt;/p&gt;
 
+&lt;p&gt;Terminology related to functions: from now on the tutorials will use new phrases to describe how the functions work in relation to the data. These phrases are part of programming vernacular, and so they're not jarring to participants, here are some basic definitions:
+1. call: to execute 
+2. declare: set up a new function
+3. pass: to run data through the function/loop&lt;/p&gt;
+
 &lt;p&gt;Learning Checks:
-1. Verify that participants understand setting variables and how they can hold lists (an empty list so far). &lt;/p&gt;
+1. Have a quick discussion about the merits of commenting out versus deleting lines
+2. Verify that participants understand setting variables and how they can hold lists (an empty list so far.
+2. Group challenge, "for loop" exercise: check that the participants have a solid grasp on the function and purpose of a "for loop"&lt;/p&gt;
 
 &lt;h3 id="module-7"&gt;Module 7&lt;/h3&gt;
-&lt;p&gt;Talk about commenting out versus deleting–why to do one versus the other (for the purposes of the workshop and future)&lt;/p&gt;
+
+&lt;p&gt;Learning Checks: 
+1. Review and explain in a group discussion: how functions can be combined to solve problems, with the example of the two functions written so far and how they work together.
+2. Review what "append" does.
+3. Group challenge: talk through the functionality and uses for a "for loop"&lt;/p&gt;
 
 &lt;h3 id="module-8"&gt;Module 8&lt;/h3&gt;
 
+&lt;p&gt;Learning Checks: 
+1. Group challenge: along with talking through how a "while loop" works, also review why the "while loop" is added into the function where it is. 
+2. Cover why an "infinite loop" is bad.&lt;/p&gt;
+
 &lt;h3 id="module-9"&gt;Module 9&lt;/h3&gt;
+
+&lt;p&gt;Learning Checks:
+1. &lt;/p&gt;
 
 &lt;h3 id="module-10"&gt;Module 10&lt;/h3&gt;
 
+&lt;p&gt;Learning Checks:
+1. &lt;/p&gt;
+
 &lt;h3 id="module-11"&gt;Module 11&lt;/h3&gt;
 
+&lt;p&gt;Learning Checks: &lt;/p&gt;
+
 &lt;h3 id="module-12"&gt;Module 12&lt;/h3&gt;
+
+&lt;p&gt;Learning Checks:&lt;/p&gt;
 
 &lt;h3 id="module-13"&gt;Module 13&lt;/h3&gt;
 
@@ -611,17 +636,15 @@ pull_records(2, 3, 50)
 </content>
   </entry>
   <entry>
-    <title>Gathering a Subset of the Data</title>
+    <title>Analyzing the Data (Part 1)</title>
     <link rel="alternate" href="http://blog.url.com/modules/module11.html"/>
     <id>http://blog.url.com/modules/module11.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-26T15:59:36-04:00</updated>
+    <updated>2014-10-26T19:58:23-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;We are also going to use a library called "collections" and a specific part of that library called "Counter". To import this, type &lt;span class="command"&gt;from collections import Counter&lt;/span&gt; on the next line.&lt;/p&gt;
-
-&lt;h3 id="installing-nltk"&gt;Installing NLTK&lt;/h3&gt;
+    <content type="html">&lt;h3 id="installing-nltk"&gt;Installing NLTK&lt;/h3&gt;
 
 &lt;p&gt;We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).&lt;/p&gt;
 
@@ -1140,7 +1163,7 @@ print description_words[999]
     <link rel="alternate" href="http://blog.url.com/modules/module10.html"/>
     <id>http://blog.url.com/modules/module10.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-26T16:44:53-04:00</updated>
+    <updated>2014-10-26T19:56:01-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1249,12 +1272,18 @@ with open("search_results.json") as json_file:
 4
 5
 6
-7&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_text(json_data):
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_text(json_data):
     for each in json_data:
+        # Get the title
         title = each['sourceResource.title']
 
+        # Get the Description
         description = each['sourceResource.description']
 
+        # Get the Subject Headings
         subject = each['sourceResource.subject']
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -1274,17 +1303,23 @@ with open("search_results.json") as json_file:
 11
 12
 13
-14&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
+14
+15
+16
+17&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
 
 with open("search_results.json") as json_file:
     json_data = json.load(json_file) 
 
 def get_text(json_data):
     for each in json_data:
+        # Get the Titles
         title = each['sourceResource.title']
 
+        # Get the Descriptions
         description = each['sourceResource.description']
 
+        # Get the Subject Headings
         subject = each['sourceResource.subject']
 
 get_text(json_data)
@@ -1465,14 +1500,12 @@ f = open('text_results.txt', 'a')
 38
 39
 40
-41
-42&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
+41&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
 
 with open("search_results.json") as json_file:
     json_data = json.load(json_file) 
 
 f = open('text_results.txt', 'a')
-
 
 def get_text(json_data):
     for each in json_data:
@@ -1669,7 +1702,7 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem unusual characters.&lt;/p&gt;
+&lt;p&gt;Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem of unusual characters.&lt;/p&gt;
 
 &lt;p&gt;Now let's add a call to the function and run our code:&lt;/p&gt;
 

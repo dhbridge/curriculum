@@ -130,7 +130,7 @@ Directories and Folders = Folders </p>
 
 <p>If possible, please have participants pin the text editor and Chrome to their Dock (Mac)/Taskbar (Windows), or at least have them easily accessible. </p>
 
-<h3 id="module-1">Module 1</h3>
+<h3 id="module-1-to-be-done-with-full-group">Module 1 (to be done with full group)</h3>
 
 <p>Learning Checks:</p>
 
@@ -154,7 +154,7 @@ Directories and Folders = Folders </p>
 <p>Learning Checks: </p>
 
 <ol>
-  <li>make sure participants are clear on difference between Python Interactive Shell and Terminal.</li>
+  <li>Make sure participants are clear on difference between Python Interactive Shell and Terminal.</li>
   <li>Terminology check: string, variable, array/list</li>
 </ol>
 
@@ -178,14 +178,14 @@ Directories and Folders = Folders </p>
 <p>-High-level programming languages (like Python) enable you to write commands for your computer in something that approximates English. Those commands are then translated down to machine language, executed by the hardware, and the results are translated back to generate the desired output. Your computer is constantly processing commands from the applications on your machine in multiple programming languages. Just like those applications, you can use the terminal interface to send commands to your computer.</p>
 
 <ol>
-  <li>Discuss everyone's diagrams and make sure the concepts are clear in everyone's mind.</li>
+  <li>Discuss everyone's diagrams and make sure the concepts are clear.</li>
   <li>Mapping Exercise #2: have participants diagram the following, similar to the API exercise from earlier in the day:</li>
 </ol>
 
 <p>-A Python module or library is a bundle of code, including variables and functions (defined processes), that does a particular task. Many Python modules already exist out in the world, ready to be used, and new ones are developed by programmers all the time. Python scripts, which combine these modules with additional python commands, give the computer new, and more complicated, tasks that can be completed.</p>
 
 <ol>
-  <li>Discuss everyone's diagrams and make sure the concepts are clear in everyone's mind.</li>
+  <li>Discuss everyone's diagrams and make sure the concepts are clear.</li>
 </ol>
 
 <h3 id="module-6">Module 6</h3>
@@ -196,21 +196,46 @@ Directories and Folders = Folders </p>
 3. functions
 4. calls/commands to execute the functions</p>
 
+<p>Terminology related to functions: from now on the tutorials will use new phrases to describe how the functions work in relation to the data. These phrases are part of programming vernacular, and so they're not jarring to participants, here are some basic definitions:
+1. call: to execute 
+2. declare: set up a new function
+3. pass: to run data through the function/loop</p>
+
 <p>Learning Checks:
-1. Verify that participants understand setting variables and how they can hold lists (an empty list so far). </p>
+1. Have a quick discussion about the merits of commenting out versus deleting lines
+2. Verify that participants understand setting variables and how they can hold lists (an empty list so far.
+2. Group challenge, "for loop" exercise: check that the participants have a solid grasp on the function and purpose of a "for loop"</p>
 
 <h3 id="module-7">Module 7</h3>
-<p>Talk about commenting out versus deleting–why to do one versus the other (for the purposes of the workshop and future)</p>
+
+<p>Learning Checks: 
+1. Review and explain in a group discussion: how functions can be combined to solve problems, with the example of the two functions written so far and how they work together.
+2. Review what "append" does.
+3. Group challenge: talk through the functionality and uses for a "for loop"</p>
 
 <h3 id="module-8">Module 8</h3>
 
+<p>Learning Checks: 
+1. Group challenge: along with talking through how a "while loop" works, also review why the "while loop" is added into the function where it is. 
+2. Cover why an "infinite loop" is bad.</p>
+
 <h3 id="module-9">Module 9</h3>
+
+<p>Learning Checks:
+1. </p>
 
 <h3 id="module-10">Module 10</h3>
 
+<p>Learning Checks:
+1. </p>
+
 <h3 id="module-11">Module 11</h3>
 
+<p>Learning Checks: </p>
+
 <h3 id="module-12">Module 12</h3>
+
+<p>Learning Checks:</p>
 
 <h3 id="module-13">Module 13</h3>
 
@@ -636,12 +661,10 @@ pull_records(2, 3, 50)
 <p><span class="left"><a href="module11.html">Previous Module</a></span>
 <span class="right"><a href="module13.html">Next Module</a></span></p>
 
-  <h3><a href="/modules/module11.html">Gathering a Subset of the Data</a></h3>
+  <h3><a href="/modules/module11.html">Analyzing the Data (Part 1)</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>We are also going to use a library called "collections" and a specific part of that library called "Counter". To import this, type <span class="command">from collections import Counter</span> on the next line.</p>
-
-<h3 id="installing-nltk">Installing NLTK</h3>
+  <h3 id="installing-nltk">Installing NLTK</h3>
 
 <p>We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).</p>
 
@@ -1262,12 +1285,18 @@ with open("search_results.json") as json_file:
 4
 5
 6
-7</pre></td><td class="code"><pre>def get_text(json_data):
+7
+8
+9
+10</pre></td><td class="code"><pre>def get_text(json_data):
     for each in json_data:
+        # Get the title
         title = each['sourceResource.title']
 
+        # Get the Description
         description = each['sourceResource.description']
 
+        # Get the Subject Headings
         subject = each['sourceResource.subject']
 </pre></td></tr></tbody></table>
 </div>
@@ -1287,17 +1316,23 @@ with open("search_results.json") as json_file:
 11
 12
 13
-14</pre></td><td class="code"><pre>import json
+14
+15
+16
+17</pre></td><td class="code"><pre>import json
 
 with open("search_results.json") as json_file:
     json_data = json.load(json_file) 
 
 def get_text(json_data):
     for each in json_data:
+        # Get the Titles
         title = each['sourceResource.title']
 
+        # Get the Descriptions
         description = each['sourceResource.description']
 
+        # Get the Subject Headings
         subject = each['sourceResource.subject']
 
 get_text(json_data)
@@ -1478,14 +1513,12 @@ f = open('text_results.txt', 'a')
 38
 39
 40
-41
-42</pre></td><td class="code"><pre>import json
+41</pre></td><td class="code"><pre>import json
 
 with open("search_results.json") as json_file:
     json_data = json.load(json_file) 
 
 f = open('text_results.txt', 'a')
-
 
 def get_text(json_data):
     for each in json_data:
@@ -1682,7 +1715,7 @@ def get_text(json_data):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem unusual characters.</p>
+<p>Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem of unusual characters.</p>
 
 <p>Now let's add a call to the function and run our code:</p>
 
