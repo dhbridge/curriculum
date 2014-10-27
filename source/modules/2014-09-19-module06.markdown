@@ -81,7 +81,7 @@ Remember, counting within a list begins at 0.
 
 ### Group Challenge
 
-Using the [documentation](https://github.com/bibliotechy/DPyLA), work with your group to add another parameter to get the information from page 3.
+Using the [documentation](https://github.com/bibliotechy/DPyLA), work with your group to add another parameter to get the information from page 3 of the search results.
 
 
 ### 2. Setting Up a Variable
