@@ -104,55 +104,45 @@
 36
 37
 38
-39
-40
-41
-42
-43
-44</pre></td><td class="code"><pre>import json
-from collections import Counter
-import nltk
+39</pre></td><td class="code"><pre>import nltk
 from nltk.corpus import stopwords
+from nltk import word_tokenize
+from nltk.probability import *
 
-with open("search_results.json") as json_file:
-    json_data = json.load(json_file)
-    
-#print json_data[1]
-#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
-#print json_data[1]['sourceResource']['description']
+with open('text_results.txt') as file:
+    cooking_text = file.read()
 
-description_words = []
-stop = stopwords.words('english')
+# print cooking_text[0:20]
 
-def remove_stops_and_add(word):
-    if word.lower() not in stop:
-        if not word.isdigit():
-            if word.isalnum():
-                description_words.append(word.lower())
-            
-def get_words():
-    for each in json_data:
-        try:
-            descriptions = each['sourceResource']['description']
-            if isinstance(descriptions, basestring):
-                words = descriptions.split()
-            else:
-                for line in descriptions:
-                    words = line.split()
-            
-            for word in words:
-                remove_stops_and_add(word)
-            
-        except KeyError:
-            print "Description Missing"
+cooking_tokens = word_tokenize(cooking_text)
+# print cooking_tokens[0:10]
 
-get_words()
+# Load in Stopwords Library
+stopwords = stopwords.words('english')
 
-#print description_words[999] 
+text = nltk.Text(cooking_tokens)
 
-c = Counter(description_words)
+#print text[:20]
+#print text.concordance('economy')
+#print text.collocations()
 
-print c.most_common(200)
+# print text.similar('Pot')
+
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation, AND check against stop words
+        if word.isalpha() and word.lower() not in stopwords:
+            # If it passes the filters, save to word_set
+            word_set.append(word.lower())
+    return word_set
+
+normalize_text(text)
+
+fd = FreqDist(word_set)
+print fd.most_common(50)
+print fd.hapaxes()
+fd.plot(50,cumulative=False)
 </pre></td></tr></tbody></table>
 </div>
 
@@ -162,10 +152,10 @@ print c.most_common(200)
 2
 3
 4
-5</pre></td><td class="code"><pre>import json
-from collections import Counter
-import nltk
+5</pre></td><td class="code"><pre>import nltk
 from nltk.corpus import stopwords
+from nltk import word_tokenize
+from nltk.probability import *
 import csv
 </pre></td></tr></tbody></table>
 </div>
@@ -185,23 +175,7 @@ file = csv.writer(open("word_frequencies.csv", "w"))
 <p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10</pre></td><td class="code"><pre>get_words()
-
-#print description_words[999] 
-
-c = Counter(description_words)
-
-print c.most_common(200)
-
-for key, count in c.most_common(200):
+2</pre></td><td class="code"><pre>for key, count in fd.most_common(50):
     file.writerow([key, count])
 </pre></td></tr></tbody></table>
 </div>

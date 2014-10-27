@@ -475,79 +475,28 @@ pull_records(2, 3, 50)
 </content>
   </entry>
   <entry>
-    <title>Analyzing a Subset of the Data</title>
+    <title>Analyzing a Subset of the Data (Part 2)</title>
     <link rel="alternate" href="http://blog.url.com/modules/module12.html"/>
     <id>http://blog.url.com/modules/module12.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-26T10:00:22-04:00</updated>
+    <updated>2014-10-27T19:47:34-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;We now have a bag of words that we can do some analysis on. In this module, we will ask some basic questions about word frequencies, make some adjustments to our collection of words to improve the results, and discuss what additional questions those patterns might raise.&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module we will learn to:&lt;/p&gt;
 
-&lt;h3 id="getting-word-frequencies"&gt;Getting Word Frequencies&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;normalize our text&lt;/li&gt;
+  &lt;li&gt;use the Frequency Distribution library to find pattern in our text &lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;To get word frequencies, we will use the "Counter" library we loaded earlier. Looking at the &lt;a href="https://docs.python.org/2/library/collections.html#collections.Counter"&gt;documentation for the library&lt;/a&gt;, we see that if we pass "Counter" a list, we can get back information regarding the items in the list, including the most common items.&lt;/p&gt;
+&lt;h3 id="normalizing-the-text"&gt;Normalizing the text&lt;/h3&gt;
 
-&lt;p&gt;Add a new line to the bottom of "my_second_script.py" as follows:&lt;/p&gt;
+&lt;p&gt;While we can get a lot of information from all of the text, we can also find additional patterns once we do what is called 'normalizing' the text. This entails removing all of the punctuation marks, and transforming all the words to lower case. It also involves removing the small, connection words such as 'the' and 'a', which are very common in a text, but carry less semantic meaning than nouns, verbs, and adjectives.&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;c = Counter(description_words)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
+&lt;p&gt;To clean up the text, we need to work through each words and and run it through a series of checks or filters. &lt;/p&gt;
 
-&lt;p&gt;Notice the capitalization here. Because the library has the name of "Counter", we need to keep that "C" uppercase whenever we use the library. &lt;/p&gt;
-
-&lt;p&gt;Now we will use the method "most_common" and let's start with the top 200 words:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print c.most_common(200)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Comment out the "print words" statements from the last module (so that we can see what is going on), then save and run the file.&lt;/p&gt;
-
-&lt;p&gt;You should see a list of words and frequencies that looks like this: &lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;(u'the', 11873), (u'of', 8435), (u'and', 7689), (u'in', 5553), (u'a', 4542), (u'to', 4375), (u'is', 2150), (u'1', 2090), (u'for', 2080), (u'on', 1897), (u'The', 1808), (u'was', 1632), (u'with', 1590), (u';', 1440), (u'by', 1408), (u':', 1389), (u'photograph', 1324), (u'from', 1191), (u'at', 1179), (u'as', 1140), (u'that', 1136), (u'are', 1035), (u'x', 1023), (u'be', 990), (u'or', 979), (u'2', 877), (u'0', 776), (u'2014', 740), (u'I', 734), (u'were', 714), (u'b&amp;amp;w', 691), (u'cooking', 685), (u'3', 685), (u'in.', 675), (u'4', 674), (u'it', 665), (u'this', 663), (u'which', 632), (u'5', 578), (u'have', 571), (u'.', 543), (u'cm.', 513), (u'an', 501), (u'their', 494), (u'about', 489), (u'This', 488), (u'not', 477), (u'col.', 468), (u'negative,', 460), (u'It', 441), (u'these', 438), (u'12', 429), (u'A', 425), (u'will', 423), (u'35', 415), (u'has', 413), (u'In', 411), (u'mm.', 395), (u'Jun', 391), (u'p.', 386), (u'they', 384), (u'food', 381), (u'had', 379), (u'all', 376), (u'we', 368), (u'he', 367)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;But for the most part, these words are not terribly interesting to us. The prevalence of "the" and "of" doesn't tell us much about how "cooking" is described and are making it hard to a pattern in the nouns and verbs. &lt;/p&gt;
-
-&lt;p&gt;There is a second problem. If you notice, "the" is in the list twice, once as "the" and once as "The". Computers, being ever the literal processors, take the difference in case to indicate a difference in word. This can be very helpful in some circumstances, like finding names. But when just looking for a rough count of words, it creates noise.&lt;/p&gt;
-
-&lt;p&gt;To address these problems, we can remove those function words and transform all the words to lowercase, using the Natural Language ToolKit.&lt;/p&gt;
-
-&lt;h3 id="removing-stopwords"&gt;Removing StopWords&lt;/h3&gt;
-
-&lt;p&gt;Going back to our "get_words" function, one way to remove the stopwords is to check if the word is in a standard list of function words before adding it to the bag.&lt;/p&gt;
-
-&lt;p&gt;The logic here is, if the word is not a stopword, then we want to save it to our "description_words" list.&lt;/p&gt;
-
-&lt;p&gt;To do this, let's create a second function for checking the stopwords.&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def remove_stops_and_add(word):
-    if word.lower() not in stop:
-        description_words.append(word.lower())
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Here we are combining two steps in one. We transform each word as it comes in to the lower case with ".lower()" before we check it against the stop words. Then we transform it again before we append it to our "description_words" list. &lt;/p&gt;
-
-&lt;p&gt;We could also transform it once at the beginning of this function. Work with your table to work out how would you change the function to do that.&lt;/p&gt;
-
-&lt;p&gt;Now, we also need to load up the stopwords from nltk library into a variable "stop". &lt;/p&gt;
-
-&lt;p&gt;On the line after we set up our "description_words" list, add:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;stop = stopwords.words('english')
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Here we are loading up the collection of english stop words from the stopwords library.&lt;/p&gt;
-
-&lt;p&gt;Finally, we need to call this new function inside our "get_words()" function. &lt;/p&gt;
+&lt;p&gt;Open your 'text_mining.py' file. First, comment out &lt;span class="command"&gt;print text.similar('Pot')&lt;/span&gt;. Next, let's create a new function that normalizes the text:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -563,73 +512,283 @@ pull_records(2, 3, 50)
 12
 13
 14
-15&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
-    for each in json_data:
-        try:
-            descriptions = each['sourceResource']['description']
-            if isinstance(descriptions, basestring):
-                words = descriptions.split()
-            else:
-                for line in descriptions:
-                    words = line.split()
-            
-            for word in words:
-                remove_stops_and_add(word)
+15
+16
+17
+18
+19
+20
+21&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import nltk
+from nltk.corpus import stopwords
+from nltk import word_tokenize
 
-        except KeyError:
-            print "Description Missing"
+with open('text_results.txt') as file:
+    cooking_text = file.read()
+# print cooking_text[0:20]
+
+cooking_tokens = word_tokenize(cooking_text)
+# print cooking_tokens[0:10]
+
+text = nltk.Text(cooking_tokens)
+
+#print text[:20]
+#print text.concordance('economy')
+#print text.collocations()
+
+# print text.similar('Pot')
+
+def normalize_text(text):
+    # Work through all the words in text and filter
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Save and run your script.&lt;/p&gt;
-
-&lt;p&gt;Now our results should look something like this:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;[(u'1', 2090), (u'photograph', 1520), (u';', 1440), (u':', 1389), (u'x', 1057), (u'2', 877), (u'cooking', 779), (u'0', 776), (u'2014', 740), (u'b&amp;amp;w', 691), (u'3', 685), (u'in.', 675), (u'4', 674), (u'5', 578), (u'.', 543), (u'cm.', 513), (u'food', 471), (u'col.', 468), (u'may', 462), (u'negative,', 460), (u'one', 440), (u'12', 429), (u'35', 415), (u'p.', 408), (u'also', 404), (u'mm.', 396), (u'two', 393), (u'jun', 391), (u'6', 358), (u'would', 347), (u'clark', 345), (u'includes', 332), (u'time', 327), (u'molasses', 325), (u'new', 324), (u'people', 315), (u'20', 306), (u'well', 301), (u'state', 301), (u'early', 288), (u'work', 284), (u'water', 283), (u'university', 282), (u'positive,', 280), (u'home', 276), (u'joe', 275), (u'per', 270), (u'farm', 269), (u'information', 263), (u'school', 251), (u'three', 251), (u'-', 250), (u'first', 243), (u'8', 238), (u'used', 237), (u'7', 235), (u'good', 231), (u'10', 227), (u'large', 217), (u'no.', 216), (u'published', 213), (u'library', 207), (u'9', 206)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This is much better! But now we have some distracting numbers and punctuation marks. So let's get rid of those too.&lt;/p&gt;
-
-&lt;p&gt;Going back to our new "remove_stops_and_add()" function, let's add a few more filters that the words must pass through before we add it to the bag.&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def remove_stops_and_add(word):
-    if word.lower() not in stop:
-        if not word.isdigit():
-            description_words.append(word.lower())
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This checks to see if the words is a digit and if it is not, then it allows it to pass. We also had some punctuation marks and abbreviations. To remove these, we can allow only those words that are alphanumeric to pass before we add to "description_words". &lt;/p&gt;
+&lt;p&gt;To work through the words, we can use a new 'for loop' and save all of the approved words into a new array. Create your new array above your 'normalize_text' function.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
 3
 4
-5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def remove_stops_and_add(word):
-    if word.lower() not in stop:
-        if not word.isdigit():
-            if word.isalnum():
-                description_words.append(word.lower())
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;word_set = []
+
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Create list of words
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;And well done! We now have a very interesting list of description words and their frequencies across all of the "cooking" items in the DPLA's holdings.&lt;/p&gt;
+&lt;p&gt;First, for each word, let's check if it is alpha-numeric:&lt;/p&gt;
 
-&lt;h3 id="group-challege"&gt;Group Challege&lt;/h3&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;word_set = []
 
-&lt;p&gt;You can also use "stemming" to combine multipe forms of the same word, such as "photograph" and "photographs". Can you use the &lt;a href="http://www.nltk.org/api/nltk.stem.html"&gt;NLTK documentation&lt;/a&gt; to add another filter that stems the words before adding them to "description_words"?&lt;/p&gt;
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation
+        if word.isalpha()
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
-&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
+&lt;p&gt;Next, let's check the word against the NLTK collection of stopwords. First, let's load in the NLTK stopwords and assign them to the variable 'stopwords':&lt;/p&gt;
 
-&lt;p&gt;In this module, we learned:&lt;/p&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import nltk
+from nltk.corpus import stopwords
+from nltk import word_tokenize
 
-&lt;ul&gt;
-  &lt;li&gt;to use stopwords and filters to clean up noisy data&lt;/li&gt;
-&lt;/ul&gt;
+with open('text_results.txt') as file:
+    cooking_text = file.read()
+# print cooking_text[0:20]
+
+cooking_tokens = word_tokenize(cooking_text)
+# print cooking_tokens[0:10]
+
+# Load in Stopwords Library
+stopwords = stopwords.words('english')
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Next, we need to transform each word to lower-case, because the stopwords list won't catch the uppercase words. We do this by adding &lt;span class="command"&gt;.lower()&lt;/span&gt; to word as we check the words against the 'stopwords' collection. &lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;word_set = []
+
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation, AND check against stop words
+        if word.isalpha() and word.lower() not in stopwords:
+            # If it passes the filters, save to word_set
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Finally, we will add those words that pass through the filters to the 'word_set' list and tell the function to return to us the whole list once it is finished.&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;word_set = []
+
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation, AND check against stop words
+        if word.isalpha() and word.lower() not in stopwords:
+            # If it passes the filters, save to word_set
+            word_set.append(word.lower())
+    return word_set
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The last step is to call our 'normalize_text' function and pass in our text.&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation, AND check against stop words
+        if word.isalpha() and word.lower() not in stopwords:
+            # If it passes the filters, save to word_set
+            word_set.append(word.lower())
+    return word_set
+
+normalize_text(text)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Well done! We're now ready to calculate word frequencies using the Frequency Distribution library.&lt;/p&gt;
+
+&lt;h3 id="get-word-frequencies"&gt;Get Word Frequencies&lt;/h3&gt;
+
+&lt;p&gt;Our python file should now look like this: &lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import nltk
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+
+with open('text_results.txt') as file:
+    cooking_text = file.read()
+# print cooking_text[0:20]
+
+cooking_tokens = word_tokenize(cooking_text)
+# print cooking_tokens[0:10]
+
+# Load in Stopwords Library
+stopwords = stopwords.words('english')
+
+text = nltk.Text(cooking_tokens)
+
+#print text[:20]
+#print text.concordance('economy')
+#print text.collocations()
+
+# print text.similar('Pot')
+
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation, AND check against stop words
+        if word.isalpha() and word.lower() not in stopwords:
+            # If it passes the filters, save to word_set
+            word_set.append(word.lower())
+    return word_set
+
+normalize_text(text)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We need one more library to get word frequencies from our array of approved words. After &lt;span class="command"&gt;from nltk import word_tokenize&lt;/span&gt;, add:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from nltk.probability import *
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now, we will use the Frequency Distribution library to get word counts. This may seem a bit like magic, and that is ok. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script.&lt;/p&gt;
+
+&lt;p&gt;The first step is to create a new variable and use that to hold the results of calling the frequency distribution function. After &lt;span&gt;normalize_text(text)&lt;/span&gt; add:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;fd = FreqDist(word_set)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Frequency Distribution goes through all off the words in our array and create a dictionary that holds the word, and the number of times it occurs in our document.&lt;/p&gt;
+
+&lt;p&gt;To see the 50 most common words, add to the bottom of the file:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print fd.most_common(50)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;to your script and run. You should start to see some magic happening in the termainal.&lt;/p&gt;
+
+&lt;p&gt;You can also see the words that only occur once by adding to the bottom of the file:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print fd.hapaxes()
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;and running the 'text_mining.py' script.&lt;/p&gt;
+
+&lt;p&gt;And, for some super magic, you can also generate a plot with:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;fd.plot(50,cumulative=False)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You can comment out print statements along the way if you are seeing too much information. Save your script and run it in the terminal.&lt;/p&gt;
+
+&lt;h3 id="bonus-challenge"&gt;Bonus Challenge&lt;/h3&gt;
+
+&lt;p&gt;You can also use "stemming" to combine multipe forms of the same word, such as "photograph" and "photographs". Can you use the &lt;a href="http://www.nltk.org/api/nltk.stem.html"&gt;NLTK documentation&lt;/a&gt; to add another filter that stems the words before adding them to 'word_set'?&lt;/p&gt;
 
 &lt;p&gt;&lt;span class="left"&gt;&lt;a href="module11.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
 &lt;span class="right"&gt;&lt;a href="module13.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
@@ -909,16 +1068,19 @@ print text.similar('Pot')
     <link rel="alternate" href="http://blog.url.com/modules/module10.html"/>
     <id>http://blog.url.com/modules/module10.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-26T20:11:03-04:00</updated>
+    <updated>2014-10-27T19:55:02-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module we will learn:
-1. to create a new script file and load in our JSON data
-2. to select data from particular fields and deal with missing data
-3. to convert our JSON data to strings of text&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module we will learn:&lt;/p&gt;
 
-&lt;p&gt;Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of 'cooking' items are gendered, our next step is to filter down that data and save it as text. In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;to create a new script file and load in our JSON data&lt;/li&gt;
+  &lt;li&gt;to select data from particular fields and deal with missing data&lt;/li&gt;
+  &lt;li&gt;to convert our JSON data to strings of text&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of 'cooking' items are gendered, our task for this module is to filter down that data and save it as text. &lt;/p&gt;
 
 &lt;h3 id="create-a-new-script-and-load-in-our-data"&gt;1. Create a new script and load in our data&lt;/h3&gt;
 
@@ -1549,6 +1711,8 @@ get_text(json_data)
 &lt;/div&gt;
 
 &lt;p&gt;Save and run your second python script. You should now have a text file named 'text_results.txt' in your directory. If you open that file, you should see lines of beautiful text ready for analysis.&lt;/p&gt;
+
+&lt;p&gt;In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.&lt;/p&gt;
 
 &lt;p&gt;&lt;span class="left"&gt;&lt;a href="module09.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
 &lt;span class="right"&gt;&lt;a href="module11.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
