@@ -20,7 +20,7 @@ Go to terminal and type:
 
 or on Windows: 
 
-    New-Item -ItemType file my_first_script.py
+    New-Item -ItemType file my_second_script.py
 
 To open your new script file, type:
 
@@ -28,7 +28,7 @@ To open your new script file, type:
 
 or on Windows:
 
-    Start notepad++ my_first_script.py
+    Start notepad++ my_second_script.py
 
 First, we will need the json library again. To add this, add <span class="command">import json</span> to the very top of the file.
 
@@ -78,10 +78,13 @@ We can get the title, description, and subject headings by looking for those 'ke
 
     def get_text(json_data):
         for each in json_data:
+            # Get the title
             title = each['sourceResource.title']
 
+            # Get the Description
             description = each['sourceResource.description']
 
+            # Get the Subject Headings
             subject = each['sourceResource.subject']
 
 So far so good. But what if one of these fields is missing? Programming languages are very literal - if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line to call the function.
@@ -93,10 +96,13 @@ So far so good. But what if one of these fields is missing? Programming language
 
     def get_text(json_data):
         for each in json_data:
+            # Get the Titles
             title = each['sourceResource.title']
 
+            # Get the Descriptions
             description = each['sourceResource.description']
 
+            # Get the Subject Headings
             subject = each['sourceResource.subject']
 
     get_text(json_data)
@@ -182,7 +188,6 @@ Our whole file should now look like this:
         json_data = json.load(json_file) 
 
     f = open('text_results.txt', 'a')
-
 
     def get_text(json_data):
         for each in json_data:
@@ -301,7 +306,7 @@ The last step is to write all the information within 'data' to our file.
 
         f.write(data.encode('utf-8'))
 
-Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem unusual characters.
+Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem of unusual characters.
 
 Now let's add a call to the function and run our code:
     
