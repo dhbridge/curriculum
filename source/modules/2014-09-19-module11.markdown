@@ -1,284 +1,176 @@
 ---
-title: Gathering a Subset of the Data
+title: Analyzing the Data (Part 1)
 date: 2014-09-19
 ---
 
-In this module, we will learn how to collect and store the description data from each item in our "json_data" variable. To do this, we will first identify the location of the description with the data structure and then loop through each item, saving each of the words in the description into a new list.
+In this module we will:
 
-### Identifying Our Target Fields
+1. install NLTK library
+2. use NLTK to do see patterns in the text
 
-Remember back to JSON and how it organizes data using key:value pairs? One of the most powerful features of JSON is that we are able to nest features and create lists within key:value pairs. This is useful for creating complex data structures. It also means that we have work within the hierarchy of key:value pairs to isolate particular values.
+### Installing NLTK
 
-In order to better see that hierarchy, let's "Pretty Print" the JSON results, or print with the indentations and hierarchies visually displayed. 
+We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).
 
-Open "my_second_script.py" and "comment out" "print jason_data[0]" by putting # at the beginning of the line.
+To install NLTK, let's go back to our terminal and use pip.
 
-At the bottom of your script, add the line:
+Run <span class = "command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.
 
-	print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+Now, go back to your file and import nltk at the top of the file.
 
-Save and run in Terminal. 
+There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/). 
 
-Work with your table to map out what this command did.
+To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:
 
-We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F" on a Mac and Windows, click the menu button and go to Edit -> Find. 
+    Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+    [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> 
 
-Looking at the "description" field, work with your table to identify the key name it is nested under. 
+Type <span class="command">import nltk</span> and press enter.
 
-The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using <span class="command">json_data[1]</span>. This form means we want the first item in the json_data object. 
+Next type <span class="command">nltk.download('stopwords')</span> and press enter.
 
-If we want the value associated with the "description" key, we use a similar format. 
+Once you see 
+    
+    True
+    >>>
 
-To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:
+you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span>
 
-	print json_data[1]['sourceResource']['description']
+### Let's start text mining
 
-Work with your table to print only the titles. What about only the subject headings?
+Let's create a third script file, 'text_mining.py':
 
-### Saving the Descriptions
+    touch text_mining.py
 
-One way to look at the descriptions is to consider them as a collection, or list, of words. If we take all of the collections as a whole, we can ask if there are any noticable patterns in the words being used to describe these items related to cooking.
+(or for Windows):
+    
+    New-Item -ItemType file text_mining.py
 
-One common way of dealing with text computationally is to translate the text into a "bag of words". In a bag of words approach, the order does not matter. What we are looking at instead is the collection of words and their frequencies.
+And open that script file in your text editor:
 
-To create a "bag of words" from the descriptions we need to 1) create a list to store the words and 2) write a loop that takes every description and adds the words to the list.
+    open text_mining.py
 
-See if you can use the information in module 7 (functions and loops) to create an empty list.
+(and for Windows):
+    
+    Start notepad++ text_mining.py
 
-Currently our "my_second_script.py" file should look like this:
+Let's start by importing the nltk library and the stopwords:
 
-	import json
-	from collections import Counter
-	import nltk
-	from nltk.corpus import stopwords
+    import nltk
+    from nltk.corpus import stopwords
 
-	with open("search_results.json") as json_file:
-	   json_data = json.load(json_file)
-		
-	#print json_data[1]
-	#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+Next let's load in our text file:
 
-	print json_data[1]['sourceResource']['description']
+    with open('text_results.txt') as file:
+        cooking_text = file.read()
 
+We can display part of our text to make sure everything is loading correctly:
 
-Let's use "description_words" as the variable for our empty list of stopwords. Remember that variables go after we import the libraries and before our functions. 
+    import nltk
+    from nltk.corpus import stopwords
 
-	description_words = []
+    with open('text_results.txt') as file:
+        cooking_text = file.read()
 
-Next, we will create a new function called "get_words"
+    print cooking_text[0:20]
 
-Declare the function by adding:
+Save a run your new script in terminal. One thing to note here is that Python treats the text as a list of letters. 
 
-	def get_words():
+But we want to work with the words, so let's use a function called 'tokenize' from the NLTK library. 'Tokenize' breaks our text into a list of words.
 
-Next, tab in once and add a for-loop to move through each item in the json_data list:
+After 'from nltk.corpus import stopwords', add:
+    from nltk import word_tokenize
 
-	def get_words():
-	   for each in json_data:
+Now let's comment out our print statement and transform our sentences into tokens. To see what has happened, let's also print the first 10 tokens.
 
-Next, let's set up a variable to grab the descriptions:
+    import nltk
+    from nltk.corpus import stopwords
+    from nltk import word_tokenize
 
-    def get_words():
-        for each in json_data:
-            descriptions = each['sourceResource']['description']
+    with open('text_results.txt') as file:
+        cooking_text = file.read()
 
-Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.
+    #print cooking_text[0:20]
 
-    def get_words():
-        for each in json_data:
-            descriptions = each['sourceResource']['description']
-            for line in descriptions:
-                words = line.split()
+    cooking_tokens = word_tokenize(cooking_text)
+    print cooking_tokens[0:10]
 
-To see what just happened, let's add a print statement:
+Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out 'print cooking_tokens[0:10]' and beneath it add:
 
-    def get_words():
-        for each in json_data:
-            descriptions = each['sourceResource']['description']
-            for line in descriptions:
-                words = line.split()
-                print words
-
-Now "call the function" by adding <span class="command">get_words()</span> to the end of the file.	
+    text = nltk.Text(cooking_tokens)
 
 Your file should now look like this:
 
-    import json
-    from collections import Counter
     import nltk
     from nltk.corpus import stopwords
+    from nltk import word_tokenize
 
-    with open("search_results.json") as json_file:
-        json_data = json.load(json_file)
+    with open('text_results.txt') as file:
+        cooking_text = file.read()
 
-    description_words = []	
+    # print cooking_text[0:20]
 
-    def get_words():
-        for each in json_data:
-            descriptions = each['sourceResource']['description']
-            for line in descriptions:
-                words = line.split()
-                print words
+    cooking_tokens = word_tokenize(cooking_text)
+    # print cooking_tokens[0:10]
 
-    #print json_data[1]
-    #print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+    text = nltk.Text(cooking_tokens)
 
-    print json_data[1]['sourceResource']['description']
+The first thing we can do to get a sense of the words in our dataset is to use the 'concordance' function within NLTK. This will print all the instances of a word with the surrounding words for context.
 
-    get_words()
+After <span class="command">text = nltk.Text(cooking_tokens)</span>, add:
 
-Save the file and run it in the terminal.
+    print text.concordance('cooking')
 
-You might first notice that this script threw an error, saying:
+Save and run your script.
 
-	KeyError: 'description'
+Pretty cool! Now try changing 'cooking' to 'economics':
 
-One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:
+    print text.concordance('cooking')
 
-	jeriwieringa$ python my_second_script.py
-	Traceback (most recent call last):
-  	File "my_second_script.py", line 21, in <module>
-    	get_words()
-  	File "my_second_script.py", line 16, in get_words
-    	descriptions = each['sourceResource']['description']
-	KeyError: 'description'
+Try some other words to get a sense of our search results document.
 
-We have a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". 
+Another useful command is 'collocation'. This shows us all the words that tend to appear together throughout the corpus.
 
-Let's see what is going. Comment out the call to "get_words" function.
+Comment out <span class="command">print text.concordance('your_last_word')</span> and add 
 
-	# get_words()
+    print text.collocations()
 
-Now let's print the first object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 1 to 0, the save and run the file.
+Save and run your script.
 
-Search for 'description' under 'sourceResource'. If you can't find it, it's because this item appears to be missing "description" information. Because the computer can't find the description, it returns an error and stops.
+There are probably quite a few dates and names showing up. 
 
-Getting around this problem requires what is called "handling exceptions". We had expected a particular pattern in our data (that there was "description" keys nested under "sourceResource" keys) but we've encountered an exception to that general pattern. 
+One more function that is useful to surveying our data is 'similar'. This shows us words that are used similarly to the word we give it.
 
-To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:
+Comment out <span class="command"> print text.collocations()</span> and add:
 
-    def get_words():
-        for each in json_data:
-            try:
-                descriptions = each['sourceResource']['description']
-                for line in descriptions:
-                    words = line.split()
-                    print words
-            except KeyError:
-                print "Description Missing"
+    print text.similar('Pot')
 
-Un-comment "get_words()", save, and run the file.
+Your script should now look like:
 
-Our script should no longer error. If your script is spitting out letters forever, you can stop the process with "control + c" or "command + c"
-
-But, now it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.
-
-To check if the value in "descriptions" in a string, we can add the following:
-
-    def get_words():
-        for each in json_data:
-            try:
-                descriptions = each['sourceResource']['description']
-                if isinstance(descriptions, basestring):
-                    words = descriptions.split()
-                else:
-                    for line in descriptions:
-                        words = line.split()
-                print words
-            except KeyError:
-                print "Description Missing"
-
-Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.
-
-This is an example of creating a work around when working with data that is beyond our control. What has happened is that some institutions have a description field that looks like this:
-
-    'description': 'A wonderful description sentence or two giving you a summary of the item'
-
-And some have used the description field like this:
-
-    'description': [
-        "one line of information", 
-        "another line of information"
-    ] 
-
-To accommodate this, we create one process for the first case, by checking if the value is a string and a second process for the second case.
-
-
-### Adding the words to our "bag of words"
-
-The final step in creating our subset of data is to add the words into our "description_words" list.
-
-To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function. Also, now that we know that our words are parsing correctly, we can remove "print words".
-
-    def get_words():
-        for each in json_data:
-            try:
-                descriptions = each['sourceResource']['description']
-                if isinstance(descriptions, basestring):
-                    words = descriptions.split()
-                else:
-                    for line in descriptions:
-                        words = line.split()
-                        for word in words:
-                            description_words.append(word)
-
-            except KeyError:
-                print "Description Missing"
-
-
-Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"
-
-    import json
-    from collections import Counter
     import nltk
     from nltk.corpus import stopwords
+    from nltk import word_tokenize
 
-    with open("search_results.json") as json_file:
-        json_data = json.load(json_file)
+    with open('text_results.txt') as file:
+        cooking_text = file.read()
+    # print cooking_text[0:20]
 
-    #print json_data[1]
-    #print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+    cooking_tokens = word_tokenize(cooking_text)
+    # print cooking_tokens[0:10]
 
-    #print json_data[0]['sourceResource']['description']
+    text = nltk.Text(cooking_tokens)
 
-    description_words = []
+    #print text[:20]
+    #print text.concordance('economy')
+    #print text.collocations()
 
-    def get_words():
-        for each in json_data:
-            try:
-                descriptions = each['sourceResource']['description']
-                if isinstance(descriptions, basestring):
-                    words = descriptions.split()
-                else:
-                    for line in descriptions:
-                        words = line.split()
+    print text.similar('Pot')
 
-                for word in words:
-                    description_words.append(word)
+What other patterns might be interesting to know about the words used to describe objects related to 'cooking'?
 
-            except KeyError:
-                print "Description Missing"
-
-    get_words()
-    print description_words[999]
-
-
-### Group Challenge: 
-
-- Can you modify the function to also add the words of the title to our bag of words?
-- Can you also add the subject headings?
-
-
-### What We Learned
-
-In this module, we learned:
-
-- to pretty-print json with Python
-- to identify the nested key:value pairs we want to analyze
-- to split a list 
-- to trouble shoot from an error report
-- to handle exceptions
-- to check type and use an "if/else" statement
+In the next module, we will look at word counts to find the most common words used across all of the different DPLA contributors. 
 
 <span class="left">[Previous Module](module10.html)</span>
 <span class="right">[Next Module](module12.html)</span>
