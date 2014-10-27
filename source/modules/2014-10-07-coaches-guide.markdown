@@ -26,8 +26,9 @@ Coaches will:
 
 Terminal and Powershell = Terminal
 Directories and Folders = Folders 
-
 For Mac/Windows term translation: [http://www.dummies.com/how-to/content/comparing-common-windows-terms-with-mac-terms.html](http://www.dummies.com/how-to/content/comparing-common-windows-terms-with-mac-terms.html)
+
+9. Capitalization is crucial in Windows, so if you see participants running into problems it's always a good idea to check the capitalization. 
 
 ### Draft Full Day Schedule
 
