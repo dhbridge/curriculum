@@ -48,8 +48,8 @@
 			<li><a href="/modules/module08.html">Using While-Loops</a></li>
 			<li><a href="/modules/module09.html">Writing Results to File</a></li>
 			<li><a href="/modules/module10.html">Working with Local Data</a></li>
-			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
-			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
+			<li><a href="/modules/module11.html">Analyzing the Data (Part 1)</a></li>
+			<li><a href="/modules/module12.html">Analyzing the Data (Part 2)</a></li>
 			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
 			</ol>
 		</section>
@@ -61,8 +61,8 @@
        <p>In this module, we will learn:</p>
 
 <ol>
-  <li>to navigate and manipulate your computer using the Terminal </li>
-  <li>to conceptualize your computer as a computing machine connected to other computing machines</li>
+  <li>To navigate and manipulate your computer using the Terminal </li>
+  <li>To conceptualize your computer as a computing machine connected to other computing machines</li>
 </ol>
 
 <h3 id="working-with-the-terminal">1. Working with the Terminal</h3>
@@ -71,11 +71,11 @@
 
 <p>So let's walk through some basic commands while setting up our computer for the rest of the tutorial.</p>
 
-<p>First, open Terminal (or PowerShell) and let's get a sense of where we are in the file structure of our computer. </p>
+<p>First, open Terminal/PowerShell and let's get a sense of where we are in the file structure of our computer. </p>
 
-<p>Type <span class="command">pwd</span> and press enter. </p>
+<p>Type <span class="command">pwd</span> and press "Enter". </p>
 
-<p>The command, which stands for "print working directory," tells you which directory you are in. Navigating the computer through the Terminal sometimes feels like tunneling, and <span class="command">pwd</span> is very helpful for seeing where you are at. You should see something like:</p>
+<p>The command, which stands for "print working directory," tells you which directory you are in. Navigating the computer through the Terminal sometimes feels like tunneling, and <span class="command">pwd</span> is very helpful for checking where you are at any given time. You should see something like:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>/Users/yourusername
 </pre></td></tr></tbody></table>
@@ -89,9 +89,9 @@
 
 <p>for Windows.</p>
 
-<p>Type <span class="command">ls</span> and press enter. </p>
+<p>Type <span class="command">ls</span> and press "Enter". </p>
 
-<p>This is another super helpful command for orienting yourself. This commands lists all the files in your current directory. If you need to see hidden files, type <span class="command">ls -a</span> (Mac) or <span class="command">ls -Hidden</span> (Windows). </p>
+<p>This is another helpful command for orienting yourself. This command lists all the files in your current directory. If you need to see hidden files, type <span class="command">ls -a</span> (Mac) or <span class="command">ls -Hidden</span> (Windows). </p>
 
 <p>You should see something like:</p>
 
@@ -113,7 +113,7 @@ Downloads		Movies		Sites
 </pre></td></tr></tbody></table>
 </div>
 
-<p>and press enter. </p>
+<p>and press "Enter". </p>
 
 <p>You can also move multiple directories at a time with:</p>
 
@@ -123,15 +123,15 @@ Downloads		Movies		Sites
 
 <p>This way you can dig down through your files. Go ahead and give it a try.</p>
 
-<p>Type <span class="command">cd Documents</span> and press enter. Now type <span class="command">ls</span> and press enter.</p>
+<p>Type <span class="command">cd Documents</span> and press "Enter". Now type <span class="command">ls</span> and press "Enter".</p>
 
-<p>You can also move backwards by typing <span class="command">cd ../</span> and to move back multiple directories, type <span class="command">cd ../../../</span>. </p>
+<p>You can also move backwards by typing <span class="command">cd ../</span>. To move back multiple directories, type <span class="command">cd ../../../</span>. </p>
 
 <p>Go ahead and give that a try. After moving around, work your way back to the "Documents" folder. </p>
 
 <p>Let's create a folder for our work today. </p>
 
-<p>Type <span class="command">mkdir dhb_awesome</span> and press enter. Now type <span class="command">ls</span> and you should see your 'dhb_awesome' folder. Use <span class="command">cd</span> to move into that folder.</p>
+<p>Type <span class="command">mkdir dhb_awesome</span> and press "Enter". Now type <span class="command">ls</span> and you should see your 'dhb_awesome' folder. Use <span class="command">cd</span> to move into that folder.</p>
 
 <p>Folders are great but it is also helpful to know how to make files. For that, we'll use a command called 'touch' on OSX and 'New-Item' on Windows.</p>
 
@@ -149,11 +149,11 @@ Downloads		Movies		Sites
 </pre></td></tr></tbody></table>
 </div>
 
-<p>and press enter. </p>
+<p>and press "Enter". </p>
 
-<p>Run <span class="command">ls</span> to see your file. </p>
+<p>Run <span class="command">ls</span> to see the file you just created. </p>
 
-<p>To edit your new file in your default text-editor, type </p>
+<p>To edit your new file in your text-editor, type: </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>open my_first_script.py
 </pre></td></tr></tbody></table>
@@ -161,21 +161,21 @@ Downloads		Movies		Sites
 
 <p>on your Mac or</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Start notepad++ my_first_script.py
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Start Notepad++ my_first_script.py
 </pre></td></tr></tbody></table>
 </div>
 
 <p>on your Windows machine. This should launch your default text editor. (For Mac users, if the file does not open in TextWrangler or your text editor, work with your coach to set your default editor.) </p>
 
-<p>Type <span class="command">print "Hello World"</span> into the text file and save. We will do something with that later.</p>
+<p>Type <span class="command">print "Hello World"</span> into the text file and save. We will do something with that soon.</p>
 
-<p>If you want to know more commands, like how to remove, copy, or rename files, checkout the <a href="http://praxis.scholarslab.org/scratchpad/bash/">Scholars' Lab Command Line Bootcamp</a>. But this is enough to start!</p>
+<p>If you want to learn more commands–like how to remove, copy, or rename files–checkout the <a href="http://praxis.scholarslab.org/scratchpad/bash/">Scholars' Lab Command Line Bootcamp</a>. But this is enough to start!</p>
 
 <h3 id="terminology-and-mapping-the-computer">2. Terminology and Mapping the Computer</h3>
 
 <p>Now we're going to take a step back to think about the different layers of the computer that we will be working with and about how we move data from one process to another. </p>
 
-<p>We will talk more about moving from graphical interface to the terminal interface for communicating with our computers. Then we will talk about using APIs (or Application Programming Interfaces) for communication between computers.</p>
+<p>We will talk more about moving from the graphical interface to the terminal interface for communicating with our computers. Then we will talk about using APIs (or Application Programming Interfaces) for communicating between computers.</p>
 
 <h3 id="credits">Credits</h3>
 <p>This tutorial is based on the <a href="http://praxis.scholarslab.org/scratchpad/bash/">Praxis Program's Command Line Bootcamp</a> and Greg Bloom's post, <a href="http://sunlightfoundation.com/blog/2014/06/20/opengov-voices-draw-an-api-an-interpretation-of-open-data-by-tcampers/">Draw an API</a>.</p>

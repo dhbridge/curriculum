@@ -640,11 +640,18 @@ pull_records(2, 3, 50)
     <link rel="alternate" href="http://blog.url.com/modules/module11.html"/>
     <id>http://blog.url.com/modules/module11.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-26T19:58:23-04:00</updated>
+    <updated>2014-10-26T21:08:20-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;h3 id="installing-nltk"&gt;Installing NLTK&lt;/h3&gt;
+    <content type="html">&lt;p&gt;In this module we will:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;install NLTK library&lt;/li&gt;
+  &lt;li&gt;use NLTK to do see patterns in the text&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id="installing-nltk"&gt;Installing NLTK&lt;/h3&gt;
 
 &lt;p&gt;We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).&lt;/p&gt;
 
@@ -682,11 +689,49 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using &lt;span class="command"&gt;quit()&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;Great!&lt;/p&gt;
+&lt;h3 id="lets-start-text-mining"&gt;Let's start text mining&lt;/h3&gt;
 
-&lt;p&gt;Now we need to load these stopwords into our Python file. Switching back to our "my_second_script.py" file, add &lt;span class="command"&gt;from nltk.corpus import stopwords&lt;/span&gt; to the top of the file.&lt;/p&gt;
+&lt;p&gt;Let's create a third script file, 'text_mining.py':&lt;/p&gt;
 
-&lt;p&gt;Your file should now look like:&lt;/p&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;touch text_mining.py
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;(or for Windows):&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;New-Item -ItemType file text_mining.py
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And open that script file in your text editor:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;open text_mining.py
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;(and for Windows):&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;Start notepad++ text_mining.py
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Let's start by importing the nltk library and the stopwords:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import nltk
+from nltk.corpus import stopwords
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Next let's load in our text file:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;with open('text_results.txt') as file:
+    cooking_text = file.read()
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We can display part of our text to make sure everything is loading correctly:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -694,81 +739,24 @@ Type "help", "copyright", "credits" or "license" for more information.
 4
 5
 6
-7
-8
-9&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
-from collections import Counter
-import nltk
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import nltk
 from nltk.corpus import stopwords
 
-with open("search_results.json") as json_file:
-    json_data = json.load(json_file)
+with open('text_results.txt') as file:
+    cooking_text = file.read()
 
-#print json_data[1]
+print cooking_text[0:20]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;We are now ready to start working with our data.&lt;/p&gt;
+&lt;p&gt;Save a run your new script in terminal. One thing to note here is that Python treats the text as a list of letters. &lt;/p&gt;
 
-&lt;h3 id="what-we-learned"&gt;What We Learned&lt;/h3&gt;
+&lt;p&gt;But we want to work with the words, so let's use a function called 'tokenize' from the NLTK library. 'Tokenize' breaks our text into a list of words.&lt;/p&gt;
 
-&lt;p&gt;In this module, we have reviewed and learned:&lt;/p&gt;
+&lt;p&gt;After 'from nltk.corpus import stopwords', add:
+    from nltk import word_tokenize&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;to create new files using terminal&lt;/li&gt;
-  &lt;li&gt;to load json data from a file &lt;/li&gt;
-  &lt;li&gt;to download libraries using pip&lt;/li&gt;
-  &lt;li&gt;to download datasets within libraries&lt;/li&gt;
-  &lt;li&gt;to load libraries into our scripts&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In this module, we will learn how to collect and store the description data from each item in our "json_data" variable. To do this, we will first identify the location of the description with the data structure and then loop through each item, saving each of the words in the description into a new list.&lt;/p&gt;
-
-&lt;h3 id="identifying-our-target-fields"&gt;Identifying Our Target Fields&lt;/h3&gt;
-
-&lt;p&gt;Remember back to JSON and how it organizes data using key:value pairs? One of the most powerful features of JSON is that we are able to nest features and create lists within key:value pairs. This is useful for creating complex data structures. It also means that we have work within the hierarchy of key:value pairs to isolate particular values.&lt;/p&gt;
-
-&lt;p&gt;In order to better see that hierarchy, let's "Pretty Print" the JSON results, or print with the indentations and hierarchies visually displayed. &lt;/p&gt;
-
-&lt;p&gt;Open "my_second_script.py" and "comment out" "print jason_data[0]" by putting # at the beginning of the line.&lt;/p&gt;
-
-&lt;p&gt;At the bottom of your script, add the line:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Save and run in Terminal. &lt;/p&gt;
-
-&lt;p&gt;Work with your table to map out what this command did.&lt;/p&gt;
-
-&lt;p&gt;We now need to find the "description" field within the json object. You can either read through all of the lines of code or you can search within Terminal by pressing "command F" on a Mac and Windows, click the menu button and go to Edit -&amp;gt; Find. &lt;/p&gt;
-
-&lt;p&gt;Looking at the "description" field, work with your table to identify the key name it is nested under. &lt;/p&gt;
-
-&lt;p&gt;The syntax for calling items within a data structure uses brackets to designate the key names or the position in the list of the item we want to interact with. We already use this syntax when we call the first item in the data by using &lt;span class="command"&gt;json_data[1]&lt;/span&gt;. This form means we want the first item in the json_data object. &lt;/p&gt;
-
-&lt;p&gt;If we want the value associated with the "description" key, we use a similar format. &lt;/p&gt;
-
-&lt;p&gt;To print only the description for the first item in our list, add the following to the bottom of your "my_second_script.py" file:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print json_data[1]['sourceResource']['description']
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Work with your table to print only the titles. What about only the subject headings?&lt;/p&gt;
-
-&lt;h3 id="saving-the-descriptions"&gt;Saving the Descriptions&lt;/h3&gt;
-
-&lt;p&gt;One way to look at the descriptions is to consider them as a collection, or list, of words. If we take all of the collections as a whole, we can ask if there are any noticable patterns in the words being used to describe these items related to cooking.&lt;/p&gt;
-
-&lt;p&gt;One common way of dealing with text computationally is to translate the text into a "bag of words". In a bag of words approach, the order does not matter. What we are looking at instead is the collection of words and their frequencies.&lt;/p&gt;
-
-&lt;p&gt;To create a "bag of words" from the descriptions we need to 1) create a list to store the words and 2) write a loop that takes every description and adds the words to the list.&lt;/p&gt;
-
-&lt;p&gt;See if you can use the information in module 7 (functions and loops) to create an empty list.&lt;/p&gt;
-
-&lt;p&gt;Currently our "my_second_script.py" file should look like this:&lt;/p&gt;
+&lt;p&gt;Now let's comment out our print statement and transform our sentences into tokens. To see what has happened, let's also print the first 10 tokens.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -780,85 +768,25 @@ with open("search_results.json") as json_file:
 8
 9
 10
-11
-12&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
-from collections import Counter
-import nltk
+11&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import nltk
 from nltk.corpus import stopwords
+from nltk import word_tokenize
 
-with open("search_results.json") as json_file:
-   json_data = json.load(json_file)
-	
-#print json_data[1]
-#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
+with open('text_results.txt') as file:
+    cooking_text = file.read()
 
-print json_data[1]['sourceResource']['description']
+#print cooking_text[0:20]
+
+cooking_tokens = word_tokenize(cooking_text)
+print cooking_tokens[0:10]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Let's use "description_words" as the variable for our empty list of stopwords. Remember that variables go after we import the libraries and before our functions. &lt;/p&gt;
+&lt;p&gt;Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out 'print cooking_tokens[0:10]' and beneath it add:&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;description_words = []
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;text = nltk.Text(cooking_tokens)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
-
-&lt;p&gt;Next, we will create a new function called "get_words"&lt;/p&gt;
-
-&lt;p&gt;Declare the function by adding:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Next, tab in once and add a for-loop to move through each item in the json_data list:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
-   for each in json_data:
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Next, let's set up a variable to grab the descriptions:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
-    for each in json_data:
-        descriptions = each['sourceResource']['description']
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now, description holds the full sentence as a single object and we want to get the individual words. We can use a built in function called "split" that divides the sentence into an array of individual objects, splitting on the spaces and punctuation marks.&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
-    for each in json_data:
-        descriptions = each['sourceResource']['description']
-        for line in descriptions:
-            words = line.split()
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To see what just happened, let's add a print statement:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
-    for each in json_data:
-        descriptions = each['sourceResource']['description']
-        for line in descriptions:
-            words = line.split()
-            print words
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now "call the function" by adding &lt;span class="command"&gt;get_words()&lt;/span&gt; to the end of the file.	&lt;/p&gt;
 
 &lt;p&gt;Your file should now look like this:&lt;/p&gt;
 
@@ -874,197 +802,61 @@ print json_data[1]['sourceResource']['description']
 10
 11
 12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
-from collections import Counter
-import nltk
+13&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import nltk
 from nltk.corpus import stopwords
+from nltk import word_tokenize
 
-with open("search_results.json") as json_file:
-    json_data = json.load(json_file)
+with open('text_results.txt') as file:
+    cooking_text = file.read()
 
-description_words = []	
+# print cooking_text[0:20]
 
-def get_words():
-    for each in json_data:
-        descriptions = each['sourceResource']['description']
-        for line in descriptions:
-            words = line.split()
-            print words
+cooking_tokens = word_tokenize(cooking_text)
+# print cooking_tokens[0:10]
 
-#print json_data[1]
-#print json.dumps(json_data[1], sort_keys=True, indent=4, separators=(',', ': '))
-
-print json_data[1]['sourceResource']['description']
-
-get_words()
+text = nltk.Text(cooking_tokens)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Save the file and run it in the terminal.&lt;/p&gt;
+&lt;p&gt;The first thing we can do to get a sense of the words in our dataset is to use the 'concordance' function within NLTK. This will print all the instances of a word with the surrounding words for context.&lt;/p&gt;
 
-&lt;p&gt;You might first notice that this script threw an error, saying:&lt;/p&gt;
+&lt;p&gt;After &lt;span class="command"&gt;text = nltk.Text(cooking_tokens)&lt;/span&gt;, add:&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;KeyError: 'description'
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print text.concordance('cooking')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;One of the most important things in learning to work with code is learning to decipher error messages. If you read a little more in your terminal window, you'll see that the full message is something like this:&lt;/p&gt;
+&lt;p&gt;Save and run your script.&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;jeriwieringa$ python my_second_script.py
-Traceback (most recent call last):
-  	File "my_second_script.py", line 21, in &amp;lt;module&amp;gt;
-	get_words()
-  	File "my_second_script.py", line 16, in get_words
-	descriptions = each['sourceResource']['description']
-KeyError: 'description'
+&lt;p&gt;Pretty cool! Now try changing 'cooking' to 'economics':&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print text.concordance('cooking')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;We have a traceback saying in our "get_words()" function there was an error on line 16 where we told it to save the value associated with the "description" key to the variable "descriptions". &lt;/p&gt;
+&lt;p&gt;Try some other words to get a sense of our search results document.&lt;/p&gt;
 
-&lt;p&gt;Let's see what is going. Comment out the call to "get_words" function.&lt;/p&gt;
+&lt;p&gt;Another useful command is 'collocation'. This shows us all the words that tend to appear together throughout the corpus.&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# get_words()
+&lt;p&gt;Comment out &lt;span class="command"&gt;print text.concordance('your_last_word')&lt;/span&gt; and add &lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print text.collocations()
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Now let's print the first object in the json_data list. Uncomment our print statement at the beginning of the file that pretty-prints the json. Change the 1 to 0, the save and run the file.&lt;/p&gt;
+&lt;p&gt;Save and run your script.&lt;/p&gt;
 
-&lt;p&gt;Search for 'description' under 'sourceResource'. If you can't find it, it's because this item appears to be missing "description" information. Because the computer can't find the description, it returns an error and stops.&lt;/p&gt;
+&lt;p&gt;There are probably quite a few dates and names showing up. &lt;/p&gt;
 
-&lt;p&gt;Getting around this problem requires what is called "handling exceptions". We had expected a particular pattern in our data (that there was "description" keys nested under "sourceResource" keys) but we've encountered an exception to that general pattern. &lt;/p&gt;
+&lt;p&gt;One more function that is useful to surveying our data is 'similar'. This shows us words that are used similarly to the word we give it.&lt;/p&gt;
 
-&lt;p&gt;To tell the computer to keep moving if it encounters an item it cannot parse because of a KeyError, we will adjust our get_words() function as follows:&lt;/p&gt;
+&lt;p&gt;Comment out &lt;span class="command"&gt; print text.collocations()&lt;/span&gt; and add:&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7
-8
-9&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
-    for each in json_data:
-        try:
-            descriptions = each['sourceResource']['description']
-            for line in descriptions:
-                words = line.split()
-                print words
-        except KeyError:
-            print "Description Missing"
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print text.similar('Pot')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Un-comment "get_words()", save, and run the file.&lt;/p&gt;
-
-&lt;p&gt;Our script should no longer error. If your script is spitting out letters forever, you can stop the process with "control + c" or "command + c"&lt;/p&gt;
-
-&lt;p&gt;But, now it seems that sometime we are getting a list of letters, and sometimes a list of words. So one more adjustment is in order. We need to perform a check, where if the value of descriptions is a string, the function does one thing, and if it is not a string, it does something else. Our current code works well on the lists, so we will keep that for not strings.&lt;/p&gt;
-
-&lt;p&gt;To check if the value in "descriptions" in a string, we can add the following:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
-    for each in json_data:
-        try:
-            descriptions = each['sourceResource']['description']
-            if isinstance(descriptions, basestring):
-                words = descriptions.split()
-            else:
-                for line in descriptions:
-                    words = line.split()
-            print words
-        except KeyError:
-            print "Description Missing"
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Looking through the information printing to our terminal window, it looks like we have correctly split out all of the words.&lt;/p&gt;
-
-&lt;p&gt;This is an example of creating a work around when working with data that is beyond our control. What has happened is that some institutions have a description field that looks like this:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;'description': 'A wonderful description sentence or two giving you a summary of the item'
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;And some have used the description field like this:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;'description': [
-    "one line of information", 
-    "another line of information"
-] 
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To accommodate this, we create one process for the first case, by checking if the value is a string and a second process for the second case.&lt;/p&gt;
-
-&lt;h3 id="adding-the-words-to-our-bag-of-words"&gt;Adding the words to our "bag of words"&lt;/h3&gt;
-
-&lt;p&gt;The final step in creating our subset of data is to add the words into our "description_words" list.&lt;/p&gt;
-
-&lt;p&gt;To do this, we will need to loop through the "words" list and add each word to the "description_words" list. This means another for-loop within the "try" second of our function. Also, now that we know that our words are parsing correctly, we can remove "print words".&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def get_words():
-    for each in json_data:
-        try:
-            descriptions = each['sourceResource']['description']
-            if isinstance(descriptions, basestring):
-                words = descriptions.split()
-            else:
-                for line in descriptions:
-                    words = line.split()
-                    for word in words:
-                        description_words.append(word)
-
-        except KeyError:
-            print "Description Missing"
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now to check that everything worked ok, let's run the function and print out the 1000 word in our "descriptions_words"&lt;/p&gt;
+&lt;p&gt;Your script should now look like:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1083,76 +875,30 @@ KeyError: 'description'
 15
 16
 17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import json
-from collections import Counter
-import nltk
+18&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;import nltk
 from nltk.corpus import stopwords
+from nltk import word_tokenize
 
-with open("search_results.json") as json_file:
-    json_data = json.load(json_file)
+with open('text_results.txt') as file:
+    cooking_text = file.read()
+# print cooking_text[0:20]
 
-#print json_data[1]
-#print json.dumps(json_data[0], sort_keys=True, indent=4, separators=(',', ': '))
+cooking_tokens = word_tokenize(cooking_text)
+# print cooking_tokens[0:10]
 
-#print json_data[0]['sourceResource']['description']
+text = nltk.Text(cooking_tokens)
 
-description_words = []
+#print text[:20]
+#print text.concordance('economy')
+#print text.collocations()
 
-def get_words():
-    for each in json_data:
-        try:
-            descriptions = each['sourceResource']['description']
-            if isinstance(descriptions, basestring):
-                words = descriptions.split()
-            else:
-                for line in descriptions:
-                    words = line.split()
-
-            for word in words:
-                description_words.append(word)
-
-        except KeyError:
-            print "Description Missing"
-
-get_words()
-print description_words[999]
+print text.similar('Pot')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;h3 id="group-challenge"&gt;Group Challenge:&lt;/h3&gt;
+&lt;p&gt;What other patterns might be interesting to know about the words used to describe objects related to 'cooking'?&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Can you modify the function to also add the words of the title to our bag of words?&lt;/li&gt;
-  &lt;li&gt;Can you also add the subject headings?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id="what-we-learned-1"&gt;What We Learned&lt;/h3&gt;
-
-&lt;p&gt;In this module, we learned:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;to pretty-print json with Python&lt;/li&gt;
-  &lt;li&gt;to identify the nested key:value pairs we want to analyze&lt;/li&gt;
-  &lt;li&gt;to split a list &lt;/li&gt;
-  &lt;li&gt;to trouble shoot from an error report&lt;/li&gt;
-  &lt;li&gt;to handle exceptions&lt;/li&gt;
-  &lt;li&gt;to check type and use an "if/else" statement&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;In the next module, we will look at word counts to find the most common words used across all of the different DPLA contributors. &lt;/p&gt;
 
 &lt;p&gt;&lt;span class="left"&gt;&lt;a href="module10.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
 &lt;span class="right"&gt;&lt;a href="module12.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
@@ -1163,7 +909,7 @@ print description_words[999]
     <link rel="alternate" href="http://blog.url.com/modules/module10.html"/>
     <id>http://blog.url.com/modules/module10.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-26T19:56:01-04:00</updated>
+    <updated>2014-10-26T20:11:03-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1186,7 +932,7 @@ print description_words[999]
 
 &lt;p&gt;or on Windows: &lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;New-Item -ItemType file my_first_script.py
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;New-Item -ItemType file my_second_script.py
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
@@ -1198,7 +944,7 @@ print description_words[999]
 
 &lt;p&gt;or on Windows:&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;Start notepad++ my_first_script.py
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;Start notepad++ my_second_script.py
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 

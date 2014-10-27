@@ -48,8 +48,8 @@
 			<li><a href="/modules/module08.html">Using While-Loops</a></li>
 			<li><a href="/modules/module09.html">Writing Results to File</a></li>
 			<li><a href="/modules/module10.html">Working with Local Data</a></li>
-			<li><a href="/modules/module11.html">Gathering a Subset of Data</a></li>
-			<li><a href="/modules/module12.html">Analyzing a Subset of the Data</a></li>
+			<li><a href="/modules/module11.html">Analyzing the Data (Part 1)</a></li>
+			<li><a href="/modules/module12.html">Analyzing the Data (Part 2)</a></li>
 			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
 			</ol>
 		</section>
@@ -58,7 +58,7 @@
                         <h2>
           Installation
       </h2>
-       <p>Welcome to DH Bridge. This one day workshop will introduce you to basic programming concepts for use in humanities research. We will be working with Python, a programming language that combines a human-readable syntax with robust support for statistical analysis and graphing. The data for the day will be gleaned from the Digital Public Library of America. We are excited that you will be joining us.</p>
+       <p>Welcome to DH Bridge. This one day workshop will introduce you to basic programming concepts for use in humanities research. We will be working with Python, a programming language that combines a human-readable syntax with robust support for statistical analysis and graphing. The data for the day will be gleaned from the Digital Public Library of America. </p>
 
 <h3 id="step-one-required-supplies">Step One: Required Supplies</h3>
 
@@ -67,7 +67,7 @@
 <ul>
   <li><strong>Your Laptop:</strong>
     <ul>
-      <li>You need to have a working wifi connection (we will provide access to Mason's wireless)</li>
+      <li>You need to have a working WiFi connection (we will provide access to Mason's wireless)</li>
       <li>We recommend that you update your operating system to at least Mavericks or Mountain Lion if running a Mac (no need to rush to Yosemite though), if your machine can support it. While you should be able to work through the tutorials on an older operating system, the odds of unexpected bugs and software incompatability increases with older operating systems. </li>
       <li>We recommend that you install the Chrome browser, as we will be using some Chrome extensions along the way.</li>
     </ul>
@@ -108,7 +108,7 @@
 
 <p>For this tutorial, we recommend using TextWrangler, which is a free editor from BareBones software. To get TextWrangler, go to <a href="http://www.barebones.com/products/textwrangler/">http://www.barebones.com/products/textwrangler/</a> and download. </p>
 
-<p>We recommend keeping TextWrangler in your Dock (Mac) or Quick Launch toolbar (Windows) so that it is easy to access.</p>
+<p>We recommend keeping TextWrangler in your dock so that it is easy to access.</p>
 
 <p>You are welcome to use another text editor if you wish. Just make sure that it is a plain text editor (do not use Word).</p>
 
@@ -119,7 +119,7 @@
 
 <p><img alt="image of terminal screen" src="../images/terminal.png" /></p>
 
-<p>To check your Python version, type <span class="command">python</span> into the terminal window and press "Enter". You should see something that looks like:</p>
+<p>To check your Python version, type <span class="command">python</span> into the Terminal window and press "Enter". You should see something that looks like:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -135,7 +135,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>You are now in the Python Shell. This is an interactive environment that allows you to give Python commands directly inside Terminal. We will come back to this during the workshop.</p>
 
-<p>Exit the shell by typing <span class="command">quit()</span> and pressing "Enter".</p>
+<p>Exit the Python Shell by typing <span class="command">quit()</span> and pressing "Enter".</p>
 
 <h4 id="install-pip">3. Install Pip</h4>
 
@@ -149,9 +149,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>If Terminal turns red and you get errors that say <span class="command"> OSError: [Errno 13] Permission denied</span>, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give Python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the Python command.</p>
 
-<p>Type <span class="command">sudo python get-pip.py</span> into the Termainal window.</p>
+<p>Type <span class="command">sudo python get-pip.py</span> into the Terminal window.</p>
 
-<p>The computer will prompt you for your password. This is the password you use to log onto your computer. The terminal will give no indication that you are typing as you enter your password.</p>
+<p>The computer will prompt you for your password. This is the password you use to log onto your computer. Terminal will give no indication that you are typing as you enter your password.</p>
 
 <p>If everything goes well, you should see something similar to the following in your Terminal window:</p>
 
@@ -167,7 +167,7 @@ Cleaning up...
 </pre></td></tr></tbody></table>
 </div>
 
-<p>To check that everything installed, type <span class="command">pip</span> into your Terminal and press "Enter". This will give you information on the different commands that available for you to use with "pip".</p>
+<p>To check that everything installed, type <span class="command">pip</span> into Terminal and press "Enter". This will give you information on the different commands that are available for you to use with "pip".</p>
 
 <h4 id="well-done-your-computer-is-now-ready-for-the-workshop">Well done! Your computer is now ready for the workshop!</h4>
 
@@ -175,9 +175,9 @@ Cleaning up...
 
 <h4 id="install-text-editor-1">1. Install Text Editor</h4>
 
-<p>For this tutorial, we recommend using NotePad++, which is a free editor. To get Notepad++, go to <a href="http://notepad-plus-plus.org/">http://notepad-plus-plus.org/</a> and download. </p>
+<p>For this tutorial, we recommend using NotePad++, which is free to use. To get Notepad++, go to <a href="http://notepad-plus-plus.org/">http://notepad-plus-plus.org/</a> and download. </p>
 
-<p>To easily access NotePad++, be sure to add it to your Desktop and/or Quick Launch.</p>
+<p>To easily access NotePad++, be sure to add a shortcut to your Desktop and/or Quick Launch.</p>
 
 <h4 id="install-python">2. Install Python</h4>
 
@@ -185,19 +185,19 @@ Cleaning up...
 
 <p>Open up PowerShell. It should give you a screen that looks similar to this: </p>
 
-<p>[Image of PowerShell]</p>
+<p><img alt="image of Powershell screen" src="../images/powershell.png" /></p>
 
-<p>In PowerShell, type <span class="command">python</span> and press "Enter". You will most get back a message that says <span class="command">python is not recognized..</span>.</p>
+<p>In PowerShell, type <span class="command">python</span> and press "Enter". You will most likely get back a message that says <span class="command">python is not recognized..</span>.</p>
 
-<p>If this is the case, download and install python from <a href="https://www.python.org/download/">https://www.python.org/download/</a>. Choose the "Python 2.7.8 Windows Installer" or "Python 2.7.8 Windows X86-64 Installer", depending on your system. Run the installer and accept the default settings.</p>
+<p>If this is the case, download and install Python from <a href="https://www.python.org/download/">https://www.python.org/download/</a>. Choose the "Python 2.7.8 Windows Installer" or "Python 2.7.8 Windows X86-64 Installer", depending on your system. Run the installer and accept the default settings.</p>
 
-<p>Once Python is installed, we have to tell the computer a bit about where to look for it. In PowerShell, enter:</p>
+<p>Once Python is installed, you will have to tell the computer where to look for it. In PowerShell, enter:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Close PowerShell and re-open. To check if Python installed properly, type <span class="command">python</span> and press "Enter". You should get something that looks like this back:</p>
+<p>Close PowerShell and re-open it. To check if Python installed properly, type <span class="command">python</span> and press "Enter". You should get something that looks like this back:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -207,9 +207,9 @@ Type "help", "copyright", "credits" or license for more information.
 </pre></td></tr></tbody></table>
 </div>
 
-<p>You are now in the Python Shell. This is an interactive environment that allows you to give python commands directly inside PowerShell. We will come back to this during the workshop.</p>
+<p>You are now in the Python Shell. This is an interactive environment that allows you to give Python commands directly inside PowerShell. We will come back to this during the workshop.</p>
 
-<p>Exit the shell by typing <span class="command">quit()</span> and pressing "Enter".</p>
+<p>To exit the Python Shell, type <span class="command">quit()</span> and press "Enter".</p>
 
 <h4 id="install-pip-1">3. Install Pip</h4>
 
@@ -223,31 +223,31 @@ Type "help", "copyright", "credits" or license for more information.
 </pre></td></tr></tbody></table>
 </div>
 
-<p>"Cd" into that directory:</p>
+<p>Move into that directory:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>cd c:\envs
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Use the following to download "get-pip.py":  </p>
+<p>Enter the following to download "get-pip.py":  </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>(new-object System.Net.WebClient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'c:\envs\get-pip.py')
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Finally, run the "get-pip.py" script:</p>
+<p>Finally, enter the following to install the "get-pip.py" script:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>python c:\envs\get-pip.py  
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now typing <span class="command">pip</span> should work. If it doesn’t it means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). Make sure to replace c:\Python27\Scripts with the correct location of your Python installation:</p>
+<p>Now typing <span class="command">pip</span> should work. If it doesn’t, that means the Scripts folder is not in your path. Run the next command in that case (Note that this command must be run only once or your PATH will get longer and longer). </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>setx PATH "%PATH%;C:\Python27\Scripts"
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Close and reopen PowerShell after running this command. </p>
+<p>Next, close and re-open PowerShell. </p>
 
 <p>To test, run <span class="command">pip</span> in PowerShell.</p>
 
