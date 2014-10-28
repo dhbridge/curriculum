@@ -91,13 +91,13 @@ We can get the title, description, and subject headings by looking for those "ke
     def get_text(json_data):
         for each in json_data:
             # Get the title
-            titles = each['sourceResource.title']
+            found_titles = each['sourceResource']['title']
 
             # Get the Description
-            descriptions = each['sourceResource.description']
+            found_descriptions = each['sourceResource']['description']
 
             # Get the Subject Headings
-            subjects = each['sourceResource.subject']
+            found_subjects = each['sourceResource']['subject']
 
 So far so good. But what if one of these fields is missing? Programming languages are very literal -- if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line to call the function.
 
@@ -112,13 +112,13 @@ So far so good. But what if one of these fields is missing? Programming language
     def get_text(json_data):
         for each in json_data:
             # Get the Titles
-            titles = each['sourceResource.title']
+            found_titles = each['sourceResource']['title']
 
             # Get the Descriptions
-            descriptions = each['sourceResource.description']
+            found_descriptions = each['sourceResource']['description']
 
             # Get the Subject Headings
-            subjects = each['sourceResource.subject']
+            found_subjects = each['sourceResource']['subject']
 
     # Make Function Calls
     print json_data[1]
@@ -133,19 +133,19 @@ To deal with this, we use "try" and "except" -- we will tell the computer to try
         for each in json_data:
             # Get the Titles
             try:
-                titles = each['sourceResource.title']
+                found_titles = each['sourceResource']['title']
             except:
                 title = ' '
             
             # Get the Descriptions
             try:
-                descriptions = each['sourceResource.description']
+                found_descriptions = each['sourceResource']['description']
             except:
                 description = ' '
 
             # Get the Subject Headings
             try:
-                subjects = each['sourceResource.subject']
+                found_subjects = each['sourceResource']['subject']
             except:
                 subject = ' '
 
@@ -156,33 +156,33 @@ There are two more steps we need to get the text ready to save. The first step i
         for each in json_data:
             # Get the Titles
             try:
-                titles = each['sourceResource.title']
-                if isinstance(titles, basestring):
-                    title = str(titles)
+                found_titles = each['sourceResource']['title']
+                if isinstance(found_titles, basestring):
+                    title = str(found_titles)
                 else:
-                    for each in titles:
+                    for each in found_titles:
                         title = str(each)
             except:
                 title = ' '
             
             # Get the Descriptions
             try:
-                descriptions = each['sourceResource.description']
-                if isinstance(descriptions, basestring):
-                    description = str(descriptions)
+                found_descriptions = each['sourceResource']['description']
+                if isinstance(found_descriptions, basestring):
+                    description = str(found_descriptions)
                 else:
-                    for line in descriptions:
+                    for line in found_descriptions:
                         description = str(line)
             except:
                 description = ' '
 
             # Get the Subject Headings
             try:
-                subjects = each['sourceResource.subject']
-                if isinstance(subjects, basestring):
-                    subject = str(subjects)
+                found_subjects = each['sourceResource']['subject']
+                if isinstance(found_subjects, basestring):
+                    subject = str(found_subjects)
                 else:
-                    for each in subjects:
+                    for each in found_subjects:
                         subject = []
                         subject.append(each['name'])  
             except:
@@ -221,33 +221,33 @@ Our whole file should now look like this:
         for each in json_data:
             # Get the Titles
             try:
-                titles = each['sourceResource.title']
-                if isinstance(titles, basestring):
-                    title = str(titles)
+                found_titles = each['sourceResource']['title']
+                if isinstance(found_titles, basestring):
+                    title = str(found_titles)
                 else:
-                    for each in titles:
+                    for each in found_titles:
                         title = str(each)
             except:
                 title = ' '
             
             # Get the Descriptions
             try:
-                descriptions = each['sourceResource.description']
-                if isinstance(descriptions, basestring):
-                    description = str(descriptions)
+                found_descriptions = each['sourceResource']['description']
+                if isinstance(found_descriptions, basestring):
+                    description = str(found_descriptions)
                 else:
-                    for line in descriptions:
+                    for line in found_descriptions:
                         description = str(line)
             except:
                 description = ' '
 
             # Get the Subject Headings
             try:
-                subjects = each['sourceResource.subject']
-                if isinstance(subjects, basestring):
-                    subject = str(subjects)
+                found_subjects = each['sourceResource']['subject']
+                if isinstance(found_subjects, basestring):
+                    subject = str(found_subjects)
                 else:
-                    for each in subjects:
+                    for each in found_subjects:
                         subject = []
                         subject.append(each['name'])  
             except:
@@ -260,40 +260,40 @@ Now, let's go back to the function and put all our pieces together into a new va
         for each in json_data:
             # Get the Titles
             try:
-                titles = each['sourceResource.title']
-                if isinstance(titles, basestring):
-                    title = str(titles)
+                found_titles = each['sourceResource']['title']
+                if isinstance(found_titles, basestring):
+                    title = str(found_titles)
                 else:
-                    for each in titles:
+                    for each in found_titles:
                         title = str(each)
             except:
                 title = ' '
             
             # Get the Descriptions
             try:
-                descriptions = each['sourceResource.description']
-                if isinstance(descriptions, basestring):
-                    description = str(descriptions)
+                found_descriptions = each['sourceResource']['description']
+                if isinstance(found_descriptions, basestring):
+                    description = str(found_descriptions)
                 else:
-                    for line in descriptions:
+                    for line in found_descriptions:
                         description = str(line)
             except:
                 description = ' '
 
             # Get the Subject Headings
             try:
-                subjects = each['sourceResource.subject']
-                if isinstance(subjects, basestring):
-                    subject = str(subjects)
+                found_subjects = each['sourceResource']['subject']
+                if isinstance(found_subjects, basestring):
+                    subject = str(found_subjects)
                 else:
-                    for each in subjects:
+                    for each in found_subjects:
                         subject = []
                         subject.append(each['name'])  
             except:
                 subject = ' '
 
-        # Combine the data into a single variable in the form of a sentence
-        data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
+            # Combine the data into a single variable in the form of a sentence
+            data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
 
 This line takes the information held in title, adds a ";" and a space, takes the information in description, add '; and a space, and finally, takes the list held in subject and smashes it together into a string, separated by a comman and a space. Finally, the "\n" adds an "enter" the end of the line, so that the information for each item appears on a new line.
 
@@ -304,43 +304,43 @@ The last step is to write all the information within "data" to our file.
         for each in json_data:
             # Get the Titles
             try:
-                titles = each['sourceResource.title']
-                if isinstance(titles, basestring):
-                    title = str(titles)
+                found_titles = each['sourceResource']['title']
+                if isinstance(found_titles, basestring):
+                    title = str(found_titles)
                 else:
-                    for each in titles:
+                    for each in found_titles:
                         title = str(each)
             except:
                 title = ' '
             
             # Get the Descriptions
             try:
-                descriptions = each['sourceResource.description']
-                if isinstance(descriptions, basestring):
-                    description = str(descriptions)
+                found_descriptions = each['sourceResource']['description']
+                if isinstance(found_descriptions, basestring):
+                    description = str(found_descriptions)
                 else:
-                    for line in descriptions:
+                    for line in found_descriptions:
                         description = str(line)
             except:
                 description = ' '
 
             # Get the Subject Headings
             try:
-                subjects = each['sourceResource.subject']
-                if isinstance(subjects, basestring):
-                    subject = str(subjects)
+                found_subjects = each['sourceResource']['subject']
+                if isinstance(found_subjects, basestring):
+                    subject = str(found_subjects)
                 else:
-                    for each in subjects:
+                    for each in found_subjects:
                         subject = []
                         subject.append(each['name'])  
             except:
                 subject = ' '
 
-        # Combine the data into a single variable in the form of a sentence
-        data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
+            # Combine the data into a single variable in the form of a sentence
+            data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
 
-        # Write the sentence to the 'text_results' file
-        f.write(data.encode('utf-8'))
+            # Write the sentence to the 'text_results' file
+            f.write(data.encode('utf-8'))
 
 Don't worry too much about the "encode('utf-8')" bit - it forces all of the data into a consistent format and fixes a small problem of unusual characters.
 
@@ -360,43 +360,43 @@ Now let's add a call to the function and run our code:
         for each in json_data:
             # Get the Titles
             try:
-                titles = each['sourceResource.title']
-                if isinstance(titles, basestring):
-                    title = str(titles)
+                found_titles = each['sourceResource']['title']
+                if isinstance(found_titles, basestring):
+                    title = str(found_titles)
                 else:
-                    for each in titles:
+                    for each in found_titles:
                         title = str(each)
             except:
                 title = ' '
             
             # Get the Descriptions
             try:
-                descriptions = each['sourceResource.description']
-                if isinstance(descriptions, basestring):
-                    description = str(descriptions)
+                found_descriptions = each['sourceResource']['description']
+                if isinstance(found_descriptions, basestring):
+                    description = str(found_descriptions)
                 else:
-                    for line in descriptions:
+                    for line in found_descriptions:
                         description = str(line)
             except:
                 description = ' '
 
             # Get the Subject Headings
             try:
-                subjects = each['sourceResource.subject']
-                if isinstance(subjects, basestring):
-                    subject = str(subjects)
+                found_subjects = each['sourceResource']['subject']
+                if isinstance(found_subjects, basestring):
+                    subject = str(found_subjects)
                 else:
-                    for each in subjects:
+                    for each in found_subjects:
                         subject = []
                         subject.append(each['name'])  
             except:
                 subject = ' '
 
-        # Combine the data into a single variable in the form of a sentence
-        data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
+            # Combine the data into a single variable in the form of a sentence
+            data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
 
-        # Write the sentence to the 'text_results' file
-        f.write(data.encode('utf-8'))
+            # Write the sentence to the 'text_results' file
+            f.write(data.encode('utf-8'))
 
     # Make Function Calls
     get_text(json_data)
