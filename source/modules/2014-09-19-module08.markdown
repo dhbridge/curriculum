@@ -55,15 +55,15 @@ Let's also add a print command to check that things are working as we expect. Ab
 
 Our file should now look like this:
 
+	# Load Libraries
 	from dpla.api import DPLA
 
+	# Set Variables
 	dpla = DPLA('Your-Key-Here')
-
-	# result = dpla.search('cooking')
-	# print result.items[1]
-	
+	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	all_records = []
 
+	# Define Functions
 	def pull_records(pages, end, size):
 		while(pages <= end):
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
@@ -76,8 +76,9 @@ Our file should now look like this:
 		for each in n.items:
 			all_records.append(each)
 
+	# Make Function Calls
+	# print result.items[1]
 	pull_records(2, 3, 50)
-
 	print all_records[30]
 
 Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[30]</span> to <span class="command">print all_records[150]</span>

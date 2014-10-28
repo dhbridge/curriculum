@@ -46,7 +46,7 @@ Now let's recreate some of the work we did in the Interactive Shell in this scri
 Delete <span class="command">print "Hello World"</span> so that you're working with a clean file. 
 
 First, at the beginning of a Python file you need to list the libraries that we will be using. Similar to HTML, the computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. 
-
+	
 	from dpla.api import DPLA
 
 Then we need to store our API key:
@@ -109,6 +109,8 @@ Finally, at the send of the file, we put the "calls to the functions" or command
 	my_var = my_function()
 
 	print my_var[1]
+
+Work with your table to add comments to the lines in 'my_first_script.py'
 
 ### 3. Programming Languages
 

@@ -11,23 +11,22 @@ In this module, we will focus on writing the results of our functions to a text 
 
 ### Saving our Search Results
 
-In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable, add:
+In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable in the 'Define Variables' section, add:
 
 	f = open("search_results.json", "w")
 
 Your file should now look like this:
 
+	# Load Libraries
 	from dpla.api import DPLA
 
+	# Set Variables
 	dpla = DPLA('Your-Key-Here')
-
-	# result = dpla.search('cooking')
-	# print result.items[1]
-	
+	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	all_records = []
-
 	f = open("search_results.json", "w")
 
+	# Define Functions
 	def pull_records(pages, end, size):
 		while(pages <= end):
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
@@ -40,26 +39,26 @@ Your file should now look like this:
 		for each in n.items:
 			all_records.append(each)
 
+	# Make Function Calls
+	# print result.items[1]
 	pull_records(2, 5, 50)
-
-	print all_records[150]
+	print all_records[150]	
 
 Here you are combining a function - open("search_results.json") - with the declaration of a variable. The "open" function both opens an existing file and  creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. 
 
 Python has libraries for working with JSON, but because these are more specialized libraries, they are not automatically loaded with Python. Since we need to write a JSON object, let's load that library into our file with <span class="command">import json</span>:
 
+	# Load Libraries
 	from dpla.api import DPLA
 	import json
 
+	# Set Variables
 	dpla = DPLA('Your-Key-Here')
-
-	# result = dpla.search('cooking')
-	# print result.items[1]
-	
+	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	all_records = []
-
 	f = open("search_results.json", "w")
 
+	# Define Functions
 	def pull_records(pages, end, size):
 		while(pages <= end):
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
@@ -72,18 +71,19 @@ Python has libraries for working with JSON, but because these are more specializ
 		for each in n.items:
 			all_records.append(each)
 
+	# Make Function Calls
+	# print result.items[1]
 	pull_records(2, 5, 50)
-
 	print all_records[150]
 
-Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'pull_records' function.
+Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'save_each' function.
 
 	def save_results():
 		data = json.dumps(all_records)
 		f.write(data)
 		f.close
 
-What did this function do? First, we are creating a variable called "data" which we made using json.dumps, which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.
+What did we do with this function? First, we are creating a variable called "data" which we made using json.dumps, which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.
 
 ### Calling the "Write" Function
 
@@ -93,18 +93,17 @@ To run the "save_results" function, we can now call the function at the end of o
 
 Our file should now look like this:
 
+	# Load Libraries
 	from dpla.api import DPLA
 	import json
 
+	# Set Variables
 	dpla = DPLA('Your-Key-Here')
-
-	# result = dpla.search('cooking')
-	# print result.items[1]
-	
+	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	all_records = []
-
 	f = open("search_results.json", "w")
 
+	# Define Functions
 	def pull_records(pages, end, size):
 		while(pages <= end):
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
@@ -122,10 +121,10 @@ Our file should now look like this:
 		f.write(data)
 		f.close
 
+	# Make Function Calls
+	# print result.items[1]
 	pull_records(2, 5, 50)
-
 	print all_records[150]
-
 	save_results()
 
 Test that everything is working by running your "my_first_script.py" in terminal.
@@ -152,7 +151,7 @@ Well done! You now have a local copy of all the data that we want to analyze! Yo
 
 ### Bonus Challege (if that felt too easy...)
 
-Can you write a function that determines the total number of pages from the search results?
+Can you write a function that determines the total number of pages from the search results, given a particular number of items per page?
 
 <span class="left">[Previous Module](module09.html)</span>
 <span class="right">[Next Module](module10.html)</span>

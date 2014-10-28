@@ -67,17 +67,22 @@ Go back to "my_first_script.py". "Comment out" the line <span class="command">re
 Also comment out the line you wrote to print out one of the items.
 
 Your file should look like: 
-
+	
+	#Load Libraries
 	from dpla.api import DPLA
 
+	#Set Variables
 	dpla = DPLA('YourKeyHere')
-	
 	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
+	
+	# Define Functions
+	
+	# Make Function Calls
 	# print result.items[39]
 
 Now, let's create a new variable, "all_records" and set it equal to an empty list.
 
-To do this, add a new line:
+To do this, add a new line to the variables section of the code:
 
 	all_records = []
 

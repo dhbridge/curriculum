@@ -13,14 +13,18 @@ We are now ready to start writing a function to gather all of the information we
 
 We now have a file that looks as follows:
 	
+	# Load Libraries
 	from dpla.api import DPLA
 
+	# Set Variables
 	dpla = DPLA('Your-Key-Here')
-
 	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-	# print result.items[1]
-	
 	all_records = []
+
+	# Define Functions
+
+	# Make Function Calls
+	# print result.items[1]
 	
 We will now add a function that handles the query for any given page number.
 
@@ -32,6 +36,7 @@ To write a function, we start with the word "def", then give our function a name
 
 In your "my_first_script.py" file, add the line
 
+	# Define Functions
 	def pull_records(pages, end, size):
 
 In this line, you have declared a 'pull_records' function, and told the computer that this function will involve three variables (pages, end, and size).These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page. 
@@ -40,50 +45,59 @@ We are now ready to add the steps involving in getting the search records.
 
 Tab in once on the next line and type:
 	
+	# Define Functions
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
 
 Your file should now look like this:
 
+	# Load Libraries
 	from dpla.api import DPLA
 
+	# Set Variables
 	dpla = DPLA('Your-Key-Here')
-
 	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-	# print result.items[1]
-	
 	all_records = []
 
+	# Define Functions
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
+
+	# Make Function Calls
+	# print result.items[1]
 
 It is important to note that Python is white-space aware - when writing functions in Python, we use white space to designate what is in a function or within a loop and what is outside of it.
 
 Let's add a print statement to our function and test out the first stage of this function. Add the following print statement after 'paged_search...':
 
+	# Define Functions
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
 		print paged_search.items[2]
 
 Now to run the function, we will call the function name and give it values. On a new line and outside of the function, add the line:
 
+	# Make Function Calls
+	# print result.items[1]
 	pull_records(2, 3, 50)
 	
 Your file should now look like:
 
+	# Load Libraries
 	from dpla.api import DPLA
 
+	# Set Variables
 	dpla = DPLA('Your-Key-Here')
-
 	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-	# print result.items[1]
-	
 	all_records = []
 
+	# Define Functions
 	def pull_records(pages, end, size):
-		paged_search = dpla.search('cooking',fields=['sourceResource'],  page_size=size, page=pages)
+		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
 		print paged_search.items[2]
 
+	# Make Function Calls
+	# print result.items[1]
 	pull_records(2, 3, 50)
 
 Save the file and go to terminal to run it. Then come back to the function and work with your table to understand how the function worked.
@@ -104,7 +118,9 @@ We now need to add our first loop. With our current search, there are 50 items i
 
 Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:
 
-	for each in n.items:
+	def save_each(n):
+		for each in n.items:
+			# do something to every item in the list of items
 
 This is called a "for loop". It tells the computer to iterate through each item in the list 'n'. 
 
@@ -112,17 +128,14 @@ Because this is a process inside a process, we need to tab in again. Each time w
 
 To add the item to the "all_records" array, we use the "append" command:
 
-	all_records.append(each)
+	def save_each(n):
+		for each in n.items:
+			# do something to every item in the list of items
+			all_records.append(each)
 
 'append' grabs the value of 'each' and adds it to the series we are saving as a list.
 
-Your 'save_each()' function should now look like this:
-
-	def save_each(n):
-		for each in n.items:
-			all_records.append(each)
-
-Now we can use this function in our "pull records" function. Currently, our "pull records" looks as follows:
+Now we can use this function in our "pull records" function. Currently, our "pull records" function looks as follows:
 
 	def pull_records (pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
@@ -137,24 +150,27 @@ Let's comment out the "print paged_search.item[2]" line, because that was just t
 
 Our file should now look like:
 
+	# Load Libraries
 	from dpla.api import DPLA
 
+	# Set Variables
 	dpla = DPLA('Your-Key-Here')
-
 	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-	# print result.items[1]
-	
 	all_records = []
 
-	def pull_records(pages, end, size):
-		paged_search = dpla.search('cooking',fields=['sourceResource'],   page_size=size, page=pages)
+	# Define Functions
+	def pull_records (pages, end, size):
+		paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
 		# print paged_search.items[2]	
 		save_each(paged_search)
 
 	def save_each(n):
 		for each in n.items:
+			# do something to every item in the list of items
 			all_records.append(each)
 
+	# Make Function Calls
+	# print result.items[1]
 	pull_records(2, 3, 50)
 
 To test this, let's now add a print statement to the end of the file, after the pull_records function has been run, to make sure that the items are going into the "all_records" variable.

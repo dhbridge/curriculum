@@ -57,69 +57,88 @@ And open that script file in your text editor:
     Start notepad++ text_mining.py
 
 Let's start by importing the nltk library and the stopwords:
-
+    
+    # Import Libraries
     import nltk
     from nltk.corpus import stopwords
 
 Next let's load in our text file:
 
+    # Define Variables
     with open('text_results.txt') as file:
         cooking_text = file.read()
 
 We can display part of our text to make sure everything is loading correctly:
 
+    # Import Libraries
     import nltk
     from nltk.corpus import stopwords
 
+    # Define Variables
     with open('text_results.txt') as file:
         cooking_text = file.read()
 
+    # Define Functions
+
+    # Make Function Calls
     print cooking_text[0:20]
 
 Save a run your new script in terminal. One thing to note here is that Python treats the text as a list of letters. 
 
 But we want to work with the words, so let's use a function called 'tokenize' from the NLTK library. 'Tokenize' breaks our text into a list of words.
 
-After 'from nltk.corpus import stopwords', add:
+After 'from nltk.corpus import stopwords' in the variables section, add:
     from nltk import word_tokenize
 
-Now let's comment out our print statement and transform our sentences into tokens. To see what has happened, let's also print the first 10 tokens.
+Now let's comment out our print statement and transform our sentences into tokens using the 'word_tokenize' function. To see what has happened, let's also print the first 10 tokens.
 
+    # Import Libraries
     import nltk
     from nltk.corpus import stopwords
     from nltk import word_tokenize
 
+    # Define Variables
     with open('text_results.txt') as file:
         cooking_text = file.read()
 
-    #print cooking_text[0:20]
-
     cooking_tokens = word_tokenize(cooking_text)
+
+    # Define Functions
+
+    # Make Function Calls
+    #print cooking_text[0:20]
     print cooking_tokens[0:10]
 
-Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out 'print cooking_tokens[0:10]' and beneath it add:
+Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out 'print cooking_tokens[0:10]' and add to the variables section after <span class="command">cooking_tokens...</span>:
 
     text = nltk.Text(cooking_tokens)
+
+This is a NLTK function that takes the tokens and allows us to move back and forth between a 'text view' and a 'list view' of our document.
 
 Your file should now look like this:
 
+    # Import Libraries
     import nltk
     from nltk.corpus import stopwords
     from nltk import word_tokenize
 
+    # Define Variables
     with open('text_results.txt') as file:
         cooking_text = file.read()
 
-    # print cooking_text[0:20]
-
     cooking_tokens = word_tokenize(cooking_text)
-    # print cooking_tokens[0:10]
-
     text = nltk.Text(cooking_tokens)
+
+    # Define Functions
+
+    # Make Function Calls
+    #print cooking_text[0:20]
+    #print cooking_tokens[0:10]
+    
 
 The first thing we can do to get a sense of the words in our dataset is to use the 'concordance' function within NLTK. This will print all the instances of a word with the surrounding words for context.
 
-After <span class="command">text = nltk.Text(cooking_tokens)</span>, add:
+After <span class="command">#print cooking_tokens[0:10]</span>, add:
 
     print text.concordance('cooking')
 
@@ -129,7 +148,7 @@ Pretty cool! Now try changing 'cooking' to 'economics':
 
     print text.concordance('cooking')
 
-Try some other words to get a sense of our search results document.
+Try some other words to get a sense of the word usage in the 'text_results' file.
 
 Another useful command is 'collocation'. This shows us all the words that tend to appear together throughout the corpus.
 
@@ -141,7 +160,7 @@ Save and run your script.
 
 There are probably quite a few dates and names showing up. 
 
-One more function that is useful to surveying our data is 'similar'. This shows us words that are used similarly to the word we give it.
+One more function that is useful for surveying our data is 'similar'. This shows us words that are used similarly to the word we give it.
 
 Comment out <span class="command"> print text.collocations()</span> and add:
 
@@ -149,20 +168,23 @@ Comment out <span class="command"> print text.collocations()</span> and add:
 
 Your script should now look like:
 
+    # Import Libraries
     import nltk
     from nltk.corpus import stopwords
     from nltk import word_tokenize
 
+    # Define Variables
     with open('text_results.txt') as file:
         cooking_text = file.read()
-    # print cooking_text[0:20]
 
     cooking_tokens = word_tokenize(cooking_text)
-    # print cooking_tokens[0:10]
-
     text = nltk.Text(cooking_tokens)
 
-    #print text[:20]
+    # Define Functions
+
+    # Make Function Calls
+    #print cooking_text[0:20]
+    #print cooking_tokens[0:10]
     #print text.concordance('economy')
     #print text.collocations()
 

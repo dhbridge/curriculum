@@ -11,30 +11,25 @@ As we did when we wrote our json results, we will start by telling Python to ope
 
 Currently our script should look something like this:
 
+    # Import Libraries
     import nltk
     from nltk.corpus import stopwords
     from nltk import word_tokenize
     from nltk.probability import *
-    
+
+    # Define Variables
     with open('text_results.txt') as file:
         cooking_text = file.read()
-    
-    # print cooking_text[0:20]
 
     cooking_tokens = word_tokenize(cooking_text)
-    # print cooking_tokens[0:10]
+    text = nltk.Text(cooking_tokens)
     
     # Load in Stopwords Library
     stopwords = stopwords.words('english')
 
-    text = nltk.Text(cooking_tokens)
+    word_set = []
 
-    #print text[:20]
-    #print text.concordance('economy')
-    #print text.collocations()
-
-    # print text.similar('Pot')
-
+    # Define Functions
     def normalize_text(text):
         # Work through all the words in text and filter
         for word in text:
@@ -43,6 +38,13 @@ Currently our script should look something like this:
                 # If it passes the filters, save to word_set
                 word_set.append(word.lower())
         return word_set
+
+    # Make Function Calls
+    #print cooking_text[0:20]
+    #print cooking_tokens[0:10]
+    #print text.concordance('economy')
+    #print text.collocations()
+    #print text.similar('Pot')
 
     normalize_text(text)
 
@@ -53,6 +55,7 @@ Currently our script should look something like this:
 
 To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.
 
+    # Import Libraries
     import nltk
     from nltk.corpus import stopwords
     from nltk import word_tokenize
@@ -61,6 +64,7 @@ To create CSV files, we need to import the csv library, which is preinstalled, b
    
 Now, we can create our CSV file right after the line where we opened the json file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.
     
+    # Define Variables
     with open("search_results.json") as json_file:
         json_data = json.load(json_file)
 
@@ -72,18 +76,63 @@ Now, at the end of our file, we can save the key(the word) and the count(the fre
     for key, count in fd.most_common(50):
         file.writerow([key, count])
 
-You can now open your csv file using terminal by typing:
+The final product should look like this:
+
+    # Import Libraries
+    import nltk
+    from nltk.corpus import stopwords
+    from nltk import word_tokenize
+    from nltk.probability import *
+    import csv
+
+    # Define Variables
+    with open("search_results.json") as json_file:
+        json_data = json.load(json_file)
+
+    file = csv.writer(open("word_frequencies.csv", "w"))
+
+    cooking_tokens = word_tokenize(cooking_text)
+    text = nltk.Text(cooking_tokens)
+    
+    # Load in Stopwords Library
+    stopwords = stopwords.words('english')
+
+    word_set = []
+
+    # Define Functions
+    def normalize_text(text):
+        # Work through all the words in text and filter
+        for word in text:
+            # Check if word is a word, and not punctuation, AND check against stop words
+            if word.isalpha() and word.lower() not in stopwords:
+                # If it passes the filters, save to word_set
+                word_set.append(word.lower())
+        return word_set
+
+    # Make Function Calls
+    #print cooking_text[0:20]
+    #print cooking_tokens[0:10]
+    #print text.concordance('economy')
+    #print text.collocations()
+    #print text.similar('Pot')
+
+    normalize_text(text)
+
+    fd = FreqDist(word_set)
+    print fd.most_common(50)
+    print fd.hapaxes()
+    fd.plot(50,cumulative=False)
+
+    # Print results to a CSV file
+    for key, count in fd.most_common(50):
+        file.writerow([key, count])
+
+You can open your csv file using terminal by typing or by looking within your dhb_awesome directory:
 
     open word_frequencies.csv
 
-This will most likely open in excel or a similar program. 
+The file will most likely open in excel or a similar program. 
 
 Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patters we see here?
-
-### What We Learned
-
-In this module, we learned:
-
-- to use the CSV library to save our results in csv format
 
 <span class="left">[Previous Module](module12.html)</span>
