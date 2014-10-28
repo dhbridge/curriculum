@@ -40,9 +40,9 @@ Your file should now look like this:
 		for each in n.items:
 			all_records.append(each)
 
-	pull_records(2, 3, 50)
+	pull_records(2, 5, 50)
 
-	print all_records[30]
+	print all_records[150]
 
 Here you are combining a function - open("search_results.json") - with the declaration of a variable. The "open" function both opens an existing file and  creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. 
 
@@ -72,9 +72,9 @@ Python has libraries for working with JSON, but because these are more specializ
 		for each in n.items:
 			all_records.append(each)
 
-	pull_records(2, 3, 50)
+	pull_records(2, 5, 50)
 
-	print all_records[30]
+	print all_records[150]
 
 Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'pull_records' function.
 
@@ -122,9 +122,9 @@ Our file should now look like this:
 		f.write(data)
 		f.close
 
-	pull_records(2, 3, 50)
+	pull_records(2, 5, 50)
 
-	print all_records[30]
+	print all_records[150]
 
 	save_results()
 
