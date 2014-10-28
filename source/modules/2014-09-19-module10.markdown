@@ -9,13 +9,13 @@ In this module we will learn:
 2. to select data from particular fields and deal with missing data
 3. to convert our JSON data to strings of text
 
-Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of 'cooking' items are gendered, our task for this module is to filter down that data and save it as text. 
+Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to filter down that data and save it as text. In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.
 
-### 1. Create a new script and load in our data
+### 1. Create a New Script and Load in Our Data
 
 It is time to create a new script file!
 
-Go to terminal and type:
+Go to Terminal and type:
 
 	touch my_second_script.py 
 
@@ -31,7 +31,7 @@ or on Windows:
 
     Start notepad++ my_second_script.py
 
-First, we will need the json library again. To add this, add <span class="command">import json</span> to the very top of the file.
+First, we will need the JSON library again. To add this, add <span class="command">import json</span> to the very top of the file.
 
     # Load Libraries
     import json
@@ -60,23 +60,23 @@ Our second script file should now look like:
     # Make Function Calls  
 
 
-To make sure this worked, let's print out one item from the json data. Work with your table to add a print statement to print the second item in the json_data list.
+To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "print" statement that prints the second item in the json_data list.
 
-### 2. Select the relevant text data
+### 2. Select the Relevant Text Data
 
-The next step is to select the fields that will be most helpful for analyzing how 'cooking' items are described across the items in the DPLA.
+The next step is to select the fields that will be most helpful for analyzing how "cooking" items are described across the items in the DPLA.
 
-Looking at our items, there are three main fields containing description type information for our different 'cooking' items: the title, the description, and the subject headings. 
+Looking at our items, there are three main fields containing description-type information for our different "cooking" items: the title, the description, and the subject headings. 
 
-Our question for these items is how, across the entire DPLA collection, the descriptions of items related to cooking are gendered. To do this, we need to do some basic text analysis, so let's save our search results in a format that makes it easy to do that: as text.
+Our question for these items is how, across the entire DPLA collection, the descriptions of items related to cooking are gendered. To pursue this question, we need to do some basic text analysis, so let's save our search results in a format that makes it easy to do that: as text.
 
-To start, let's make a new function called 'get_text' that takes in our 'json_data' list:
+To start, let's make a new function called "get_text" that takes in our "json_data" list:
 
     # Define Functions
     def get_text(json_data):
         # Do something to each item in json_data
 
-Next, for each item in that array, we want to look for the 'title', the 'description', and the 'subject heading fields'. This means using another 'for loop'. 
+Next, for each item in that array, we want to look for the "title", the "description", and the "subject heading fields". This means using another "for loop". 
 
     # Define Functions    
     def get_text(json_data):
@@ -85,7 +85,7 @@ Next, for each item in that array, we want to look for the 'title', the 'descrip
             # Get the descriptions
             # Get the subject headings
 
-We can get the title, description, and subject headings by looking for those 'keys' within each item in our 'json_data' list. 
+We can get the title, description, and subject headings by looking for those "keys" within each item in our "json_data" list. 
 
     # Define Functions    
     def get_text(json_data):
@@ -99,7 +99,7 @@ We can get the title, description, and subject headings by looking for those 'ke
             # Get the Subject Headings
             subjects = each['sourceResource.subject']
 
-So far so good. But what if one of these fields is missing? Programming languages are very literal - if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line to call the function.
+So far so good. But what if one of these fields is missing? Programming languages are very literal -- if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line to call the function.
 
     # Load Libraries
     import json
@@ -124,9 +124,9 @@ So far so good. But what if one of these fields is missing? Programming language
     print json_data[1]
     get_text(json_data)
 
-Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key 'title' in one of the resources.
+Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "title" in one of the resources.
 
-To deal with this, we use 'try' and 'except' - we will tell the computer to try to find the keys, but if it doesn't, to assign the value to blank and move on.
+To deal with this, we use "try" and "except" -- we will tell the computer to try to find the keys, but if it doesn't, to assign the value to blank and move on.
 
     # Define Functions
     def get_text(json_data):
@@ -295,9 +295,9 @@ Now, let's go back to the function and put all our pieces together into a new va
         # Combine the data into a single variable in the form of a sentence
         data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
 
-This line takes the information held in title, adds a ';' and a space, takes the information in description, add '; and a space, and finally, takes the list held in subject and smashes it together into a string, separated by a comman and a space. Finally, the '\n' adds an 'enter' the end of the line, so that the information for each item appears on a new line.
+This line takes the information held in title, adds a ";" and a space, takes the information in description, add '; and a space, and finally, takes the list held in subject and smashes it together into a string, separated by a comman and a space. Finally, the "\n" adds an "enter" the end of the line, so that the information for each item appears on a new line.
 
-The last step is to write all the information within 'data' to our file.
+The last step is to write all the information within "data" to our file.
 
     # Define Functions
     def get_text(json_data):
@@ -342,7 +342,7 @@ The last step is to write all the information within 'data' to our file.
         # Write the sentence to the 'text_results' file
         f.write(data.encode('utf-8'))
 
-Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem of unusual characters.
+Don't worry too much about the "encode('utf-8')" bit - it forces all of the data into a consistent format and fixes a small problem of unusual characters.
 
 Now let's add a call to the function and run our code:
     
@@ -401,7 +401,7 @@ Now let's add a call to the function and run our code:
     # Make Function Calls
     get_text(json_data)
 
-Save and run your second python script. You should now have a text file named 'text_results.txt' in your directory. If you open that file, you should see lines of beautiful text ready for analysis.
+Save and run your second python script. You should now have a text file named "text_results.txt" in your directory. If you open that file, you should see lines of beautiful text ready for analysis.
 
 In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.
 

@@ -24,6 +24,7 @@ Your file should now look like this:
 	dpla = DPLA('Your-Key-Here')
 	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	all_records = []
+
 	f = open("search_results.json", "w")
 
 	# Define Functions
@@ -83,7 +84,7 @@ Now that we have a file to write to, let's create a third function, 'save_result
 		f.write(data)
 		f.close
 
-What did we do with this function? First, we are creating a variable called "data" which we made using json.dumps, which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.
+What did this function do? First, we are creating a variable called "data" which we made using "json.dumps", which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.
 
 ### Calling the "Write" Function
 
@@ -127,7 +128,7 @@ Our file should now look like this:
 	print all_records[150]
 	save_results()
 
-Test that everything is working by running your "my_first_script.py" in terminal.
+Test that everything is working by running your "my_first_script.py" in Terminal.
 
 Open your new "search_results.json" file and check that 200 items made it in. Close the file once you're done.
 
@@ -137,7 +138,7 @@ Congratulations! You've written your first results file!
 
 Finally, let's change the parameters we pass to the "pull_records" function to get all of the search results.
 
-Remember, the first number we pass to "pull_records" corresponds to the first page of search results, the second number to the last page of search results, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take '500' for our third variable. We also want to start with the first page, so '1' is our first variable.
+Remember, the first number we pass to "pull_records" corresponds to the first page of search results, the second number to the last page of search results, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take "500" for our third variable. We also want to start with the first page, so "1" is our first variable.
 
 To figure out the value we want for "end", we need to do a little math. If we have 10,909 items and can get 500 items a page, how many pages do we have to work through?
 

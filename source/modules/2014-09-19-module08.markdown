@@ -5,15 +5,15 @@ date: 2014-09-19
 
 In this module, we will learn:
 
-1. To use a while loop and counter
+1. To use a "while loop" and "counter"
 
-We are almost there! We have a function to gather all of the search results on any given page. We now need a way to work systematically through all of the pages available. 
+We're getting there! We have a function to gather all of the search results on any given page. We now need a way to work systematically through all of the pages available. 
 
 To do that, we will add another loop to our "pull_records" function that allows us to move through more than one page of search results.
 
 ### 1. Introducing the While Loop
 
-The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the while loop and a "counter" to work through all of the pages of search results.
+The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the "while loop" and a "counter" to work through all of the pages of search results.
 
 To use a while loop, let's look again at our "pull records" function.
 
@@ -36,11 +36,11 @@ so that our function now looks like this:
 			# print paged_search.items[2]					
 			save_each(paged_search)
 
-Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now.
+Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now -- don't run the code at this point!
 
-To avoid the infinite loop, we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".
+To avoid the "infinite loop", we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".
 
-Add 'pages = pages +1' after <span class="command">save_each(paged_search)</span> like this:
+Add "pages = pages +1" after <span class="command">save_each(paged_search)</span> like this:
 	
 	def pull_records(pages, end, size):
 			while(pages <= end):

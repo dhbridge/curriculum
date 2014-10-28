@@ -5,41 +5,71 @@ date: 2014-09-19
 
 In this module we will learn: 
 
-- To add additional parameters to our API call
-- To create an empty list
-- To comment-out code that we don't want to run, but want to keep
+1. To add additional parameters to our API call
+2. To create an empty list
+3. To comment-out code that we don't want to run, but want to keep
 
-It is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language and used Python to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about how we can combine libraries to create new programs. 
+It is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language, and used it to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about how we can combine libraries to create new programs. 
 
-We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA API and learned how to leverage libraries like DPyLA to use the API in our code. Finally, we saved our code in a python file that we learned how to execute in the terminal.
+We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA API and learned how to leverage libraries like DPyLA to use the API in our code. Finally, we saved our code in a Python file that we learned how to execute in the terminal.
 
 Well Done!
 
 So far you have been writing code that does one thing: it get search results or prints a particular item. The power of computation, however, is being able to do the same thing to a series of items. This means thinking in terms of iterating through a series of items, doing the same thing to each in order to work to an answer. To do this, we will learn two very powerful programming concepts: functions and loops.
 
+### Anatomy of a Python Script File
+
+Just like when we are writing papers or structuring an argument, order matters in our script files. The computer will execute the code in the order it encounters it.
+
+One good way to keep your code organized and avoid bugs caused by organization errors is to follow a set pattern when constructing your scripts. 
+
+First, at the top of your files, place the list of libraries you're importing. This way they are ready for use throughout the script. We did this when we started with <span class="command">from dpla.api import DPLA</span>.
+
+Next, declare (or set) the variables (names) that you will use through the script. In code-speak, these are set at the "global scope" meaning that they are available to all functions in the file. We did this when we assigned our API key to the "dpla" variable with <span class="command">dpla = DPLA("YourAPIKey")</span> and when we saved our search to "results" with <span class="command">result = dpla.search("cooking")</span>.
+
+After the variables, we will put our functions. Functions are like mini-scripts or packets of code that do one job. We can then combine functions to create more complicated programs. We will add some functions to our script in the next modules.
+
+Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) a "()". One exception is the "print" function, which doesn't require the () marks in this version of Python.* We called the "print" function to print one item from our search results. It is important to include the functions in the order that you want them to be run.
+
+	# Load Libraries
+	import [library name]
+
+	# Set Variables
+	my_string = "information to be stored in my_var"
+
+	# Define Functions
+	def my_function(my_string):
+		#do something to "my_string"
+		my_list = str.split(my_string)
+		return my_list
+
+	# Make Function Calls
+	my_var = my_function()
+
+	print my_var[1]
 
 ### Asking Questions of Our Data
 
-We have been able to do a lot with filtering the data. But what if we want to ask questions about how the objects associated with "cooking" are described across all 10,000+ items? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking"?
+We have been able to do a lot with filtering the data. But what if we want to ask questions about how the objects associated with "cooking" are described across all 10,000+ items? Say we are interested in how those descriptions of items related to cooking are gendered. How would we investigate patterns across the entirety of the DPLA's holdings related to "cooking" and gender?
 
-There are many ways one could go about investigating the descriptions. Work with your table to brain-storm a couple of approaches.
+There are many ways one could go about investigating the descriptions. Work with your table to brainstorm a couple of approaches.
  
 
-### Adding Parameters to the Query
+### 1. Adding Parameters to the Query
 
 The first step is to get all of the relevant data. To do that, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can add a parameter to our query to get up to 500 items at a time, but there were nearly 11,000 items associated with "cooking". This means we need to get all 23 pages of 500 items.
 
-Open your "my_first_script.py" file. Looking at the line that says 
+Open your "my_first_script.py" file. Look at the line that says: 
 
 	result = dpla.search('cooking')
 
-First, let's narrow down the information we get back for each item from the DPLA. Looking at the documentation, we can do this by identifying the field names we are interested. Looking at the search results, the description information, along with the titles and subject headings, are all found under 'sourceResource'. We can limit our results by adding <span class="command">fields=['sourceResource']</span> to our search:
+First, let's narrow down the information we get back for each item from the DPLA. Looking at the documentation, we can do this by identifying the field names we are interested in. Looking at the search results, the description information, the titles, and subject headings are all found under 'sourceResource'. We can limit our results by adding <span class="command">fields=['sourceResource']</span> to our search:
 
 	result = dpla.search('cooking', fields=['sourceResource'])
 
 This gives us a smaller set of data that is applicable to our questions, but with enough context incase we need to work back to the original item.
 
-Next, let's change the number of items we get back by adding an additional parameter to what we pass to dpla.search. Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:
+Next, let's change the number of items we get back by adding an additional parameter to what we pass to "dpla.search". Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:
 
 	result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 
@@ -51,16 +81,18 @@ Remember, counting within a list begins at 0.
 
 ### Group Challenge
 
-Use the [documentation](https://github.com/bibliotechy/DPyLA) and your table to add another parameter to get the information from page 3.
+Using the [documentation](https://github.com/bibliotechy/DPyLA), work with your group to add another parameter to get the information from page 3 of the search results.
 
 
-### Setting Up a Variable
+### 2. Setting Up a Variable
 
-To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items from all of the pages and we need a place to store them, so that as we get new items, our collections grows.
+To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items from all of the pages and we need a place to store them, so that as we get new items, our collection grows.
 
-Let's tackle the second problem first. Remember back to variables? Variables are names we used to hold values. We can also use variables to hold lists. A list holds a series of items, such as <span class='command'>fruit = ['apple', 'orange', 'banana']</span>
+Let's tackle the second problem first. Remember back to variables? Variables are names we use to hold values. We can also use variables to hold lists. A list holds a series of items, such as <span class='command'>fruit = ['apple', 'orange', 'banana']</span>
 
 We are going to use a similar structure to save all of the items we get back from the DPLA.
+
+### 3. Commenting Out Code
 
 Go back to "my_first_script.py". "Comment out" the line <span class="command">result = dpla.search('cooking', fields=['sourceResource'], page_size=50)</span> by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work and tells the computer to skip this line. 
 

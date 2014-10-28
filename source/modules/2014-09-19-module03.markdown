@@ -5,34 +5,34 @@ date: 2014-09-19
 
 In this module, you will learn:
 
-1. to install new libraries using Pip
-2. to use the Python Interactive Shell to run basic Python commands
-3. to load the DPyLA library and make an API request
+1. To install new libraries using Pip
+2. To use the Python Interactive Shell to run basic Python commands
+3. To load the DPyLA library and make an API request
 
-So far, we have looked at the data in our browser and have a sense of the scope of the information we can work with and the questions we might want to ask. But  
+So far, we have looked at the data in our browser and have a sense of the scope of the information we can work with and the questions we might want to ask.  
 
 
-In this module, we will use Pip to install the DPyLA Python library to make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.
+In this module, we will use Pip to install the DPyLA Python library, which will make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.
 
 ### 1. Install DPyLA Library
 
 We talked earlier about libraries, those bundles of code that we can load and use in creating our own scripts. Just like in cooking, it is possible to make everything from scratch. However, this is often not necessary, nor is it the most efficient way to get the same results. 
 
-One library that makes it easy to work with the DPLA API with Python is [DPyLA](https://github.com/bibliotechy/DPyLA), which you can look at on Github.
+The [DPyLA](https://github.com/bibliotechy/DPyLA) library makes it easy to work with the DPLA API.
 
 We can easily get this library for use with our own code using Pip.
 
 Type <span class="command">pip install dpla</span>. 
 
-If you get a permissions error and you're a Mac user, type <span class="command">sudo pip install dpla</span> and enter your password. If you get a permissions error and you're a Windows user, type <span class="command">Start-Process powershell -Verb runAs</span> to open Powershell as an administrator then type <span class="command">pip install dpla</span>.
+If you get a permissions error and you're a Mac user, type <span class="command">sudo pip install dpla</span> and enter your password. If you get a permissions error and you're a Windows user, type <span class="command">Start-Process powershell -Verb runAs</span> to open Powershell as an administrator, then type <span class="command">pip install dpla</span>.
 
 You have just installed your first Python library.
 
 ### 2. Introducing the Python Interactive Shell
 
-Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the Interactive Shell, we can experiment with lines of Python and see what the language can do. 
+Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Shell. Using the Interactive Shell, we will first experiment with lines of Python and see what the language can do. 
 
-To start up the interactive shell, go to your Terminal window and type <span class="command">python</span> and press "Enter".
+To start up the Interactive Shell, go to your Terminal window and type <span class="command">python</span> and press "Enter".
 
 Your Terminal should now look like this:
 
@@ -42,35 +42,35 @@ Your Terminal should now look like this:
 	Type "help", "copyright", "credits" or "license" for more information.
 	>>>
 
-Everything you type will now be processed by Python. Let's try it out a bit. Type <span class="command">print "Hello World"</span> and press "Enter". Now type <span class="command">print "My Name is [Your Name]"</span> and press "Enter". Now type <span class="command">print 5 + 8</span>
+Everything you type now will be processed by Python. Let's try it out a bit. Type <span class="command">print "Hello World"</span> and press "Enter". Now type <span class="command">print "My Name is [Your Name]"</span> and press "Enter". Now type <span class="command">print 5 + 8</span> and press "Enter".
 
-Here you have discovered a couple of very useful things with programming languages. 
+Here you have discovered a couple of very useful things about programming languages. 
 
 "print" is a function in Python that returns whatever follows it next. 
 
-The content contained inside " " marks is called a string. This is especially important for humanities research, because often when we work with texts, or metadata, we are working with strings.
+The content contained inside the " " marks is called a string. This is especially important for humanities research, because often when we work with texts, or metadata, we are working with strings.
 
 Finally, if we input numbers or equations into Python, it will compute them. If you don't want Python to compute, you should treat the numbers like a string. Experiment in the Interactive Shell to see if you can get it to display <span class="command">5 + 8</span> rather than <span class="command">13</span>.
 
 ### 3. Loading DPyLA in the Shell and Make an API Request
 
-Let's start using our new DPyLA library to make an API call to the DPLA. Following the [library documentation](https://github.com/bibliotechy/DPyLA), run (type the following and press "Enter") 
+Let's start using our new DPyLA library to make an API call to the DPLA. Following the [library documentation](https://github.com/bibliotechy/DPyLA), run:
 
 	from dpla.api import DPLA 
 
-You just loaded the DPyLA library into your Python shell, making all of it's code available for you to use.
+You just loaded the DPyLA library into your Python Shell, making all of its code available for you to use.
 
 Next run:
 	
 	dpla = DPLA('your-key-here')
 
-What you have just done is create what is called a "variable", dpla, that stores your api key.
+What you have just done is create what is called a "variable"-- dpla --that stores your API key.
 
 Next run:
 
 	result = dpla.search('cooking')
 
-You have just created a new variable, "result" that stores the result of a dpla search for "cooking". Now, you might be wondering what happened to your api key. This is part of the magic of using a library. When you save your key as dpla, you make it known to the library. Then, when you call dpla.search, you're combining your key with code in the DPyLA library that executes the search and saving all of the data in a new variable called "result". 
+You have just created a new variable, "result", that stores the result of a DPLA search for "cooking". Now, you might be wondering what happened to your API key. This is part of the magic of using a library. When you save your key as "dpla", you make it known to the library. Then, when you call "dpla.search", you're combining your key with code in the DPyLA library that then executes the search and saves all of the data in a new variable called "result". 
 
 But we still haven't seen any of the results from the API. To show the results, run:
 
@@ -84,13 +84,13 @@ You just asked the computer to give you all of the items it got back from the se
 
 Notice the structure of this data. Can you find the key:value pairs? 
 
-You might notice the " u' " in front of each string. This is a feature of python 2. The u' indicates that what follows is a unicode string. Don't worry too much about what that means - it is information about how the data is being encoded - but if you want to really geek out, you can read all about encoding in the [language documentation](https://docs.python.org/2/tutorial/introduction.html#unicode-strings).
+You might notice the " u' " in front of each string. This is a feature of Python 2. The u' indicates that what follows is a unicode string. Don't worry too much about what that means - it is information about how the data is being encoded - but if you want to really geek out, you can read all about encoding in the [language documentation](https://docs.python.org/2/tutorial/introduction.html#unicode-strings).
 
 But what if you only want to see one item at a time?
 
-The information you get back from the DPLA API comes in the form of an **array**, or **list** ("array" is the general programming word for a series of things, "list" is Python's name for a series of things). Lists are a super powerful, enabling us to load up a lot of information and then work through each bit individually.
+The information you get back from the DPLA API comes in the form of an **array**, or **list** ("array" is the general programming word for a series of things, "list" is Python's name for a series of things). Lists are super powerful, enabling us to load up a lot of information and then work through each bit individually.
 
-One general things we can do with lists is get items by their position in the list. 
+One general thing we can do with lists is get items according to their position in the list. 
 
 For example, if you want the first item only:
 
