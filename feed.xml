@@ -1723,7 +1723,7 @@ get_text(json_data)
     <link rel="alternate" href="http://blog.url.com/modules/module09.html"/>
     <id>http://blog.url.com/modules/module09.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-26T14:30:59-04:00</updated>
+    <updated>2014-10-27T20:00:47-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1793,9 +1793,9 @@ def save_each(n):
 	for each in n.items:
 		all_records.append(each)
 
-pull_records(2, 3, 50)
+pull_records(2, 5, 50)
 
-print all_records[30]
+print all_records[150]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
@@ -1853,9 +1853,9 @@ def save_each(n):
 	for each in n.items:
 		all_records.append(each)
 
-pull_records(2, 3, 50)
+pull_records(2, 5, 50)
 
-print all_records[30]
+print all_records[150]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
@@ -1945,9 +1945,9 @@ def save_results():
 	f.write(data)
 	f.close
 
-pull_records(2, 3, 50)
+pull_records(2, 5, 50)
 
-print all_records[30]
+print all_records[150]
 
 save_results()
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
