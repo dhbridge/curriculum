@@ -66,13 +66,13 @@
   <li>to convert our JSON data to strings of text</li>
 </ol>
 
-<p>Now that we have a very large file of JSON data, we can work locally to find  patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of 'cooking' items are gendered, our task for this module is to filter down that data and save it as text. </p>
+<p>Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to filter down that data and save it as text. In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.</p>
 
-<h3 id="create-a-new-script-and-load-in-our-data">1. Create a new script and load in our data</h3>
+<h3 id="create-a-new-script-and-load-in-our-data">1. Create a New Script and Load in Our Data</h3>
 
 <p>It is time to create a new script file!</p>
 
-<p>Go to terminal and type:</p>
+<p>Go to Terminal and type:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>touch my_second_script.py 
 </pre></td></tr></tbody></table>
@@ -96,14 +96,22 @@
 </pre></td></tr></tbody></table>
 </div>
 
-<p>First, we will need the json library again. To add this, add <span class="command">import json</span> to the very top of the file.</p>
+<p>First, we will need the JSON library again. To add this, add <span class="command">import json</span> to the very top of the file.</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># Load Libraries
+import json
+</pre></td></tr></tbody></table>
+</div>
 
 <p>The next thing is to load up the data from our "search_results.json" file.</p>
 
 <p>The structure for this is:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>with open("search_results.json") as json_file:
+2
+3</pre></td><td class="code"><pre># Define Variables
+with open("search_results.json") as json_file:
     json_data = json.load(json_file)
 </pre></td></tr></tbody></table>
 </div>
@@ -115,50 +123,62 @@
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>import json
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre># Load Libraries
+import json
 
+# Define Variables
 with open("search_results.json") as json_file:
-    json_data = json.load(json_file)    
+    json_data = json.load(json_file) 
+
+# Define Functions
+
+# Make Function Calls  
 </pre></td></tr></tbody></table>
 </div>
 
-<p>To make sure this worked, let's print out one item from the json data. Work with your table to add a print statement to print the second item in the json_data list.</p>
+<p>To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "print" statement that prints the second item in the json_data list.</p>
 
-<h3 id="select-the-relevant-text-data">2. Select the relevant text data</h3>
+<h3 id="select-the-relevant-text-data">2. Select the Relevant Text Data</h3>
 
-<p>The next step is to select the fields that will be most helpful for analyzing how 'cooking' items are described across the items in the DPLA.</p>
+<p>The next step is to select the fields that will be most helpful for analyzing how "cooking" items are described across the items in the DPLA.</p>
 
-<p>Looking at our items, there are three main fields containing description type information for our different 'cooking' items: the title, the description, and the subject headings. </p>
+<p>Looking at our items, there are three main fields containing description-type information for our different "cooking" items: the title, the description, and the subject headings. </p>
 
-<p>Our question for these items is how, across the entire DPLA collection, the descriptions of items related to cooking are gendered. To do this, we need to do some basic text analysis, so let's save our search results in a format that makes it easy to do that: as text.</p>
+<p>Our question for these items is how, across the entire DPLA collection, the descriptions of items related to cooking are gendered. To pursue this question, we need to do some basic text analysis, so let's save our search results in a format that makes it easy to do that: as text.</p>
 
-<p>To start, let's make a new function called 'get_text' that takes in our 'json_data' list:</p>
+<p>To start, let's make a new function called "get_text" that takes in our "json_data" list:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>def get_text(json_data):
+2
+3</pre></td><td class="code"><pre># Define Functions
+def get_text(json_data):
     # Do something to each item in json_data
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Next, for each item in that array, we want to look for the 'title', the 'description', and the 'subject heading fields'. This means using another 'for loop'. </p>
+<p>Next, for each item in that array, we want to look for the "title", the "description", and the "subject heading fields". This means using another "for loop". </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6
-7</pre></td><td class="code"><pre>def get_text(json_data):
+6</pre></td><td class="code"><pre># Define Functions    
+def get_text(json_data):
     for each in json_data:
-        # Get the title
-
-        # Get the description
-
+        # Get the titles
+        # Get the descriptions
         # Get the subject headings
 </pre></td></tr></tbody></table>
 </div>
 
-<p>We can get the title, description, and subject headings by looking for those 'keys' within each item in our 'json_data' list. </p>
+<p>We can get the title, description, and subject headings by looking for those "keys" within each item in our "json_data" list. </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -169,20 +189,22 @@ with open("search_results.json") as json_file:
 7
 8
 9
-10</pre></td><td class="code"><pre>def get_text(json_data):
+10
+11</pre></td><td class="code"><pre># Define Functions    
+def get_text(json_data):
     for each in json_data:
         # Get the title
-        title = each['sourceResource.title']
+        titles = each['sourceResource.title']
 
         # Get the Description
-        description = each['sourceResource.description']
+        descriptions = each['sourceResource.description']
 
         # Get the Subject Headings
-        subject = each['sourceResource.subject']
+        subjects = each['sourceResource.subject']
 </pre></td></tr></tbody></table>
 </div>
 
-<p>So far so good. But what if one of these fields is missing? Programming languages are very literal - if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line to call the function.</p>
+<p>So far so good. But what if one of these fields is missing? Programming languages are very literal – if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line to call the function.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -200,29 +222,39 @@ with open("search_results.json") as json_file:
 14
 15
 16
-17</pre></td><td class="code"><pre>import json
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre># Load Libraries
+import json
 
+# Define Variables
 with open("search_results.json") as json_file:
     json_data = json.load(json_file) 
 
+# Define Functions
 def get_text(json_data):
     for each in json_data:
         # Get the Titles
-        title = each['sourceResource.title']
+        titles = each['sourceResource.title']
 
         # Get the Descriptions
-        description = each['sourceResource.description']
+        descriptions = each['sourceResource.description']
 
         # Get the Subject Headings
-        subject = each['sourceResource.subject']
+        subjects = each['sourceResource.subject']
 
+# Make Function Calls
+print json_data[1]
 get_text(json_data)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key 'title' in one of the resources.</p>
+<p>Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "title" in one of the resources.</p>
 
-<p>To deal with this, we use 'try' and 'except' - we will tell the computer to try to find the keys, but if it doesn't, to assign the value to blank and move on.</p>
+<p>To deal with this, we use "try" and "except" – we will tell the computer to try to find the keys, but if it doesn't, to assign the value to blank and move on.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -239,20 +271,28 @@ get_text(json_data)
 13
 14
 15
-16</pre></td><td class="code"><pre>def get_text(json_data):
+16
+17
+18
+19
+20</pre></td><td class="code"><pre># Define Functions
+def get_text(json_data):
     for each in json_data:
+        # Get the Titles
         try:
-            title = each['sourceResource.title']
+            titles = each['sourceResource.title']
         except:
             title = ' '
         
+        # Get the Descriptions
         try:
-            description = each['sourceResource.description']
+            descriptions = each['sourceResource.description']
         except:
             description = ' '
 
+        # Get the Subject Headings
         try:
-            subject = each['sourceResource.subject']
+            subjects = each['sourceResource.subject']
         except:
             subject = ' '
 </pre></td></tr></tbody></table>
@@ -293,36 +333,40 @@ get_text(json_data)
 31
 32
 33
-34</pre></td><td class="code"><pre>def get_text(json_data):
+34
+35
+36</pre></td><td class="code"><pre># Define Functions
+def get_text(json_data):
     for each in json_data:
+        # Get the Titles
         try:
-            title = each['sourceResource.title']
-            if isinstance(title, basestring):
+            titles = each['sourceResource.title']
+            if isinstance(titles, basestring):
                 title = str(titles)
             else:
-                for each in title:
+                for each in titles:
                     title = str(each)
         except:
             title = ' '
         
+        # Get the Descriptions
         try:
-            description = each['sourceResource.description']
-
-            if isinstance(description, basestring):
-                description = str(description)
+            descriptions = each['sourceResource.description']
+            if isinstance(descriptions, basestring):
+                description = str(descriptions)
             else:
-                for line in description:
+                for line in descriptions:
                     description = str(line)
         except:
             description = ' '
 
+        # Get the Subject Headings
         try:
-            subject = each['sourceResource.subject']
-
-            if isinstance(subject, basestring):
-                subject = str(subject)
+            subjects = each['sourceResource.subject']
+            if isinstance(subjects, basestring):
+                subject = str(subjects)
             else:
-                for each in subject:
+                for each in subjects:
                     subject = []
                     subject.append(each['name'])  
         except:
@@ -341,8 +385,12 @@ get_text(json_data)
 3
 4
 5
-6</pre></td><td class="code"><pre>import json
+6
+7
+8</pre></td><td class="code"><pre># Load Libraries
+import json
 
+# Define Variables
 with open("search_results.json") as json_file:
     json_data = json.load(json_file) 
 
@@ -394,43 +442,51 @@ f = open('text_results.txt', 'a')
 38
 39
 40
-41</pre></td><td class="code"><pre>import json
+41
+42
+43
+44
+45</pre></td><td class="code"><pre># Load Libraries
+import json
 
+# Define Variables
 with open("search_results.json") as json_file:
-    json_data = json.load(json_file) 
+    json_data = json.load(json_file)
 
 f = open('text_results.txt', 'a')
 
+# Define Functions
 def get_text(json_data):
     for each in json_data:
+        # Get the Titles
         try:
-            title = each['sourceResource.title']
-            if isinstance(title, basestring):
+            titles = each['sourceResource.title']
+            if isinstance(titles, basestring):
                 title = str(titles)
             else:
-                for each in title:
+                for each in titles:
                     title = str(each)
         except:
             title = ' '
         
+        # Get the Descriptions
         try:
-            description = each['sourceResource.description']
-
-            if isinstance(description, basestring):
-                description = str(description)
+            descriptions = each['sourceResource.description']
+            if isinstance(descriptions, basestring):
+                description = str(descriptions)
             else:
-                for line in description:
+                for line in descriptions:
                     description = str(line)
         except:
             description = ' '
 
+        # Get the Subject Headings
         try:
-            subject = each['sourceResource.subject']
-
-            if isinstance(subject, basestring):
-                subject = str(subject)
+            subjects = each['sourceResource.subject']
+            if isinstance(subjects, basestring):
+                subject = str(subjects)
             else:
-                for each in subject:
+                for each in subjects:
                     subject = []
                     subject.append(each['name'])  
         except:
@@ -475,48 +531,54 @@ def get_text(json_data):
 33
 34
 35
-36</pre></td><td class="code"><pre>def get_text(json_data):
+36
+37
+38
+39</pre></td><td class="code"><pre># Define Functions
+def get_text(json_data):
     for each in json_data:
+        # Get the Titles
         try:
-            title = each['sourceResource.title']
-            if isinstance(title, basestring):
+            titles = each['sourceResource.title']
+            if isinstance(titles, basestring):
                 title = str(titles)
             else:
-                for each in title:
+                for each in titles:
                     title = str(each)
         except:
             title = ' '
         
+        # Get the Descriptions
         try:
-            description = each['sourceResource.description']
-
-            if isinstance(description, basestring):
-                description = str(description)
+            descriptions = each['sourceResource.description']
+            if isinstance(descriptions, basestring):
+                description = str(descriptions)
             else:
-                for line in description:
+                for line in descriptions:
                     description = str(line)
         except:
             description = ' '
 
+        # Get the Subject Headings
         try:
-            subject = each['sourceResource.subject']
-
-            if isinstance(subject, basestring):
-                subject = str(subject)
+            subjects = each['sourceResource.subject']
+            if isinstance(subjects, basestring):
+                subject = str(subjects)
             else:
-                for each in subject:
+                for each in subjects:
                     subject = []
                     subject.append(each['name'])  
         except:
             subject = ' '
 
+    # Combine the data into a single variable in the form of a sentence
     data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
 </pre></td></tr></tbody></table>
 </div>
 
-<p>This line takes the information held in title, adds a ';' and a space, takes the information in description, add '; and a space, and finally, takes the list held in subject and smashes it together into a string, separated by a comman and a space. Finally, the '\n' adds an 'enter' the end of the line, so that the information for each item appears on a new line.</p>
+<p>This line takes the information held in title, adds a ";" and a space, takes the information in description, add '; and a space, and finally, takes the list held in subject and smashes it together into a string, separated by a comman and a space. Finally, the "\n" adds an "enter" the end of the line, so that the information for each item appears on a new line.</p>
 
-<p>The last step is to write all the information within 'data' to our file.</p>
+<p>The last step is to write all the information within "data" to our file.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -555,48 +617,56 @@ def get_text(json_data):
 35
 36
 37
-38</pre></td><td class="code"><pre>def get_text(json_data):
+38
+39
+40
+41
+42</pre></td><td class="code"><pre># Define Functions
+def get_text(json_data):
     for each in json_data:
+        # Get the Titles
         try:
-            title = each['sourceResource.title']
-            if isinstance(title, basestring):
+            titles = each['sourceResource.title']
+            if isinstance(titles, basestring):
                 title = str(titles)
             else:
-                for each in title:
+                for each in titles:
                     title = str(each)
         except:
             title = ' '
         
+        # Get the Descriptions
         try:
-            description = each['sourceResource.description']
-
-            if isinstance(description, basestring):
-                description = str(description)
+            descriptions = each['sourceResource.description']
+            if isinstance(descriptions, basestring):
+                description = str(descriptions)
             else:
-                for line in description:
+                for line in descriptions:
                     description = str(line)
         except:
             description = ' '
 
+        # Get the Subject Headings
         try:
-            subject = each['sourceResource.subject']
-
-            if isinstance(subject, basestring):
-                subject = str(subject)
+            subjects = each['sourceResource.subject']
+            if isinstance(subjects, basestring):
+                subject = str(subjects)
             else:
-                for each in subject:
+                for each in subjects:
                     subject = []
                     subject.append(each['name'])  
         except:
             subject = ' '
 
+    # Combine the data into a single variable in the form of a sentence
     data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
 
+    # Write the sentence to the 'text_results' file
     f.write(data.encode('utf-8'))
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Don't worry too much about the 'encode('utf-8')' bit - it forces all of the data into a consistent format and fixes a small problem of unusual characters.</p>
+<p>Don't worry too much about the "encode('utf-8')" bit - it forces all of the data into a consistent format and fixes a small problem of unusual characters.</p>
 
 <p>Now let's add a call to the function and run our code:</p>
 
@@ -646,57 +716,71 @@ def get_text(json_data):
 44
 45
 46
-47</pre></td><td class="code"><pre>import json
+47
+48
+49
+50
+51
+52
+53
+54</pre></td><td class="code"><pre># Load Libraries
+import json
 
+# Define Variables
 with open("search_results.json") as json_file:
-    json_data = json.load(json_file) 
+    json_data = json.load(json_file)
 
 f = open('text_results.txt', 'a')
 
+# Define Functions
 def get_text(json_data):
     for each in json_data:
+        # Get the Titles
         try:
-            title = each['sourceResource.title']
-            if isinstance(title, basestring):
+            titles = each['sourceResource.title']
+            if isinstance(titles, basestring):
                 title = str(titles)
             else:
-                for each in title:
+                for each in titles:
                     title = str(each)
         except:
             title = ' '
         
+        # Get the Descriptions
         try:
-            description = each['sourceResource.description']
-
-            if isinstance(description, basestring):
-                description = str(description)
+            descriptions = each['sourceResource.description']
+            if isinstance(descriptions, basestring):
+                description = str(descriptions)
             else:
-                for line in description:
+                for line in descriptions:
                     description = str(line)
         except:
             description = ' '
 
+        # Get the Subject Headings
         try:
-            subject = each['sourceResource.subject']
-
-            if isinstance(subject, basestring):
-                subject = str(subject)
+            subjects = each['sourceResource.subject']
+            if isinstance(subjects, basestring):
+                subject = str(subjects)
             else:
-                for each in subject:
+                for each in subjects:
                     subject = []
                     subject.append(each['name'])  
         except:
             subject = ' '
 
+    # Combine the data into a single variable in the form of a sentence
     data = title + '; ' + description + '; ' + ', '.join(subject) + '. \n'
 
+    # Write the sentence to the 'text_results' file
     f.write(data.encode('utf-8'))
 
+# Make Function Calls
 get_text(json_data)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Save and run your second python script. You should now have a text file named 'text_results.txt' in your directory. If you open that file, you should see lines of beautiful text ready for analysis.</p>
+<p>Save and run your second python script. You should now have a text file named "text_results.txt" in your directory. If you open that file, you should see lines of beautiful text ready for analysis.</p>
 
 <p>In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.</p>
 

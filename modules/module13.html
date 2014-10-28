@@ -104,30 +104,27 @@
 36
 37
 38
-39</pre></td><td class="code"><pre>import nltk
+39
+40
+41</pre></td><td class="code"><pre># Import Libraries
+import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
 
+# Define Variables
 with open('text_results.txt') as file:
     cooking_text = file.read()
 
-# print cooking_text[0:20]
-
 cooking_tokens = word_tokenize(cooking_text)
-# print cooking_tokens[0:10]
+text = nltk.Text(cooking_tokens)
 
 # Load in Stopwords Library
 stopwords = stopwords.words('english')
 
-text = nltk.Text(cooking_tokens)
+word_set = []
 
-#print text[:20]
-#print text.concordance('economy')
-#print text.collocations()
-
-# print text.similar('Pot')
-
+# Define Functions
 def normalize_text(text):
     # Work through all the words in text and filter
     for word in text:
@@ -136,6 +133,13 @@ def normalize_text(text):
             # If it passes the filters, save to word_set
             word_set.append(word.lower())
     return word_set
+
+# Make Function Calls
+#print cooking_text[0:20]
+#print cooking_tokens[0:10]
+#print text.concordance('economy')
+#print text.collocations()
+#print text.similar('Pot')
 
 normalize_text(text)
 
@@ -152,7 +156,9 @@ fd.plot(50,cumulative=False)
 2
 3
 4
-5</pre></td><td class="code"><pre>import nltk
+5
+6</pre></td><td class="code"><pre># Import Libraries
+import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
@@ -165,7 +171,9 @@ import csv
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>with open("search_results.json") as json_file:
+4
+5</pre></td><td class="code"><pre># Define Variables
+with open("search_results.json") as json_file:
     json_data = json.load(json_file)
 
 file = csv.writer(open("word_frequencies.csv", "w"))
@@ -180,23 +188,115 @@ file = csv.writer(open("word_frequencies.csv", "w"))
 </pre></td></tr></tbody></table>
 </div>
 
-<p>You can now open your csv file using terminal by typing:</p>
+<p>The final product should look like this:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48</pre></td><td class="code"><pre># Import Libraries
+import nltk
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+from nltk.probability import *
+import csv
+
+# Define Variables
+with open("search_results.json") as json_file:
+    json_data = json.load(json_file)
+
+file = csv.writer(open("word_frequencies.csv", "w"))
+
+cooking_tokens = word_tokenize(cooking_text)
+text = nltk.Text(cooking_tokens)
+
+# Load in Stopwords Library
+stopwords = stopwords.words('english')
+
+word_set = []
+
+# Define Functions
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation, AND check against stop words
+        if word.isalpha() and word.lower() not in stopwords:
+            # If it passes the filters, save to word_set
+            word_set.append(word.lower())
+    return word_set
+
+# Make Function Calls
+#print cooking_text[0:20]
+#print cooking_tokens[0:10]
+#print text.concordance('economy')
+#print text.collocations()
+#print text.similar('Pot')
+
+normalize_text(text)
+
+fd = FreqDist(word_set)
+print fd.most_common(50)
+print fd.hapaxes()
+fd.plot(50,cumulative=False)
+
+# Print results to a CSV file
+for key, count in fd.most_common(50):
+    file.writerow([key, count])
+</pre></td></tr></tbody></table>
+</div>
+
+<p>You can open your csv file using terminal by typing or by looking within your dhb_awesome directory:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>open word_frequencies.csv
 </pre></td></tr></tbody></table>
 </div>
 
-<p>This will most likely open in excel or a similar program. </p>
+<p>The file will most likely open in excel or a similar program. </p>
 
 <p>Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patters we see here?</p>
-
-<h3 id="what-we-learned">What We Learned</h3>
-
-<p>In this module, we learned:</p>
-
-<ul>
-  <li>to use the CSV library to save our results in csv format</li>
-</ul>
 
 <p><span class="left"><a href="module12.html">Previous Module</a></span></p>
 

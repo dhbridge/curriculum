@@ -61,12 +61,12 @@
        <p>In this module, we will learn: </p>
 
 <ol>
-  <li>to write and execute a Python script in the Terminal</li>
-  <li>to organize our script files</li>
-  <li>how programming language relate to our machines and to the available libraries.</li>
+  <li>To write and execute a Python script in the Terminal</li>
+  <li>To organize our script files</li>
+  <li>How a programming language relates to our machines and to the available libraries</li>
 </ol>
 
-<p>In this module, we will look at how to keep save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.</p>
+<p>In this module, we will look at how to save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.</p>
 
 <h3 id="writing-and-executing-script-files">1. Writing and Executing Script Files</h3>
 
@@ -82,19 +82,19 @@
 
 <p>and on Windows:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Start notepad++ my_first_script.py
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Start Notepad++ my_first_script.py
 </pre></td></tr></tbody></table>
 </div>
 
 <p>It should say 'print "Hello World"'. Now that you know something about Python functions, what do you expect this script to do?</p>
 
-<p>Let's test it out! To execute a Python file, run the following in terminal:</p>
+<p>Let's test it out! To execute a Python file, run the following in Terminal:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>python my_first_script.py
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Your terminal window should look something like:</p>
+<p>Your Terminal window should look something like:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -112,7 +112,7 @@ jeriwieringa$
 
 <p>Delete <span class="command">print "Hello World"</span> so that you're working with a clean file. </p>
 
-<p>First, at the beginning of a Python file you need to list the libraries that we will be using. Similar to HTML, the computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. </p>
+<p>First, at the beginning of a Python file you need to list the libraries that we will be using. The computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>from dpla.api import DPLA
 </pre></td></tr></tbody></table>
@@ -142,13 +142,13 @@ result = dpla.search('cooking')
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Save the file and go back to Terminal. Run </p>
+<p>Save the file and go back to Terminal. Run: </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>python my_first_script.py
 </pre></td></tr></tbody></table>
 </div>
 
-<p>You should notice that your computer works for awhile and then returns to normal, but doesn't tell you anything about what it did. To see results, we can use the print function again.</p>
+<p>You should notice that your computer works awhile and then returns to normal, but doesn't tell you anything about what it did. To see results, we can use the print function again.</p>
 
 <p>Open your script file again (<span class="command">open my_first_script.py</span>or <span class="command">Start notepad++ my_first_script.py</span>). </p>
 
@@ -156,55 +156,9 @@ result = dpla.search('cooking')
 
 <h3 id="group-challenge">Group Challenge</h3>
 
-<p>Work with your group to add another line to the file that uses the print function to display one item from your search. </p>
+<p>Work with your group to add another line to the file that uses the "print" function to display one item from your search. </p>
 
-<h3 id="anatomy-of-a-python-script-file">2. Anatomy of a Python Script File</h3>
-
-<p>Just like when we are writing papers or structuring an argument, order matters in our script files. The computer will execute the code in the order it encounters it.</p>
-
-<p>One good way to keep your code organized and avoid some organization caused bugs is to follow a set pattern when constructing your scripts. </p>
-
-<p>First, at the top of your files, place the list of libraries you're importing. This way they are ready for use throughout the script. We did then when we started with <span class="command">from dpla.api import DPLA</span>.</p>
-
-<p>Next, declare (or set) the variables (names) that you will use through the script. In code-speak, these are set at the "global scope" meaning that they are available to all functions in the file. We did this when we assigned our api key to the "dpla" variable with <span class="command">dpla = DPLA("YourAPIKey")</span> and when we saved our search to "results" with <span class="command">result = dpla.search('cooking')</span>.</p>
-
-<p>After the variables, we will put our functions. Functions are like mini-scripts or packets of code that do one job. We can then combine functions to create more complicated programs. We will add some functions to our script in the next  modules.</p>
-
-<p>Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) a "()". One exception is the print function, which doesn't require the () marks in this version of Python.* We called the print function to print one item from our search results. It is important to include the functions in the order that you want them to be run.</p>
-
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16</pre></td><td class="code"><pre># Load Libraries
-import [library name]
-
-# Set Variables
-my_string = "information to be stored in my_var"
-
-# Define Functions
-def my_function(my_string):
-	#do something to "my_string"
-	my_list = str.split(my_string)
-	return my_list
-
-# Make Function Calls
-my_var = my_function()
-
-print my_var[1]
-</pre></td></tr></tbody></table>
-</div>
+<p>Work with your table to add comments to the lines in 'my_first_script.py'</p>
 
 <h3 id="programming-languages">3. Programming Languages</h3>
 

@@ -66,17 +66,17 @@
   <li>to read JSON documents and think about how data can be structured</li>
 </ol>
 
-<p>Doing computational work in the humanities requires data. One useful definition of data from the <a href="https://www.lib.umn.edu/datamanagement/whatdata">Univeristy of Minnesota</a> is "[a] reinterpretable representation of information in a formalized manner suitable for communication, interpretation, or processing." While there are different types of data, the data that we can use for computational work is data that is digital. </p>
+<p>Doing computational work in the humanities requires data. One useful definition of data from the <a href="https://www.lib.umn.edu/datamanagement/whatdata">Univeristy of Minnesota</a> is "[a] reinterpretable representation of information in a formalized manner suitable for communication, interpretation, or processing." While there are different types of data, the data that we can use for computational work is digital data. </p>
 
-<p>Finding useful, digital, data for humanities research is still a challenge. Fortunately, there are a growing number of sources making data, and metadata, related to items of interest to humanities scholars available for use.</p>
+<p>Finding useful digital data for humanities research is still a challenge. Fortunately, there are a growing number of institutions making data and metadata of interest to humanities scholars available for use.</p>
 
-<p>For this workshop, we will be using data from the <a href="http://dp.la">Digital Public Library of America</a>, which is working to aggregate and make available data from cultural heritage institutions around the United States. We can take this data and use it to find items of interest and to find trends across the contributing organizations. </p>
+<p>For this workshop, we will use data from the <a href="http://dp.la">Digital Public Library of America</a>, which is working to aggregate and make available data from cultural heritage institutions across the United States. We can take this data and use it to find items of interest and trends across the contributing organizations. </p>
 
-<p>To do that, we first need to get a key from the DPLA so that we can gain access to the data. We will then interaction with the API through our browsers and examine just what this data looks like to think about the types of questions we can explore using it.</p>
+<p>To do that, we first need to get a key from the DPLA so that we can gain access to the data. We will then interact with the API through our browsers and examine just what this data looks like to think about the types of questions we can explore using it.</p>
 
 <h3 id="get-an-api-key">1. Get an API Key</h3>
 
-<p>Go to <a href="http://dp.la/info/developers/codex/">http://dp.la/info/developers/codex/</a>. This is the documentation for the dp.la API. Remember from our earlier conversation that an API is an interface that allows computer programs to talk to one another: if you format your request in a particular way, you will get back the data from the server in a particular data format without the surrounding HTML.</p>
+<p>Go to <a href="http://dp.la/info/developers/codex/">http://dp.la/info/developers/codex/</a>. This is the documentation for the DPLA API. Remember from our earlier conversation that an API is an interface that allows computer programs to talk to one another: if you format your request in a particular way, you will get back the data from the server in a particular data format without any surrounding HTML.</p>
 
 <p>First, you will need an API key. </p>
 
@@ -94,7 +94,7 @@
 </pre></td></tr></tbody></table>
 </div>
 
-<p>into your Powershell, replacing "YOUR_EMAIL@example.com" with your actual email address.</p>
+<p>into Powershell, replacing "YOUR_EMAIL@example.com" with your actual email address.</p>
 
 <p>You should get an email from the DPLA with your key. </p>
 
@@ -108,7 +108,9 @@
 </pre></td></tr></tbody></table>
 </div>
 
-<p>The first part of this url ("http://api.dp.la/v2/") is the "base" url. This must go at the beginning of all API requests. Next, we are telling the server that we want to see "items" and we want to see the items that match the keyword "cooking". The "?q=" is the grammar of the API – this is how we signal to the server that we want to query for the word following the "=". To see additional options for the API, go to <a href="http://dp.la/info/developers/codex/requests/">http://dp.la/info/developers/codex/requests/</a>.</p>
+<p>into Terminal, replacing "YOURAPIKEY" with the key just emailed to you.</p>
+
+<p>The first part of this URL ("http://api.dp.la/v2/") is the "base" URL. This must go at the beginning of all API requests. Next, we are telling the server that we want to see "items" and we want to see the items that match the keyword "cooking". The "?q=" is the grammar of the API – this is how we signal to the server that we want to query for the word following the "=". To see additional options for the API, go to <a href="http://dp.la/info/developers/codex/requests/">http://dp.la/info/developers/codex/requests/</a>.</p>
 
 <p>You should see something that looks like:</p>
 
@@ -118,7 +120,7 @@
 
 <p>Well done! You have just made a successful API request.</p>
 
-<p>Now try the same thing using a very handy Chrome extension called <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">JSONView</a>, which will make the output display like:</p>
+<p>Now try the same thing using a very handy Chrome extension called <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">JSONView</a>, which will make the output display look like this:</p>
 
 <div class="highlight json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -152,12 +154,11 @@
 
 <h3 id="thinking-about-json">3. Thinking about JSON</h3>
 
-<p>What you are looking at is a JSON document. In JSON, all the information is given in "key : value" pairs. On the left-hand side is the "key". This is a standardized description of bits of information, such as "provider" or "ingestData". On right-hand side is the "value", or the information that applies for a particular item. With your table, look at the JSON document in your browser and try to answer the following questions:</p>
+<p>What you are looking at is a JSON document. In JSON, all the information is given in "key : value" pairs. On the left-hand side is the "key". This is a standardized description of bits of information, such as "provider" or "ingestData". On the right-hand side is the "value", or the information that applies for a particular item. With your table, look at the JSON document in your browser and try to answer the following questions:</p>
 
 <ol>
-  <li>How many objects are displayed here? How do you know?</li>
+  <li>Look at the serach results: how many objects are displayed here? How do you know?</li>
   <li>How many objects in the DPLA database fit the query for cooking? </li>
-  <li>Which key:value pairs do you find the most interesting?</li>
   <li>What questions might you ask of this dataset? Which key:value pairs would be most helpful for answering those questions?</li>
   <li>What questions would be hard to answer with this dataset? What additional information would you need?</li>
 </ol>

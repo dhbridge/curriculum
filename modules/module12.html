@@ -93,39 +93,43 @@
 18
 19
 20
-21</pre></td><td class="code"><pre>import nltk
+21
+22</pre></td><td class="code"><pre># Import Libraries
+import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
+# Define Variables
 with open('text_results.txt') as file:
     cooking_text = file.read()
-# print cooking_text[0:20]
 
 cooking_tokens = word_tokenize(cooking_text)
-# print cooking_tokens[0:10]
-
 text = nltk.Text(cooking_tokens)
 
-#print text[:20]
-#print text.concordance('economy')
-#print text.collocations()
-
-# print text.similar('Pot')
-
+# Define Functions
 def normalize_text(text):
     # Work through all the words in text and filter
+
+# Make Function Calls
+#print cooking_text[0:20]
+#print cooking_tokens[0:10]
+#print text.concordance('economy')
+#print text.collocations()
+#print text.similar('Pot')
 </pre></td></tr></tbody></table>
 </div>
 
-<p>To work through the words, we can use a new 'for loop' and save all of the approved words into a new array. Create your new array above your 'normalize_text' function.</p>
+<p>To work through the words, we can use a new 'for loop' and save all of the approved words into a new array. Create your new array at the end of the 'Define Variables' section.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>word_set = []
+6
+7</pre></td><td class="code"><pre>word_set = []
 
+# Define Functions
 def normalize_text(text):
     # Work through all the words in text and filter
     for word in text:
@@ -141,8 +145,10 @@ def normalize_text(text):
 4
 5
 6
-7</pre></td><td class="code"><pre>word_set = []
+7
+8</pre></td><td class="code"><pre>word_set = []
 
+# Define Functions
 def normalize_text(text):
     # Work through all the words in text and filter
     for word in text:
@@ -165,19 +171,25 @@ def normalize_text(text):
 10
 11
 12
-13</pre></td><td class="code"><pre>import nltk
+13
+14
+15
+16</pre></td><td class="code"><pre># Import Libraries
+import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
+# Define Variables
 with open('text_results.txt') as file:
     cooking_text = file.read()
-# print cooking_text[0:20]
 
 cooking_tokens = word_tokenize(cooking_text)
-# print cooking_tokens[0:10]
+text = nltk.Text(cooking_tokens)
 
 # Load in Stopwords Library
 stopwords = stopwords.words('english')
+
+word_set = []
 </pre></td></tr></tbody></table>
 </div>
 
@@ -190,8 +202,10 @@ stopwords = stopwords.words('english')
 5
 6
 7
-8</pre></td><td class="code"><pre>word_set = []
+8
+9</pre></td><td class="code"><pre>word_set = []
 
+# Define Functions
 def normalize_text(text):
     # Work through all the words in text and filter
     for word in text:
@@ -212,8 +226,10 @@ def normalize_text(text):
 7
 8
 9
-10</pre></td><td class="code"><pre>word_set = []
+10
+11</pre></td><td class="code"><pre>word_set = []
 
+# Define Functions
 def normalize_text(text):
     # Work through all the words in text and filter
     for word in text:
@@ -236,7 +252,16 @@ def normalize_text(text):
 7
 8
 9
-10</pre></td><td class="code"><pre>def normalize_text(text):
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre># Define Functions
+def normalize_text(text):
     # Work through all the words in text and filter
     for word in text:
         # Check if word is a word, and not punctuation, AND check against stop words
@@ -244,6 +269,13 @@ def normalize_text(text):
             # If it passes the filters, save to word_set
             word_set.append(word.lower())
     return word_set
+
+# Make Function Calls
+#print cooking_text[0:20]
+#print cooking_tokens[0:10]
+#print text.concordance('economy')
+#print text.collocations()
+#print text.similar('Pot')
 
 normalize_text(text)
 </pre></td></tr></tbody></table>
@@ -286,28 +318,27 @@ normalize_text(text)
 29
 30
 31
-32</pre></td><td class="code"><pre>import nltk
+32
+33
+34
+35</pre></td><td class="code"><pre># Import Libraries
+import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
+# Define Variables
 with open('text_results.txt') as file:
     cooking_text = file.read()
-# print cooking_text[0:20]
 
 cooking_tokens = word_tokenize(cooking_text)
-# print cooking_tokens[0:10]
+text = nltk.Text(cooking_tokens)
 
 # Load in Stopwords Library
 stopwords = stopwords.words('english')
 
-text = nltk.Text(cooking_tokens)
+word_set = []
 
-#print text[:20]
-#print text.concordance('economy')
-#print text.collocations()
-
-# print text.similar('Pot')
-
+# Define Functions
 def normalize_text(text):
     # Work through all the words in text and filter
     for word in text:
@@ -316,6 +347,13 @@ def normalize_text(text):
             # If it passes the filters, save to word_set
             word_set.append(word.lower())
     return word_set
+
+# Make Function Calls
+#print cooking_text[0:20]
+#print cooking_tokens[0:10]
+#print text.concordance('economy')
+#print text.collocations()
+#print text.similar('Pot')
 
 normalize_text(text)
 </pre></td></tr></tbody></table>
@@ -329,23 +367,105 @@ normalize_text(text)
 
 <p>Now, we will use the Frequency Distribution library to get word counts. This may seem a bit like magic, and that is ok. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script.</p>
 
-<p>The first step is to create a new variable and use that to hold the results of calling the frequency distribution function. After <span>normalize_text(text)</span> add:</p>
+<p>The first step is to run the frequency distribution function and save the results to a variable to make them easier to use. After <span>normalize_text(text)</span> add:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>fd = FreqDist(word_set)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Frequency Distribution goes through all off the words in our array and create a dictionary that holds the word, and the number of times it occurs in our document.</p>
+<p>Frequency Distribution goes through all of the words in our array and creates a dictionary that holds the word, and the number of times it occurs in our document. </p>
 
-<p>To see the 50 most common words, add to the bottom of the file:</p>
+<p>To see the 50 most common words, add to the bottom of the 'Make Function Calls' section:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print fd.most_common(50)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>to your script and run. You should start to see some magic happening in the termainal.</p>
+<p>Your file should look like:</p>
 
-<p>You can also see the words that only occur once by adding to the bottom of the file:</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></td><td class="code"><pre># Import Libraries
+import nltk
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+from nltk.probability import *
+
+# Define Variables
+with open('text_results.txt') as file:
+    cooking_text = file.read()
+
+cooking_tokens = word_tokenize(cooking_text)
+text = nltk.Text(cooking_tokens)
+
+# Load in Stopwords Library
+stopwords = stopwords.words('english')
+
+word_set = []
+
+# Define Functions
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation, AND check against stop words
+        if word.isalpha() and word.lower() not in stopwords:
+            # If it passes the filters, save to word_set
+            word_set.append(word.lower())
+    return word_set
+
+# Make Function Calls
+#print cooking_text[0:20]
+#print cooking_tokens[0:10]
+#print text.concordance('economy')
+#print text.collocations()
+#print text.similar('Pot')
+
+normalize_text(text)
+
+fd = FreqDist(word_set) 
+print fd.most_common(50)
+</pre></td></tr></tbody></table>
+</div>
+
+<p>Save your script and run. You should start to see some magic happening in the termainal.</p>
+
+<p>You can also see the words that only occur once by adding to the bottom of the 'Make Function Calls' section:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print fd.hapaxes()
 </pre></td></tr></tbody></table>
@@ -360,10 +480,6 @@ normalize_text(text)
 </div>
 
 <p>You can comment out print statements along the way if you are seeing too much information. Save your script and run it in the terminal.</p>
-
-<h3 id="bonus-challenge">Bonus Challenge</h3>
-
-<p>You can also use "stemming" to combine multipe forms of the same word, such as "photograph" and "photographs". Can you use the <a href="http://www.nltk.org/api/nltk.stem.html">NLTK documentation</a> to add another filter that stems the words before adding them to 'word_set'?</p>
 
 <p><span class="left"><a href="module11.html">Previous Module</a></span>
 <span class="right"><a href="module13.html">Next Module</a></span></p>

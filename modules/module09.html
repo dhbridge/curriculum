@@ -68,7 +68,7 @@
 
 <h3 id="saving-our-search-results">Saving our Search Results</h3>
 
-<p>In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable, add:</p>
+<p>In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable in the 'Define Variables' section, add:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>f = open("search_results.json", "w")
 </pre></td></tr></tbody></table>
@@ -101,17 +101,18 @@
 23
 24
 25
-26</pre></td><td class="code"><pre>from dpla.api import DPLA
+26
+27</pre></td><td class="code"><pre># Load Libraries
+from dpla.api import DPLA
 
+# Set Variables
 dpla = DPLA('Your-Key-Here')
-
-# result = dpla.search('cooking')
-# print result.items[1]
-
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 all_records = []
 
 f = open("search_results.json", "w")
 
+# Define Functions
 def pull_records(pages, end, size):
 	while(pages &lt;= end):
 		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
@@ -124,9 +125,10 @@ def save_each(n):
 	for each in n.items:
 		all_records.append(each)
 
+# Make Function Calls
+# print result.items[1]
 pull_records(2, 5, 50)
-
-print all_records[150]
+print all_records[150]	
 </pre></td></tr></tbody></table>
 </div>
 
@@ -160,18 +162,17 @@ print all_records[150]
 24
 25
 26
-27</pre></td><td class="code"><pre>from dpla.api import DPLA
+27</pre></td><td class="code"><pre># Load Libraries
+from dpla.api import DPLA
 import json
 
+# Set Variables
 dpla = DPLA('Your-Key-Here')
-
-# result = dpla.search('cooking')
-# print result.items[1]
-
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 all_records = []
-
 f = open("search_results.json", "w")
 
+# Define Functions
 def pull_records(pages, end, size):
 	while(pages &lt;= end):
 		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
@@ -184,13 +185,14 @@ def save_each(n):
 	for each in n.items:
 		all_records.append(each)
 
+# Make Function Calls
+# print result.items[1]
 pull_records(2, 5, 50)
-
 print all_records[150]
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'pull_records' function.</p>
+<p>Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'save_each' function.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -202,7 +204,7 @@ print all_records[150]
 </pre></td></tr></tbody></table>
 </div>
 
-<p>What did this function do? First, we are creating a variable called "data" which we made using json.dumps, which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.</p>
+<p>What did this function do? First, we are creating a variable called "data" which we made using "json.dumps", which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.</p>
 
 <h3 id="calling-the-write-function">Calling the "Write" Function</h3>
 
@@ -246,19 +248,17 @@ print all_records[150]
 30
 31
 32
-33
-34</pre></td><td class="code"><pre>from dpla.api import DPLA
+33</pre></td><td class="code"><pre># Load Libraries
+from dpla.api import DPLA
 import json
 
+# Set Variables
 dpla = DPLA('Your-Key-Here')
-
-# result = dpla.search('cooking')
-# print result.items[1]
-
+# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 all_records = []
-
 f = open("search_results.json", "w")
 
+# Define Functions
 def pull_records(pages, end, size):
 	while(pages &lt;= end):
 		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
@@ -276,15 +276,15 @@ def save_results():
 	f.write(data)
 	f.close
 
+# Make Function Calls
+# print result.items[1]
 pull_records(2, 5, 50)
-
 print all_records[150]
-
 save_results()
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Test that everything is working by running your "my_first_script.py" in terminal.</p>
+<p>Test that everything is working by running your "my_first_script.py" in Terminal.</p>
 
 <p>Open your new "search_results.json" file and check that 200 items made it in. Close the file once you're done.</p>
 
@@ -294,7 +294,7 @@ save_results()
 
 <p>Finally, let's change the parameters we pass to the "pull_records" function to get all of the search results.</p>
 
-<p>Remember, the first number we pass to "pull_records" corresponds to the first page of search results, the second number to the last page of search results, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take '500' for our third variable. We also want to start with the first page, so '1' is our first variable.</p>
+<p>Remember, the first number we pass to "pull_records" corresponds to the first page of search results, the second number to the last page of search results, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take "500" for our third variable. We also want to start with the first page, so "1" is our first variable.</p>
 
 <p>To figure out the value we want for "end", we need to do a little math. If we have 10,909 items and can get 500 items a page, how many pages do we have to work through?</p>
 
@@ -310,7 +310,7 @@ save_results()
 
 <h3 id="bonus-challege-if-that-felt-too-easy">Bonus Challege (if that felt too easy…)</h3>
 
-<p>Can you write a function that determines the total number of pages from the search results?</p>
+<p>Can you write a function that determines the total number of pages from the search results, given a particular number of items per page?</p>
 
 <p><span class="left"><a href="module09.html">Previous Module</a></span>
 <span class="right"><a href="module10.html">Next Module</a></span></p>
