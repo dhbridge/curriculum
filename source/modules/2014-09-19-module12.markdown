@@ -21,9 +21,9 @@ Open your 'text_mining.py' file. First, comment out <span class="command">print 
     from nltk.corpus import stopwords
     from nltk import word_tokenize
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -67,9 +67,9 @@ Next, let's check the word against the NLTK collection of stopwords. First, let'
     from nltk.corpus import stopwords
     from nltk import word_tokenize
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -137,9 +137,9 @@ Our python file should now look like this:
     from nltk.corpus import stopwords
     from nltk import word_tokenize
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -180,9 +180,9 @@ The first step is to run the frequency distribution function and save the result
 
 Frequency Distribution goes through all of the words in our array and creates a dictionary that holds the word, and the number of times it occurs in our document. 
 
-To see the 50 most common words, add to the bottom of the 'Make Function Calls' section:
+To see the 200 most common words, add to the bottom of the 'Make Function Calls' section:
 
-    print fd.most_common(50)
+    print fd.most_common(200)
 
 Your file should look like:
 
@@ -192,9 +192,9 @@ Your file should look like:
     from nltk import word_tokenize
     from nltk.probability import *
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -224,15 +224,9 @@ Your file should look like:
     normalize_text(text)
 
     fd = FreqDist(word_set) 
-    print fd.most_common(50)
+    print fd.most_common(200)
 
 Save your script and run. You should start to see some magic happening in the termainal.
-
-You can also see the words that only occur once by adding to the bottom of the 'Make Function Calls' section:
-
-    print fd.hapaxes()
-
-and running the 'text_mining.py' script.
 
 And, for some super magic, you can also generate a plot with:
 

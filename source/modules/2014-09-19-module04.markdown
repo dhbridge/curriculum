@@ -14,24 +14,23 @@ Now that we've learned to make a simple request using the DPyLA library, let's s
 
 Open up the [documentation for the DPyLA library](https://github.com/bibliotechy/DPyLA) and for the [DPLA API](http://dp.la/info/developers/codex/requests/).
 
-First, let's get some contextual data about the search results. Run <span class="command">result.count</span>. This tells you how many total items fit the search term. 
+First, let's get some contextual data about the search results. In the Python Interactive Shell, run <span class="command">result.count</span>. This tells you how many total items fit the search term. 
 
 Now run <span class="command">result.limit</span>. This tells you how many results the API returned. By default, the API will give you 10 results at a time. Look at the DPyLA documentation and try to construct a request that gets you 50 results.
 
 You can also limit your search results with a variety of variables. 
 
-For example, you can sort by geography:
+For example, you can be more specific with your search, such as limiting your query to cooking in the title of an item. 
 
-	result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
+    result = dpla.search("cooking", fields=["sourceResource.title", "sourceResource.date", "sourceResource.spatial"])
 
 To see your updated search results, run:
 
     result.items[0:3]
 
+You can also sort by geography:
 
-You can also be more specific with your search, such as limiting your query to cooking in the title of an item. 
-
-	result = dpla.search("cooking", fields=["sourceResource.title"])
+	result = dpla.search("cooking", fields=["sourceResource.title", "sourceResource.date", "sourceResource.spatial"], spatial_facet=[37.7577,-122.4376])
 
 To see the results, run:
 

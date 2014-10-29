@@ -75,7 +75,7 @@ Let's add a "print" statement to our function and test out the first stage of th
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
 		print paged_search.items[2]
 
-Now to run the function, we will call the function name and give it values. On a new line and outside of the function, add the line:
+Now to run the function, we will call the function name and give it values. On a new line in the 'Make Function Calls' section, add the line:
 
 	# Make Function Calls
 	# print result.items[1]
@@ -133,7 +133,7 @@ To add the item to the "all_records" array, we use the "append" command:
 			# do something to every item in the list of items
 			all_records.append(each)
 
-"append" grabs the value of "each" and adds it to the series we are saving as a list.
+"Append" grabs the value of "each" and adds it to the series we are saving as a list.
 
 Now we can use this function in our "pull records" function. Currently, our "pull records" function looks as follows:
 

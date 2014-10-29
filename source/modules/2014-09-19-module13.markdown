@@ -17,9 +17,9 @@ Currently our script should look something like this:
     from nltk import word_tokenize
     from nltk.probability import *
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt, 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -49,7 +49,7 @@ Currently our script should look something like this:
     normalize_text(text)
 
     fd = FreqDist(word_set)
-    print fd.most_common(50)
+    print fd.most_common(200)
     print fd.hapaxes()
     fd.plot(50,cumulative=False)
 
@@ -64,16 +64,16 @@ To create CSV files, we need to import the csv library, which is preinstalled, b
    
 Now, we can create our CSV file right after the line where we opened the json file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.
     
-    # Define Variables
-    with open("search_results.json") as json_file:
-        json_data = json.load(json_file)
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
-    file = csv.writer(open("word_frequencies.csv", "w"))
+    file = csv.writer(open("word_frequencies.csv", "wb"))
 
 
-Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file.
+Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. Be sure to comment out <span class='command'>fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.
 
-    for key, count in fd.most_common(50):
+    for key, count in fd.most_common(200):
         file.writerow([key, count])
 
 The final product should look like this:
@@ -83,11 +83,10 @@ The final product should look like this:
     from nltk.corpus import stopwords
     from nltk import word_tokenize
     from nltk.probability import *
-    import csv
 
-    # Define Variables
-    with open("search_results.json") as json_file:
-        json_data = json.load(json_file)
+    # Set Variables
+    with open('text_results.txt, 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     file = csv.writer(open("word_frequencies.csv", "w"))
 
@@ -119,12 +118,12 @@ The final product should look like this:
     normalize_text(text)
 
     fd = FreqDist(word_set)
-    print fd.most_common(50)
-    print fd.hapaxes()
-    fd.plot(50,cumulative=False)
+    print fd.most_common(200)
+    #print fd.hapaxes()
+    #fd.plot(50,cumulative=False)
 
     # Print results to a CSV file
-    for key, count in fd.most_common(50):
+    for key, count in fd.most_common(200):
         file.writerow([key, count])
 
 You can open your csv file using terminal by typing or by looking within your dhb_awesome directory:

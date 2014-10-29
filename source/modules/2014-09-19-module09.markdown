@@ -53,30 +53,6 @@ Python has libraries for working with JSON, but because these are more specializ
 	from dpla.api import DPLA
 	import json
 
-	# Set Variables
-	dpla = DPLA('Your-Key-Here')
-	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-	all_records = []
-	f = open("search_results.json", "w")
-
-	# Define Functions
-	def pull_records(pages, end, size):
-		while(pages <= end):
-			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-			# print paged_search.items[2]
-			save_each(paged_search)
-			print "finished page " + str(pages)
-			pages = pages + 1
-
-	def save_each(n):
-		for each in n.items:
-			all_records.append(each)
-
-	# Make Function Calls
-	# print result.items[1]
-	pull_records(2, 5, 50)
-	print all_records[150]
-
 Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'save_each' function.
 
 	def save_results():

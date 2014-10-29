@@ -16,6 +16,8 @@ To install NLTK, let's go back to our terminal and use pip.
 
 Run <span class = "command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.
 
+We also need to install 
+
 Now, go back to your file and import nltk at the top of the file.
 
 There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/). 
@@ -36,7 +38,20 @@ Once you see
     True
     >>>
 
-you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span>
+you have successfully downloaded the stopwords file. 
+
+You will also need to download a tokenizing library. Still in the Python shell, run
+
+    nltk.download('punkt')
+
+Again, once you see
+
+    True
+    >>>
+
+the download is complete.
+
+You can now exit the Python Interactive Shell using <span class="command">quit()</span>
 
 ### Let's start text mining
 
@@ -64,9 +79,9 @@ Let's start by importing the nltk library and the stopwords:
 
 Next let's load in our text file:
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
 We can display part of our text to make sure everything is loading correctly:
 
@@ -74,9 +89,9 @@ We can display part of our text to make sure everything is loading correctly:
     import nltk
     from nltk.corpus import stopwords
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     # Define Functions
 
@@ -97,9 +112,9 @@ Now let's comment out our print statement and transform our sentences into token
     from nltk.corpus import stopwords
     from nltk import word_tokenize
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     cooking_tokens = word_tokenize(cooking_text)
 
@@ -122,9 +137,9 @@ Your file should now look like this:
     from nltk.corpus import stopwords
     from nltk import word_tokenize
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -146,9 +161,9 @@ Save and run your script.
 
 Pretty cool! Now try changing 'cooking' to 'economics':
 
-    print text.concordance('cooking')
+    print text.concordance('economics')
 
-Try some other words to get a sense of the word usage in the 'text_results' file.
+Try some other words to get a sense of the word usage in the 'text_results' file. You can either replace the word, or add additional print statements.
 
 Another useful command is 'collocation'. This shows us all the words that tend to appear together throughout the corpus.
 
@@ -173,9 +188,9 @@ Your script should now look like:
     from nltk.corpus import stopwords
     from nltk import word_tokenize
 
-    # Define Variables
-    with open('text_results.txt') as file:
-        cooking_text = file.read()
+    # Set Variables
+    with open('text_results.txt', 'r') as file:
+        cooking_text = file.read().decode('utf8')
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
