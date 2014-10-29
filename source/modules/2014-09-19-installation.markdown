@@ -26,7 +26,7 @@ You might also want to bring:
 You will be installing or checking the status of the following tools:
 
 - Python
-- Pip
+- `pip`
 - Text Editor
 
 
@@ -70,15 +70,15 @@ You are now in the Python Shell. This is an interactive environment that allows 
 
 Exit the Python Shell by typing <span class="command">quit()</span> and pressing "Enter".
 
-#### 3. Install Pip
+#### 3. Install `pip`
 
-One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.
+One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. `pip` is a tool that helps us install and use those packages of code.
 
-To download Pip, we are going to use another tool called cURL, which is already part of your operating system. cURL allows us to transfer data using the command line.
+To download `pip`, we are going to use another tool called cURL, which is already part of your operating system. cURL allows us to transfer data using the command line.
 
 Type <span class="command">curl -O https://bootstrap.pypa.io/get-pip.py</span> and press "Enter". This will download a file titled "get-pip.py" onto your machine.
 
-To install Pip, you need to run that file with Python. To do that, type <span class="command">python get-pip.py</span> into Terminal and press "Enter". 
+To install `pip`, you need to run that file with Python. To do that, type <span class="command">python get-pip.py</span> into Terminal and press "Enter". 
 
 If Terminal turns red and you get errors that say <span class="command"> OSError: [Errno 13] Permission denied</span>, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give Python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the Python command.
 
@@ -135,11 +135,11 @@ You are now in the Python Shell. This is an interactive environment that allows 
 To exit the Python Shell, type <span class="command">quit()</span> and press "Enter".
 
 
-#### 3. Install Pip
+#### 3. Install `pip`
 
-One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. Pip is a tool that helps us install and use those packages of code.
+One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. `pip` is a tool that helps us install and use those packages of code.
 
-The easiest way to install Pip is through the use of a Python program called get-pip.py. 
+The easiest way to install `pip` is through the use of a Python program called get-pip.py. 
 
 First, make a new directory "envs" at your root level:
 
@@ -166,5 +166,5 @@ Next, close and re-open PowerShell.
 To test, run <span class="command">pip</span> in PowerShell.
 
 ### Credits
-These instructions are modifications of the Python installation instruction at [_Learn Python the Hard Way_](http://learnpythonthehardway.org/book/ex0.html) and Fred Gibb's [tutorial on installing Pip](http://fredgibbs.net/tutorials/tutorial/install-python-modules/) as well as the [InstallFest docs of RailsBridge](http://docs.railsbridge.org/installfest/).
+These instructions are modifications of the Python installation instruction at [_Learn Python the Hard Way_](http://learnpythonthehardway.org/book/ex0.html) and Fred Gibb's [tutorial on installing `pip`](http://fredgibbs.net/tutorials/tutorial/install-python-modules/) as well as the [InstallFest docs of RailsBridge](http://docs.railsbridge.org/installfest/).
 

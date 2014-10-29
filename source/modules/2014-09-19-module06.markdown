@@ -9,7 +9,7 @@ In this module we will learn:
 2. To create an empty list
 3. To comment-out code that we don't want to run, but want to keep
 
-It is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language, and used it to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about how we can combine libraries to create new programs. 
+It is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language, and used it to execute a few commands. We have also learned how to use `pip` to add additional libraries to Python, and thought about how we can combine libraries to create new programs. 
 
 We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA API and learned how to leverage libraries like DPyLA to use the API in our code. Finally, we saved our code in a Python file that we learned how to execute in the terminal.
 

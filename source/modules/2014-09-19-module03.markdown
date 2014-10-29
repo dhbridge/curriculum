@@ -5,14 +5,14 @@ date: 2014-09-19
 
 In this module, you will learn:
 
-1. To install new libraries using Pip
+1. To install new libraries using `pip`
 2. To use the Python Interactive Shell to run basic Python commands
 3. To load the DPyLA library and make an API request
 
 So far, we have looked at the data in our browser and have a sense of the scope of the information we can work with and the questions we might want to ask.  
 
 
-In this module, we will use Pip to install the DPyLA Python library, which will make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.
+In this module, we will use `pip` to install the DPyLA Python library, which will make it easy to use the DPLA API on our machines. We will also begin writing our first lines of Python to interact with that data using the Python Interactive Shell.
 
 ### 1. Install DPyLA Library
 
@@ -20,7 +20,7 @@ We talked earlier about libraries, those bundles of code that we can load and us
 
 The [DPyLA](https://github.com/bibliotechy/DPyLA) library makes it easy to work with the DPLA API.
 
-We can easily get this library for use with our own code using Pip.
+We can easily get this library for use with our own code using `pip`.
 
 Type <span class="command">pip install dpla</span>. 
 
