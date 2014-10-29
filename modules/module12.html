@@ -100,8 +100,8 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 
 # Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
 text = nltk.Text(cooking_tokens)
@@ -180,8 +180,8 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 
 # Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
 text = nltk.Text(cooking_tokens)
@@ -327,8 +327,8 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 
 # Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
 text = nltk.Text(cooking_tokens)
@@ -428,8 +428,8 @@ from nltk import word_tokenize
 from nltk.probability import *
 
 # Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
 text = nltk.Text(cooking_tokens)

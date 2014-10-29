@@ -101,7 +101,25 @@ Type "help", "copyright", "credits" or "license" for more information.
 </pre></td></tr></tbody></table>
 </div>
 
-<p>you have successfully downloaded the stopwords file. You can now exit the Python Interactive Shell using <span class="command">quit()</span></p>
+<p>you have successfully downloaded the stopwords file. </p>
+
+<p>You will also need to download a tokenizing library. Still in the Python shell, run</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>nltk.download('punkt')
+</pre></td></tr></tbody></table>
+</div>
+
+<p>Again, once you see</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>True
+&gt;&gt;&gt;
+</pre></td></tr></tbody></table>
+</div>
+
+<p>the download is complete.</p>
+
+<p>You can now exit the Python Interactive Shell using <span class="command">quit()</span></p>
 
 <h3 id="lets-start-text-mining">Let's start text mining</h3>
 
@@ -144,8 +162,8 @@ from nltk.corpus import stopwords
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre># Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 </pre></td></tr></tbody></table>
 </div>
 
@@ -167,8 +185,8 @@ import nltk
 from nltk.corpus import stopwords
 
 # Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 # Define Functions
 
@@ -207,8 +225,8 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 
 # Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
 
@@ -252,8 +270,8 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 
 # Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
 text = nltk.Text(cooking_tokens)
@@ -278,11 +296,11 @@ text = nltk.Text(cooking_tokens)
 
 <p>Pretty cool! Now try changing 'cooking' to 'economics':</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print text.concordance('cooking')
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print text.concordance('economics')
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Try some other words to get a sense of the word usage in the 'text_results' file.</p>
+<p>Try some other words to get a sense of the word usage in the 'text_results' file. You can either replace the word, or add additional print statements.</p>
 
 <p>Another useful command is 'collocation'. This shows us all the words that tend to appear together throughout the corpus.</p>
 
@@ -332,8 +350,8 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 
 # Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
 text = nltk.Text(cooking_tokens)

@@ -71,15 +71,15 @@
 
 <p>Open up the <a href="https://github.com/bibliotechy/DPyLA">documentation for the DPyLA library</a> and for the <a href="http://dp.la/info/developers/codex/requests/">DPLA API</a>.</p>
 
-<p>First, let's get some contextual data about the search results. Run <span class="command">result.count</span>. This tells you how many total items fit the search term. </p>
+<p>First, let's get some contextual data about the search results. In the Python Interactive Shell, run <span class="command">result.count</span>. This tells you how many total items fit the search term. </p>
 
 <p>Now run <span class="command">result.limit</span>. This tells you how many results the API returned. By default, the API will give you 10 results at a time. Look at the DPyLA documentation and try to construct a request that gets you 50 results.</p>
 
 <p>You can also limit your search results with a variety of variables. </p>
 
-<p>For example, you can sort by geography:</p>
+<p>For example, you can be more specific with your search, such as limiting your query to cooking in the title of an item. </p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search("cooking", spatial_facet=[37.7577,-122.4376])
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search("cooking", fields=["sourceResource.title", "sourceResource.date", "sourceResource.spatial"])
 </pre></td></tr></tbody></table>
 </div>
 
@@ -89,9 +89,9 @@
 </pre></td></tr></tbody></table>
 </div>
 
-<p>You can also be more specific with your search, such as limiting your query to cooking in the title of an item. </p>
+<p>You can also sort by geography:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search("cooking", fields=["sourceResource.title"])
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search("cooking", fields=["sourceResource.title", "sourceResource.date", "sourceResource.spatial"], spatial_facet=[37.7577,-122.4376])
 </pre></td></tr></tbody></table>
 </div>
 

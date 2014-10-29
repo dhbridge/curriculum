@@ -138,57 +138,9 @@ print all_records[150]
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27</pre></td><td class="code"><pre># Load Libraries
+3</pre></td><td class="code"><pre># Load Libraries
 from dpla.api import DPLA
 import json
-
-# Set Variables
-dpla = DPLA('Your-Key-Here')
-# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-all_records = []
-f = open("search_results.json", "w")
-
-# Define Functions
-def pull_records(pages, end, size):
-	while(pages &lt;= end):
-		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-		# print paged_search.items[2]
-		save_each(paged_search)
-		print "finished page " + str(pages)
-		pages = pages + 1
-
-def save_each(n):
-	for each in n.items:
-		all_records.append(each)
-
-# Make Function Calls
-# print result.items[1]
-pull_records(2, 5, 50)
-print all_records[150]
 </pre></td></tr></tbody></table>
 </div>
 

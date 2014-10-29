@@ -113,8 +113,8 @@ from nltk import word_tokenize
 from nltk.probability import *
 
 # Define Variables
-with open('text_results.txt') as file:
-    cooking_text = file.read()
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
 text = nltk.Text(cooking_tokens)
@@ -173,8 +173,8 @@ import csv
 3
 4
 5</pre></td><td class="code"><pre># Define Variables
-with open("search_results.json") as json_file:
-    json_data = json.load(json_file)
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 file = csv.writer(open("word_frequencies.csv", "w"))
 </pre></td></tr></tbody></table>
@@ -236,17 +236,15 @@ file = csv.writer(open("word_frequencies.csv", "w"))
 44
 45
 46
-47
-48</pre></td><td class="code"><pre># Import Libraries
+47</pre></td><td class="code"><pre># Import Libraries
 import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
-import csv
 
 # Define Variables
-with open("search_results.json") as json_file:
-    json_data = json.load(json_file)
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
 file = csv.writer(open("word_frequencies.csv", "w"))
 
