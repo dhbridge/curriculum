@@ -3,7 +3,7 @@ title: Write Python in Script Files
 date: 2014-09-19
 ---
 
-In this module, we will learn: 
+In this module, we will learn:
 
 1. To write and execute a Python script in the Terminal
 2. To organize our script files
@@ -15,7 +15,7 @@ In this module, we will look at how to save our Python scripts in a text file. W
 
 First, exit out of the Python Interactive Shell by running <span class="command">exit()</span>.
 
-You should still be in the folder we made at the beginning of the day. Check using <span class="command">pwd</span>. 
+You should still be in the folder we made at the beginning of the day. Check using <span class="command">pwd</span>.
 
 Now remember we created a file called "my_first_script.py"? Let's open that file again and remind ourselves of what we wrote.
 
@@ -43,9 +43,9 @@ Congratulations! You just executed your first Python script!
 
 Now let's recreate some of the work we did in the Interactive Shell in this script file.
 
-Delete <span class="command">print "Hello World"</span> so that you're working with a clean file. 
+Delete <span class="command">print "Hello World"</span> so that you're working with a clean file.
 
-First, at the beginning of a Python file you need to list the libraries that we will be using. The computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page. 
+First, at the beginning of a Python file you need to list the libraries that we will be using. The computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page.
 
 	from dpla.api import DPLA
 
@@ -65,19 +65,19 @@ Your file should look like this:
 	result = dpla.search('cooking')
 
 
-Save the file and go back to Terminal. Run: 
-	
+Save the file and go back to Terminal. Run:
+
 	python my_first_script.py
 
 You should notice that your computer works awhile and then returns to normal, but doesn't tell you anything about what it did. To see results, we can use the print function again.
 
-Open your script file again (<span class="command">open my_first_script.py</span>or <span class="command">Start notepad++ my_first_script.py</span>). 
+Open your script file again (<span class="command">open my_first_script.py</span>or <span class="command">Start notepad++ my_first_script.py</span>).
 
-Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong. 
+Print is a very useful tool for checking on your script as it moves through your commands. You can use "print" to make sure your query is returning what you wanted, that your code is parsing as you expect, and to identify where things go wrong.
 
 ### Group Challenge
 
-Work with your group to add another line to the file that uses the "print" function to display one item from your search. 
+Work with your group to add another line to the file that uses the "print" function to display one item from your search.
 
 Work with your table to add comments to the lines in 'my_first_script.py'
 
@@ -85,7 +85,7 @@ Work with your table to add comments to the lines in 'my_first_script.py'
 
 It is time to return to the pen and paper! Work with your group and your coach to talk about Python as a programming language and how it fits in the ecosystem of your computer.
 
-*Python 3 does require the use of () for print, making it more consistent with the Python sytax for functions.
+*Python 3 does require the use of () for print, making it more consistent with the Python syntax for functions.
 
 <span class="left">[Previous Module](module04.html)</span>
 <span class="right">[Next Module](module06.html)</span>
