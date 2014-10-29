@@ -99,8 +99,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -179,8 +179,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -326,8 +326,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -375,9 +375,9 @@ normalize_text(text)
 
 <p>Frequency Distribution goes through all of the words in our array and creates a dictionary that holds the word, and the number of times it occurs in our document. </p>
 
-<p>To see the 50 most common words, add to the bottom of the 'Make Function Calls' section:</p>
+<p>To see the 200 most common words, add to the bottom of the 'Make Function Calls' section:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print fd.most_common(50)
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print fd.most_common(200)
 </pre></td></tr></tbody></table>
 </div>
 
@@ -427,8 +427,8 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -459,19 +459,11 @@ def normalize_text(text):
 normalize_text(text)
 
 fd = FreqDist(word_set) 
-print fd.most_common(50)
+print fd.most_common(200)
 </pre></td></tr></tbody></table>
 </div>
 
 <p>Save your script and run. You should start to see some magic happening in the termainal.</p>
-
-<p>You can also see the words that only occur once by adding to the bottom of the 'Make Function Calls' section:</p>
-
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print fd.hapaxes()
-</pre></td></tr></tbody></table>
-</div>
-
-<p>and running the 'text_mining.py' script.</p>
 
 <p>And, for some super magic, you can also generate a plot with:</p>
 

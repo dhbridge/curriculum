@@ -73,6 +73,8 @@
 
 <p>Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.</p>
 
+<p>We also need to install </p>
+
 <p>Now, go back to your file and import nltk at the top of the file.</p>
 
 <p>There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
@@ -161,8 +163,8 @@ from nltk.corpus import stopwords
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre># Define Variables
-with open('text_results.txt, 'r') as file:
+3</pre></td><td class="code"><pre># Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 </pre></td></tr></tbody></table>
 </div>
@@ -184,8 +186,8 @@ with open('text_results.txt, 'r') as file:
 import nltk
 from nltk.corpus import stopwords
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 # Define Functions
@@ -224,8 +226,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -269,8 +271,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -349,8 +351,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)

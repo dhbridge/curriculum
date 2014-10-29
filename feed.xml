@@ -518,7 +518,7 @@ pull_records(2, 3, 50)
     <link rel="alternate" href="http://blog.url.com/modules/module12.html"/>
     <id>http://blog.url.com/modules/module12.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-28T20:55:42-04:00</updated>
+    <updated>2014-10-29T00:36:25-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -563,8 +563,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -643,8 +643,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -790,8 +790,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -839,9 +839,9 @@ normalize_text(text)
 
 &lt;p&gt;Frequency Distribution goes through all of the words in our array and creates a dictionary that holds the word, and the number of times it occurs in our document. &lt;/p&gt;
 
-&lt;p&gt;To see the 50 most common words, add to the bottom of the 'Make Function Calls' section:&lt;/p&gt;
+&lt;p&gt;To see the 200 most common words, add to the bottom of the 'Make Function Calls' section:&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print fd.most_common(50)
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print fd.most_common(200)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
@@ -891,8 +891,8 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -923,19 +923,11 @@ def normalize_text(text):
 normalize_text(text)
 
 fd = FreqDist(word_set) 
-print fd.most_common(50)
+print fd.most_common(200)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Save your script and run. You should start to see some magic happening in the termainal.&lt;/p&gt;
-
-&lt;p&gt;You can also see the words that only occur once by adding to the bottom of the 'Make Function Calls' section:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print fd.hapaxes()
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;and running the 'text_mining.py' script.&lt;/p&gt;
 
 &lt;p&gt;And, for some super magic, you can also generate a plot with:&lt;/p&gt;
 
@@ -954,7 +946,7 @@ print fd.most_common(50)
     <link rel="alternate" href="http://blog.url.com/modules/module11.html"/>
     <id>http://blog.url.com/modules/module11.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-28T20:50:44-04:00</updated>
+    <updated>2014-10-29T00:18:45-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -972,6 +964,8 @@ print fd.most_common(50)
 &lt;p&gt;To install NLTK, let's go back to our terminal and use pip.&lt;/p&gt;
 
 &lt;p&gt;Run &lt;span class="command"&gt;pip install nltk&lt;/span&gt;. You may need to use &lt;span class="command"&gt;sudo pip install nltk&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;We also need to install &lt;/p&gt;
 
 &lt;p&gt;Now, go back to your file and import nltk at the top of the file.&lt;/p&gt;
 
@@ -1061,8 +1055,8 @@ from nltk.corpus import stopwords
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Define Variables
-with open('text_results.txt, 'r') as file:
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -1084,8 +1078,8 @@ with open('text_results.txt, 'r') as file:
 import nltk
 from nltk.corpus import stopwords
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 # Define Functions
@@ -1124,8 +1118,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -1169,8 +1163,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -1249,8 +1243,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)

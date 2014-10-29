@@ -590,8 +590,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -670,8 +670,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -817,8 +817,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -866,9 +866,9 @@ normalize_text(text)
 
 <p>Frequency Distribution goes through all of the words in our array and creates a dictionary that holds the word, and the number of times it occurs in our document. </p>
 
-<p>To see the 50 most common words, add to the bottom of the 'Make Function Calls' section:</p>
+<p>To see the 200 most common words, add to the bottom of the 'Make Function Calls' section:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print fd.most_common(50)
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print fd.most_common(200)
 </pre></td></tr></tbody></table>
 </div>
 
@@ -918,8 +918,8 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -950,19 +950,11 @@ def normalize_text(text):
 normalize_text(text)
 
 fd = FreqDist(word_set) 
-print fd.most_common(50)
+print fd.most_common(200)
 </pre></td></tr></tbody></table>
 </div>
 
 <p>Save your script and run. You should start to see some magic happening in the termainal.</p>
-
-<p>You can also see the words that only occur once by adding to the bottom of the 'Make Function Calls' section:</p>
-
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print fd.hapaxes()
-</pre></td></tr></tbody></table>
-</div>
-
-<p>and running the 'text_mining.py' script.</p>
 
 <p>And, for some super magic, you can also generate a plot with:</p>
 
@@ -992,6 +984,8 @@ print fd.most_common(50)
 <p>To install NLTK, let's go back to our terminal and use pip.</p>
 
 <p>Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.</p>
+
+<p>We also need to install </p>
 
 <p>Now, go back to your file and import nltk at the top of the file.</p>
 
@@ -1081,8 +1075,8 @@ from nltk.corpus import stopwords
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre># Define Variables
-with open('text_results.txt, 'r') as file:
+3</pre></td><td class="code"><pre># Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 </pre></td></tr></tbody></table>
 </div>
@@ -1104,8 +1098,8 @@ with open('text_results.txt, 'r') as file:
 import nltk
 from nltk.corpus import stopwords
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 # Define Functions
@@ -1144,8 +1138,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -1189,8 +1183,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -1269,8 +1263,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 
-# Define Variables
-with open('text_results.txt, 'r') as file:
+# Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -2466,7 +2460,7 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
 
-# Define Variables
+# Set Variables
 with open('text_results.txt, 'r') as file:
     cooking_text = file.read().decode('utf8')
 
@@ -2498,7 +2492,7 @@ def normalize_text(text):
 normalize_text(text)
 
 fd = FreqDist(word_set)
-print fd.most_common(50)
+print fd.most_common(200)
 print fd.hapaxes()
 fd.plot(50,cumulative=False)
 </pre></td></tr></tbody></table>
@@ -2526,18 +2520,18 @@ import csv
 2
 3
 4
-5</pre></td><td class="code"><pre># Define Variables
-with open('text_results.txt, 'r') as file:
+5</pre></td><td class="code"><pre># Set Variables
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
-file = csv.writer(open("word_frequencies.csv", "w"))
+file = csv.writer(open("word_frequencies.csv", "wb"))
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file.</p>
+<p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. Be sure to comment out <span class="command">fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>for key, count in fd.most_common(50):
+2</pre></td><td class="code"><pre>for key, count in fd.most_common(200):
     file.writerow([key, count])
 </pre></td></tr></tbody></table>
 </div>
@@ -2596,7 +2590,7 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
 
-# Define Variables
+# Set Variables
 with open('text_results.txt, 'r') as file:
     cooking_text = file.read().decode('utf8')
 
@@ -2630,12 +2624,12 @@ def normalize_text(text):
 normalize_text(text)
 
 fd = FreqDist(word_set)
-print fd.most_common(50)
-print fd.hapaxes()
-fd.plot(50,cumulative=False)
+print fd.most_common(200)
+#print fd.hapaxes()
+#fd.plot(50,cumulative=False)
 
 # Print results to a CSV file
-for key, count in fd.most_common(50):
+for key, count in fd.most_common(200):
     file.writerow([key, count])
 </pre></td></tr></tbody></table>
 </div>
