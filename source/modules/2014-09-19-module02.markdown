@@ -76,8 +76,8 @@ Now try the same thing using a very handy Chrome extension called [JSONView](htt
 
 What you are looking at is a JSON document. In JSON, all the information is given in "key : value" pairs. On the left-hand side is the "key". This is a standardized description of bits of information, such as "provider" or "ingestData". On the right-hand side is the "value", or the information that applies for a particular item. With your table, look at the JSON document in your browser and try to answer the following questions:
 
-1. Look at the serach results: how many objects are displayed here? How do you know?
-2. How many objects in the DPLA database fit the query for cooking? 
+1. Look at the search results: how many objects are displayed here? How do you know?
+2. How many objects in the DPLA database fit the query for cooking?
 3. What questions might you ask of this dataset? Which key:value pairs would be most helpful for answering those questions?
 4. What questions would be hard to answer with this dataset? What additional information would you need?
 
