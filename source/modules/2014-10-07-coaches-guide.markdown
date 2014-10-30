@@ -87,10 +87,14 @@ If possible, please have participants pin the text editor and Chrome to their Do
 
 **Learning Checks:**
 
-1. After your group members have all created their "dhb_awesome" folder have them find where it lives on their computer through Finder/My Computer. Have them compare the directory path with what they did in Terminal to ensure they can see that they are creating files and folders on their local machine.   
+1. After your group members have all created their "dhb_awesome" folder have them find where it lives on their computer through Finder/My Computer. Also have them find their newly created "my_first_script.py" file. Have them compare the directory path with what they did in Terminal to ensure they can see that they are creating files and folders on their local machine.   
 
 ### Two
-Start with the DPLA interface in the browser and search for "cooking". Have your group read what's going on in the URL. Filter the number of items displayed using the GUI's filters. How did the URL change? What's the syntax?  
+
+**Module Goal:** to understand how computers talk to one another (through the syntax of API requests) and how computers display data (as a data dump vs. JSON).
+
+Beginning Activity: 
+Start with the DPLA interface in the browser and have your group search for "cooking". Have your group read what's going on in the URL. Filter the number of items displayed using the GUI's filters. How did the URL change? What's the syntax?  
 
 **Learning Checks:**
  
@@ -99,7 +103,8 @@ Start with the DPLA interface in the browser and search for "cooking". Have your
 
 
 ### Three
-Questions to keep in mind throughout the module:
+
+**Module Goal:** to understand the benefits of installing libraries via `pip`, and the relationship between the Python Interactive Shell and Terminal in the local machine.
 
 **Learning Checks:** 
 
@@ -107,7 +112,8 @@ Questions to keep in mind throughout the module:
 2. Terminology check: string, variable, array/list
 
 ### Four
-Questions to keep in mind throughout the module:
+
+**Module Goal:** to understand how to create targeted queries for data and generally the different kinds of questions that can be pursued/answered based on those queries.
 
 **Learning Checks:**
 
@@ -116,7 +122,9 @@ Questions to keep in mind throughout the module:
 
 ### Five
 
-**Learning Checks: programming languages and libraries**
+**Module Goal:** to understand how programming languages interact with computers and the basic function and purpose of libraries.
+
+**Learning Checks:**
 
 1. **Mapping Exercise #1:** have participants diagram the following, similar to the API exercise from earlier in the day:
 -High-level programming languages (like Python) enable you to write commands for your computer in something that approximates English. Those commands are then translated down to machine language, executed by the hardware, and the results are translated back to generate the desired output. Your computer is constantly processing commands from the applications on your machine in multiple programming languages. Just like those applications, you can use the terminal interface to send commands to your computer.
@@ -128,11 +136,15 @@ Questions to keep in mind throughout the module:
 
 ### Six
 
+**Module Goal:** how to begin focusing on the data relevant to the research questions at hand and selecting the relevant aspects to further pursue those questions.
+
 Before your group jumps into the code-heavy part of the module, start off with the quick review of how script files should be organized. There will also be a handout for participants to reference as they continue through the modules. Participants may be tempted to gloss over this part, but make sure they take the time to get the format down. 
 1. load libraries
 2. set variables to be used throughout the script
 3. define all functions
-4. calls/commands to execute the functions
+4. make calls/commands to execute the functions
+
+Optional Activity: have participants create their own mnemonic device for the above format (LSDM)
 
 Terminology related to functions: from now on the tutorials will heavily use new phrases to describe how the functions work in relation to the data. These phrases are part of programming vernacular, and so they're not jarring to participants, here are some basic definitions to maintain consistency:
 1. call: to execute 
@@ -142,7 +154,6 @@ Terminology related to functions: from now on the tutorials will heavily use new
 **Learning Checks:**
 1. Have a quick discussion about the merits of commenting out versus deleting lines
 2. Verify that participants understand setting variables and how they can hold lists (an empty list so far).
-2. Group challenge "for loop" exercise: check that the participants have a solid grasp on the function and purpose of a "for loop".
 
 ### Seven
 
@@ -164,7 +175,6 @@ Questions for the participants to discuss/keep in mind throughout the module:
 1. The value of working locally: writing the search results to a JSON file gives the flexibility for working with a large collection of files on a local machine without having to constantly hit the DPLA (or any other API servers) and to find patterns that we could not find using the online interface for the DPLA's holdings.
 2. When to use "append": writing inside a loop, which allows the comupter to add the information it grabs to the end of the file rather than overwriting what's there each time. 
 
-
 ### Ten
 Questions for the participants to discuss/keep in mind throughout the module: 
 1. Are there other data fields to include that would help address the research question? 
@@ -180,11 +190,11 @@ Questions for the participants to discuss/keep in mind throughout the module:
 Questions for the participants to discuss/keep in mind throughout the module:
 1. How is the script parsing the text data? 
 2. What are the benefits and limitations of breaking the data into chunks in this way?
-3. How would you speak to how you as the researcher have shaped this dataset?
+3. How would you speak to the ways you as the researcher have shaped this dataset to a colleague?
 
 **Learning Checks:** 
-1. Words, sentences, tokens: what is a token? 
-2. Collocations and concordances: what are they doing? what analytical value does each have for the research question at hand and for your own work? 
+1. Words and tokens: what is NLTK considering a "word"? what is a token? 
+2. Collocations, concordances, and "similar": what are they doing? what analytical value does each have for the research question at hand and for your own work? 
 
 ### Twelve
 Questions for the participants to discuss/keep in mind throughout the module: 
@@ -196,9 +206,13 @@ Questions for the participants to discuss/keep in mind throughout the module:
 2. Encourage participants to checkout the documentation for [NLTK](http://www.nltk.org/) to get a better sense of what else it can do.  
 
 ### Thirteen
+Questions for the participants to discuss/keep in mind throughout the module:
+1. What are the benefits of having the data in a CSV file?
+2. What else can you do with the data that's now in the CSV file? 
 
 **Learning Checks:**
 1. Have participants pull out their diagrams of Terminal, API, and programming languages and make any necessary revisions based on what they've learned throughout the day. 
+
 
 
 
