@@ -3,11 +3,10 @@ title: Functions and Loops
 date: 2014-09-19
 ---
 
-In this module, we will learn
+In this module, we will learn to:
 
-1. To create and call functions
-2. To create a "for loop"
-3. To "append" or add items to a list
+1. to create and call functions
+2. to create a "for loop" and "append" (add) items to a list
 
 We are now ready to start writing a function to gather all of the information we want from the DPLA.
 
