@@ -29,6 +29,7 @@ You will be installing or checking the status of the following tools:
 - `pip`
 - Text Editor
 
+Programming languages are very literal: if you tell it to do something that it cannot do, it just stops and gives you an error. So don't worry if you get an error message--it happens all the time, often over very small, correctable things. 
 
 ### A Note on Python Versions
 For this workshop, we will be using Python 2.7. This is for two reasons: first, using the default Python version enables us to teach basic programming concepts without the additional complexity of managing Python versions; and second, most of the existing tutorials for learning Python, including _The Programming Historian_ and _Learn Python the Hard Way_, still use 2.7. Starting with 2.7 will enable you to use these materials smoothly. We would like to also offer a Python3 version of this tutorial, so that those who wish to start with the newer syntax can do so.
