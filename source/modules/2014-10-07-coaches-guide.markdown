@@ -20,6 +20,7 @@ Coaches will need to:
 2. If a group is progressing quickly through the tutorials, have them explain back what the different lines of code are doing and/or complete the Bonus Challenges on the relevant tutorials. 
 3. There shouldn't be any copying/pasting of the code.
 4. Only 1 folder should be used for the entire workshop.
+5. Encourage participants to add their own commments in the script files along the way.
 5. Ask before taking over a participant's machine to demonstrate or fix a problem, and only do so if absolutely necessary. 
 6. To make things easy on everyone, the following terminology will be used consistently throughout the day:
 
