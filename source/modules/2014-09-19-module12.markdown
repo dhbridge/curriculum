@@ -6,7 +6,7 @@ date: 2014-09-19
 In this module we will learn to:
 
 1. normalize our text
-2. use the Frequency Distribution library to find pattern in our text 
+2. use the Frequency Distribution library to find patterna in our text 
 
 ### Normalizing the text
 
@@ -130,7 +130,7 @@ Well done! We're now ready to calculate word frequencies using the Frequency Dis
 
 ### Get Word Frequencies
 
-Our python file should now look like this: 
+Our Python file should now look like this: 
 
     # Import Libraries
     import nltk
