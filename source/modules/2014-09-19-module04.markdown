@@ -3,10 +3,10 @@ title: Working with the API
 date: 2014-09-19
 ---
 
-In this module, you will learn:
+In this module, you will learn to:
 
-1. To read API documentation to understand the possible queries
-2. To limit search results with different variables
+1. read API documentation to understand the possible queries
+2. limit search results with different variables
 
 Now that we've learned to make a simple request using the DPyLA library, let's spend some time exploring the different kinds of requests we can make. 
 
