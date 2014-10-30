@@ -1,0 +1,27 @@
+---
+title: Oh, the Place You'll Go!
+date: 2014-09-19
+---
+
+Congratulations! You have completed the tutorial!
+
+Your brain should feel exhausted and you might feel a bit disoriented. This is normal! We have introduced many new concepts and ways of thinking today, and it will take some time for it all to sink in.
+
+Bringing together humanities thinking and computational thinking is no easy challenge, but it can help generate some really interesting lines of inquiry. Once we think it terms of cycling through a dataset, we can start to form questions about patterns within a large set of examples, and even questions about models and systems. However, it is important to emphasize that these questions augment, rather than replace, more standard lines of humanities inquiry. Transforming our subject matter into data and processing it algorithmically is one 'reading' among many, one way of isolating those aspects of the material that we think are crucial for understanding the whole.
+
+This tutorial is only a starting point, and there are many resources out there for you to continue learning in the list below. These tutorials will help flesh out the concepts we touched on here, such as variables, functions, and loops, as well as introduce new and more complex concepts. What is most helpful, and what will help keep you motivated along the way, is asking big humanities questions that require thinking computationally about your material, that require you to create data from your materials and then using that data to find patterns and connections. 
+
+## Continue Learning
+
+### Online Tutorials
+
+- If you are interested in NLTK and want to learn some programming at the same time, the NLTK book offers an introduction to programming, Python, and language processing: [Natural Language Processing with Python](http://www.nltk.org/book/)
+
+- If you want to dive into programming and Python at a more abstract level, **Learn Python the Hard Way** is a useful resource: [Learn Python the Hard Way](http://learnpythonthehardway.org/book/)
+
+- If you are interested in tutorials for specific, humanities related, tasks, **The Programming Historian** is an excellent resource. It also offers an introductory series of tutorials for programming with Python: [The Programming Historian](http://programminghistorian.org/lessons/)
+
+### Workshops
+
+- [The Digital Humanities Summer Institute](http://dhsi.org/) offers courses on code, as well as on using software to work computationally with humanities data.
+
