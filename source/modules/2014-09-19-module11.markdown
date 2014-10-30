@@ -8,13 +8,15 @@ In this module we will:
 1. install NLTK library
 2. use NLTK to do see patterns in the text
 
-### Installing NLTK
+### 1. Installing NLTK
 
 We are interested in the language used in the three fields we singled out across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one powerful library we can use is the Natural Language ToolKit (or NLTK).
 
 To install NLTK, let's go back to our terminal and use `pip`.
 
 Run <span class = "command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.
+
+There are two more library we will need to make a very cool graph of our word frequencies. In terminal, run <span class="command">pip install -U numpy</span> and <span class="command">pip install matplotlib</span>. 
 
 There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/). 
 
@@ -96,9 +98,10 @@ Let's add a "print" command so we can display part of our text to make sure ever
 
 Save and run this script in Terminal. One thing to note here is that Python treats the text as a list of letters. 
 
-But we want to work with the words, so let's use a function called "tokenize" from the NLTK library. 
+But we want to work with the words, so let's use a function called "tokenize" from the NLTK library. What 'tokenize' does is go through our text and, using white space and punctuation marks, bundles the letters together into 'words'. When we started, the computer considered our text to be a string of letters; after tokenizing, the computer sees the text as a list of words. 
 
 After 'from nltk.corpus import stopwords' in the variables section, add:
+
     from nltk import word_tokenize
 
 Now let's comment out our print statement and transform our sentences into tokens using the 'word_tokenize' function. To see what has happened, let's also print the first 10 tokens.
