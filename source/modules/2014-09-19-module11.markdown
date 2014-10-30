@@ -3,6 +3,8 @@ title: Analyzing the Data (Part 1)
 date: 2014-09-19
 ---
 
+Up to this point, we have been focusing on molding the data we got back from the DPLA into different formats. First, we selected part of the data to save locally and looped through all of the search result 'pages' to get our large dataset. Then, because our question involved language use and text, we transformed the data again into a document of sorts. Now, we get to take the results of our hard work and start to interrogate our data.
+
 In this module we will:
 
 1. install NLTK library
@@ -15,8 +17,6 @@ We are interested in the language used in the three fields we singled out across
 To install NLTK, let's go back to our terminal and use `pip`.
 
 Run <span class = "command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.
-
-There are two more library we will need to make a very cool graph of our word frequencies. In terminal, run <span class="command">pip install -U numpy</span> and <span class="command">pip install matplotlib</span>. 
 
 There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/). 
 

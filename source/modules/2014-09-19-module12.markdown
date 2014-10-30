@@ -228,11 +228,17 @@ Your file should look like:
 
 Save your script and run. You should start to see some magic happening in the termainal.
 
-And, for some super magic, you can also generate a plot with:
+You can comment out print statements along the way if you are seeing too much information. Save your script and run it in the terminal.
+
+### Bonus Challenge
+
+For some super magic, you can also generate a plot of the most frequent words. You will need to install ``numpy`` with <span class="command">sudo pip install -U numpy</span> and ``matplotlib`` with <span class="command">sudo pip install matplotlib</span>. 
+
+Add to your script:
 
     fd.plot(50,cumulative=False)
 
-You can comment out print statements along the way if you are seeing too much information. Save your script and run it in the terminal.
+and run.
 
 
 <span class="left">[Previous Module](module11.html)</span>

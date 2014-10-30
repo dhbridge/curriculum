@@ -51,7 +51,6 @@ Currently our script should look something like this:
     fd = FreqDist(word_set)
     print fd.most_common(200)
     print fd.hapaxes()
-    fd.plot(50,cumulative=False)
 
 To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.
 
@@ -71,7 +70,7 @@ Now, we can create our CSV file right after the line where we opened the json fi
     file = csv.writer(open("word_frequencies.csv", "wb"))
 
 
-Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. Be sure to comment out <span class='command'>fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.
+Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. If you did the graphing challenge, be sure to comment out <span class='command'>fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.
 
     for key, count in fd.most_common(200):
         file.writerow([key, count])
