@@ -11,9 +11,9 @@ In this module, we will focus on writing the results of our functions to a text 
 
 ### Saving our Search Results
 
-In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable in the 'Define Variables' section, add:
+In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable in the "Define Variables" section, add:
 
-	f = open("search_results.json", "w")
+	f = open('search_results.json', 'w')
 
 Your file should now look like this:
 
@@ -25,7 +25,7 @@ Your file should now look like this:
 	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	all_records = []
 
-	f = open("search_results.json", "w")
+	f = open('search_results.json', 'w')
 
 	# Define Functions
 	def pull_records(pages, end, size):
@@ -33,7 +33,7 @@ Your file should now look like this:
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
 			# print paged_search.items[2]
 			save_each(paged_search)
-			print "finished page " + str(pages)
+			print 'finished page ' + str(pages)
 			pages = pages + 1
 
 	def save_each(n):
@@ -45,26 +45,26 @@ Your file should now look like this:
 	pull_records(2, 5, 50)
 	print all_records[150]	
 
-Here you are combining a function - open("search_results.json") - with the declaration of a variable. The "open" function both opens an existing file and  creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. 
+Here you are combining a function - open("search_results.json") - with the declaration of a variable. The "open" function both opens an existing file and creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a" instead. This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. 
 
-Python has libraries for working with JSON, but because these are more specialized libraries, they are not automatically loaded with Python. Since we need to write a JSON object, let's load that library into our file with <span class="command">import json</span>:
+Python has libraries for working with JSON, but because these are more specialized libraries, they are not automatically loaded into Python. Since we will be writing a JSON object, let's load that library into our file with <span class="command">import json</span>:
 
 	# Load Libraries
 	from dpla.api import DPLA
 	import json
 
-Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'save_each' function.
+Now that we have a file to write to, let's create a third function named "save_results" to write our search results to the file. Place this function after the "save_each" function.
 
 	def save_results():
 		data = json.dumps(all_records)
 		f.write(data)
 		f.close
 
-What did this function do? First, we are creating a variable called "data" which we made using "json.dumps", which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.
+Let's look at how this function works: first, it creates a variable called "data" which we made using "json.dumps", another function now available to us because we loaded the "json" library. Next, it takes the file variable from the first part of the module and writes all of the information contained in "data" to it. Then it closes the file.
 
 ### Calling the "Write" Function
 
-To run the "save_results" function, we can now call the function at the end of our file.
+To run the "save_results" function, call the function at the end of the file with: 
 
 	save_results()
 
@@ -78,7 +78,7 @@ Our file should now look like this:
 	dpla = DPLA('Your-Key-Here')
 	# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 	all_records = []
-	f = open("search_results.json", "w")
+	f = open('search_results.json', 'w')
 
 	# Define Functions
 	def pull_records(pages, end, size):
@@ -86,7 +86,7 @@ Our file should now look like this:
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
 			# print paged_search.items[2]
 			save_each(paged_search)
-			print "finished page " + str(pages)
+			print 'finished page ' + str(pages)
 			pages = pages + 1
 
 	def save_each(n):
@@ -124,11 +124,8 @@ Update your "pull_records" line to:
 
 Save and run your script. 
 
-Well done! You now have a local copy of all the data that we want to analyze! You have done a lot of work! Take a moment, refresh your brain with some coffee and sugar, and come back when you're ready for the last leg of the tutorial!
+Well done! You now have a local copy of all the data that we want to analyze! You have done a lot of work! Take a moment, refresh your brain with some coffee and sugar, and come back for the last leg of the tutorial!
 
-### Bonus Challege (if that felt too easy...)
-
-Can you write a function that determines the total number of pages from the search results, given a particular number of items per page?
 
 <span class="left">[Previous Module](module09.html)</span>
 <span class="right">[Next Module](module10.html)</span>
