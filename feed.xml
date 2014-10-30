@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/modules/coaches-guide.html"/>
     <id>http://blog.url.com/modules/coaches-guide.html</id>
     <published>2014-10-06T20:00:00-04:00</published>
-    <updated>2014-10-27T22:45:55-04:00</updated>
+    <updated>2014-10-30T09:01:14-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -22,7 +22,7 @@
 
 &lt;h3 id="goals-and-objectives"&gt;Goals and Objectives&lt;/h3&gt;
 
-&lt;p&gt;Coaches will: &lt;/p&gt;
+&lt;p&gt;Coaches will need to: &lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Be mindful of the obstacles that make it difficult for persons from underrepresented groups to learn to code, and be respectful of particpants' efforts to learn.&lt;/li&gt;
@@ -39,7 +39,6 @@
   &lt;li&gt;There shouldn't be any copying/pasting of the code.&lt;/li&gt;
   &lt;li&gt;Only 1 folder should be used for the entire workshop.&lt;/li&gt;
   &lt;li&gt;Ask before taking over a participant's machine to demonstrate or fix a problem, and only do so if absolutely necessary. &lt;/li&gt;
-  &lt;li&gt;There are "Learning Checks" for each module below. Each "Learning Check" is a question or activity to help make sure that participants aren't missing any of the concepts and terms introduced in each module.&lt;/li&gt;
   &lt;li&gt;To make things easy on everyone, the following terminology will be used consistently throughout the day:&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -48,36 +47,51 @@ Directories and Folders = Folders
 For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/content/comparing-common-windows-terms-with-mac-terms.html"&gt;http://www.dummies.com/how-to/content/comparing-common-windows-terms-with-mac-terms.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Capitalization is crucial in Windows, so if you see participants running into problems it's always a good idea to check the capitalization. &lt;/li&gt;
+  &lt;li&gt;Capitalization is crucial in Windows Powershell, so if you see participants running into problems it's always a good idea to check there. &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id="draft-full-day-schedule"&gt;Draft Full Day Schedule&lt;/h3&gt;
+&lt;h3 id="full-day-schedule"&gt;Full Day Schedule&lt;/h3&gt;
 
 &lt;p&gt;Note: some of the timeblocks may shift based on the progress of the participants.&lt;/p&gt;
 
-&lt;p&gt;9:30-10:20a&lt;/p&gt;
-
-&lt;p&gt;Welcome and Setting Up the Learning Environment: goals and objectives for the day, introductions within small groups.&lt;/p&gt;
-
-&lt;p&gt;Coaches' Project Demonstrations: current projects and problems&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;9:30-10:20a&lt;/strong&gt; Welcome and Setting Up the Learning Environment: goals and objectives for the day, introductions within small groups. Coaches' Project Demonstrations: current projects and problems&lt;/p&gt;
 
 &lt;p&gt;10 Minute Break&lt;/p&gt;
 
-&lt;p&gt;10:30-Noon: Modules 1-5&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;10:30-Noon:&lt;/strong&gt; Modules 1-5&lt;/p&gt;
 
 &lt;p&gt;LUNCH&lt;/p&gt;
 
-&lt;p&gt;1:00-2:30p: Modules 6 - 8&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1:00-2:30p:&lt;/strong&gt; Modules 6 - 8&lt;/p&gt;
 
 &lt;p&gt;10 Minute Break&lt;/p&gt;
 
-&lt;p&gt;2:40-4:00p: Modules 9 - 11&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2:40-4:00p:&lt;/strong&gt; Modules 9 - 11&lt;/p&gt;
 
-&lt;p&gt;4:00-5:00p: Modules 12 - 13&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4:00-5:00p:&lt;/strong&gt; Modules 12 - 13&lt;/p&gt;
 
-&lt;p&gt;5:00-5:30: Wrapup (recap the day and tips for continued learning)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5:00-5:30:&lt;/strong&gt; Wrapup (recap the day and tips for continued learning)&lt;/p&gt;
 
-&lt;p&gt;5:30: Decompressing and socializing&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5:30:&lt;/strong&gt; Decompressing and socializing&lt;/p&gt;
+
+&lt;h3 id="tutorial-modules"&gt;Tutorial Modules&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="#installation"&gt;Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#one"&gt;Module 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#two"&gt;Module 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#three"&gt;Module 3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#four"&gt;Module 4&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#five"&gt;Module 5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#six"&gt;Module 6&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#seven"&gt;Module 7&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#eight"&gt;Module 8&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#nine"&gt;Module 9&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#ten"&gt;Module 10&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#eleven"&gt;Module 11&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#twelve"&gt;Module 12&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#thirteen"&gt;Module 13&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id="installation"&gt;Installation&lt;/h3&gt;
 
@@ -85,367 +99,224 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 
 &lt;ol&gt;
   &lt;li&gt;Python 2.7&lt;/li&gt;
-  &lt;li&gt;Pip&lt;/li&gt;
-  &lt;li&gt;Text Editor: work with participants to set TextWrangler as the default text editor for Mac users. It's not an issue for Windows users because the commands specify Notepad++ each time. &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;pip&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Text Editor: work with participants to set TextWrangler as the default text editor for Mac users. It's not an issue for Windows users because the commands specify starting Notepad++ each time. &lt;/li&gt;
   &lt;li&gt;Chrome browser&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;If possible, please have participants pin the text editor and Chrome to their Dock (Mac)/Taskbar (Windows), or at least have them easily accessible. &lt;/p&gt;
 
-&lt;h3 id="module-1-to-be-done-with-full-group"&gt;Module 1 (to be done with full group)&lt;/h3&gt;
+&lt;h3 id="one"&gt;One&lt;/h3&gt;
 
-&lt;p&gt;Learning Checks:&lt;/p&gt;
+&lt;p&gt;(To be done with the full group)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;After your group members have all created their folder "dhb_awesome" have them find the folder through Finder/My Computer. Have them compare the directory path with what they did in Terminal to ensure they can see that they are creating files and folders on their local machine.   &lt;/li&gt;
+  &lt;li&gt;After your group members have all created their "dhb_awesome" folder have them find where it lives on their computer through Finder/My Computer. Have them compare the directory path with what they did in Terminal to ensure they can see that they are creating files and folders on their local machine.   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id="module-2"&gt;Module 2&lt;/h3&gt;
+&lt;h3 id="two"&gt;Two&lt;/h3&gt;
+&lt;p&gt;Start with the DPLA interface in the browser and search for "cooking". Have your group read what's going on in the URL. Filter the number of items displayed using the GUI's filters. How did the URL change? What's the syntax?  &lt;/p&gt;
 
-&lt;p&gt;Start with the DPLA interface in the browser and search for "cooking". Have group read what's going on in the URL. Filter number of items displayed. How did the URL change? What's the syntax?  &lt;/p&gt;
-
-&lt;p&gt;Learning Checks:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Have them talk through the API request URL to reinforce understanding of the structure of the request.&lt;/li&gt;
   &lt;li&gt;Review how JSON stores data items as objects and how it displays those objects.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id="module-3"&gt;Module 3&lt;/h3&gt;
+&lt;h3 id="three"&gt;Three&lt;/h3&gt;
+&lt;p&gt;Questions to keep in mind throughout the module:&lt;/p&gt;
 
-&lt;p&gt;Learning Checks: &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt; &lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Make sure participants are clear on difference between Python Interactive Shell and Terminal.&lt;/li&gt;
   &lt;li&gt;Terminology check: string, variable, array/list&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id="module-4"&gt;Module 4&lt;/h3&gt;
+&lt;h3 id="four"&gt;Four&lt;/h3&gt;
+&lt;p&gt;Questions to keep in mind throughout the module:&lt;/p&gt;
 
-&lt;p&gt;Learning Checks:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Constructing additional queries: highlight the questions that would motivate the choice of different commands and filtering of results.&lt;/li&gt;
   &lt;li&gt;See if there are any general questions about APIs and the documentation used in the module. &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id="module-5"&gt;Module 5&lt;/h3&gt;
+&lt;h3 id="five"&gt;Five&lt;/h3&gt;
 
-&lt;p&gt;Learning Checks: programming languages and libraries&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Mapping Exercise #1: have participants diagram the following, similar to the API exercise from earlier in the day:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;-High-level programming languages (like Python) enable you to write commands for your computer in something that approximates English. Those commands are then translated down to machine language, executed by the hardware, and the results are translated back to generate the desired output. Your computer is constantly processing commands from the applications on your machine in multiple programming languages. Just like those applications, you can use the terminal interface to send commands to your computer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Learning Checks: programming languages and libraries&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Discuss everyone's diagrams and make sure the concepts are clear.&lt;/li&gt;
-  &lt;li&gt;Mapping Exercise #2: have participants diagram the following, similar to the API exercise from earlier in the day:&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Mapping Exercise #1:&lt;/strong&gt; have participants diagram the following, similar to the API exercise from earlier in the day:
+-High-level programming languages (like Python) enable you to write commands for your computer in something that approximates English. Those commands are then translated down to machine language, executed by the hardware, and the results are translated back to generate the desired output. Your computer is constantly processing commands from the applications on your machine in multiple programming languages. Just like those applications, you can use the terminal interface to send commands to your computer.
+-Discuss everyone's diagrams and make sure the concepts are clear.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Mapping Exercise #2:&lt;/strong&gt; have participants diagram the following, similar to the API exercise from earlier in the day:
+-A Python module or library is a bundle of code, including variables and functions (defined processes), that does a particular task. Many Python modules already exist out in the world, ready to be used, and new ones are developed by programmers all the time. Python scripts, which combine these modules with additional python commands, give the computer new, and more complicated, tasks that can be completed.
+-Discuss everyone's diagrams and make sure the concepts are clear.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;-A Python module or library is a bundle of code, including variables and functions (defined processes), that does a particular task. Many Python modules already exist out in the world, ready to be used, and new ones are developed by programmers all the time. Python scripts, which combine these modules with additional python commands, give the computer new, and more complicated, tasks that can be completed.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Discuss everyone's diagrams and make sure the concepts are clear.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id="module-6"&gt;Module 6&lt;/h3&gt;
+&lt;h3 id="six"&gt;Six&lt;/h3&gt;
 
 &lt;p&gt;Before your group jumps into the code-heavy part of the module, start off with the quick review of how script files should be organized. There will also be a handout for participants to reference as they continue through the modules. Participants may be tempted to gloss over this part, but make sure they take the time to get the format down. 
-1. libraries to import
-2. variables to be used throughout the script
-3. functions
+1. load libraries
+2. set variables to be used throughout the script
+3. define all functions
 4. calls/commands to execute the functions&lt;/p&gt;
 
-&lt;p&gt;Terminology related to functions: from now on the tutorials will use new phrases to describe how the functions work in relation to the data. These phrases are part of programming vernacular, and so they're not jarring to participants, here are some basic definitions:
+&lt;p&gt;Terminology related to functions: from now on the tutorials will heavily use new phrases to describe how the functions work in relation to the data. These phrases are part of programming vernacular, and so they're not jarring to participants, here are some basic definitions to maintain consistency:
 1. call: to execute 
-2. declare: set up a new function
+2. declare/set: create a new function
 3. pass: to run data through the function/loop&lt;/p&gt;
 
-&lt;p&gt;Learning Checks:
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;
 1. Have a quick discussion about the merits of commenting out versus deleting lines
-2. Verify that participants understand setting variables and how they can hold lists (an empty list so far.
-2. Group challenge, "for loop" exercise: check that the participants have a solid grasp on the function and purpose of a "for loop"&lt;/p&gt;
+2. Verify that participants understand setting variables and how they can hold lists (an empty list so far).
+2. Group challenge "for loop" exercise: check that the participants have a solid grasp on the function and purpose of a "for loop".&lt;/p&gt;
 
-&lt;h3 id="module-7"&gt;Module 7&lt;/h3&gt;
+&lt;h3 id="seven"&gt;Seven&lt;/h3&gt;
 
-&lt;p&gt;Learning Checks: 
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt; 
 1. Review and explain in a group discussion: how functions can be combined to solve problems, with the example of the two functions written so far and how they work together.
 2. Review what "append" does.
 3. Group challenge: talk through the functionality and uses for a "for loop"&lt;/p&gt;
 
-&lt;h3 id="module-8"&gt;Module 8&lt;/h3&gt;
+&lt;h3 id="eight"&gt;Eight&lt;/h3&gt;
 
-&lt;p&gt;Learning Checks: 
-1. Group challenge: along with talking through how a "while loop" works, also review why the "while loop" is added into the function where it is. 
-2. Cover why an "infinite loop" is bad.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt; 
+1. Group challenge: along with talking through how a "while loop" works, also review why the "while loop" is added into the function where it is. &lt;/p&gt;
 
-&lt;h3 id="module-9"&gt;Module 9&lt;/h3&gt;
-
-&lt;p&gt;Learning Checks:
-1. Review ordering of elements in a Python program.&lt;/p&gt;
-
-&lt;h3 id="module-10"&gt;Module 10&lt;/h3&gt;
-
-&lt;p&gt;Learning Checks:
+&lt;h3 id="nine"&gt;Nine&lt;/h3&gt;
+&lt;p&gt;Questions for the participants to discuss/keep in mind throughout the module:
 1. &lt;/p&gt;
 
-&lt;h3 id="module-11"&gt;Module 11&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;
+1. The value of working locally: writing the search results to a JSON file gives the flexibility for working with a large collection of files on a local machine without having to constantly hit the DPLA (or any other API servers) and to find patterns that we could not find using the online interface for the DPLA's holdings.
+2. When to use "append": writing inside a loop, which allows the comupter to add the information it grabs to the end of the file rather than overwriting what's there each time. &lt;/p&gt;
 
-&lt;p&gt;Learning Checks: &lt;/p&gt;
+&lt;h3 id="ten"&gt;Ten&lt;/h3&gt;
+&lt;p&gt;Questions for the participants to discuss/keep in mind throughout the module: 
+1. Are there other data fields to include that would help address the research question?&lt;/p&gt;
 
-&lt;h3 id="module-12"&gt;Module 12&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;
+1. Dealing with the realities of messy data: pristine datasets are extremely rare. In our example, the "cooking" data features many items that don't have information for the three fields that we're focusing on. 
+2. Open your "text_results.txt" file in TextWrangler/Notepad++ and scroll through what was saved. What do you notice? What information is/isn't there? What kinds of hypotheses can you make based on these results?&lt;/p&gt;
 
-&lt;p&gt;Learning Checks:&lt;/p&gt;
+&lt;p&gt;**We anticipate this will be as far as participants can get in one day without getting too frustrated or burned out. If that's the case, encourage them to talk through what they've already done, clarify parts that are still mysterious/confusing, and/or go back to the earlier modules and work through with different search terms and parameters.&lt;/p&gt;
 
-&lt;h3 id="module-13"&gt;Module 13&lt;/h3&gt;
+&lt;h3 id="eleven"&gt;Eleven&lt;/h3&gt;
+&lt;p&gt;Questions for the participants to discuss/keep in mind throughout the module:
+1. How is the script parsing the text data? What are the benefits and limitations of breaking the data into chunks in this way?&lt;/p&gt;
 
-&lt;p&gt;Learning Checks:
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt; 
+1. Words, sentences, tokens: what is a token? 
+2. Collocations and concordances: what are they doing? what analytical value does each have for the research question at hand and for your own work? &lt;/p&gt;
+
+&lt;h3 id="twelve"&gt;Twelve&lt;/h3&gt;
+&lt;p&gt;Questions for the participants to discuss/keep in mind throughout the module: 
+1. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;
+1. Stopwords: what makes up these lists? how does one need to account for different stopwords based on the research at hand, language, corpus, etc.?&lt;/p&gt;
+
+&lt;h3 id="thirteen"&gt;Thirteen&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;
 1. Have participants pull out their diagrams of Terminal, API, and programming languages and make any necessary revisions based on what they've learned throughout the day. &lt;/p&gt;
 
 </content>
   </entry>
   <entry>
-    <title>Functions and Loops</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module07.html"/>
-    <id>http://blog.url.com/modules/module07.html</id>
+    <title>Looping through the Pages</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module08.html"/>
+    <id>http://blog.url.com/modules/module08.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-28T23:52:25-04:00</updated>
+    <updated>2014-10-27T22:45:55-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module, we will learn&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module, we will learn:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;To create and call functions&lt;/li&gt;
-  &lt;li&gt;To create a "for loop"&lt;/li&gt;
-  &lt;li&gt;To "append" or add items to a list&lt;/li&gt;
+  &lt;li&gt;To use a "while loop" and "counter"&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;We are now ready to start writing a function to gather all of the information we want from the DPLA.&lt;/p&gt;
+&lt;p&gt;We're getting there! We have a function to gather all of the search results on any given page. We now need a way to work systematically through all of the pages available. &lt;/p&gt;
 
-&lt;p&gt;We now have a file that looks like this:&lt;/p&gt;
+&lt;p&gt;To do that, we will add another loop to our "pull_records" function that allows us to move through more than one page of search results.&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Load Libraries
-from dpla.api import DPLA
+&lt;h3 id="introducing-the-while-loop"&gt;1. Introducing the While Loop&lt;/h3&gt;
 
-# Set Variables
-dpla = DPLA('Your-Key-Here')
-# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-all_records = []
+&lt;p&gt;The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the "while loop" and a "counter" to work through all of the pages of search results.&lt;/p&gt;
 
-# Define Functions
-
-# Make Function Calls
-# print result.items[1]
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;We will now add a function that handles the query for any given page number.&lt;/p&gt;
-
-&lt;h3 id="creating-a-pull-records-function"&gt;1. Creating a "Pull Records" Function&lt;/h3&gt;
-
-&lt;p&gt;Functions are little packets of code that do particular tasks. They involve variables and processes, they take what is given to them, and spit out a result. &lt;/p&gt;
-
-&lt;p&gt;To write a function, we start with the word "def", then give our function a name, and finally end with '():' Inside the parentheses, we can indicate how many pieces of information are going into the function.&lt;/p&gt;
-
-&lt;p&gt;In your "my_first_script.py" file, add the line&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Define Functions
-def pull_records(pages, end, size):
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In this line, you have declared a 'pull_records' function, and told the computer that this function will involve three variables (pages, end, and size).These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page. &lt;/p&gt;
-
-&lt;p&gt;We are now ready to add the steps involved in getting the search records. &lt;/p&gt;
-
-&lt;p&gt;On the next line, tab in once and type:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Define Functions
-def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Your file should now look like this:&lt;/p&gt;
+&lt;p&gt;To use a while loop, let's look again at our "pull records" function.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
 3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Load Libraries
-from dpla.api import DPLA
-
-# Set Variables
-dpla = DPLA('Your-Key-Here')
-# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-all_records = []
-
-# Define Functions
-def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
-
-# Make Function Calls
-# print result.items[1]
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;It is important to note that Python is white-space aware: when writing functions in Python, white space is used to designate what is in a function or within a loop and what is outside of it.&lt;/p&gt;
-
-&lt;p&gt;Let's add a "print" statement to our function and test out the first stage of this function. On the next line, tab in and add the following "print" statement after "paged_search…":&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Define Functions
-def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
-	print paged_search.items[2]
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now to run the function, we will call the function name and give it values. On a new line in the 'Make Function Calls' section, add the line:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Make Function Calls
-# print result.items[1]
-pull_records(2, 3, 50)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Your file should now look like:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Load Libraries
-from dpla.api import DPLA
-
-# Set Variables
-dpla = DPLA('Your-Key-Here')
-# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-all_records = []
-
-# Define Functions
-def pull_records(pages, end, size):
-	paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
-	print paged_search.items[2]
-
-# Make Function Calls
-# print result.items[1]
-pull_records(2, 3, 50)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Save the file and go to Terminal to run it. Then come back to the function and work with your table to understand how the function worked.&lt;/p&gt;
-
-&lt;h3 id="using-a-for-loop-to-save-items-to-allrecords"&gt;2. Using a 'for loop' to save items to 'all_records'&lt;/h3&gt;
-
-&lt;p&gt;You have written and executed your first function! Well done!&lt;/p&gt;
-
-&lt;p&gt;Now we need to add another function to store those results to the empty 'all_records' array we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.&lt;/p&gt;
-
-&lt;p&gt;To set up our new "Save Each" function, we will define a new function in our my_first_script.py file. Good practice is to group our functions together toward the top of the file, so put the "save_each" function after "pull_records" but before we call the "pull_records" function:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def save_each(n):
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in, and to take that variable and plug it in for 'n' throughout the function.&lt;/p&gt;
-
-&lt;p&gt;We now need to add our first loop. With our current search, there are 50 items in our paged_search variable. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, grab the item, and add it to "all_records". &lt;/p&gt;
-
-&lt;p&gt;Tabbing in one space on the next line under &lt;span class="command"&gt;def save_each(n):&lt;/span&gt;s add:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def save_each(n):
-	for each in n.items:
-		# do something to every item in the list of items
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This is called a "for loop". It tells the computer to iterate through each item in the list "n". &lt;/p&gt;
-
-&lt;p&gt;Because this is a process inside a process, we need to tab in again. Each time we have a new loop or new function, we tab in all the lines associated with that process. To show that we're done listing steps for a particular process, we tab back out.&lt;/p&gt;
-
-&lt;p&gt;To add the item to the "all_records" array, we use the "append" command:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def save_each(n):
-	for each in n.items:
-		# do something to every item in the list of items
-		all_records.append(each)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;"Append" grabs the value of "each" and adds it to the series we are saving as a list.&lt;/p&gt;
-
-&lt;p&gt;Now we can use this function in our "pull records" function. Currently, our "pull records" function looks as follows:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records (pages, end, size):
-	paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
-	print paged_search.items[2]
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Let's comment out the "print paged_search.item[2]" line, because that was just there to check that the first bit worked. &lt;/p&gt;
-
-&lt;p&gt;Now add a call to the "save_each" function, that passes in our search results. &lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records (pages, end, size):
-	paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
-	# print paged_search.items[2]	
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
+	paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+	# print paged_search.items[2]			
 	save_each(paged_search)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Our file should now look like:&lt;/p&gt;
+&lt;p&gt;Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.&lt;/p&gt;
+
+&lt;p&gt;To write this logic into our existing function code, we will add:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;while(pages &amp;lt;= end):
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;so that our function now looks like this:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
+	while(pages &amp;lt;= end):
+		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+		# print paged_search.items[2]					
+		save_each(paged_search)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now – don't run the code at this point!&lt;/p&gt;
+
+&lt;p&gt;To avoid the "infinite loop", we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".&lt;/p&gt;
+
+&lt;p&gt;Add "pages = pages +1" after &lt;span class="command"&gt;save_each(paged_search)&lt;/span&gt; like this:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
+		while(pages &amp;lt;= end):
+			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+			# print paged_search.items[2]					
+			save_each(paged_search)
+			pages = pages + 1
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Let's also add a print command to check that things are working as we expect. Above &lt;span class="command"&gt;pages = pages + 1&lt;/span&gt; add:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print "finished page " + str(pages)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Our file should now look like this:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -468,7 +339,10 @@ pull_records(2, 3, 50)
 19
 20
 21
-22&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Load Libraries
+22
+23
+24
+25&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Load Libraries
 from dpla.api import DPLA
 
 # Set Variables
@@ -477,40 +351,285 @@ dpla = DPLA('Your-Key-Here')
 all_records = []
 
 # Define Functions
-def pull_records (pages, end, size):
-	paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
-	# print paged_search.items[2]	
-	save_each(paged_search)
+def pull_records(pages, end, size):
+	while(pages &amp;lt;= end):
+		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
+		# print paged_search.items[2]
+		save_each(paged_search)
+		print "finished page " + str(pages)
+		pages = pages + 1
 
 def save_each(n):
 	for each in n.items:
-		# do something to every item in the list of items
 		all_records.append(each)
 
 # Make Function Calls
 # print result.items[1]
 pull_records(2, 3, 50)
+print all_records[30]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;To test this, let's now add a "print" statement to the end of the file, after the "pull_records" function has been run, to make sure that the items are going into the "all_records" variable.&lt;/p&gt;
+&lt;p&gt;Let's test our function on a subset of the pages. Change &lt;span class="command"&gt;pull_records(2, 3, 50)&lt;/span&gt; to &lt;span class="command"&gt;pull_records(2, 5, 50)&lt;/span&gt; and change &lt;span class="command"&gt;print all_records[30]&lt;/span&gt; to &lt;span class="command"&gt;print all_records[150]&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;After "pull_records()" add:&lt;/p&gt;
+&lt;p&gt;Save and run in Terminal.&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print all_records[30]
+&lt;h3 id="group-challenge"&gt;Group Challenge:&lt;/h3&gt;
+
+&lt;p&gt;Go back to your pen and paper and diagram a "while loop". &lt;/p&gt;
+
+&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module07.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
+&lt;span class="right"&gt;&lt;a href="module09.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Save Results to a File</title>
+    <link rel="alternate" href="http://blog.url.com/modules/module13.html"/>
+    <id>http://blog.url.com/modules/module13.html</id>
+    <published>2014-09-18T20:00:00-04:00</published>
+    <updated>2014-10-29T00:43:31-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;We are almost there! We have been creating some interesting data on the word frequencies within the description fields. But so far, all of our results are stuck in terminal, which makes it difficult for us to reuse them. So for this final module, we will write out the results of our count to a CSV (comma separated value) file.&lt;/p&gt;
+
+&lt;h3 id="create-a-new-csv-file"&gt;Create a New CSV File&lt;/h3&gt;
+
+&lt;p&gt;As we did when we wrote our json results, we will start by telling Python to open a CSV file and assign to a variable.&lt;/p&gt;
+
+&lt;p&gt;Currently our script should look something like this:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Import Libraries
+import nltk
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+from nltk.probability import *
+
+# Set Variables
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
+
+cooking_tokens = word_tokenize(cooking_text)
+text = nltk.Text(cooking_tokens)
+
+# Load in Stopwords Library
+stopwords = stopwords.words('english')
+
+word_set = []
+
+# Define Functions
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation, AND check against stop words
+        if word.isalpha() and word.lower() not in stopwords:
+            # If it passes the filters, save to word_set
+            word_set.append(word.lower())
+    return word_set
+
+# Make Function Calls
+#print cooking_text[0:20]
+#print cooking_tokens[0:10]
+#print text.concordance('economy')
+#print text.collocations()
+#print text.similar('Pot')
+
+normalize_text(text)
+
+fd = FreqDist(word_set)
+print fd.most_common(200)
+print fd.hapaxes()
+fd.plot(50,cumulative=False)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Save and run your script.&lt;/p&gt;
+&lt;p&gt;To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in python. To do that, add &lt;span class="command"&gt;import csv&lt;/span&gt; to our list of libraries at the top of the file.&lt;/p&gt;
 
-&lt;p&gt;We have made great progress! We now have two functions to handle making the query and saving the results, but we are still only working with one "page" of search results at a time. In the next module, we will add yet another kind of loop in order to move through the different pages.&lt;/p&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Import Libraries
+import nltk
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+from nltk.probability import *
+import csv
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
 
-&lt;h3 id="group-challenge"&gt;Group Challenge&lt;/h3&gt;
+&lt;p&gt;Now, we can create our CSV file right after the line where we opened the json file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.&lt;/p&gt;
 
-&lt;p&gt;Break out the paper and pencils. Work as a group to create a diagram or metaphor for a "for loop". When would a "for loop" be useful?  &lt;/p&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Set Variables
+with open('text_results.txt', 'r') as file:
+    cooking_text = file.read().decode('utf8')
 
-&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module06.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
-&lt;span class="right"&gt;&lt;a href="module08.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+file = csv.writer(open("word_frequencies.csv", "wb"))
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. Be sure to comment out &lt;span class="command"&gt;fd.plot(50,cumulative=False)&lt;/span&gt; as well. The plotting function and the write csv functions don't work well together.&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;for key, count in fd.most_common(200):
+    file.writerow([key, count])
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The final product should look like this:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Import Libraries
+import nltk
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+from nltk.probability import *
+
+# Set Variables
+with open('text_results.txt, 'r') as file:
+    cooking_text = file.read().decode('utf8')
+
+file = csv.writer(open("word_frequencies.csv", "w"))
+
+cooking_tokens = word_tokenize(cooking_text)
+text = nltk.Text(cooking_tokens)
+
+# Load in Stopwords Library
+stopwords = stopwords.words('english')
+
+word_set = []
+
+# Define Functions
+def normalize_text(text):
+    # Work through all the words in text and filter
+    for word in text:
+        # Check if word is a word, and not punctuation, AND check against stop words
+        if word.isalpha() and word.lower() not in stopwords:
+            # If it passes the filters, save to word_set
+            word_set.append(word.lower())
+    return word_set
+
+# Make Function Calls
+#print cooking_text[0:20]
+#print cooking_tokens[0:10]
+#print text.concordance('economy')
+#print text.collocations()
+#print text.similar('Pot')
+
+normalize_text(text)
+
+fd = FreqDist(word_set)
+print fd.most_common(200)
+#print fd.hapaxes()
+#fd.plot(50,cumulative=False)
+
+# Print results to a CSV file
+for key, count in fd.most_common(200):
+    file.writerow([key, count])
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You can open your csv file using terminal by typing or by looking within your dhb_awesome directory:&lt;/p&gt;
+
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;open word_frequencies.csv
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The file will most likely open in excel or a similar program. &lt;/p&gt;
+
+&lt;p&gt;Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patters we see here?&lt;/p&gt;
+
+&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module12.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -518,7 +637,7 @@ pull_records(2, 3, 50)
     <link rel="alternate" href="http://blog.url.com/modules/module12.html"/>
     <id>http://blog.url.com/modules/module12.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-29T00:36:25-04:00</updated>
+    <updated>2014-10-30T09:09:51-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -526,7 +645,7 @@ pull_records(2, 3, 50)
 
 &lt;ol&gt;
   &lt;li&gt;normalize our text&lt;/li&gt;
-  &lt;li&gt;use the Frequency Distribution library to find pattern in our text &lt;/li&gt;
+  &lt;li&gt;use the Frequency Distribution library to find patterna in our text &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id="normalizing-the-text"&gt;Normalizing the text&lt;/h3&gt;
@@ -749,7 +868,7 @@ normalize_text(text)
 
 &lt;h3 id="get-word-frequencies"&gt;Get Word Frequencies&lt;/h3&gt;
 
-&lt;p&gt;Our python file should now look like this: &lt;/p&gt;
+&lt;p&gt;Our Python file should now look like this: &lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -946,7 +1065,7 @@ print fd.most_common(200)
     <link rel="alternate" href="http://blog.url.com/modules/module11.html"/>
     <id>http://blog.url.com/modules/module11.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-29T00:18:45-04:00</updated>
+    <updated>2014-10-30T09:01:14-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -959,19 +1078,15 @@ print fd.most_common(200)
 
 &lt;h3 id="installing-nltk"&gt;Installing NLTK&lt;/h3&gt;
 
-&lt;p&gt;We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).&lt;/p&gt;
+&lt;p&gt;We are interested in the language used in the three fields we singled out across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one powerful library we can use is the Natural Language ToolKit (or NLTK).&lt;/p&gt;
 
-&lt;p&gt;To install NLTK, let's go back to our terminal and use pip.&lt;/p&gt;
+&lt;p&gt;To install NLTK, let's go back to our terminal and use &lt;code&gt;pip&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Run &lt;span class="command"&gt;pip install nltk&lt;/span&gt;. You may need to use &lt;span class="command"&gt;sudo pip install nltk&lt;/span&gt;.&lt;/p&gt;
 
-&lt;p&gt;We also need to install &lt;/p&gt;
+&lt;p&gt;There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at &lt;a href="http://www.nltk.org/nltk_data/"&gt;http://www.nltk.org/nltk_data/&lt;/a&gt;. &lt;/p&gt;
 
-&lt;p&gt;Now, go back to your file and import nltk at the top of the file.&lt;/p&gt;
-
-&lt;p&gt;There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at &lt;a href="http://www.nltk.org/nltk_data/"&gt;http://www.nltk.org/nltk_data/&lt;/a&gt;. &lt;/p&gt;
-
-&lt;p&gt;To download the stopwords, we are going to go back into the Python Interactive Shell. Run &lt;span class="command"&gt;python&lt;/span&gt;. Your terminal window should now look something like this:&lt;/p&gt;
+&lt;p&gt;To download the stopwords, we are going back into the Python Interactive Shell. Run &lt;span class="command"&gt;python&lt;/span&gt;. Your Terminal window should now look something like this:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1015,9 +1130,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;You can now exit the Python Interactive Shell using &lt;span class="command"&gt;quit()&lt;/span&gt;&lt;/p&gt;
 
-&lt;h3 id="lets-start-text-mining"&gt;Let's start text mining&lt;/h3&gt;
+&lt;h3 id="lets-start-text-mining"&gt;Let's Start Text Mining&lt;/h3&gt;
 
-&lt;p&gt;Let's create a third script file, 'text_mining.py':&lt;/p&gt;
+&lt;p&gt;Let's create a third script file, "text_mining.py":&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;touch text_mining.py
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -1041,7 +1156,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Let's start by importing the nltk library and the stopwords:&lt;/p&gt;
+&lt;p&gt;Let's start by importing the NLTK library and the stopwords:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1061,7 +1176,7 @@ with open('text_results.txt', 'r') as file:
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;We can display part of our text to make sure everything is loading correctly:&lt;/p&gt;
+&lt;p&gt;Let's add a "print" command so we can display part of our text to make sure everything is loading correctly so far:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1089,9 +1204,9 @@ print cooking_text[0:20]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Save a run your new script in terminal. One thing to note here is that Python treats the text as a list of letters. &lt;/p&gt;
+&lt;p&gt;Save and run this script in Terminal. One thing to note here is that Python treats the text as a list of letters. &lt;/p&gt;
 
-&lt;p&gt;But we want to work with the words, so let's use a function called 'tokenize' from the NLTK library. 'Tokenize' breaks our text into a list of words.&lt;/p&gt;
+&lt;p&gt;But we want to work with the words, so let's use a function called "tokenize" from the NLTK library. &lt;/p&gt;
 
 &lt;p&gt;After 'from nltk.corpus import stopwords' in the variables section, add:
     from nltk import word_tokenize&lt;/p&gt;
@@ -1132,13 +1247,13 @@ print cooking_tokens[0:10]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out 'print cooking_tokens[0:10]' and add to the variables section after &lt;span class="command"&gt;cooking_tokens…&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out "print cooking_tokens[0:10]" and add to the variables section after &lt;span class="command"&gt;cooking_tokens…&lt;/span&gt;:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;text = nltk.Text(cooking_tokens)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;This is a NLTK function that takes the tokens and allows us to move back and forth between a 'text view' and a 'list view' of our document.&lt;/p&gt;
+&lt;p&gt;This is a NLTK function that takes the tokens and allows us to move back and forth between a "text view" and a "list view" of our document.&lt;/p&gt;
 
 &lt;p&gt;Your file should now look like this:&lt;/p&gt;
 
@@ -1178,7 +1293,7 @@ text = nltk.Text(cooking_tokens)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The first thing we can do to get a sense of the words in our dataset is to use the 'concordance' function within NLTK. This will print all the instances of a word with the surrounding words for context.&lt;/p&gt;
+&lt;p&gt;The first thing we can do to get a sense of the words in our dataset is to use the "concordance" function within NLTK. This will print all the instances of a word with the surrounding words for context.&lt;/p&gt;
 
 &lt;p&gt;After &lt;span class="command"&gt;#print cooking_tokens[0:10]&lt;/span&gt;, add:&lt;/p&gt;
 
@@ -1188,15 +1303,15 @@ text = nltk.Text(cooking_tokens)
 
 &lt;p&gt;Save and run your script.&lt;/p&gt;
 
-&lt;p&gt;Pretty cool! Now try changing 'cooking' to 'economics':&lt;/p&gt;
+&lt;p&gt;Pretty cool! Now change "cooking" to "economics", save and run the script, and see what the output is:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;print text.concordance('economics')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Try some other words to get a sense of the word usage in the 'text_results' file. You can either replace the word, or add additional print statements.&lt;/p&gt;
+&lt;p&gt;Try some other words to get a sense of the word usage in the "text_results" file. You can either replace the word or add additional print statements.&lt;/p&gt;
 
-&lt;p&gt;Another useful command is 'collocation'. This shows us all the words that tend to appear together throughout the corpus.&lt;/p&gt;
+&lt;p&gt;Another useful command is "collocation". This shows us all the words that tend to appear together throughout the corpus.&lt;/p&gt;
 
 &lt;p&gt;Comment out &lt;span class="command"&gt;print text.concordance('your_last_word')&lt;/span&gt; and add &lt;/p&gt;
 
@@ -1206,9 +1321,7 @@ text = nltk.Text(cooking_tokens)
 
 &lt;p&gt;Save and run your script.&lt;/p&gt;
 
-&lt;p&gt;There are probably quite a few dates and names showing up. &lt;/p&gt;
-
-&lt;p&gt;One more function that is useful for surveying our data is 'similar'. This shows us words that are used similarly to the word we give it.&lt;/p&gt;
+&lt;p&gt;One more function that is useful for surveying our data is "similar". This shows us words that are used similarly to the word we give it.&lt;/p&gt;
 
 &lt;p&gt;Comment out &lt;span class="command"&gt; print text.collocations()&lt;/span&gt; and add:&lt;/p&gt;
 
@@ -1255,14 +1368,14 @@ text = nltk.Text(cooking_tokens)
 # Make Function Calls
 #print cooking_text[0:20]
 #print cooking_tokens[0:10]
-#print text.concordance('economy')
+#print text.concordance('economics')
 #print text.collocations()
 
 print text.similar('Pot')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;What other patterns might be interesting to know about the words used to describe objects related to 'cooking'?&lt;/p&gt;
+&lt;p&gt;What other patterns might be interesting to know about the words used to describe objects related to "cooking"?&lt;/p&gt;
 
 &lt;p&gt;In the next module, we will look at word counts to find the most common words used across all of the different DPLA contributors. &lt;/p&gt;
 
@@ -1275,7 +1388,7 @@ print text.similar('Pot')
     <link rel="alternate" href="http://blog.url.com/modules/module10.html"/>
     <id>http://blog.url.com/modules/module10.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-29T00:09:45-04:00</updated>
+    <updated>2014-10-30T09:01:14-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1287,7 +1400,7 @@ print text.similar('Pot')
   &lt;li&gt;to convert our JSON data to strings of text&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Because we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to filter down that data and save it as text. In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.&lt;/p&gt;
+&lt;p&gt;Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can do different analyses on it in later modules.&lt;/p&gt;
 
 &lt;h3 id="create-a-new-script-and-load-in-our-data"&gt;1. Create a New Script and Load in Our Data&lt;/h3&gt;
 
@@ -1337,7 +1450,7 @@ with open("search_results.json") as json_file:
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Here, we tell Python to "open" our "search_results.json" file and assign it to the variable "json_file". The we use the "load" method in the "json.library" to load up the data and save it as the variable "json_data". &lt;/p&gt;
+&lt;p&gt;Here, we tell Python to open our "search_results.json" file and assign it to the variable "json_file". Then we use the "load" method from the JSON library to load up the data and save it as the variable "json_data". &lt;/p&gt;
 
 &lt;p&gt;Our second script file should now look like:&lt;/p&gt;
 
@@ -1363,15 +1476,15 @@ with open("search_results.json") as json_file:
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "print" statement that prints the second item in the json_data list.&lt;/p&gt;
+&lt;p&gt;To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "print" statement that prints the second item in the "json_data" list.&lt;/p&gt;
 
 &lt;h3 id="select-the-relevant-text-data"&gt;2. Select the Relevant Text Data&lt;/h3&gt;
+
+&lt;p&gt;Our research question for this data is how, across the entire DPLA collection, the descriptions of items related to cooking are gendered. To pursue this question, we need to do some basic text analysis, so let's save our search results in a format that makes it easy to do that.&lt;/p&gt;
 
 &lt;p&gt;The next step is to select the fields that will be most helpful for analyzing how "cooking" items are described across the items in the DPLA.&lt;/p&gt;
 
 &lt;p&gt;Looking at our items, there are three main fields containing description-type information for our different "cooking" items: the title, the description, and the subject headings. &lt;/p&gt;
-
-&lt;p&gt;Our question for these items is how, across the entire DPLA collection, the descriptions of items related to cooking are gendered. To pursue this question, we need to do some basic text analysis, so let's save our search results in a format that makes it easy to do that: as text.&lt;/p&gt;
 
 &lt;p&gt;To start, let's make a new function called "get_text" that takes in our "json_data" list:&lt;/p&gt;
 
@@ -1425,7 +1538,7 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;So far so good. But what if one of these fields is missing? Programming languages are very literal – if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line in 'Make Function Calls' to call the function.&lt;/p&gt;
+&lt;p&gt;So far so good. But what if one of these fields is missing? Programming languages are very literal: if you tell it to do something that it cannot do, it just stops and gives you an error. To see this in action, let's add a line in "Make Function Calls" to call the function.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1452,7 +1565,7 @@ def get_text(json_data):
 import json
 
 # Set Variables
-with open("search_results.json") as json_file:
+with open('search_results.json') as json_file:
     json_data = json.load(json_file) 
 
 # Define Functions
@@ -1601,9 +1714,11 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;You might notice two odd things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along. &lt;/p&gt;
+&lt;p&gt;You might notice two different things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along. &lt;/p&gt;
 
-&lt;p&gt;Second, we are handling the subject field differently than title and description. This is because the subject key holds an additional list, rather than just values. Work in your groups to map out what is going on in the subject section of the funciton.&lt;/p&gt;
+&lt;p&gt;Second, we are handling the subject field differently than the title and description fields. This is because the subject key holds an additional list, rather than just values. &lt;/p&gt;
+
+&lt;p&gt;Work with your group to map out what is going on in the subject section of the function.&lt;/p&gt;
 
 &lt;p&gt;The last is to save this data into a text file. Similar to last time, we need to set up the file that will receive that data:&lt;/p&gt;
 
@@ -1626,106 +1741,6 @@ f = open('text_results.txt', 'w')
 &lt;/div&gt;
 
 &lt;p&gt;The major difference here is that we are opening the file as append so that we can save each line of data as we loop, rather than storing it all and writing it all at once.&lt;/p&gt;
-
-&lt;p&gt;Our whole file should now look like this:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Load Libraries
-import json
-
-# Set Variables
-with open("search_results.json") as json_file:
-    json_data = json.load(json_file)
-
-f = open('text_results.txt', 'w')
-
-# Define Functions
-def get_text(json_data):
-    for each in json_data:
-        # Get the Titles
-        try:
-            find_titles = each['sourceResource']['title']
-            if isinstance(find_titles, basestring):
-                title = find_titles.encode('utf8')
-            else:
-                for each in find_titles:
-                    title = each.encode('utf8')
-        except:
-            title = ' '
-        
-        # Get the Descriptions
-        try:
-            find_descriptions = each['sourceResource']['description']
-            if isinstance(find_descriptions, basestring):
-                description = find_descriptions.encode('utf8')
-            else:
-                for each in find_descriptions:
-                    description = each.encode('utf8')
-        except:
-            description = ' '
-
-        # Get the Subject Headings
-        try:
-            find_subjects = each['sourceResource']['subject']
-            if isinstance(find_subjects, basestring):
-                subject = find_subjects.encode('utf8')
-            else:
-                subject_list = []
-                for each in find_subjects:
-                    subject_list.append(each['name'])  
-
-                combined_subjects = ', '.join(subject_list)
-                subject = combined_subjects.encode('utf8')
-        except:
-            subject = ' '
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Now, let's go back to the function and put all our pieces together into a new variable.&lt;/p&gt;
 
@@ -1815,95 +1830,15 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;This line takes the information held in title, adds a ";" and a space, takes the information in description, add '; and a space, and finally, takes the list held in subject and smashes it together into a string, separated by a comman and a space. Finally, the "\n" adds an "enter" the end of the line, so that the information for each item appears on a new line.&lt;/p&gt;
+&lt;p&gt;This line takes the information held in the title field, adds a ";" and a space, takes the information in the description field, add '; and a space, and finally, takes the list held in the subject field and smashes it together into a string, separated by a comma and a space. Finally, the "\n" adds an "Enter" to the end of the line, so that the information for each item appears on a new line.&lt;/p&gt;
 
-&lt;p&gt;The last step is to write all the information within "data" to our file.&lt;/p&gt;
+&lt;p&gt;The last step is to write all the information within "data" to our file directly under the line just added:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
 3
 4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Define Functions
-def get_text(json_data):
-    for each in json_data:
-        # Get the Titles
-        try:
-            find_titles = each['sourceResource']['title']
-            if isinstance(find_titles, basestring):
-                title = find_titles.encode('utf8')
-            else:
-                for each in find_titles:
-                    title = each.encode('utf8')
-        except:
-            title = ' '
-        
-        # Get the Descriptions
-        try:
-            find_descriptions = each['sourceResource']['description']
-            if isinstance(find_descriptions, basestring):
-                description = find_descriptions.encode('utf8')
-            else:
-                for each in find_descriptions:
-                    description = each.encode('utf8')
-        except:
-            description = ' '
-
-        # Get the Subject Headings
-        try:
-            find_subjects = each['sourceResource']['subject']
-            if isinstance(find_subjects, basestring):
-                subject = find_subjects.encode('utf8')
-            else:
-                subject_list = []
-                for each in find_subjects:
-                    subject_list.append(each['name'])  
-
-                combined_subjects = ', '.join(subject_list)
-                subject = combined_subjects.encode('utf8')
-        except:
-            subject = ' '
-
-        # Combine the data into a single variable in the form of a sentence
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;        # Combine the data into a single variable in the form of a sentence
         data = title + '; ' + description + '; ' + subject + '. \n'
 
         # Write the sentence to the 'text_results' file
@@ -1911,7 +1846,7 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Now let's add a call to the function and run our code:&lt;/p&gt;
+&lt;p&gt;Last, let's add a call to the function:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -2029,231 +1964,12 @@ get_text(json_data)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Save and run your second python script. You should now have a text file named "text_results.txt" in your directory. If you open that file, you should see lines of beautiful text ready for analysis.&lt;/p&gt;
+&lt;p&gt;Save and run your second Python script. You should now have a file named "text_results.txt" in your "dhb_awesome" directory. If you open that file, you should see lines of beautiful text ready for analysis.&lt;/p&gt;
 
 &lt;p&gt;In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.&lt;/p&gt;
 
 &lt;p&gt;&lt;span class="left"&gt;&lt;a href="module09.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
 &lt;span class="right"&gt;&lt;a href="module11.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Writings Search Results to a File</title>
-    <link rel="alternate" href="http://blog.url.com/modules/module09.html"/>
-    <id>http://blog.url.com/modules/module09.html</id>
-    <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-28T23:57:48-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;In this module we will learn:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;how to save our results to a file&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;In this module, we will focus on writing the results of our functions to a text file. This gives us a local copy of the data so that we only hit the DPLA servers once for the entire collection of files.&lt;/p&gt;
-
-&lt;h3 id="saving-our-search-results"&gt;Saving our Search Results&lt;/h3&gt;
-
-&lt;p&gt;In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable in the 'Define Variables' section, add:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;f = open("search_results.json", "w")
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Your file should now look like this:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Load Libraries
-from dpla.api import DPLA
-
-# Set Variables
-dpla = DPLA('Your-Key-Here')
-# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-all_records = []
-
-f = open("search_results.json", "w")
-
-# Define Functions
-def pull_records(pages, end, size):
-	while(pages &amp;lt;= end):
-		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-		# print paged_search.items[2]
-		save_each(paged_search)
-		print "finished page " + str(pages)
-		pages = pages + 1
-
-def save_each(n):
-	for each in n.items:
-		all_records.append(each)
-
-# Make Function Calls
-# print result.items[1]
-pull_records(2, 5, 50)
-print all_records[150]	
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Here you are combining a function - open("search_results.json") - with the declaration of a variable. The "open" function both opens an existing file and  creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. &lt;/p&gt;
-
-&lt;p&gt;Python has libraries for working with JSON, but because these are more specialized libraries, they are not automatically loaded with Python. Since we need to write a JSON object, let's load that library into our file with &lt;span class="command"&gt;import json&lt;/span&gt;:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Load Libraries
-from dpla.api import DPLA
-import json
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'save_each' function.&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def save_results():
-	data = json.dumps(all_records)
-	f.write(data)
-	f.close
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;What did this function do? First, we are creating a variable called "data" which we made using "json.dumps", which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.&lt;/p&gt;
-
-&lt;h3 id="calling-the-write-function"&gt;Calling the "Write" Function&lt;/h3&gt;
-
-&lt;p&gt;To run the "save_results" function, we can now call the function at the end of our file.&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;save_results()
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Our file should now look like this:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Load Libraries
-from dpla.api import DPLA
-import json
-
-# Set Variables
-dpla = DPLA('Your-Key-Here')
-# result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
-all_records = []
-f = open("search_results.json", "w")
-
-# Define Functions
-def pull_records(pages, end, size):
-	while(pages &amp;lt;= end):
-		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-		# print paged_search.items[2]
-		save_each(paged_search)
-		print "finished page " + str(pages)
-		pages = pages + 1
-
-def save_each(n):
-	for each in n.items:
-		all_records.append(each)
-
-def save_results():
-	data = json.dumps(all_records)
-	f.write(data)
-	f.close
-
-# Make Function Calls
-# print result.items[1]
-pull_records(2, 5, 50)
-print all_records[150]
-save_results()
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Test that everything is working by running your "my_first_script.py" in Terminal.&lt;/p&gt;
-
-&lt;p&gt;Open your new "search_results.json" file and check that 200 items made it in. Close the file once you're done.&lt;/p&gt;
-
-&lt;p&gt;Congratulations! You've written your first results file!&lt;/p&gt;
-
-&lt;h3 id="saving-all-the-search-results"&gt;Saving all the Search Results&lt;/h3&gt;
-
-&lt;p&gt;Finally, let's change the parameters we pass to the "pull_records" function to get all of the search results.&lt;/p&gt;
-
-&lt;p&gt;Remember, the first number we pass to "pull_records" corresponds to the first page of search results, the second number to the last page of search results, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take "500" for our third variable. We also want to start with the first page, so "1" is our first variable.&lt;/p&gt;
-
-&lt;p&gt;To figure out the value we want for "end", we need to do a little math. If we have 10,909 items and can get 500 items a page, how many pages do we have to work through?&lt;/p&gt;
-
-&lt;p&gt;Update your "pull_records" line to:&lt;/p&gt;
-
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;pull_records(1, 22, 500)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Save and run your script. &lt;/p&gt;
-
-&lt;p&gt;Well done! You now have a local copy of all the data that we want to analyze! You have done a lot of work! Take a moment, refresh your brain with some coffee and sugar, and come back when you're ready for the last leg of the tutorial!&lt;/p&gt;
-
-&lt;h3 id="bonus-challege-if-that-felt-too-easy"&gt;Bonus Challege (if that felt too easy…)&lt;/h3&gt;
-
-&lt;p&gt;Can you write a function that determines the total number of pages from the search results, given a particular number of items per page?&lt;/p&gt;
-
-&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module09.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
-&lt;span class="right"&gt;&lt;a href="module10.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>

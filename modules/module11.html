@@ -51,6 +51,7 @@
 			<li><a href="/modules/module11.html">Analyzing the Data (Part 1)</a></li>
 			<li><a href="/modules/module12.html">Analyzing the Data (Part 2)</a></li>
 			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
+			<li><a href="/modules/module14.html">Next Steps</a></li>
 			</ol>
 		</section>
 
@@ -67,19 +68,15 @@
 
 <h3 id="installing-nltk">Installing NLTK</h3>
 
-<p>We are interested in the languaged used in the "description" fields across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one power library we can use is the Natural Language ToolKit (or NLTK).</p>
+<p>We are interested in the language used in the three fields we singled out across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one powerful library we can use is the Natural Language ToolKit (or NLTK).</p>
 
-<p>To install NLTK, let's go back to our terminal and use pip.</p>
+<p>To install NLTK, let's go back to our terminal and use <code>pip</code>.</p>
 
 <p>Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.</p>
 
-<p>We also need to install </p>
+<p>There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
 
-<p>Now, go back to your file and import nltk at the top of the file.</p>
-
-<p>There are also a number of datasets available for use with nltk. For our purposes, we will only be using the 'stopwords' dataset, but you can browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
-
-<p>To download the stopwords, we are going to go back into the Python Interactive Shell. Run <span class="command">python</span>. Your terminal window should now look something like this:</p>
+<p>To download the stopwords, we are going back into the Python Interactive Shell. Run <span class="command">python</span>. Your Terminal window should now look something like this:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -123,9 +120,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>You can now exit the Python Interactive Shell using <span class="command">quit()</span></p>
 
-<h3 id="lets-start-text-mining">Let's start text mining</h3>
+<h3 id="lets-start-text-mining">Let's Start Text Mining</h3>
 
-<p>Let's create a third script file, 'text_mining.py':</p>
+<p>Let's create a third script file, "text_mining.py":</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>touch text_mining.py
 </pre></td></tr></tbody></table>
@@ -149,7 +146,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Let's start by importing the nltk library and the stopwords:</p>
+<p>Let's start by importing the NLTK library and the stopwords:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -169,7 +166,7 @@ with open('text_results.txt', 'r') as file:
 </pre></td></tr></tbody></table>
 </div>
 
-<p>We can display part of our text to make sure everything is loading correctly:</p>
+<p>Let's add a "print" command so we can display part of our text to make sure everything is loading correctly so far:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -197,9 +194,9 @@ print cooking_text[0:20]
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Save a run your new script in terminal. One thing to note here is that Python treats the text as a list of letters. </p>
+<p>Save and run this script in Terminal. One thing to note here is that Python treats the text as a list of letters. </p>
 
-<p>But we want to work with the words, so let's use a function called 'tokenize' from the NLTK library. 'Tokenize' breaks our text into a list of words.</p>
+<p>But we want to work with the words, so let's use a function called "tokenize" from the NLTK library. </p>
 
 <p>After 'from nltk.corpus import stopwords' in the variables section, add:
     from nltk import word_tokenize</p>
@@ -240,13 +237,13 @@ print cooking_tokens[0:10]
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out 'print cooking_tokens[0:10]' and add to the variables section after <span class="command">cooking_tokens…</span>:</p>
+<p>Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out "print cooking_tokens[0:10]" and add to the variables section after <span class="command">cooking_tokens…</span>:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>text = nltk.Text(cooking_tokens)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>This is a NLTK function that takes the tokens and allows us to move back and forth between a 'text view' and a 'list view' of our document.</p>
+<p>This is a NLTK function that takes the tokens and allows us to move back and forth between a "text view" and a "list view" of our document.</p>
 
 <p>Your file should now look like this:</p>
 
@@ -286,7 +283,7 @@ text = nltk.Text(cooking_tokens)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>The first thing we can do to get a sense of the words in our dataset is to use the 'concordance' function within NLTK. This will print all the instances of a word with the surrounding words for context.</p>
+<p>The first thing we can do to get a sense of the words in our dataset is to use the "concordance" function within NLTK. This will print all the instances of a word with the surrounding words for context.</p>
 
 <p>After <span class="command">#print cooking_tokens[0:10]</span>, add:</p>
 
@@ -296,15 +293,15 @@ text = nltk.Text(cooking_tokens)
 
 <p>Save and run your script.</p>
 
-<p>Pretty cool! Now try changing 'cooking' to 'economics':</p>
+<p>Pretty cool! Now change "cooking" to "economics", save and run the script, and see what the output is:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print text.concordance('economics')
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Try some other words to get a sense of the word usage in the 'text_results' file. You can either replace the word, or add additional print statements.</p>
+<p>Try some other words to get a sense of the word usage in the "text_results" file. You can either replace the word or add additional print statements.</p>
 
-<p>Another useful command is 'collocation'. This shows us all the words that tend to appear together throughout the corpus.</p>
+<p>Another useful command is "collocation". This shows us all the words that tend to appear together throughout the corpus.</p>
 
 <p>Comment out <span class="command">print text.concordance('your_last_word')</span> and add </p>
 
@@ -314,9 +311,7 @@ text = nltk.Text(cooking_tokens)
 
 <p>Save and run your script.</p>
 
-<p>There are probably quite a few dates and names showing up. </p>
-
-<p>One more function that is useful for surveying our data is 'similar'. This shows us words that are used similarly to the word we give it.</p>
+<p>One more function that is useful for surveying our data is "similar". This shows us words that are used similarly to the word we give it.</p>
 
 <p>Comment out <span class="command"> print text.collocations()</span> and add:</p>
 
@@ -363,14 +358,14 @@ text = nltk.Text(cooking_tokens)
 # Make Function Calls
 #print cooking_text[0:20]
 #print cooking_tokens[0:10]
-#print text.concordance('economy')
+#print text.concordance('economics')
 #print text.collocations()
 
 print text.similar('Pot')
 </pre></td></tr></tbody></table>
 </div>
 
-<p>What other patterns might be interesting to know about the words used to describe objects related to 'cooking'?</p>
+<p>What other patterns might be interesting to know about the words used to describe objects related to "cooking"?</p>
 
 <p>In the next module, we will look at word counts to find the most common words used across all of the different DPLA contributors. </p>
 

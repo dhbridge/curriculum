@@ -51,6 +51,7 @@
 			<li><a href="/modules/module11.html">Analyzing the Data (Part 1)</a></li>
 			<li><a href="/modules/module12.html">Analyzing the Data (Part 2)</a></li>
 			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
+			<li><a href="/modules/module14.html">Next Steps</a></li>
 			</ol>
 		</section>
 
@@ -58,7 +59,7 @@
                         <h2>
           Moving to Phase Two
       </h2>
-       <p>In this module we will learn: </p>
+       <p>In this module we will learn:</p>
 
 <ol>
   <li>To add additional parameters to our API call</li>
@@ -66,7 +67,7 @@
   <li>To comment-out code that we don't want to run, but want to keep</li>
 </ol>
 
-<p>It is time stop briefly and think through what we have already learned. So far, we have learned to talk to your computer using the terminal. We have interacted with Python, a programming language, and used it to execute a few commands. We have also learned how to use Pip to add additional libraries to Python, and thought about how we can combine libraries to create new programs. </p>
+<p>It is time stop briefly and think through what we have already learned. So far, we have learned to interact with your computer using the terminal, and with Python (a programming language) we used to execute a simple program. We have also learned how to use <code>pip</code> to add additional libraries to Python, and thought about how we can combine libraries to create new programs.</p>
 
 <p>We also learned about data and APIs. We looked at JSON as a way of structuring data and thought about what it means to represent things in this format. Then, we looked at the DPLA API and learned how to leverage libraries like DPyLA to use the API in our code. Finally, we saved our code in a Python file that we learned how to execute in the terminal.</p>
 
@@ -78,15 +79,15 @@
 
 <p>Just like when we are writing papers or structuring an argument, order matters in our script files. The computer will execute the code in the order it encounters it.</p>
 
-<p>One good way to keep your code organized and avoid bugs caused by organization errors is to follow a set pattern when constructing your scripts. </p>
+<p>One good way to keep your code organized and avoid bugs caused by organization errors is to follow a set pattern when constructing your scripts.</p>
 
 <p>First, at the top of your files, place the list of libraries you're importing. This way they are ready for use throughout the script. We did this when we started with <span class="command">from dpla.api import DPLA</span>.</p>
 
-<p>Next, declare (or set) the variables (names) that you will use through the script. In code-speak, these are set at the "global scope" meaning that they are available to all functions in the file. We did this when we assigned our API key to the "dpla" variable with <span class="command">dpla = DPLA("YourAPIKey")</span> and when we saved our search to "results" with <span class="command">result = dpla.search("cooking")</span>.</p>
+<p>Next, declare (or set) the variables (names) that you will use through the script. In code-speak, these are set at the "global scope" meaning that they are available to all functions in the file. We did this when we assigned our API key to the "<code>dpla</code>" variable with <span class="command">dpla = DPLA("YourAPIKey")</span> and when we saved our search to "<code>results</code>" with <span class="command">result = dpla.search("cooking")</span>.</p>
 
 <p>After the variables, we will put our functions. Functions are like mini-scripts or packets of code that do one job. We can then combine functions to create more complicated programs. We will add some functions to our script in the next modules.</p>
 
-<p>Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) a "()". One exception is the "print" function, which doesn't require the () marks in this version of Python.* We called the "print" function to print one item from our search results. It is important to include the functions in the order that you want them to be run.</p>
+<p>Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) parens "<code>()</code>". One exception is the "<code>print</code>" function, which doesn't require parens in the version of Python we are using for this workshop. We called the "<code>print</code>" function to print one item from our search results. It is important to call the functions in the order that you want them to be run.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -130,9 +131,9 @@ print my_var[1]
 
 <h3 id="adding-parameters-to-the-query">1. Adding Parameters to the Query</h3>
 
-<p>The first step is to get all of the relevant data. To do that, we need to restructure our query so that we can control the number of items and the "page" we get the data from. Remember that the API by default gives us 10 items at a time. We can add a parameter to our query to get up to 500 items at a time, but there were nearly 11,000 items associated with "cooking". This means we need to get all 23 pages of 500 items.</p>
+<p>The first step is to get all of the relevant data. To do that, we need to restructure our query so we can control the number of items and the which "page" of results we retrieve. Remember that the API by default gives us 10 items at a time. We can add a parameter to our query to get up to 500 items at a time, but there were nearly 11,000 items associated with "cooking". This means we need to retrieve all 23 pages of 500 items.</p>
 
-<p>Open your "my_first_script.py" file. Look at the line that says: </p>
+<p>Open your "my_first_script.py" file. Look at the line that says:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search('cooking')
 </pre></td></tr></tbody></table>
@@ -144,9 +145,9 @@ print my_var[1]
 </pre></td></tr></tbody></table>
 </div>
 
-<p>This gives us a smaller set of data that is applicable to our questions, but with enough context incase we need to work back to the original item.</p>
+<p>This gives us a smaller set of data that is applicable to our questions, but with enough context in case we need to work back to the original item.</p>
 
-<p>Next, let's change the number of items we get back by adding an additional parameter to what we pass to "dpla.search". Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:</p>
+<p>Next, let's change the number of items we get back by adding an additional parameter to what we pass to "<code>dpla.search</code>". Looking at the documentation, we learn that the syntax for setting the number of items is <span class="command">page_size=</span> and the number of items we want. To get 50 items rather than 10, change that line to:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 </pre></td></tr></tbody></table>
@@ -164,21 +165,21 @@ print my_var[1]
 
 <p>Using the <a href="https://github.com/bibliotechy/DPyLA">documentation</a>, work with your group to add another parameter to get the information from page 3 of the search results.</p>
 
-<h3 id="setting-up-a-variable">2. Setting Up a Variable</h3>
+<h3 id="creating-a-variable">2. Creating a Variable</h3>
 
 <p>To get all 10,000+ items associated with cooking, we need to do two things: we need to get the items from all of the pages and we need a place to store them, so that as we get new items, our collection grows.</p>
 
-<p>Let's tackle the second problem first. Remember back to variables? Variables are names we use to hold values. We can also use variables to hold lists. A list holds a series of items, such as <span class="command">fruit = ['apple', 'orange', 'banana']</span></p>
+<p>Let's tackle the second problem first. Remember back when we discussed variables? Variables are names we use to hold values. We can also use variables to hold lists. A list holds a series of items, such as <span class="command">fruit = ['apple', 'orange', 'banana']</span></p>
 
 <p>We are going to use a similar structure to save all of the items we get back from the DPLA.</p>
 
 <h3 id="commenting-out-code">3. Commenting Out Code</h3>
 
-<p>Go back to "my_first_script.py". "Comment out" the line <span class="command">result = dpla.search('cooking', fields=['sourceResource'], page_size=50)</span> by putting # at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work and tells the computer to skip this line. </p>
+<p>Go back to "<code>my_first_script.py</code>" in your editor. "Comment out" the line <span class="command">result = dpla.search('cooking', fields=['sourceResource'], page_size=50)</span> by putting a <code>#</code> at the beginning of the line. When your computer executes the file, it will skip all lines that start with a pound sign. This allows you to leave comments for yourself or to test new ways of doing things without loosing your work and tells the computer to skip this line.</p>
 
 <p>Also comment out the line you wrote to print out one of the items.</p>
 
-<p>Your file should look like: </p>
+<p>Your file should look like:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -204,7 +205,7 @@ dpla = DPLA('YourKeyHere')
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now, let's create a new variable, "all_records" and set it equal to an empty list.</p>
+<p>Now, let's create a new variable, "<code>all_records</code>" and set it equal to an empty list.</p>
 
 <p>To do this, add a new line to the variables section of the code:</p>
 
@@ -212,7 +213,7 @@ dpla = DPLA('YourKeyHere')
 </pre></td></tr></tbody></table>
 </div>
 
-<p>This tells the computer that we have a variable, "all_records", that this variable will hold a list, and that we currently have no items in that list.</p>
+<p>This tells the computer that we have a variable, "<code>all_records</code>", that this variable will hold a list, and that we currently have no items in that list.</p>
 
 <p>Now that we have a place to store our values, we now have to tell the computer to get the search results from each page and save those results to the "all_records" list.</p>
 

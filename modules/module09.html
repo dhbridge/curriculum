@@ -51,6 +51,7 @@
 			<li><a href="/modules/module11.html">Analyzing the Data (Part 1)</a></li>
 			<li><a href="/modules/module12.html">Analyzing the Data (Part 2)</a></li>
 			<li><a href="/modules/module13.html">Saving Results to a File</a></li>
+			<li><a href="/modules/module14.html">Next Steps</a></li>
 			</ol>
 		</section>
 
@@ -68,9 +69,9 @@
 
 <h3 id="saving-our-search-results">Saving our Search Results</h3>
 
-<p>In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable in the 'Define Variables' section, add:</p>
+<p>In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable in the "Define Variables" section, add:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>f = open("search_results.json", "w")
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>f = open('search_results.json', 'w')
 </pre></td></tr></tbody></table>
 </div>
 
@@ -110,7 +111,7 @@ dpla = DPLA('Your-Key-Here')
 # result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 all_records = []
 
-f = open("search_results.json", "w")
+f = open('search_results.json', 'w')
 
 # Define Functions
 def pull_records(pages, end, size):
@@ -118,7 +119,7 @@ def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
 		# print paged_search.items[2]
 		save_each(paged_search)
-		print "finished page " + str(pages)
+		print 'finished page ' + str(pages)
 		pages = pages + 1
 
 def save_each(n):
@@ -132,9 +133,9 @@ print all_records[150]
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Here you are combining a function - open("search_results.json") - with the declaration of a variable. The "open" function both opens an existing file and  creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a". This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. </p>
+<p>Here you are combining a function - open("search_results.json") - with the declaration of a variable. The "open" function both opens an existing file and creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a" instead. This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. </p>
 
-<p>Python has libraries for working with JSON, but because these are more specialized libraries, they are not automatically loaded with Python. Since we need to write a JSON object, let's load that library into our file with <span class="command">import json</span>:</p>
+<p>Python has libraries for working with JSON, but because these are more specialized libraries, they are not automatically loaded into Python. Since we will be writing a JSON object, let's load that library into our file with <span class="command">import json</span>:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -144,7 +145,7 @@ import json
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now that we have a file to write to, let's create a third function, 'save_results' to write our search results to the file. Place this function after the 'save_each' function.</p>
+<p>Now that we have a file to write to, let's create a third function named "save_results" to write our search results to the file. Place this function after the "save_each" function.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -156,11 +157,11 @@ import json
 </pre></td></tr></tbody></table>
 </div>
 
-<p>What did this function do? First, we are creating a variable called "data" which we made using "json.dumps", which is another function that is now available to us because we loaded the 'json' library. Next, we are taking our file variable from the first part of the module and writing all of the information contained in "data" to it. We then close the file.</p>
+<p>Let's look at how this function works: first, it creates a variable called "data" which we made using "json.dumps", another function now available to us because we loaded the "json" library. Next, it takes the file variable from the first part of the module and writes all of the information contained in "data" to it. Then it closes the file.</p>
 
 <h3 id="calling-the-write-function">Calling the "Write" Function</h3>
 
-<p>To run the "save_results" function, we can now call the function at the end of our file.</p>
+<p>To run the "save_results" function, call the function at the end of the file with: </p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>save_results()
 </pre></td></tr></tbody></table>
@@ -208,7 +209,7 @@ import json
 dpla = DPLA('Your-Key-Here')
 # result = dpla.search('cooking', fields=['sourceResource'], page_size = 50)
 all_records = []
-f = open("search_results.json", "w")
+f = open('search_results.json', 'w')
 
 # Define Functions
 def pull_records(pages, end, size):
@@ -216,7 +217,7 @@ def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
 		# print paged_search.items[2]
 		save_each(paged_search)
-		print "finished page " + str(pages)
+		print 'finished page ' + str(pages)
 		pages = pages + 1
 
 def save_each(n):
@@ -258,11 +259,7 @@ save_results()
 
 <p>Save and run your script. </p>
 
-<p>Well done! You now have a local copy of all the data that we want to analyze! You have done a lot of work! Take a moment, refresh your brain with some coffee and sugar, and come back when you're ready for the last leg of the tutorial!</p>
-
-<h3 id="bonus-challege-if-that-felt-too-easy">Bonus Challege (if that felt too easy…)</h3>
-
-<p>Can you write a function that determines the total number of pages from the search results, given a particular number of items per page?</p>
+<p>Well done! You now have a local copy of all the data that we want to analyze! You have done a lot of work! Take a moment, refresh your brain with some coffee and sugar, and come back for the last leg of the tutorial!</p>
 
 <p><span class="left"><a href="module09.html">Previous Module</a></span>
 <span class="right"><a href="module10.html">Next Module</a></span></p>
