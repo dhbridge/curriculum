@@ -3,13 +3,13 @@ title: Working with Local Data
 date: 2014-09-19
 ---
 
-In this module we will learn:
+In this module we will learn to:
 
-1. to create a new script file and load in our JSON data
-2. to select data from particular fields and deal with missing data
-3. to convert our JSON data to strings of text
+1. create a new script file and load in our JSON data
+2. select data from particular fields and deal with missing data
+3. convert our JSON data to strings of text
 
-Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can do different analyses on it in later modules.
+Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can analyize it in later modules.s
 
 ### 1. Create a New Script and Load in Our Data
 
@@ -124,7 +124,7 @@ So far so good. But what if one of these fields is missing? Programming language
     print json_data[1]
     get_text(json_data)
 
-Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "title" in one of the resources.
+Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "description" in one of the resources.
 
 To deal with this, we use "try" and "except" -- we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.
 
@@ -149,7 +149,7 @@ To deal with this, we use "try" and "except" -- we will tell the computer to try
             except:
                 subject = ' '
 
-There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is in the form of a string.
+There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.
 
     # Define Functions
     def get_text(json_data):
@@ -207,8 +207,6 @@ The last is to save this data into a text file. Similar to last time, we need to
         json_data = json.load(json_file) 
     
     f = open('text_results.txt', 'w')
-
-The major difference here is that we are opening the file as append so that we can save each line of data as we loop, rather than storing it all and writing it all at once.
 
 Now, let's go back to the function and put all our pieces together into a new variable.
 
