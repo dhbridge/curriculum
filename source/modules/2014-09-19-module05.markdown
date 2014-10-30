@@ -5,9 +5,8 @@ date: 2014-09-19
 
 In this module, we will learn:
 
-1. To write and execute a Python script in the Terminal
-2. To organize our script files
-3. How a programming language relates to our machines and to the available libraries
+1. to write a Python script in our text editor and run it in the Terminal
+2. how programming languages relate to our machines and to the available libraries
 
 In this module, we will look at how to save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.
 
@@ -50,7 +49,7 @@ First, at the beginning of a Python file you need to list the libraries that we 
 	from dpla.api import DPLA
 
 Then we need to store our API key:
-
+	
 	dpla = DPLA('YourAPIKey')
 
 Then we can write our search query:
@@ -81,7 +80,7 @@ Work with your group to add another line to the file that uses the "print" funct
 
 Work with your table to add comments to the lines in 'my_first_script.py'
 
-### 3. Programming Languages
+### 2. Programming Languages
 
 It is time to return to the pen and paper! Work with your group and your coach to talk about Python as a programming language and how it fits in the ecosystem of your computer.
 
