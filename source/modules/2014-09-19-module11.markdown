@@ -98,13 +98,13 @@ Let's add a "print" command so we can display part of our text to make sure ever
 
 Save and run this script in Terminal. Let's take a look at the results. One thing to note here is that Python treats the text as a list of letters. 
 
-For our purposes, we want to work with the words, so let's use a function called "tokenize" from the NLTK library. What "tokenize" does is go through our text and, using white space and punctuation marks, bundles the letters together into "words". When we started, the computer considered our text to be a string of letters; after tokenizing, the computer sees the text as a list of words. 
+For our purposes, we want to work with the words, so let's use a function called "tokenize" from the NLTK library. What "tokenize" does is teach Python that words exist. It goes through the text, looks for white space and punctuation, and then bundles the letters between the white space and punctuation together into "words". When we started, the computer considered our text to be a series of letters; after tokenizing, the computer sees the text as a list of "words". 
 
 After "from nltk.corpus import stopwords" in the variables section, add:
 
     from nltk import word_tokenize
 
-Now let's comment out the last print statement and transform our sentences into tokens using the "word_tokenize" function. To see what has happened, let's also print the first 10 tokens.
+Now let's comment out the last print statement and transform our "words" into tokens using the "word_tokenize" function. To see what has happened, let's also print the first 10 tokens.
 
     # Import Libraries
     import nltk
@@ -126,8 +126,6 @@ Now let's comment out the last print statement and transform our sentences into 
 Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out "print cooking_tokens[0:10]" and add to the variables section after <span class="command">cooking_tokens...</span>:
 
     text = nltk.Text(cooking_tokens)
-
-This is a NLTK function that takes the tokens and allows us to move back and forth between a "text view" and a "list view" of our document.
 
 Your file should now look like this:
 
