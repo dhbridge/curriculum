@@ -3,10 +3,10 @@ title: Working with Your Computer
 date: 2014-09-19
 ---
 
-In this module, we will learn:
+In this module, we will learn to:
 
-1. To navigate and manipulate your computer using the Terminal 
-2. To conceptualize your computer as a computing machine connected to other computing machines
+1. navigate and manipulate your computer using the Terminal 
+2. conceptualize your computer as a computing machine connected to other computing machines
 
 ### 1. Working with the Terminal
 
