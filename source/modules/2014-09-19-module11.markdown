@@ -3,7 +3,7 @@ title: Analyzing the Data (Part 1)
 date: 2014-09-19
 ---
 
-Up to this point, we have been focusing on molding the data we got back from the DPLA into different formats. First, we selected part of the data to save locally and looped through all of the search result 'pages' to get our large dataset. Then, because our question involved language use and text, we transformed the data again into a document of sorts. Now, we get to take the results of our hard work and start to interrogate our data.
+Up to this point, we have been focusing on molding the data we got back from the DPLA into different formats. First, we chose the part of the data we wanted to save locally and looped through all of the search result "pages" to get our large dataset. Then, because our research question involved language use and text, we transformed the data again into a format that suits the kind of analysis we want to do. Now, we get to take the results of our hard work and start to interrogate our data.
 
 In this module we will:
 
@@ -14,9 +14,9 @@ In this module we will:
 
 We are interested in the language used in the three fields we singled out across all the "cooking" items in the DPLA database. Fortunately, there is good support within Python for text analysis and one powerful library we can use is the Natural Language ToolKit (or NLTK).
 
-To install NLTK, let's go back to our terminal and use `pip`.
+To install NLTK, let's go back to our Terminal and use `pip`.
 
-Run <span class = "command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.
+Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>  (Mac).
 
 There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/). 
 
@@ -27,9 +27,9 @@ To download the stopwords, we are going back into the Python Interactive Shell. 
     Type "help", "copyright", "credits" or "license" for more information.
     >>> 
 
-Type <span class="command">import nltk</span> and press enter.
+Type <span class="command">import nltk</span> and press Enter.
 
-Next type <span class="command">nltk.download('stopwords')</span> and press enter.
+Next type <span class="command">nltk.download('stopwords')</span> and press Enter.
 
 Once you see 
     
@@ -57,7 +57,7 @@ Let's create a third script file, "text_mining.py":
 
     touch text_mining.py
 
-(or for Windows):
+(Windows):
     
     New-Item -ItemType file text_mining.py
 
@@ -65,7 +65,7 @@ And open that script file in your text editor:
 
     open text_mining.py
 
-(and for Windows):
+(Windows):
     
     Start notepad++ text_mining.py
 
@@ -96,15 +96,15 @@ Let's add a "print" command so we can display part of our text to make sure ever
     # Make Function Calls
     print cooking_text[0:20]
 
-Save and run this script in Terminal. One thing to note here is that Python treats the text as a list of letters. 
+Save and run this script in Terminal. Let's take a look at the results. One thing to note here is that Python treats the text as a list of letters. 
 
-But we want to work with the words, so let's use a function called "tokenize" from the NLTK library. What 'tokenize' does is go through our text and, using white space and punctuation marks, bundles the letters together into 'words'. When we started, the computer considered our text to be a string of letters; after tokenizing, the computer sees the text as a list of words. 
+For our purposes, we want to work with the words, so let's use a function called "tokenize" from the NLTK library. What "tokenize" does is teach Python that words exist. It goes through the text, looks for white space and punctuation, and then bundles the letters between the white space and punctuation together into "words". When we started, the computer considered our text to be a series of letters; after tokenizing, the computer sees the text as a list of "words". 
 
-After 'from nltk.corpus import stopwords' in the variables section, add:
+After "from nltk.corpus import stopwords" in the variables section, add:
 
     from nltk import word_tokenize
 
-Now let's comment out our print statement and transform our sentences into tokens using the 'word_tokenize' function. To see what has happened, let's also print the first 10 tokens.
+Now let's comment out the last print statement and transform our "words" into tokens using the "word_tokenize" function. To see what has happened, let's also print the first 10 tokens.
 
     # Import Libraries
     import nltk
@@ -126,8 +126,6 @@ Now let's comment out our print statement and transform our sentences into token
 Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out "print cooking_tokens[0:10]" and add to the variables section after <span class="command">cooking_tokens...</span>:
 
     text = nltk.Text(cooking_tokens)
-
-This is a NLTK function that takes the tokens and allows us to move back and forth between a "text view" and a "list view" of our document.
 
 Your file should now look like this:
 

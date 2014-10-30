@@ -6,15 +6,15 @@ date: 2014-09-19
 In this module we will learn to:
 
 1. normalize our text
-2. use the Frequency Distribution library to find patterna in our text 
+2. use the Frequency Distribution library to find patterns in our text 
 
 ### 1. Normalizing the text
 
-While we can get a lot of information from all of the text, we can also find additional patterns once we do what is called 'normalizing' the text. This entails removing all of the punctuation marks, and transforming all the words to lower case. It also involves removing the small, connection words such as 'the' and 'a', which are very common in a text, but carry less semantic meaning than nouns, verbs, and adjectives.
+While we can get a lot of information from the entirety of the text, we can also find additional patterns once we do what is called "normalizing" the text. This entails removing all of the punctuation marks and transforming all the words to lower case. It also involves removing the small connection words such as "the" and "a", which are very common in a text, but carry less semantic meaning than nouns, verbs, and adjectives.
 
-To normalize the text, we need to take each of the words and and run it through a series of checks or filters. 
+To clean up the text, we need to work through each word and and run it through a series of checks or filters. 
 
-Open your 'text_mining.py' file. First, comment out <span class="command">print text.similar('Pot')</span>. Next, let's create a new function that normalizes the text:
+Open your "text_mining.py" file. First, comment out <span class="command">print text.similar('Pot')</span>. Next, let's create a new function that normalizes the text:
 
     # Define Functions
     def normalize_text(text):
@@ -23,11 +23,11 @@ Open your 'text_mining.py' file. First, comment out <span class="command">print 
     # Make Function Calls
     #print cooking_text[0:20]
     #print cooking_tokens[0:10]
-    #print text.concordance('economy')
+    #print text.concordance('economics')
     #print text.collocations()
     #print text.similar('Pot')
 
-To work through the words, we can use a new 'for loop' and save all of the approved words into a new array. Create your new array at the end of the 'Define Variables' section.
+To work through the words, we can use a new "for loop" and save all of the approved words into a new array named "word_set". Create your new array at the end of the "Set Variables" section.
     
     word_set = []
 
@@ -35,7 +35,6 @@ To work through the words, we can use a new 'for loop' and save all of the appro
     def normalize_text(text):
         # Work through all the words in text and filter
         for word in text:
-            # Create list of words
             
 First, for each word, let's check if it is alpha-numeric:
 
@@ -48,7 +47,7 @@ First, for each word, let's check if it is alpha-numeric:
             # Check if word is a word, and not punctuation
             if word.isalpha()
 
-Next, let's check the word against the NLTK collection of stopwords. First, let's load in the NLTK stopwords and assign them to the variable 'stopwords':
+Next, let's check the word against the NLTK collection of stopwords. First, let's load in the NLTK stopwords and assign them to the variable "stopwords":
 
     # Import Libraries
     import nltk
@@ -62,12 +61,12 @@ Next, let's check the word against the NLTK collection of stopwords. First, let'
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
     
-    # Load in Stopwords Library
+    # Load Stopwords
     stopwords = stopwords.words('english')
 
     word_set = []
 
-Next, we need to transform each word to lower-case, because the stopwords list won't catch the uppercase words. We do this by adding <span class="command">.lower()</span> to word as we check the words against the 'stopwords' collection. 
+Next, we need to transform each word to lower-case, because the stopwords list won't catch the uppercase words. We do this by adding <span class="command">.lower()</span> to word as we check the words against the "stopwords" collection. 
 
     word_set = []
 
@@ -79,7 +78,7 @@ Next, we need to transform each word to lower-case, because the stopwords list w
             if word.isalpha() and word.lower() not in stopwords:
                 # If it passes the filters, save to word_set
 
-Finally, we will add those words that pass through the filters to the 'word_set' list and tell the function to return to us the whole list once it is finished.
+Finally, we will add those words that pass through the filters to the "word_set" list and tell the function to return the whole list once it is finished.
 
     word_set = []
 
@@ -93,17 +92,7 @@ Finally, we will add those words that pass through the filters to the 'word_set'
                 word_set.append(word.lower())
         return word_set
 
-The last step is to call our 'normalize_text' function and pass in our text.
-
-    # Define Functions
-    def normalize_text(text):
-        # Work through all the words in text and filter
-        for word in text:
-            # Check if word is a word, and not punctuation, AND check against stop words
-            if word.isalpha() and word.lower() not in stopwords:
-                # If it passes the filters, save to word_set
-                word_set.append(word.lower())
-        return word_set
+The last step is to call our "normalize_text" function and pass in our text.
 
     # Make Function Calls
     #print cooking_text[0:20]
@@ -160,9 +149,9 @@ We need one more library to get word frequencies from our array of approved word
 
     from nltk.probability import *
 
-Now, we will use the Frequency Distribution library to get word counts. This may seem a bit like magic, and that is ok. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script. Let's first use the library, and then work through what it did.
+Now, we will use the Frequency Distribution function to get word counts. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script. Let's first use the library, and then work through what it did.
 
-The first step is to run the frequency distribution function and save the results to a variable to make them easier to use. After <span>normalize_text(text)</span> add:
+The first step is to run the Frequency Distribution function and save the results to a variable so they are easier to use. After <span>normalize_text(text)</span> add:
 
     fd = FreqDist(word_set)
 
@@ -220,7 +209,7 @@ Your file should look like:
 
 You can comment out print statements along the way if you are seeing too much information. 
 
-### Bonus Challenge
+### Bonus Challenge (for the ambitious)
 
 For some super magic, you can also generate a plot of the most frequent words. You will need to install ``numpy`` with <span class="command">sudo pip install -U numpy</span> and ``matplotlib`` with <span class="command">sudo pip install matplotlib</span>. 
 
@@ -229,7 +218,6 @@ Add to your script:
     fd.plot(50,cumulative=False)
 
 and run.
-
 
 <span class="left">[Previous Module](module11.html)</span>
 <span class="right">[Next Module](module13.html)</span>
