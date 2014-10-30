@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/modules/coaches-guide.html"/>
     <id>http://blog.url.com/modules/coaches-guide.html</id>
     <published>2014-10-06T20:00:00-04:00</published>
-    <updated>2014-10-30T12:40:01-04:00</updated>
+    <updated>2014-10-30T13:13:14-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -113,11 +113,15 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 &lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;After your group members have all created their "dhb_awesome" folder have them find where it lives on their computer through Finder/My Computer. Have them compare the directory path with what they did in Terminal to ensure they can see that they are creating files and folders on their local machine.   &lt;/li&gt;
+  &lt;li&gt;After your group members have all created their "dhb_awesome" folder have them find where it lives on their computer through Finder/My Computer. Also have them find their newly created "my_first_script.py" file. Have them compare the directory path with what they did in Terminal to ensure they can see that they are creating files and folders on their local machine.   &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id="two"&gt;Two&lt;/h3&gt;
-&lt;p&gt;Start with the DPLA interface in the browser and search for "cooking". Have your group read what's going on in the URL. Filter the number of items displayed using the GUI's filters. How did the URL change? What's the syntax?  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Module Goal:&lt;/strong&gt; to understand how computers talk to one another (through the syntax of API requests) and how computers display data (as a data dump vs. JSON).&lt;/p&gt;
+
+&lt;p&gt;Beginning Activity: 
+Start with the DPLA interface in the browser and have your group search for "cooking". Have your group read what's going on in the URL. Filter the number of items displayed using the GUI's filters. How did the URL change? What's the syntax?  &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;&lt;/p&gt;
 
@@ -127,7 +131,8 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 &lt;/ol&gt;
 
 &lt;h3 id="three"&gt;Three&lt;/h3&gt;
-&lt;p&gt;Questions to keep in mind throughout the module:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Module Goal:&lt;/strong&gt; to understand the benefits of installing libraries via &lt;code&gt;pip&lt;/code&gt;, and the relationship between the Python Interactive Shell and Terminal in the local machine.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt; &lt;/p&gt;
 
@@ -137,7 +142,8 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 &lt;/ol&gt;
 
 &lt;h3 id="four"&gt;Four&lt;/h3&gt;
-&lt;p&gt;Questions to keep in mind throughout the module:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Module Goal:&lt;/strong&gt; to understand how to create targeted queries for data and generally the different kinds of questions that can be pursued/answered based on those queries.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;&lt;/p&gt;
 
@@ -148,7 +154,9 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 
 &lt;h3 id="five"&gt;Five&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;Learning Checks: programming languages and libraries&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Module Goal:&lt;/strong&gt; to understand how programming languages interact with computers and the basic function and purpose of libraries.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -165,11 +173,15 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 
 &lt;h3 id="six"&gt;Six&lt;/h3&gt;
 
+&lt;p&gt;&lt;strong&gt;Module Goal:&lt;/strong&gt; how to begin focusing on the data relevant to the research questions at hand and selecting the relevant aspects to further pursue those questions.&lt;/p&gt;
+
 &lt;p&gt;Before your group jumps into the code-heavy part of the module, start off with the quick review of how script files should be organized. There will also be a handout for participants to reference as they continue through the modules. Participants may be tempted to gloss over this part, but make sure they take the time to get the format down. 
 1. load libraries
 2. set variables to be used throughout the script
 3. define all functions
-4. calls/commands to execute the functions&lt;/p&gt;
+4. make calls/commands to execute the functions&lt;/p&gt;
+
+&lt;p&gt;Optional Activity: have participants create their own mnemonic device for the above format (LSDM)&lt;/p&gt;
 
 &lt;p&gt;Terminology related to functions: from now on the tutorials will heavily use new phrases to describe how the functions work in relation to the data. These phrases are part of programming vernacular, and so they're not jarring to participants, here are some basic definitions to maintain consistency:
 1. call: to execute 
@@ -178,8 +190,7 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 
 &lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;
 1. Have a quick discussion about the merits of commenting out versus deleting lines
-2. Verify that participants understand setting variables and how they can hold lists (an empty list so far).
-2. Group challenge "for loop" exercise: check that the participants have a solid grasp on the function and purpose of a "for loop".&lt;/p&gt;
+2. Verify that participants understand setting variables and how they can hold lists (an empty list so far).&lt;/p&gt;
 
 &lt;h3 id="seven"&gt;Seven&lt;/h3&gt;
 
@@ -216,11 +227,11 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 &lt;p&gt;Questions for the participants to discuss/keep in mind throughout the module:
 1. How is the script parsing the text data? 
 2. What are the benefits and limitations of breaking the data into chunks in this way?
-3. How would you speak to how you as the researcher have shaped this dataset?&lt;/p&gt;
+3. How would you speak to the ways you as the researcher have shaped this dataset to a colleague?&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt; 
-1. Words, sentences, tokens: what is a token? 
-2. Collocations and concordances: what are they doing? what analytical value does each have for the research question at hand and for your own work? &lt;/p&gt;
+1. Words and tokens: what is NLTK considering a "word"? what is a token? 
+2. Collocations, concordances, and "similar": what are they doing? what analytical value does each have for the research question at hand and for your own work? &lt;/p&gt;
 
 &lt;h3 id="twelve"&gt;Twelve&lt;/h3&gt;
 &lt;p&gt;Questions for the participants to discuss/keep in mind throughout the module: 
@@ -232,6 +243,9 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 2. Encourage participants to checkout the documentation for &lt;a href="http://www.nltk.org/"&gt;NLTK&lt;/a&gt; to get a better sense of what else it can do.  &lt;/p&gt;
 
 &lt;h3 id="thirteen"&gt;Thirteen&lt;/h3&gt;
+&lt;p&gt;Questions for the participants to discuss/keep in mind throughout the module:
+1. What are the benefits of having the data in a CSV file?
+2. What else can you do with the data that's now in the CSV file? &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Learning Checks:&lt;/strong&gt;
 1. Have participants pull out their diagrams of Terminal, API, and programming languages and make any necessary revisions based on what they've learned throughout the day. &lt;/p&gt;
@@ -243,14 +257,14 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
     <link rel="alternate" href="http://blog.url.com/modules/module08.html"/>
     <id>http://blog.url.com/modules/module08.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-27T22:45:55-04:00</updated>
+    <updated>2014-10-30T13:03:26-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module, we will learn:&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module, we will learn to:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;To use a "while loop" and "counter"&lt;/li&gt;
+  &lt;li&gt;use a "while loop" and "counter"&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;We're getting there! We have a function to gather all of the search results on any given page. We now need a way to work systematically through all of the pages available. &lt;/p&gt;
@@ -1356,19 +1370,19 @@ print text.similar('Pot')
     <link rel="alternate" href="http://blog.url.com/modules/module10.html"/>
     <id>http://blog.url.com/modules/module10.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-30T09:01:14-04:00</updated>
+    <updated>2014-10-30T13:11:17-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module we will learn:&lt;/p&gt;
+    <content type="html">&lt;p&gt;In this module we will learn to:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;to create a new script file and load in our JSON data&lt;/li&gt;
-  &lt;li&gt;to select data from particular fields and deal with missing data&lt;/li&gt;
-  &lt;li&gt;to convert our JSON data to strings of text&lt;/li&gt;
+  &lt;li&gt;create a new script file and load in our JSON data&lt;/li&gt;
+  &lt;li&gt;select data from particular fields and deal with missing data&lt;/li&gt;
+  &lt;li&gt;convert our JSON data to strings of text&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can do different analyses on it in later modules.&lt;/p&gt;
+&lt;p&gt;Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can analyize it in later modules.s&lt;/p&gt;
 
 &lt;h3 id="create-a-new-script-and-load-in-our-data"&gt;1. Create a New Script and Load in Our Data&lt;/h3&gt;
 
@@ -1554,7 +1568,7 @@ get_text(json_data)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "title" in one of the resources.&lt;/p&gt;
+&lt;p&gt;Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "description" in one of the resources.&lt;/p&gt;
 
 &lt;p&gt;To deal with this, we use "try" and "except" – we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.&lt;/p&gt;
 
@@ -1600,7 +1614,7 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is in the form of a string.&lt;/p&gt;
+&lt;p&gt;There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1707,8 +1721,6 @@ with open("search_results.json") as json_file:
 f = open('text_results.txt', 'w')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
-
-&lt;p&gt;The major difference here is that we are opening the file as append so that we can save each line of data as we loop, rather than storing it all and writing it all at once.&lt;/p&gt;
 
 &lt;p&gt;Now, let's go back to the function and put all our pieces together into a new variable.&lt;/p&gt;
 

@@ -59,15 +59,15 @@
                         <h2>
           Working with Local Data
       </h2>
-       <p>In this module we will learn:</p>
+       <p>In this module we will learn to:</p>
 
 <ol>
-  <li>to create a new script file and load in our JSON data</li>
-  <li>to select data from particular fields and deal with missing data</li>
-  <li>to convert our JSON data to strings of text</li>
+  <li>create a new script file and load in our JSON data</li>
+  <li>select data from particular fields and deal with missing data</li>
+  <li>convert our JSON data to strings of text</li>
 </ol>
 
-<p>Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can do different analyses on it in later modules.</p>
+<p>Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can analyize it in later modules.s</p>
 
 <h3 id="create-a-new-script-and-load-in-our-data">1. Create a New Script and Load in Our Data</h3>
 
@@ -253,7 +253,7 @@ get_text(json_data)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "title" in one of the resources.</p>
+<p>Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "description" in one of the resources.</p>
 
 <p>To deal with this, we use "try" and "except" – we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.</p>
 
@@ -299,7 +299,7 @@ def get_text(json_data):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is in the form of a string.</p>
+<p>There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -406,8 +406,6 @@ with open("search_results.json") as json_file:
 f = open('text_results.txt', 'w')
 </pre></td></tr></tbody></table>
 </div>
-
-<p>The major difference here is that we are opening the file as append so that we can save each line of data as we loop, rather than storing it all and writing it all at once.</p>
 
 <p>Now, let's go back to the function and put all our pieces together into a new variable.</p>
 
