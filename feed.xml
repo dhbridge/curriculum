@@ -387,7 +387,7 @@ print all_records[30]
     <link rel="alternate" href="http://blog.url.com/modules/module13.html"/>
     <id>http://blog.url.com/modules/module13.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-29T00:43:31-04:00</updated>
+    <updated>2014-10-30T10:58:09-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -438,8 +438,7 @@ print all_records[30]
 37
 38
 39
-40
-41&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Import Libraries
+40&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Import Libraries
 import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
@@ -479,7 +478,6 @@ normalize_text(text)
 fd = FreqDist(word_set)
 print fd.most_common(200)
 print fd.hapaxes()
-fd.plot(50,cumulative=False)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
@@ -513,7 +511,7 @@ file = csv.writer(open("word_frequencies.csv", "wb"))
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. Be sure to comment out &lt;span class="command"&gt;fd.plot(50,cumulative=False)&lt;/span&gt; as well. The plotting function and the write csv functions don't work well together.&lt;/p&gt;
+&lt;p&gt;Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. If you did the graphing challenge, be sure to comment out &lt;span class="command"&gt;fd.plot(50,cumulative=False)&lt;/span&gt; as well. The plotting function and the write csv functions don't work well together.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;for key, count in fd.most_common(200):
@@ -637,7 +635,7 @@ for key, count in fd.most_common(200):
     <link rel="alternate" href="http://blog.url.com/modules/module12.html"/>
     <id>http://blog.url.com/modules/module12.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-30T09:09:51-04:00</updated>
+    <updated>2014-10-30T10:57:32-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1048,13 +1046,19 @@ print fd.most_common(200)
 
 &lt;p&gt;Save your script and run. You should start to see some magic happening in the termainal.&lt;/p&gt;
 
-&lt;p&gt;And, for some super magic, you can also generate a plot with:&lt;/p&gt;
+&lt;p&gt;You can comment out print statements along the way if you are seeing too much information. Save your script and run it in the terminal.&lt;/p&gt;
+
+&lt;h3 id="bonus-challenge"&gt;Bonus Challenge&lt;/h3&gt;
+
+&lt;p&gt;For some super magic, you can also generate a plot of the most frequent words. You will need to install &lt;code&gt;numpy&lt;/code&gt; with &lt;span class="command"&gt;sudo pip install -U numpy&lt;/span&gt; and &lt;code&gt;matplotlib&lt;/code&gt; with &lt;span class="command"&gt;sudo pip install matplotlib&lt;/span&gt;. &lt;/p&gt;
+
+&lt;p&gt;Add to your script:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;fd.plot(50,cumulative=False)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;You can comment out print statements along the way if you are seeing too much information. Save your script and run it in the terminal.&lt;/p&gt;
+&lt;p&gt;and run.&lt;/p&gt;
 
 &lt;p&gt;&lt;span class="left"&gt;&lt;a href="module11.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
 &lt;span class="right"&gt;&lt;a href="module13.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
@@ -1065,11 +1069,13 @@ print fd.most_common(200)
     <link rel="alternate" href="http://blog.url.com/modules/module11.html"/>
     <id>http://blog.url.com/modules/module11.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-30T10:26:34-04:00</updated>
+    <updated>2014-10-30T10:46:53-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;In this module we will:&lt;/p&gt;
+    <content type="html">&lt;p&gt;Up to this point, we have been focusing on molding the data we got back from the DPLA into different formats. First, we selected part of the data to save locally and looped through all of the search result 'pages' to get our large dataset. Then, because our question involved language use and text, we transformed the data again into a document of sorts. Now, we get to take the results of our hard work and start to interrogate our data.&lt;/p&gt;
+
+&lt;p&gt;In this module we will:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;install NLTK library&lt;/li&gt;
@@ -1083,8 +1089,6 @@ print fd.most_common(200)
 &lt;p&gt;To install NLTK, let's go back to our terminal and use &lt;code&gt;pip&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Run &lt;span class="command"&gt;pip install nltk&lt;/span&gt;. You may need to use &lt;span class="command"&gt;sudo pip install nltk&lt;/span&gt;.&lt;/p&gt;
-
-&lt;p&gt;There are two more library we will need to make a very cool graph of our word frequencies. In terminal, run &lt;span class="command"&gt;pip install -U numpy&lt;/span&gt; and &lt;span class="command"&gt;pip install matplotlib&lt;/span&gt;. &lt;/p&gt;
 
 &lt;p&gt;There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at &lt;a href="http://www.nltk.org/nltk_data/"&gt;http://www.nltk.org/nltk_data/&lt;/a&gt;. &lt;/p&gt;
 

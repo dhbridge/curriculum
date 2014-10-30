@@ -466,8 +466,7 @@ print all_records[30]
 37
 38
 39
-40
-41</pre></td><td class="code"><pre># Import Libraries
+40</pre></td><td class="code"><pre># Import Libraries
 import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
@@ -507,7 +506,6 @@ normalize_text(text)
 fd = FreqDist(word_set)
 print fd.most_common(200)
 print fd.hapaxes()
-fd.plot(50,cumulative=False)
 </pre></td></tr></tbody></table>
 </div>
 
@@ -541,7 +539,7 @@ file = csv.writer(open("word_frequencies.csv", "wb"))
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. Be sure to comment out <span class="command">fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.</p>
+<p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. If you did the graphing challenge, be sure to comment out <span class="command">fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre>for key, count in fd.most_common(200):
@@ -1069,13 +1067,19 @@ print fd.most_common(200)
 
 <p>Save your script and run. You should start to see some magic happening in the termainal.</p>
 
-<p>And, for some super magic, you can also generate a plot with:</p>
+<p>You can comment out print statements along the way if you are seeing too much information. Save your script and run it in the terminal.</p>
+
+<h3 id="bonus-challenge">Bonus Challenge</h3>
+
+<p>For some super magic, you can also generate a plot of the most frequent words. You will need to install <code>numpy</code> with <span class="command">sudo pip install -U numpy</span> and <code>matplotlib</code> with <span class="command">sudo pip install matplotlib</span>. </p>
+
+<p>Add to your script:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>fd.plot(50,cumulative=False)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>You can comment out print statements along the way if you are seeing too much information. Save your script and run it in the terminal.</p>
+<p>and run.</p>
 
 <p><span class="left"><a href="module11.html">Previous Module</a></span>
 <span class="right"><a href="module13.html">Next Module</a></span></p>
@@ -1083,7 +1087,9 @@ print fd.most_common(200)
   <h3><a href="/modules/module11.html">Analyzing the Data (Part 1)</a></h3>
   <!-- use article.summary(250) if you have Nokogiri available to show just
        the first 250 characters -->
-  <p>In this module we will:</p>
+  <p>Up to this point, we have been focusing on molding the data we got back from the DPLA into different formats. First, we selected part of the data to save locally and looped through all of the search result 'pages' to get our large dataset. Then, because our question involved language use and text, we transformed the data again into a document of sorts. Now, we get to take the results of our hard work and start to interrogate our data.</p>
+
+<p>In this module we will:</p>
 
 <ol>
   <li>install NLTK library</li>
@@ -1097,8 +1103,6 @@ print fd.most_common(200)
 <p>To install NLTK, let's go back to our terminal and use <code>pip</code>.</p>
 
 <p>Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>.</p>
-
-<p>There are two more library we will need to make a very cool graph of our word frequencies. In terminal, run <span class="command">pip install -U numpy</span> and <span class="command">pip install matplotlib</span>. </p>
 
 <p>There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at <a href="http://www.nltk.org/nltk_data/">http://www.nltk.org/nltk_data/</a>. </p>
 

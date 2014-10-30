@@ -106,8 +106,7 @@
 37
 38
 39
-40
-41</pre></td><td class="code"><pre># Import Libraries
+40</pre></td><td class="code"><pre># Import Libraries
 import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
@@ -147,7 +146,6 @@ normalize_text(text)
 fd = FreqDist(word_set)
 print fd.most_common(200)
 print fd.hapaxes()
-fd.plot(50,cumulative=False)
 </pre></td></tr></tbody></table>
 </div>
 
@@ -181,7 +179,7 @@ file = csv.writer(open("word_frequencies.csv", "wb"))
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. Be sure to comment out <span class="command">fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.</p>
+<p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. If you did the graphing challenge, be sure to comment out <span class="command">fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre>for key, count in fd.most_common(200):
