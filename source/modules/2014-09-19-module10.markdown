@@ -149,7 +149,7 @@ To deal with this, we use "try" and "except" -- we will tell the computer to try
             except:
                 subject = ' '
 
-There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.
+There are two more steps we need to get the text ready to save. The first step, using "else", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.
 
     # Define Functions
     def get_text(json_data):
