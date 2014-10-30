@@ -3,13 +3,13 @@ title: Save Results to a File
 date: 2014-09-19
 ---
 
-We are almost there! We have been creating some interesting data on the word frequencies within the description fields. But so far, all of our results are stuck in terminal, which makes it difficult for us to reuse them. So for this final module, we will write out the results of our count to a CSV (comma separated value) file.
+We are almost there! We have been creating some interesting data on the word frequencies within the description fields. But so far, all of our results are stuck in Terminal, which makes it difficult for us to reuse them. So for this final module, we will write out the results of our count to a CSV (comma separated value) file.
 
 ### Create a New CSV File
 
-As we did when we wrote our json results, we will start by telling Python to open a CSV file and assign to a variable.
+As we did when we wrote our JSON results, we will start by telling Python to open a CSV file and assign to a variable.
 
-Currently our script should look something like this:
+Currently our script should look like this:
 
     # Import Libraries
     import nltk
@@ -42,7 +42,7 @@ Currently our script should look something like this:
     # Make Function Calls
     #print cooking_text[0:20]
     #print cooking_tokens[0:10]
-    #print text.concordance('economy')
+    #print text.concordance('economics')
     #print text.collocations()
     #print text.similar('Pot')
 
@@ -52,7 +52,7 @@ Currently our script should look something like this:
     print fd.most_common(200)
     print fd.hapaxes()
 
-To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.
+To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in Python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.
 
     # Import Libraries
     import nltk
@@ -61,16 +61,16 @@ To create CSV files, we need to import the csv library, which is preinstalled, b
     from nltk.probability import *
     import csv
    
-Now, we can create our CSV file right after the line where we opened the json file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.
+Now, we can create our CSV file right after the line where we opened the JSON file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.
     
     # Set Variables
     with open('text_results.txt', 'r') as file:
         cooking_text = file.read().decode('utf8')
 
-    file = csv.writer(open("word_frequencies.csv", "wb"))
+    file = csv.writer(open('word_frequencies.csv', 'wb'))
 
 
-Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our csv file. If you did the graphing challenge, be sure to comment out <span class='command'>fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.
+Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our CSV file. If you did the graphing challenge, be sure to comment out <span class='command'>fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.
 
     for key, count in fd.most_common(200):
         file.writerow([key, count])
@@ -87,7 +87,7 @@ The final product should look like this:
     with open('text_results.txt, 'r') as file:
         cooking_text = file.read().decode('utf8')
 
-    file = csv.writer(open("word_frequencies.csv", "w"))
+    file = csv.writer(open('word_frequencies.csv', 'w'))
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -110,7 +110,7 @@ The final product should look like this:
     # Make Function Calls
     #print cooking_text[0:20]
     #print cooking_tokens[0:10]
-    #print text.concordance('economy')
+    #print text.concordance('economics')
     #print text.collocations()
     #print text.similar('Pot')
 
@@ -125,12 +125,12 @@ The final product should look like this:
     for key, count in fd.most_common(200):
         file.writerow([key, count])
 
-You can open your csv file using terminal by typing or by looking within your dhb_awesome directory:
+You can open your CSV file using Terminal by typing or by looking within your "dhb_awesome" directory:
 
     open word_frequencies.csv
 
-The file will most likely open in excel or a similar program. 
+The file will most likely open in Excel or a similar program. 
 
-Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patters we see here?
+Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patterns we see here?
 
 <span class="left">[Previous Module](module12.html)</span>
