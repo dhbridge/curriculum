@@ -8,25 +8,13 @@ In this module we will learn to:
 1. normalize our text
 2. use the Frequency Distribution library to find patterna in our text 
 
-### Normalizing the text
+### 1. Normalizing the text
 
 While we can get a lot of information from all of the text, we can also find additional patterns once we do what is called 'normalizing' the text. This entails removing all of the punctuation marks, and transforming all the words to lower case. It also involves removing the small, connection words such as 'the' and 'a', which are very common in a text, but carry less semantic meaning than nouns, verbs, and adjectives.
 
-To clean up the text, we need to work through each words and and run it through a series of checks or filters. 
+To normalize the text, we need to take each of the words and and run it through a series of checks or filters. 
 
 Open your 'text_mining.py' file. First, comment out <span class="command">print text.similar('Pot')</span>. Next, let's create a new function that normalizes the text:
-
-    # Import Libraries
-    import nltk
-    from nltk.corpus import stopwords
-    from nltk import word_tokenize
-
-    # Set Variables
-    with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
-
-    cooking_tokens = word_tokenize(cooking_text)
-    text = nltk.Text(cooking_tokens)
 
     # Define Functions
     def normalize_text(text):
@@ -128,7 +116,7 @@ The last step is to call our 'normalize_text' function and pass in our text.
 
 Well done! We're now ready to calculate word frequencies using the Frequency Distribution library.
 
-### Get Word Frequencies
+### 2. Get Word Frequencies
 
 Our Python file should now look like this: 
 
@@ -172,17 +160,21 @@ We need one more library to get word frequencies from our array of approved word
 
     from nltk.probability import *
 
-Now, we will use the Frequency Distribution library to get word counts. This may seem a bit like magic, and that is ok. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script.
+Now, we will use the Frequency Distribution library to get word counts. This may seem a bit like magic, and that is ok. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script. Let's first use the library, and then work through what it did.
 
 The first step is to run the frequency distribution function and save the results to a variable to make them easier to use. After <span>normalize_text(text)</span> add:
 
     fd = FreqDist(word_set)
 
-Frequency Distribution goes through all of the words in our array and creates a dictionary that holds the word, and the number of times it occurs in our document. 
-
 To see the 200 most common words, add to the bottom of the 'Make Function Calls' section:
 
     print fd.most_common(200)
+
+and run your script.
+
+Frequency Distribution goes through the words in our list, checks if it has seen that word before, if yes, adds 1 to the count for that word, and if not, notes it as a new word with a count of 1. 
+
+Grab your drawing materials again, and draw a diagram of what the Frequency Distribution function is doing.
 
 Your file should look like:
 
@@ -226,9 +218,7 @@ Your file should look like:
     fd = FreqDist(word_set) 
     print fd.most_common(200)
 
-Save your script and run. You should start to see some magic happening in the termainal.
-
-You can comment out print statements along the way if you are seeing too much information. Save your script and run it in the terminal.
+You can comment out print statements along the way if you are seeing too much information. 
 
 ### Bonus Challenge
 
