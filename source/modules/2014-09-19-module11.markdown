@@ -16,7 +16,7 @@ We are interested in the language used in the three fields we singled out across
 
 To install NLTK, let's go back to our Terminal and use `pip`.
 
-Run <span class = "command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>  (Mac).
+Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>  (Mac).
 
 There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/). 
 
