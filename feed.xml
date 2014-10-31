@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/modules/coaches-guide.html"/>
     <id>http://blog.url.com/modules/coaches-guide.html</id>
     <published>2014-10-06T20:00:00-04:00</published>
-    <updated>2014-10-31T09:41:48-04:00</updated>
+    <updated>2014-10-31T15:39:46-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -174,6 +174,8 @@ Start with the DPLA interface in the browser and have your group search for "coo
   &lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;p&gt;More on libraries:  they are bundles of code that we can combine to do different tasks - we don’t have to write everything new every time. It’s like cake-mix or bottled sauces (but without the cultural baggage) - by combining the mixes with other ingredients, we can create new things very quickly.&lt;/p&gt;
+
 &lt;h3 id="six"&gt;Six&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Module Goal:&lt;/strong&gt; how to begin focusing on the data relevant to the research questions at hand and selecting the relevant aspects to further pursue those questions.&lt;/p&gt;
@@ -260,37 +262,38 @@ Start with the DPLA interface in the browser and have your group search for "coo
     <link rel="alternate" href="http://blog.url.com/modules/module08.html"/>
     <id>http://blog.url.com/modules/module08.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-30T13:03:26-04:00</updated>
+    <updated>2014-10-31T15:23:27-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
     <content type="html">&lt;p&gt;In this module, we will learn to:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;use a "while loop" and "counter"&lt;/li&gt;
+  &lt;li&gt;use a "while loop"&lt;/li&gt;
+  &lt;li&gt;create a "counter"&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;We're getting there! We have a function to gather all of the search results on any given page. We now need a way to work systematically through all of the pages available. &lt;/p&gt;
+&lt;p&gt;We're getting there! We have a function to gather all of the search results on any given page. We now need a way to work systematically through all of the pages available.&lt;/p&gt;
 
-&lt;p&gt;To do that, we will add another loop to our "pull_records" function that allows us to move through more than one page of search results.&lt;/p&gt;
+&lt;p&gt;To do that, we will add another loop to our "&lt;code&gt;pull_records&lt;/code&gt;" function that allows us to move through more than one page of search results.&lt;/p&gt;
 
-&lt;h3 id="introducing-the-while-loop"&gt;1. Introducing the While Loop&lt;/h3&gt;
+&lt;h3 id="introducing-the-while-loop"&gt;1. Introducing the &lt;code&gt;while&lt;/code&gt; Loop&lt;/h3&gt;
 
 &lt;p&gt;The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the "while loop" and a "counter" to work through all of the pages of search results.&lt;/p&gt;
 
-&lt;p&gt;To use a while loop, let's look again at our "pull records" function.&lt;/p&gt;
+&lt;p&gt;To use a &lt;code&gt;while&lt;/code&gt; loop, let's look again at our "&lt;code&gt;pull_records&lt;/code&gt;" function.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
 3
 4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
 	paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-	# print paged_search.items[2]			
+	# print paged_search.items[2]
 	save_each(paged_search)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.&lt;/p&gt;
+&lt;p&gt;Remember, "&lt;code&gt;pages&lt;/code&gt;" is a variable for the first page and "&lt;code&gt;end&lt;/code&gt;" is a variable for the last page of search results we want. We want the &lt;code&gt;pull_records&lt;/code&gt; function to retrieve every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.&lt;/p&gt;
 
 &lt;p&gt;To write this logic into our existing function code, we will add:&lt;/p&gt;
 
@@ -307,14 +310,14 @@ Start with the DPLA interface in the browser and have your group search for "coo
 5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;def pull_records(pages, end, size):
 	while(pages &amp;lt;= end):
 		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-		# print paged_search.items[2]					
+		# print paged_search.items[2]
 		save_each(paged_search)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now – don't run the code at this point!&lt;/p&gt;
+&lt;p&gt;Can you see the problem with our current function? As it currently is written, "&lt;code&gt;pages&lt;/code&gt;" is always less than "&lt;code&gt;end&lt;/code&gt;" because it never increases. This means we would get stuck in an "&lt;strong&gt;infinite loop&lt;/strong&gt;" if we tried to run the code right now — don't run the code at this point! If you did, that's OK, just stop the execution of the program with by hitting &lt;code&gt;ctrl + c&lt;/code&gt; on the keyboard.&lt;/p&gt;
 
-&lt;p&gt;To avoid the "infinite loop", we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".&lt;/p&gt;
+&lt;p&gt;To avoid an "&lt;strong&gt;infinite loop&lt;/strong&gt;", we need to increase the value of "&lt;code&gt;pages&lt;/code&gt;" each time we work through the loop. We can do this by overwriting the value of "&lt;code&gt;pages&lt;/code&gt;" to be "&lt;code&gt;pages + 1&lt;/code&gt;".&lt;/p&gt;
 
 &lt;p&gt;Add "pages = pages +1" after &lt;span class="command"&gt;save_each(paged_search)&lt;/span&gt; like this:&lt;/p&gt;
 
@@ -398,7 +401,7 @@ print all_records[30]
 
 &lt;h3 id="group-challenge"&gt;Group Challenge:&lt;/h3&gt;
 
-&lt;p&gt;Go back to your pen and paper and diagram a "while loop". &lt;/p&gt;
+&lt;p&gt;Go back to your pen and paper and diagram a &lt;code&gt;while&lt;/code&gt; loop. How does that diagram compare to the one you drew for the &lt;code&gt;for&lt;/code&gt; loop?&lt;/p&gt;
 
 &lt;p&gt;&lt;span class="left"&gt;&lt;a href="module07.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
 &lt;span class="right"&gt;&lt;a href="module09.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
@@ -409,7 +412,7 @@ print all_records[30]
     <link rel="alternate" href="http://blog.url.com/modules/module13.html"/>
     <id>http://blog.url.com/modules/module13.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-30T12:40:01-04:00</updated>
+    <updated>2014-10-31T15:10:02-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -419,7 +422,7 @@ print all_records[30]
 
 &lt;p&gt;As we did when we wrote our JSON results, we will start by telling Python to open a CSV file and assign to a variable.&lt;/p&gt;
 
-&lt;p&gt;Currently our script should look like this:&lt;/p&gt;
+&lt;p&gt;Currently our &lt;code&gt;text_mining.py&lt;/code&gt; file should look like this:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -467,7 +470,7 @@ from nltk import word_tokenize
 from nltk.probability import *
 
 # Set Variables
-with open('text_results.txt, 'r') as file:
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -503,7 +506,7 @@ print fd.hapaxes()
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in Python. To do that, add &lt;span class="command"&gt;import csv&lt;/span&gt; to our list of libraries at the top of the file.&lt;/p&gt;
+&lt;p&gt;To create CSV files, we need to import the &lt;code&gt;csv&lt;/code&gt; library, which is preinstalled, but not preloaded in Python. To do that, add &lt;span class="command"&gt;import csv&lt;/span&gt; to our list of libraries at the top of the file.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -533,7 +536,7 @@ file = csv.writer(open('word_frequencies.csv', 'wb'))
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our CSV file. If you did the graphing challenge, be sure to comment out &lt;span class="command"&gt;fd.plot(50,cumulative=False)&lt;/span&gt; as well. The plotting function and the write csv functions don't work well together.&lt;/p&gt;
+&lt;p&gt;Now, at the bottom of &lt;code&gt;text_mining.py&lt;/code&gt;, we can save the key (the word) and the count (the frequency) as two columns in the CSV file &lt;code&gt;word_frequencies.csv&lt;/code&gt;. If you did the graphing challenge, be sure to comment out &lt;span class="command"&gt;fd.plot(50,cumulative=False)&lt;/span&gt; as well. The plotting function and the write csv functions don't work well together.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;for key, count in fd.most_common(200):
@@ -589,14 +592,16 @@ file = csv.writer(open('word_frequencies.csv', 'wb'))
 44
 45
 46
-47&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Import Libraries
+47
+48&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Import Libraries
 import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
+import csv
 
 # Set Variables
-with open('text_results.txt, 'r') as file:
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 file = csv.writer(open('word_frequencies.csv', 'w'))
@@ -657,7 +662,7 @@ for key, count in fd.most_common(200):
     <link rel="alternate" href="http://blog.url.com/modules/module12.html"/>
     <id>http://blog.url.com/modules/module12.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-30T12:41:58-04:00</updated>
+    <updated>2014-10-31T15:11:21-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -665,16 +670,16 @@ for key, count in fd.most_common(200):
 
 &lt;ol&gt;
   &lt;li&gt;normalize our text&lt;/li&gt;
-  &lt;li&gt;use the Frequency Distribution library to find patterns in our text &lt;/li&gt;
+  &lt;li&gt;use the Frequency Distribution library to find patterns in our text&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id="normalizing-the-text"&gt;1. Normalizing the text&lt;/h3&gt;
 
 &lt;p&gt;While we can get a lot of information from the entirety of the text, we can also find additional patterns once we do what is called "normalizing" the text. This entails removing all of the punctuation marks and transforming all the words to lower case. It also involves removing the small connection words such as "the" and "a", which are very common in a text, but carry less semantic meaning than nouns, verbs, and adjectives.&lt;/p&gt;
 
-&lt;p&gt;To clean up the text, we need to work through each word and and run it through a series of checks or filters. &lt;/p&gt;
+&lt;p&gt;To clean up the text, we need to work through each word and and run it through a series of checks or filters.&lt;/p&gt;
 
-&lt;p&gt;Open your "text_mining.py" file. First, comment out &lt;span class="command"&gt;print text.similar('Pot')&lt;/span&gt;. Next, let's create a new function that normalizes the text:&lt;/p&gt;
+&lt;p&gt;Open your "&lt;code&gt;text_mining.py&lt;/code&gt;" file. First, comment out &lt;span class="command"&gt;print text.similar('Pot')&lt;/span&gt;. Next, let's create a new function that normalizes the text:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -698,7 +703,7 @@ def normalize_text(text):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;To work through the words, we can use a new "for loop" and save all of the approved words into a new array named "word_set". Create your new array at the end of the "Set Variables" section.&lt;/p&gt;
+&lt;p&gt;To work through the words, we can use a new "&lt;code&gt;for&lt;/code&gt; loop" and save all of the approved words into a new array named "&lt;code&gt;word_set&lt;/code&gt;". Create your new array at the end of the "Set Variables" section.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -734,7 +739,7 @@ def normalize_text(text):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Next, let's check the word against the NLTK collection of stopwords. First, let's load in the NLTK stopwords and assign them to the variable "stopwords":&lt;/p&gt;
+&lt;p&gt;Next, let's check the word against the NLTK collection of stopwords. First, let's load in the NLTK stopwords and assign them to the variable "&lt;code&gt;stopwords&lt;/code&gt;":&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -770,7 +775,7 @@ word_set = []
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Next, we need to transform each word to lower-case, because the stopwords list won't catch the uppercase words. We do this by adding &lt;span class="command"&gt;.lower()&lt;/span&gt; to word as we check the words against the "stopwords" collection. &lt;/p&gt;
+&lt;p&gt;Next, we need to transform each word to lower-case, because the stopwords list won't catch the uppercase words. We do this by adding &lt;span class="command"&gt;.lower()&lt;/span&gt; to word as we check the words against the "stopwords" collection.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -792,7 +797,7 @@ def normalize_text(text):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Finally, we will add those words that pass through the filters to the "word_set" list and tell the function to return the whole list once it is finished.&lt;/p&gt;
+&lt;p&gt;Finally, we will add those words that pass through the filters to the "&lt;code&gt;word_set&lt;/code&gt;" list and tell the function to return the whole list once it is finished.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -818,7 +823,7 @@ def normalize_text(text):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The last step is to call our "normalize_text" function and pass in our text.&lt;/p&gt;
+&lt;p&gt;The last step is to call our "&lt;code&gt;normalize_text&lt;/code&gt;" function and pass in our text.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -842,7 +847,7 @@ normalize_text(text)
 
 &lt;h3 id="get-word-frequencies"&gt;2. Get Word Frequencies&lt;/h3&gt;
 
-&lt;p&gt;Our Python file should now look like this: &lt;/p&gt;
+&lt;p&gt;Our Python file should now look like this:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -922,9 +927,9 @@ normalize_text(text)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Now, we will use the Frequency Distribution function to get word counts. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script. Let's first use the library, and then work through what it did.&lt;/p&gt;
+&lt;p&gt;Now, we will use the Frequency Distribution method to get word counts. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script. Let's first use the library, and then work through what it did.&lt;/p&gt;
 
-&lt;p&gt;The first step is to run the Frequency Distribution function and save the results to a variable so they are easier to use. After &lt;span&gt;normalize_text(text)&lt;/span&gt; add:&lt;/p&gt;
+&lt;p&gt;The first step is to run the Frequency Distribution method and save the results to a variable so they are easier to use. After &lt;span class="command"&gt;normalize_text(text)&lt;/span&gt; add:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;fd = FreqDist(word_set)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -938,7 +943,7 @@ normalize_text(text)
 
 &lt;p&gt;and run your script.&lt;/p&gt;
 
-&lt;p&gt;Frequency Distribution goes through the words in our list, checks if it has seen that word before, if yes, adds 1 to the count for that word, and if not, notes it as a new word with a count of 1. &lt;/p&gt;
+&lt;p&gt;Frequency Distribution goes through the words in our list, checks if it has seen that word before, if yes, adds 1 to the count for that word, and if not, notes it as a new word with a count of 1.&lt;/p&gt;
 
 &lt;p&gt;Grab your drawing materials again, and draw a diagram of what the Frequency Distribution function is doing.&lt;/p&gt;
 
@@ -1019,7 +1024,7 @@ def normalize_text(text):
 
 normalize_text(text)
 
-fd = FreqDist(word_set) 
+fd = FreqDist(word_set)
 print fd.most_common(200)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -1028,7 +1033,7 @@ print fd.most_common(200)
 
 &lt;h3 id="bonus-challenge-for-the-ambitious"&gt;Bonus Challenge (for the ambitious)&lt;/h3&gt;
 
-&lt;p&gt;For some super magic, you can also generate a plot of the most frequent words. You will need to install &lt;code&gt;numpy&lt;/code&gt; with &lt;span class="command"&gt;sudo pip install -U numpy&lt;/span&gt; and &lt;code&gt;matplotlib&lt;/code&gt; with &lt;span class="command"&gt;sudo pip install matplotlib&lt;/span&gt;. &lt;/p&gt;
+&lt;p&gt;For some super magic, you can also generate a plot of the most frequent words. You will need to install &lt;code&gt;numpy&lt;/code&gt; with &lt;span class="command"&gt;pip install -U numpy&lt;/span&gt; and &lt;code&gt;matplotlib&lt;/code&gt; with &lt;span class="command"&gt;pip install matplotlib&lt;/span&gt;. Remember, if you get an error, try running the command again with &lt;code&gt;sudo&lt;/code&gt; (e.g. &lt;code&gt;sudo pip install -U numpy&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;Add to your script:&lt;/p&gt;
 
@@ -1047,7 +1052,7 @@ print fd.most_common(200)
     <link rel="alternate" href="http://blog.url.com/modules/module11.html"/>
     <id>http://blog.url.com/modules/module11.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-30T12:40:01-04:00</updated>
+    <updated>2014-10-31T15:39:46-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1068,9 +1073,9 @@ print fd.most_common(200)
 
 &lt;p&gt;Run &lt;span class="command"&gt;pip install nltk&lt;/span&gt;. You may need to use &lt;span class="command"&gt;sudo pip install nltk&lt;/span&gt;  (Mac).&lt;/p&gt;
 
-&lt;p&gt;There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at &lt;a href="http://www.nltk.org/nltk_data/"&gt;http://www.nltk.org/nltk_data/&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at &lt;a href="http://www.nltk.org/nltk_data/"&gt;http://www.nltk.org/nltk_data/&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;To download the stopwords, we are going back into the Python Interactive Shell. Run &lt;span class="command"&gt;python&lt;/span&gt;. Your Terminal window should now look something like this:&lt;/p&gt;
+&lt;p&gt;To download the stopwords, we are going back into the Python Interactive Interpreter. Run &lt;span class="command"&gt;python&lt;/span&gt;. Your Terminal window should now look something like this:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1078,7 +1083,7 @@ print fd.most_common(200)
 4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;Python 2.7.5 (default, Mar  9 2014, 22:15:05)
 [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
-&amp;gt;&amp;gt;&amp;gt; 
+&amp;gt;&amp;gt;&amp;gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
@@ -1086,7 +1091,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;Next type &lt;span class="command"&gt;nltk.download('stopwords')&lt;/span&gt; and press Enter.&lt;/p&gt;
 
-&lt;p&gt;Once you see &lt;/p&gt;
+&lt;p&gt;Once you see&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;True
@@ -1094,9 +1099,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;you have successfully downloaded the stopwords file. &lt;/p&gt;
+&lt;p&gt;you have successfully downloaded the stopwords file.&lt;/p&gt;
 
-&lt;p&gt;You will also need to download a tokenizing library. Still in the Python shell, run&lt;/p&gt;
+&lt;p&gt;You will also need to download a tokenizing library. Still in the Python interpretor, run&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;nltk.download('punkt')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -1112,11 +1117,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 &lt;p&gt;the download is complete.&lt;/p&gt;
 
-&lt;p&gt;You can now exit the Python Interactive Shell using &lt;span class="command"&gt;quit()&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You can now exit the Python Interactive Interpreter using &lt;span class="command"&gt;quit()&lt;/span&gt;&lt;/p&gt;
 
 &lt;h3 id="lets-start-text-mining"&gt;Let's Start Text Mining&lt;/h3&gt;
 
-&lt;p&gt;Let's create a third script file, "text_mining.py":&lt;/p&gt;
+&lt;p&gt;Let's create a third script file, "&lt;code&gt;text_mining.py&lt;/code&gt;":&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;touch text_mining.py
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -1160,7 +1165,7 @@ with open('text_results.txt', 'r') as file:
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Let's add a "print" command so we can display part of our text to make sure everything is loading correctly so far:&lt;/p&gt;
+&lt;p&gt;Let's add a "&lt;code&gt;print&lt;/code&gt;" command so we can display part of our text to make sure everything is loading correctly so far:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1188,17 +1193,17 @@ print cooking_text[0:20]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Save and run this script in Terminal. Let's take a look at the results. One thing to note here is that Python treats the text as a list of letters. &lt;/p&gt;
+&lt;p&gt;Save and run this script in Terminal. Let's take a look at the results. One thing to note here is that Python treats the text as a list of letters.&lt;/p&gt;
 
-&lt;p&gt;For our purposes, we want to work with the words, so let's use a function called "tokenize" from the NLTK library. What "tokenize" does is teach Python that words exist. It goes through the text, looks for white space and punctuation, and then bundles the letters between the white space and punctuation together into "words". When we started, the computer considered our text to be a series of letters; after tokenizing, the computer sees the text as a list of "words". &lt;/p&gt;
+&lt;p&gt;For our purposes, we want to work with the words, so let's use a function called "&lt;code&gt;tokenize&lt;/code&gt;" from the NLTK library. The NLTK "&lt;code&gt;tokenize&lt;/code&gt;" method has rules for splitting strings of text in to what we view as words. As the tokenizer goes through the text, it evaluates white space and punctuation, and then bundles the letters between the white space and punctuation together into "tokens". When we started, Python considered our text to be a list of letters; after tokenizing, the computer sees the text as a list of "words".&lt;/p&gt;
 
-&lt;p&gt;After "from nltk.corpus import stopwords" in the variables section, add:&lt;/p&gt;
+&lt;p&gt;After "&lt;code&gt;from nltk.corpus import stopwords&lt;/code&gt;" in the variables section, add:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;from nltk import word_tokenize
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Now let's comment out the last print statement and transform our "words" into tokens using the "word_tokenize" function. To see what has happened, let's also print the first 10 tokens.&lt;/p&gt;
+&lt;p&gt;Now let's comment out the last print statement and transform our "words" into tokens using the "&lt;code&gt;word_tokenize&lt;/code&gt;" method. To see what has happened, let's also print the first &lt;strong&gt;10&lt;/strong&gt; tokens.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1234,7 +1239,7 @@ print cooking_tokens[0:10]
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out "print cooking_tokens[0:10]" and add to the variables section after &lt;span class="command"&gt;cooking_tokens…&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out "&lt;code&gt;print cooking_tokens[0:10]&lt;/code&gt;" and add to the variables section after &lt;span class="command"&gt;cooking_tokens…&lt;/span&gt;:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;text = nltk.Text(cooking_tokens)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -1278,7 +1283,7 @@ text = nltk.Text(cooking_tokens)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The first thing we can do to get a sense of the words in our dataset is to use the "concordance" function within NLTK. This will print all the instances of a word with the surrounding words for context.&lt;/p&gt;
+&lt;p&gt;The first thing we can do to get a sense of the words in our dataset is to use the "&lt;code&gt;concordance&lt;/code&gt;" method within NLTK. This will print all the instances of a word with the surrounding words for context.&lt;/p&gt;
 
 &lt;p&gt;After &lt;span class="command"&gt;#print cooking_tokens[0:10]&lt;/span&gt;, add:&lt;/p&gt;
 
@@ -1294,9 +1299,9 @@ text = nltk.Text(cooking_tokens)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Try some other words to get a sense of the word usage in the "text_results" file. You can either replace the word or add additional print statements.&lt;/p&gt;
+&lt;p&gt;Try some other words to get a sense of the word usage in the "&lt;code&gt;text_results&lt;/code&gt;" file. You can either replace the word or add additional &lt;code&gt;print&lt;/code&gt; statements.&lt;/p&gt;
 
-&lt;p&gt;Another useful command is "collocation". This shows us all the words that tend to appear together throughout the corpus.&lt;/p&gt;
+&lt;p&gt;Another useful method is "&lt;code&gt;collocation&lt;/code&gt;". This shows us all the words that tend to appear together throughout the corpus.&lt;/p&gt;
 
 &lt;p&gt;Comment out &lt;span class="command"&gt;print text.concordance('your_last_word')&lt;/span&gt; and add &lt;/p&gt;
 
@@ -1306,7 +1311,7 @@ text = nltk.Text(cooking_tokens)
 
 &lt;p&gt;Save and run your script.&lt;/p&gt;
 
-&lt;p&gt;One more function that is useful for surveying our data is "similar". This shows us words that are used similarly to the word we give it.&lt;/p&gt;
+&lt;p&gt;One more method that is useful for surveying our data is "&lt;code&gt;similar&lt;/code&gt;". This shows us words that are used similarly to the word we give it.&lt;/p&gt;
 
 &lt;p&gt;Comment out &lt;span class="command"&gt; print text.collocations()&lt;/span&gt; and add:&lt;/p&gt;
 
@@ -1362,7 +1367,7 @@ print text.similar('Pot')
 
 &lt;p&gt;What other patterns might be interesting to know about the words used to describe objects related to "cooking"?&lt;/p&gt;
 
-&lt;p&gt;In the next module, we will look at word counts to find the most common words used across all of the different DPLA contributors. &lt;/p&gt;
+&lt;p&gt;In the next module, we will look at word counts to find the most common words used across all of the different DPLA contributors.&lt;/p&gt;
 
 &lt;p&gt;&lt;span class="left"&gt;&lt;a href="module10.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
 &lt;span class="right"&gt;&lt;a href="module12.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
@@ -1373,7 +1378,7 @@ print text.similar('Pot')
     <link rel="alternate" href="http://blog.url.com/modules/module10.html"/>
     <id>http://blog.url.com/modules/module10.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-31T09:41:48-04:00</updated>
+    <updated>2014-10-31T15:21:52-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1385,7 +1390,7 @@ print text.similar('Pot')
   &lt;li&gt;convert our JSON data to strings of text&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can analyize it in later modules.s&lt;/p&gt;
+&lt;p&gt;Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can analyize it in later modules.&lt;/p&gt;
 
 &lt;h3 id="create-a-new-script-and-load-in-our-data"&gt;1. Create a New Script and Load in Our Data&lt;/h3&gt;
 
@@ -1393,11 +1398,11 @@ print text.similar('Pot')
 
 &lt;p&gt;Go to Terminal and type:&lt;/p&gt;
 
-&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;touch my_second_script.py 
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;touch my_second_script.py
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;or on Windows: &lt;/p&gt;
+&lt;p&gt;or on Windows:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;New-Item -ItemType file my_second_script.py
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -1423,7 +1428,7 @@ import json
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The next thing is to load up the data from our "search_results.json" file.&lt;/p&gt;
+&lt;p&gt;The next thing is to load up the data from our "&lt;code&gt;search_results.json&lt;/code&gt;" file.&lt;/p&gt;
 
 &lt;p&gt;The structure for this is:&lt;/p&gt;
 
@@ -1435,7 +1440,7 @@ with open("search_results.json") as json_file:
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Here, we tell Python to open our "search_results.json" file and assign it to the variable "json_file". Then we use the "load" method from the JSON library to load up the data and save it as the variable "json_data". &lt;/p&gt;
+&lt;p&gt;Here, we tell Python to open our "&lt;code&gt;search_results.json&lt;/code&gt;" file and assign it to the variable "&lt;code&gt;json_file&lt;/code&gt;". Then we use the "&lt;code&gt;load&lt;/code&gt;" method from the JSON library to load up the data and save it as the variable "&lt;code&gt;json_data&lt;/code&gt;".&lt;/p&gt;
 
 &lt;p&gt;Our second script file should now look like:&lt;/p&gt;
 
@@ -1453,15 +1458,15 @@ import json
 
 # Set Variables
 with open("search_results.json") as json_file:
-    json_data = json.load(json_file) 
+    json_data = json.load(json_file)
 
 # Define Functions
 
-# Make Function Calls  
+# Make Function Calls
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "print" statement that prints the second item in the "json_data" list.&lt;/p&gt;
+&lt;p&gt;To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "&lt;code&gt;print&lt;/code&gt;" statement that prints the second item in the "&lt;code&gt;json_data&lt;/code&gt;" list.&lt;/p&gt;
 
 &lt;h3 id="select-the-relevant-text-data"&gt;2. Select the Relevant Text Data&lt;/h3&gt;
 
@@ -1469,9 +1474,9 @@ with open("search_results.json") as json_file:
 
 &lt;p&gt;The next step is to select the fields that will be most helpful for analyzing how "cooking" items are described across the items in the DPLA.&lt;/p&gt;
 
-&lt;p&gt;Looking at our items, there are three main fields containing description-type information for our different "cooking" items: the title, the description, and the subject headings. &lt;/p&gt;
+&lt;p&gt;Looking at our items, there are three main fields containing description-type information for our different "cooking" items: the title, the description, and the subject headings.&lt;/p&gt;
 
-&lt;p&gt;To start, let's make a new function called "get_text" that takes in our "json_data" list:&lt;/p&gt;
+&lt;p&gt;To start, let's make a new function called "&lt;code&gt;get_text&lt;/code&gt;" that takes in our "&lt;code&gt;json_data&lt;/code&gt;" list:&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1481,14 +1486,14 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Next, for each item in that array, we want to look for the "title", the "description", and the "subject heading fields". This means using another "for loop". &lt;/p&gt;
+&lt;p&gt;Next, for each item in that list, we want to look for the "title", the "description", and the "subject heading fields". This means using another "&lt;code&gt;for&lt;/code&gt; loop".&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
 3
 4
 5
-6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Define Functions    
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Define Functions
 def get_text(json_data):
     for each in json_data:
         # Get the titles
@@ -1497,7 +1502,7 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;We can get the title, description, and subject headings by looking for those "keys" within each item in our "json_data" list. &lt;/p&gt;
+&lt;p&gt;We can get the title, description, and subject headings by looking for those "keys" within each item in our "&lt;code&gt;json_data&lt;/code&gt;" list.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1509,7 +1514,7 @@ def get_text(json_data):
 8
 9
 10
-11&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Define Functions    
+11&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;# Define Functions
 def get_text(json_data):
     for each in json_data:
         # Get the title
@@ -1551,7 +1556,7 @@ import json
 
 # Set Variables
 with open('search_results.json') as json_file:
-    json_data = json.load(json_file) 
+    json_data = json.load(json_file)
 
 # Define Functions
 def get_text(json_data):
@@ -1571,9 +1576,9 @@ get_text(json_data)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "description" in one of the resources.&lt;/p&gt;
+&lt;p&gt;Towards the end of the error message, you should see a line that says "&lt;code&gt;KeyError: 'sourceResource.description'&lt;/code&gt;". This is Python telling you that it cannot find a key "description" in one of the resources.&lt;/p&gt;
 
-&lt;p&gt;To deal with this, we use "try" and "except" – we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.&lt;/p&gt;
+&lt;p&gt;To deal with this, we use "&lt;code&gt;try&lt;/code&gt;" and "&lt;code&gt;except&lt;/code&gt;" – we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1602,7 +1607,7 @@ def get_text(json_data):
             find_titles = each['sourceResource']['title']
         except:
             title = ' '
-        
+
         # Get the Descriptions
         try:
             find_descriptions = each['sourceResource']['description']
@@ -1617,7 +1622,7 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;There are two more steps we need to get the text ready to save. The first step, using "else", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.&lt;/p&gt;
+&lt;p&gt;There are two more steps we need to get the text ready to save. The first step, using "&lt;code&gt;else&lt;/code&gt;", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
@@ -1670,7 +1675,7 @@ def get_text(json_data):
                     title = each.encode('utf8')
         except:
             title = ' '
-        
+
         # Get the Descriptions
         try:
             find_descriptions = each['sourceResource']['description']
@@ -1690,7 +1695,7 @@ def get_text(json_data):
             else:
                 subject_list = []
                 for each in find_subjects:
-                    subject_list.append(each['name'])  
+                    subject_list.append(each['name'])
 
                 combined_subjects = ', '.join(subject_list)
                 subject = combined_subjects.encode('utf8')
@@ -1699,9 +1704,9 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;You might notice two different things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along. &lt;/p&gt;
+&lt;p&gt;You might notice two different things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along.&lt;/p&gt;
 
-&lt;p&gt;Second, we are handling the subject field differently than the title and description fields. This is because the subject key holds an additional list, rather than just values. &lt;/p&gt;
+&lt;p&gt;Second, we are handling the subject field differently than the title and description fields. This is because the subject key holds an additional list, rather than just values.&lt;/p&gt;
 
 &lt;p&gt;Work with your group to map out what is going on in the subject section of the function.&lt;/p&gt;
 
@@ -1719,7 +1724,7 @@ import json
 
 # Set Variables
 with open("search_results.json") as json_file:
-    json_data = json.load(json_file) 
+    json_data = json.load(json_file)
 
 f = open('text_results.txt', 'w')
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -1781,7 +1786,7 @@ def get_text(json_data):
                     title = each.encode('utf8')
         except:
             title = ' '
-        
+
         # Get the Descriptions
         try:
             find_descriptions = each['sourceResource']['description']
@@ -1801,7 +1806,7 @@ def get_text(json_data):
             else:
                 subject_list = []
                 for each in find_subjects:
-                    subject_list.append(each['name'])  
+                    subject_list.append(each['name'])
 
                 combined_subjects = ', '.join(subject_list)
                 subject = combined_subjects.encode('utf8')
@@ -1909,7 +1914,7 @@ def get_text(json_data):
                     title = each.encode('utf8')
         except:
             title = ' '
-        
+
         # Get the Descriptions
         try:
             find_descriptions = each['sourceResource']['description']
@@ -1929,7 +1934,7 @@ def get_text(json_data):
             else:
                 subject_list = []
                 for each in find_subjects:
-                    subject_list.append(each['name'])  
+                    subject_list.append(each['name'])
 
                 combined_subjects = ', '.join(subject_list)
                 subject = combined_subjects.encode('utf8')
@@ -1947,7 +1952,7 @@ get_text(json_data)
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Save and run your second Python script. You should now have a file named "text_results.txt" in your "dhb_awesome" directory. If you open that file, you should see lines of beautiful text ready for analysis.&lt;/p&gt;
+&lt;p&gt;Save and run your second Python script. You should now have a file named "&lt;code&gt;text_results.txt&lt;/code&gt;" in your "&lt;code&gt;dhb_awesome&lt;/code&gt;" directory. If you open that file, you should see lines of beautiful text ready for analysis.&lt;/p&gt;
 
 &lt;p&gt;In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.&lt;/p&gt;
 

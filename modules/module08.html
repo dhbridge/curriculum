@@ -62,30 +62,31 @@
        <p>In this module, we will learn to:</p>
 
 <ol>
-  <li>use a "while loop" and "counter"</li>
+  <li>use a "while loop"</li>
+  <li>create a "counter"</li>
 </ol>
 
-<p>We're getting there! We have a function to gather all of the search results on any given page. We now need a way to work systematically through all of the pages available. </p>
+<p>We're getting there! We have a function to gather all of the search results on any given page. We now need a way to work systematically through all of the pages available.</p>
 
-<p>To do that, we will add another loop to our "pull_records" function that allows us to move through more than one page of search results.</p>
+<p>To do that, we will add another loop to our "<code>pull_records</code>" function that allows us to move through more than one page of search results.</p>
 
-<h3 id="introducing-the-while-loop">1. Introducing the While Loop</h3>
+<h3 id="introducing-the-while-loop">1. Introducing the <code>while</code> Loop</h3>
 
 <p>The "for loop" allows us to do something to each item in a list. The "while loop" is a powerful tool that tells the computer to continue doing something as long as some criteria is true. We can use the "while loop" and a "counter" to work through all of the pages of search results.</p>
 
-<p>To use a while loop, let's look again at our "pull records" function.</p>
+<p>To use a <code>while</code> loop, let's look again at our "<code>pull_records</code>" function.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre>def pull_records(pages, end, size):
 	paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-	# print paged_search.items[2]			
+	# print paged_search.items[2]
 	save_each(paged_search)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Remember, "pages" stands for the first page and "end" stands for the last page of search results we want. We want this function to run for every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.</p>
+<p>Remember, "<code>pages</code>" is a variable for the first page and "<code>end</code>" is a variable for the last page of search results we want. We want the <code>pull_records</code> function to retrieve every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.</p>
 
 <p>To write this logic into our existing function code, we will add:</p>
 
@@ -102,14 +103,14 @@
 5</pre></td><td class="code"><pre>def pull_records(pages, end, size):
 	while(pages &lt;= end):
 		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-		# print paged_search.items[2]					
+		# print paged_search.items[2]
 		save_each(paged_search)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Can you see the problem with our current function? As it currently stands, "pages" is always less than "end" because it never increases. This means we would get stuck in an "infinite loop" if we tried to run the code right now – don't run the code at this point!</p>
+<p>Can you see the problem with our current function? As it currently is written, "<code>pages</code>" is always less than "<code>end</code>" because it never increases. This means we would get stuck in an "<strong>infinite loop</strong>" if we tried to run the code right now — don't run the code at this point! If you did, that's OK, just stop the execution of the program with by hitting <code>ctrl + c</code> on the keyboard.</p>
 
-<p>To avoid the "infinite loop", we need to increase the value of "pages" each time we work through the loop. We can do this by overwriting the value of "pages" to be "pages + 1".</p>
+<p>To avoid an "<strong>infinite loop</strong>", we need to increase the value of "<code>pages</code>" each time we work through the loop. We can do this by overwriting the value of "<code>pages</code>" to be "<code>pages + 1</code>".</p>
 
 <p>Add "pages = pages +1" after <span class="command">save_each(paged_search)</span> like this:</p>
 
@@ -193,7 +194,7 @@ print all_records[30]
 
 <h3 id="group-challenge">Group Challenge:</h3>
 
-<p>Go back to your pen and paper and diagram a "while loop". </p>
+<p>Go back to your pen and paper and diagram a <code>while</code> loop. How does that diagram compare to the one you drew for the <code>for</code> loop?</p>
 
 <p><span class="left"><a href="module07.html">Previous Module</a></span>
 <span class="right"><a href="module09.html">Next Module</a></span></p>

@@ -65,7 +65,7 @@
 
 <p>As we did when we wrote our JSON results, we will start by telling Python to open a CSV file and assign to a variable.</p>
 
-<p>Currently our script should look like this:</p>
+<p>Currently our <code>text_mining.py</code> file should look like this:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -113,7 +113,7 @@ from nltk import word_tokenize
 from nltk.probability import *
 
 # Set Variables
-with open('text_results.txt, 'r') as file:
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 cooking_tokens = word_tokenize(cooking_text)
@@ -149,7 +149,7 @@ print fd.hapaxes()
 </pre></td></tr></tbody></table>
 </div>
 
-<p>To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in Python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.</p>
+<p>To create CSV files, we need to import the <code>csv</code> library, which is preinstalled, but not preloaded in Python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -179,7 +179,7 @@ file = csv.writer(open('word_frequencies.csv', 'wb'))
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our CSV file. If you did the graphing challenge, be sure to comment out <span class="command">fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.</p>
+<p>Now, at the bottom of <code>text_mining.py</code>, we can save the key (the word) and the count (the frequency) as two columns in the CSV file <code>word_frequencies.csv</code>. If you did the graphing challenge, be sure to comment out <span class="command">fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre>for key, count in fd.most_common(200):
@@ -235,14 +235,16 @@ file = csv.writer(open('word_frequencies.csv', 'wb'))
 44
 45
 46
-47</pre></td><td class="code"><pre># Import Libraries
+47
+48</pre></td><td class="code"><pre># Import Libraries
 import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.probability import *
+import csv
 
 # Set Variables
-with open('text_results.txt, 'r') as file:
+with open('text_results.txt', 'r') as file:
     cooking_text = file.read().decode('utf8')
 
 file = csv.writer(open('word_frequencies.csv', 'w'))

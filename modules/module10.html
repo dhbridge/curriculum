@@ -67,7 +67,7 @@
   <li>convert our JSON data to strings of text</li>
 </ol>
 
-<p>Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can analyize it in later modules.s</p>
+<p>Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can analyize it in later modules.</p>
 
 <h3 id="create-a-new-script-and-load-in-our-data">1. Create a New Script and Load in Our Data</h3>
 
@@ -75,11 +75,11 @@
 
 <p>Go to Terminal and type:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>touch my_second_script.py 
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>touch my_second_script.py
 </pre></td></tr></tbody></table>
 </div>
 
-<p>or on Windows: </p>
+<p>or on Windows:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>New-Item -ItemType file my_second_script.py
 </pre></td></tr></tbody></table>
@@ -105,7 +105,7 @@ import json
 </pre></td></tr></tbody></table>
 </div>
 
-<p>The next thing is to load up the data from our "search_results.json" file.</p>
+<p>The next thing is to load up the data from our "<code>search_results.json</code>" file.</p>
 
 <p>The structure for this is:</p>
 
@@ -117,7 +117,7 @@ with open("search_results.json") as json_file:
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Here, we tell Python to open our "search_results.json" file and assign it to the variable "json_file". Then we use the "load" method from the JSON library to load up the data and save it as the variable "json_data". </p>
+<p>Here, we tell Python to open our "<code>search_results.json</code>" file and assign it to the variable "<code>json_file</code>". Then we use the "<code>load</code>" method from the JSON library to load up the data and save it as the variable "<code>json_data</code>".</p>
 
 <p>Our second script file should now look like:</p>
 
@@ -135,15 +135,15 @@ import json
 
 # Set Variables
 with open("search_results.json") as json_file:
-    json_data = json.load(json_file) 
+    json_data = json.load(json_file)
 
 # Define Functions
 
-# Make Function Calls  
+# Make Function Calls
 </pre></td></tr></tbody></table>
 </div>
 
-<p>To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "print" statement that prints the second item in the "json_data" list.</p>
+<p>To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "<code>print</code>" statement that prints the second item in the "<code>json_data</code>" list.</p>
 
 <h3 id="select-the-relevant-text-data">2. Select the Relevant Text Data</h3>
 
@@ -151,9 +151,9 @@ with open("search_results.json") as json_file:
 
 <p>The next step is to select the fields that will be most helpful for analyzing how "cooking" items are described across the items in the DPLA.</p>
 
-<p>Looking at our items, there are three main fields containing description-type information for our different "cooking" items: the title, the description, and the subject headings. </p>
+<p>Looking at our items, there are three main fields containing description-type information for our different "cooking" items: the title, the description, and the subject headings.</p>
 
-<p>To start, let's make a new function called "get_text" that takes in our "json_data" list:</p>
+<p>To start, let's make a new function called "<code>get_text</code>" that takes in our "<code>json_data</code>" list:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -163,14 +163,14 @@ def get_text(json_data):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Next, for each item in that array, we want to look for the "title", the "description", and the "subject heading fields". This means using another "for loop". </p>
+<p>Next, for each item in that list, we want to look for the "title", the "description", and the "subject heading fields". This means using another "<code>for</code> loop".</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre># Define Functions    
+6</pre></td><td class="code"><pre># Define Functions
 def get_text(json_data):
     for each in json_data:
         # Get the titles
@@ -179,7 +179,7 @@ def get_text(json_data):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>We can get the title, description, and subject headings by looking for those "keys" within each item in our "json_data" list. </p>
+<p>We can get the title, description, and subject headings by looking for those "keys" within each item in our "<code>json_data</code>" list.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -191,7 +191,7 @@ def get_text(json_data):
 8
 9
 10
-11</pre></td><td class="code"><pre># Define Functions    
+11</pre></td><td class="code"><pre># Define Functions
 def get_text(json_data):
     for each in json_data:
         # Get the title
@@ -233,7 +233,7 @@ import json
 
 # Set Variables
 with open('search_results.json') as json_file:
-    json_data = json.load(json_file) 
+    json_data = json.load(json_file)
 
 # Define Functions
 def get_text(json_data):
@@ -253,9 +253,9 @@ get_text(json_data)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "description" in one of the resources.</p>
+<p>Towards the end of the error message, you should see a line that says "<code>KeyError: 'sourceResource.description'</code>". This is Python telling you that it cannot find a key "description" in one of the resources.</p>
 
-<p>To deal with this, we use "try" and "except" – we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.</p>
+<p>To deal with this, we use "<code>try</code>" and "<code>except</code>" – we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -284,7 +284,7 @@ def get_text(json_data):
             find_titles = each['sourceResource']['title']
         except:
             title = ' '
-        
+
         # Get the Descriptions
         try:
             find_descriptions = each['sourceResource']['description']
@@ -299,7 +299,7 @@ def get_text(json_data):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>There are two more steps we need to get the text ready to save. The first step, using "else", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.</p>
+<p>There are two more steps we need to get the text ready to save. The first step, using "<code>else</code>", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -352,7 +352,7 @@ def get_text(json_data):
                     title = each.encode('utf8')
         except:
             title = ' '
-        
+
         # Get the Descriptions
         try:
             find_descriptions = each['sourceResource']['description']
@@ -372,7 +372,7 @@ def get_text(json_data):
             else:
                 subject_list = []
                 for each in find_subjects:
-                    subject_list.append(each['name'])  
+                    subject_list.append(each['name'])
 
                 combined_subjects = ', '.join(subject_list)
                 subject = combined_subjects.encode('utf8')
@@ -381,9 +381,9 @@ def get_text(json_data):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>You might notice two different things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along. </p>
+<p>You might notice two different things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along.</p>
 
-<p>Second, we are handling the subject field differently than the title and description fields. This is because the subject key holds an additional list, rather than just values. </p>
+<p>Second, we are handling the subject field differently than the title and description fields. This is because the subject key holds an additional list, rather than just values.</p>
 
 <p>Work with your group to map out what is going on in the subject section of the function.</p>
 
@@ -401,7 +401,7 @@ import json
 
 # Set Variables
 with open("search_results.json") as json_file:
-    json_data = json.load(json_file) 
+    json_data = json.load(json_file)
 
 f = open('text_results.txt', 'w')
 </pre></td></tr></tbody></table>
@@ -463,7 +463,7 @@ def get_text(json_data):
                     title = each.encode('utf8')
         except:
             title = ' '
-        
+
         # Get the Descriptions
         try:
             find_descriptions = each['sourceResource']['description']
@@ -483,7 +483,7 @@ def get_text(json_data):
             else:
                 subject_list = []
                 for each in find_subjects:
-                    subject_list.append(each['name'])  
+                    subject_list.append(each['name'])
 
                 combined_subjects = ', '.join(subject_list)
                 subject = combined_subjects.encode('utf8')
@@ -591,7 +591,7 @@ def get_text(json_data):
                     title = each.encode('utf8')
         except:
             title = ' '
-        
+
         # Get the Descriptions
         try:
             find_descriptions = each['sourceResource']['description']
@@ -611,7 +611,7 @@ def get_text(json_data):
             else:
                 subject_list = []
                 for each in find_subjects:
-                    subject_list.append(each['name'])  
+                    subject_list.append(each['name'])
 
                 combined_subjects = ', '.join(subject_list)
                 subject = combined_subjects.encode('utf8')
@@ -629,7 +629,7 @@ get_text(json_data)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Save and run your second Python script. You should now have a file named "text_results.txt" in your "dhb_awesome" directory. If you open that file, you should see lines of beautiful text ready for analysis.</p>
+<p>Save and run your second Python script. You should now have a file named "<code>text_results.txt</code>" in your "<code>dhb_awesome</code>" directory. If you open that file, you should see lines of beautiful text ready for analysis.</p>
 
 <p>In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.</p>
 

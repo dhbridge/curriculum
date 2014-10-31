@@ -63,16 +63,16 @@
 
 <ol>
   <li>normalize our text</li>
-  <li>use the Frequency Distribution library to find patterns in our text </li>
+  <li>use the Frequency Distribution library to find patterns in our text</li>
 </ol>
 
 <h3 id="normalizing-the-text">1. Normalizing the text</h3>
 
 <p>While we can get a lot of information from the entirety of the text, we can also find additional patterns once we do what is called "normalizing" the text. This entails removing all of the punctuation marks and transforming all the words to lower case. It also involves removing the small connection words such as "the" and "a", which are very common in a text, but carry less semantic meaning than nouns, verbs, and adjectives.</p>
 
-<p>To clean up the text, we need to work through each word and and run it through a series of checks or filters. </p>
+<p>To clean up the text, we need to work through each word and and run it through a series of checks or filters.</p>
 
-<p>Open your "text_mining.py" file. First, comment out <span class="command">print text.similar('Pot')</span>. Next, let's create a new function that normalizes the text:</p>
+<p>Open your "<code>text_mining.py</code>" file. First, comment out <span class="command">print text.similar('Pot')</span>. Next, let's create a new function that normalizes the text:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -96,7 +96,7 @@ def normalize_text(text):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>To work through the words, we can use a new "for loop" and save all of the approved words into a new array named "word_set". Create your new array at the end of the "Set Variables" section.</p>
+<p>To work through the words, we can use a new "<code>for</code> loop" and save all of the approved words into a new array named "<code>word_set</code>". Create your new array at the end of the "Set Variables" section.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -132,7 +132,7 @@ def normalize_text(text):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Next, let's check the word against the NLTK collection of stopwords. First, let's load in the NLTK stopwords and assign them to the variable "stopwords":</p>
+<p>Next, let's check the word against the NLTK collection of stopwords. First, let's load in the NLTK stopwords and assign them to the variable "<code>stopwords</code>":</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -168,7 +168,7 @@ word_set = []
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Next, we need to transform each word to lower-case, because the stopwords list won't catch the uppercase words. We do this by adding <span class="command">.lower()</span> to word as we check the words against the "stopwords" collection. </p>
+<p>Next, we need to transform each word to lower-case, because the stopwords list won't catch the uppercase words. We do this by adding <span class="command">.lower()</span> to word as we check the words against the "stopwords" collection.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -190,7 +190,7 @@ def normalize_text(text):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Finally, we will add those words that pass through the filters to the "word_set" list and tell the function to return the whole list once it is finished.</p>
+<p>Finally, we will add those words that pass through the filters to the "<code>word_set</code>" list and tell the function to return the whole list once it is finished.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -216,7 +216,7 @@ def normalize_text(text):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>The last step is to call our "normalize_text" function and pass in our text.</p>
+<p>The last step is to call our "<code>normalize_text</code>" function and pass in our text.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -240,7 +240,7 @@ normalize_text(text)
 
 <h3 id="get-word-frequencies">2. Get Word Frequencies</h3>
 
-<p>Our Python file should now look like this: </p>
+<p>Our Python file should now look like this:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -320,9 +320,9 @@ normalize_text(text)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now, we will use the Frequency Distribution function to get word counts. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script. Let's first use the library, and then work through what it did.</p>
+<p>Now, we will use the Frequency Distribution method to get word counts. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script. Let's first use the library, and then work through what it did.</p>
 
-<p>The first step is to run the Frequency Distribution function and save the results to a variable so they are easier to use. After <span>normalize_text(text)</span> add:</p>
+<p>The first step is to run the Frequency Distribution method and save the results to a variable so they are easier to use. After <span class="command">normalize_text(text)</span> add:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>fd = FreqDist(word_set)
 </pre></td></tr></tbody></table>
@@ -336,7 +336,7 @@ normalize_text(text)
 
 <p>and run your script.</p>
 
-<p>Frequency Distribution goes through the words in our list, checks if it has seen that word before, if yes, adds 1 to the count for that word, and if not, notes it as a new word with a count of 1. </p>
+<p>Frequency Distribution goes through the words in our list, checks if it has seen that word before, if yes, adds 1 to the count for that word, and if not, notes it as a new word with a count of 1.</p>
 
 <p>Grab your drawing materials again, and draw a diagram of what the Frequency Distribution function is doing.</p>
 
@@ -417,7 +417,7 @@ def normalize_text(text):
 
 normalize_text(text)
 
-fd = FreqDist(word_set) 
+fd = FreqDist(word_set)
 print fd.most_common(200)
 </pre></td></tr></tbody></table>
 </div>
@@ -426,7 +426,7 @@ print fd.most_common(200)
 
 <h3 id="bonus-challenge-for-the-ambitious">Bonus Challenge (for the ambitious)</h3>
 
-<p>For some super magic, you can also generate a plot of the most frequent words. You will need to install <code>numpy</code> with <span class="command">sudo pip install -U numpy</span> and <code>matplotlib</code> with <span class="command">sudo pip install matplotlib</span>. </p>
+<p>For some super magic, you can also generate a plot of the most frequent words. You will need to install <code>numpy</code> with <span class="command">pip install -U numpy</span> and <code>matplotlib</code> with <span class="command">pip install matplotlib</span>. Remember, if you get an error, try running the command again with <code>sudo</code> (e.g. <code>sudo pip install -U numpy</code>).</p>
 
 <p>Add to your script:</p>
 

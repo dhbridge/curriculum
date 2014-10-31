@@ -69,7 +69,7 @@
 
 <h3 id="saving-our-search-results">Saving our Search Results</h3>
 
-<p>In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "my_first_script.py" file, right under the "all_records" variable in the "Define Variables" section, add:</p>
+<p>In order to save our search results, we first need to add a line to our code that creates the file we will save to. In your "<code>my_first_script.py</code>" file, right under the "<code>all_records</code>" variable in the "<strong>Define Variables</strong>" section, add:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>f = open('search_results.json', 'w')
 </pre></td></tr></tbody></table>
@@ -129,11 +129,11 @@ def save_each(n):
 # Make Function Calls
 # print result.items[1]
 pull_records(2, 5, 50)
-print all_records[150]	
+print all_records[150]
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Here you are combining a function - open("search_results.json") - with the declaration of a variable. The "open" function both opens an existing file and creates a file if the file does not already exist on your computer. The "w" indicates that the file should be opened as "write". One thing to note about "w" - "write" gives the computer permission to overwrite the data inside the file, which is why we are opening the file once and writing the whole array at the end. If we were to write each item as we looped, we would end up with only the last item in the file. It would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "a" instead. This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information. </p>
+<p>Here you are assigning the results of a function - <code>open("search_results.json")</code> - to the variable <code>f</code>. The "<code>open</code>" method both opens an existing file and creates a file if the file does not already exist on your computer. The "<code>w</code>" argument indicates that the file should be opened for "<em>writing</em>". One thing to note about "<code>w</code>" - "write" gives the program permission to overwrite the data inside the file, which is why we are opening the file once and writing the entire list at the end. If we were to write each item as we looped, we would end up with only the last item in the file. This code would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "<code>a</code>" instead. This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information.</p>
 
 <p>Python has libraries for working with JSON, but because these are more specialized libraries, they are not automatically loaded into Python. Since we will be writing a JSON object, let's load that library into our file with <span class="command">import json</span>:</p>
 
@@ -145,7 +145,7 @@ import json
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now that we have a file to write to, let's create a third function named "save_results" to write our search results to the file. Place this function after the "save_each" function.</p>
+<p>Now that we have a file to write to, let's create a third function named "<code>save_results</code>" to write our search results to the file. Place this function after the "<code>save_each</code>" function.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -157,11 +157,11 @@ import json
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Let's look at how this function works: first, it creates a variable called "data" which we made using "json.dumps", another function now available to us because we loaded the "json" library. Next, it takes the file variable from the first part of the module and writes all of the information contained in "data" to it. Then it closes the file.</p>
+<p>Let's look at how this function works: first, we create a variable named "<code>data</code>" which contains the results of "<code>json.dumps</code>" which we passed the <code>all_records</code> list to. We have access to a new method (<code>json.dumps</code>) because we loaded the "<code>json</code>" library in the Python program. Next, it takes the file variable from the first part of the module and writes all of the information contained in "<code>data</code>" to it (<code>f.write(data)</code>). Lastly we clean up by terminating the program's ability to write to the file  with <code>f.close()</code>.</p>
 
 <h3 id="calling-the-write-function">Calling the "Write" Function</h3>
 
-<p>To run the "save_results" function, call the function at the end of the file with: </p>
+<p>To run the "<code>save_results</code>" function, call the function at the end of the file with:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>save_results()
 </pre></td></tr></tbody></table>
@@ -237,27 +237,27 @@ save_results()
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Test that everything is working by running your "my_first_script.py" in Terminal.</p>
+<p>Test that everything is working by running your "<code>my_first_script.py</code>" in Terminal.</p>
 
-<p>Open your new "search_results.json" file and check that 200 items made it in. Close the file once you're done.</p>
+<p>Open your new "<code>search_results.json</code>" file and check that 200 items made it in. Close the file once you're done.</p>
 
 <p>Congratulations! You've written your first results file!</p>
 
 <h3 id="saving-all-the-search-results">Saving all the Search Results</h3>
 
-<p>Finally, let's change the parameters we pass to the "pull_records" function to get all of the search results.</p>
+<p>Finally, let's change the parameters we pass to the "<code>pull_records</code>" function to get all of the search results.</p>
 
-<p>Remember, the first number we pass to "pull_records" corresponds to the first page of search results, the second number to the last page of search results, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take "500" for our third variable. We also want to start with the first page, so "1" is our first variable.</p>
+<p>Remember, the first number we pass to "<code>pull_records</code>" corresponds to the first page of search results, the second number to the last page of search results, and the third number is the number of items per page. The DPLA will cap us at 500 items per page, so let's take "<code>500</code>" for our third variable. We also want to start with the first page, so "<code>1</code>" is our first variable.</p>
 
-<p>To figure out the value we want for "end", we need to do a little math. If we have 10,909 items and can get 500 items a page, how many pages do we have to work through?</p>
+<p>To figure out the value we want for "<code>end</code>", we need to do a little math. If we have 10,909 items and can get 500 items a page, how many pages do we have to work through?</p>
 
-<p>Update your "pull_records" line to:</p>
+<p>Update your "<code>pull_records</code>" line to:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>pull_records(1, 22, 500)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Save and run your script. </p>
+<p>Save and run your script.</p>
 
 <p>Well done! You now have a local copy of all the data that we want to analyze! You have done a lot of work! Take a moment, refresh your brain with some coffee and sugar, and come back for the last leg of the tutorial!</p>
 
