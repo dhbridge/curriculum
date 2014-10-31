@@ -88,8 +88,7 @@ Save and run in Terminal.
 
 ### Group Challenge: 
 
-Go back to your pen and paper and diagram a `while` loop. Could you do
-the same thing with a `for` loop?
+Go back to your pen and paper and diagram a `while` loop. How does that diagram compare to the one you drew for the `for` loop?
 
 
 <span class="left">[Previous Module](module07.html)</span>
