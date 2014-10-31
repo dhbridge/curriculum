@@ -80,6 +80,7 @@
   <li>If a group is progressing quickly through the tutorials, have them explain back what the different lines of code are doing and/or complete the Bonus Challenges on the relevant tutorials. </li>
   <li>There shouldn't be any copying/pasting of the code.</li>
   <li>Only 1 folder should be used for the entire workshop.</li>
+  <li>Encourage participants to add their own commments in the script files along the way.</li>
   <li>Ask before taking over a participant's machine to demonstrate or fix a problem, and only do so if absolutely necessary. </li>
   <li>To make things easy on everyone, the following terminology will be used consistently throughout the day:</li>
 </ol>
@@ -91,6 +92,8 @@ For Mac/Windows term translation: <a href="http://www.dummies.com/how-to/content
 <ol>
   <li>Capitalization is crucial in Windows Powershell, so if you see participants running into problems it's always a good idea to check there. </li>
 </ol>
+
+<p>All complete script and result files are available for your reference here: <a href="http://curriculum.dhbridge.org/code/">http://curriculum.dhbridge.org/code/</a></p>
 
 <h3 id="full-day-schedule">Full Day Schedule</h3>
 
@@ -1621,7 +1624,7 @@ def get_text(json_data):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.</p>
+<p>There are two more steps we need to get the text ready to save. The first step, using "else", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -2207,7 +2210,7 @@ save_results()
 
 <ol>
   <li>to create and call functions</li>
-  <li>to create a "for loop" and "append" (add) items to a list</li>
+  <li>to create a "for" loop and "append" (add) items to a list</li>
 </ol>
 
 <p>We are now ready to start writing a function to gather all of the information we want from the DPLA.</p>
@@ -2244,11 +2247,11 @@ all_records = []
 
 <h3 id="creating-a-pull-records-function">1. Creating a "Pull Records" Function</h3>
 
-<p>Functions are little packets of code that do particular tasks. They involve variables and processes, they take what is given to them, and spit out a result. </p>
+<p>Functions are little blocks of code that do particular tasks. They involve variables and logic, they take what is given to them, and return a result.</p>
 
-<p>To write a function, we start with the word "def", then give our function a name, and finally end with '():' Inside the parentheses, we can indicate how many pieces of information are going into the function.</p>
+<p>To write a function, we start with the keyword "<code>def</code>", then give our function a name, and finally end with '<code>():</code>' Inside the parentheses, we can indicate how many pieces of information are going into the function.</p>
 
-<p>In your "my_first_script.py" file, add the line</p>
+<p>In your "<code>my_first_script.py</code>" file, add the line</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre># Define Functions
@@ -2256,9 +2259,9 @@ def pull_records(pages, end, size):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>In this line, you have declared a 'pull_records' function, and told the computer that this function will involve three variables (pages, end, and size).These three variables are arbitrary (you could name them "snap", "crackle", and "pop") but will stand for the first page, the last page, and the number of items per page. </p>
+<p>In this line, you have declared a '<code>pull_records</code>' function, and told Python that this function will involve three variables (<code>pages</code>, <code>end</code>, and <code>size</code>). These three variables names can be anything you like (you could name them "<code>snap</code>", "<code>crackle</code>", and "<code>pop</code>"), but should be meaningful to the their role in the function. In our case, they will hold information for the first page and last page, and the number of items per page.</p>
 
-<p>We are now ready to add the steps involved in getting the search records. </p>
+<p>We are now ready to add the steps involved in getting the search records.</p>
 
 <p>On the next line, tab in once and type:</p>
 
@@ -2302,9 +2305,9 @@ def pull_records(pages, end, size):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>It is important to note that Python is white-space aware: when writing functions in Python, white space is used to designate what is in a function or within a loop and what is outside of it.</p>
+<p>It is important to note that in Python, white-space has meaning: when writing functions in Python, white space is used to designate what is in a function or within a loop and what is outside of it.</p>
 
-<p>Let's add a "print" statement to our function and test out the first stage of this function. On the next line, tab in and add the following "print" statement after "paged_search…":</p>
+<p>Let's add a "<code>print</code>" statement to our function and test out the first stage of this function. On the next line, tab in and add the following "<code>print</code>" statement after "<code>paged_search</code>…":</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -2316,7 +2319,7 @@ def pull_records(pages, end, size):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Now to run the function, we will call the function name and give it values. On a new line in the 'Make Function Calls' section, add the line:</p>
+<p>To execute the function, we will call the function name and give it values. On a new line in the 'Make Function Calls' section, add the line:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -2362,23 +2365,23 @@ pull_records(2, 3, 50)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Save the file and go to Terminal to run it. Then come back to the function and work with your table to understand how the function worked.</p>
+<p>Save the file and go to Terminal to run it (<code>python my_first_script.py</code>). Then come back to the function and work with your table to understand how the function works.</p>
 
-<h3 id="using-a-for-loop-to-save-items-to-allrecords">2. Using a 'for loop' to save items to 'all_records'</h3>
+<h3 id="using-a-for-loop-to-save-items-to-allrecords">2. Using a '<code>for</code> loop' to save items to '<code>all_records</code>'</h3>
 
-<p>You have written and executed your first function! Well done!</p>
+<p>You have written and executed your first function. Well done!</p>
 
-<p>Now we need to add another function to store those results to the empty 'all_records' array we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.</p>
+<p>Now we need to add another function to store those results to the empty '<code>all_records</code>' list we set up in the last module. While this is not necessary when you only have one page of results, it becomes necessary when you are trying to save from multiple pages.</p>
 
-<p>To set up our new "Save Each" function, we will define a new function in our my_first_script.py file. Good practice is to group our functions together toward the top of the file, so put the "save_each" function after "pull_records" but before we call the "pull_records" function:</p>
+<p>To create a "Save Each" function, we need to define a new function in the <code>my_first_script.py</code> file. A best practice in programming is to group  functions together toward the top of the file. Let's put our "<code>save_each</code>" function after "<code>pull_records</code>" but before we call the "<code>pull_records</code>" function:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>def save_each(n):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>The 'n' here is again arbitrary. We are telling the function that there is one variable that we will be passing in, and to take that variable and plug it in for 'n' throughout the function.</p>
+<p>The '<code>n</code>' here is again arbitrary (short for number). We are telling the function that there is one attribute that we will be passing in, and to take that variable and plug it in for '<code>n</code>' throughout the function.</p>
 
-<p>We now need to add our first loop. With our current search, there are 50 items in our paged_search variable. We want to save each of those items separately to the "all_records" list. This means the computer needs to move through each individual item, grab the item, and add it to "all_records". </p>
+<p>We now need to add our first loop. With our current search, there are 50 items in our <code>paged_search</code> variable. We want to save each of those items separately to the "<code>all_records</code>" list. This means the computer needs to move through each individual item, grab the item, and add it to "<code>all_records</code>".</p>
 
 <p>Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:</p>
 
@@ -2390,11 +2393,12 @@ pull_records(2, 3, 50)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>This is called a "for loop". It tells the computer to iterate through each item in the list "n". </p>
+<p>This is called a "<em>for loop</em>". It tells Python to iterate through each item in the list "<code>n</code>".</p>
 
-<p>Because this is a process inside a process, we need to tab in again. Each time we have a new loop or new function, we tab in all the lines associated with that process. To show that we're done listing steps for a particular process, we tab back out.</p>
+<p>Because this logic is contained within the function, we need to add another tab. Each time we have a new loop or new function, we tab in all the lines associated with that block of code. To show that we're done listing steps for a particular bit of logic, we align the code with the appropriate amount of whitespace.</p>
 
-<p>To add the item to the "all_records" array, we use the "append" command:</p>
+<p>To add the item to the "<code>all_records</code>" list, we use the "<a href="https://docs.python.org/2/tutorial/datastructures.html">append</a>"
+method:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -2406,9 +2410,9 @@ pull_records(2, 3, 50)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>"Append" grabs the value of "each" and adds it to the series we are saving as a list.</p>
+<p>"<code>append</code>" grabs the value of "<code>each</code>" and adds it to the series we are saving as a list.</p>
 
-<p>Now we can use this function in our "pull records" function. Currently, our "pull records" function looks as follows:</p>
+<p>Now we can use this function in our "<code>pull_records</code>" function. Currently, our "<code>pull_records</code>" function looks as follows:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -2418,16 +2422,16 @@ pull_records(2, 3, 50)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>Let's comment out the "print paged_search.item[2]" line, because that was just there to check that the first bit worked. </p>
+<p>Let's comment out the "<code>print paged_search.item[2]</code>" line, because that was just there to check that the first bit worked.</p>
 
-<p>Now add a call to the "save_each" function, that passes in our search results. </p>
+<p>Now add a call to the "<code>save_each</code>" function, that passes in our search results.</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre>def pull_records (pages, end, size):
 	paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
-	# print paged_search.items[2]	
+	# print paged_search.items[2]
 	save_each(paged_search)
 </pre></td></tr></tbody></table>
 </div>
@@ -2466,7 +2470,7 @@ all_records = []
 # Define Functions
 def pull_records (pages, end, size):
 	paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
-	# print paged_search.items[2]	
+	# print paged_search.items[2]
 	save_each(paged_search)
 
 def save_each(n):
@@ -2480,9 +2484,9 @@ pull_records(2, 3, 50)
 </pre></td></tr></tbody></table>
 </div>
 
-<p>To test this, let's now add a "print" statement to the end of the file, after the "pull_records" function has been run, to make sure that the items are going into the "all_records" variable.</p>
+<p>To test this, let's now add a "<code>print</code>" statement to the end of the file, after the "<code>pull_records</code>" function has been run, to make sure that the items are going into the "<code>all_records</code>" variable.</p>
 
-<p>After "pull_records()" add:</p>
+<p>After "<code>pull_records()</code>" add:</p>
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print all_records[30]
 </pre></td></tr></tbody></table>
@@ -2490,11 +2494,11 @@ pull_records(2, 3, 50)
 
 <p>Save and run your script.</p>
 
-<p>We have made great progress! We now have two functions to handle making the query and saving the results, but we are still only working with one "page" of search results at a time. In the next module, we will add yet another kind of loop in order to move through the different pages.</p>
+<p>We have made great progress! We now have two functions to handle making the query and saving the results, but we are still only working with one "<code>page</code>" of search results at a time. In the next module, we will add yet another kind of loop in order to move through the different pages.</p>
 
 <h3 id="group-challenge">Group Challenge</h3>
 
-<p>Break out the paper and pencils. Work as a group to create a diagram or metaphor for a "for loop". When would a "for loop" be useful?  </p>
+<p>Break out the paper and pencils. Work as a group to create a diagram or metaphor for a "for loop". When would a "for loop" be useful?</p>
 
 <p><span class="left"><a href="module06.html">Previous Module</a></span>
 <span class="right"><a href="module08.html">Next Module</a></span></p>

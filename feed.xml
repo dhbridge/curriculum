@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/modules/coaches-guide.html"/>
     <id>http://blog.url.com/modules/coaches-guide.html</id>
     <published>2014-10-06T20:00:00-04:00</published>
-    <updated>2014-10-30T13:13:14-04:00</updated>
+    <updated>2014-10-31T09:41:48-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -38,6 +38,7 @@
   &lt;li&gt;If a group is progressing quickly through the tutorials, have them explain back what the different lines of code are doing and/or complete the Bonus Challenges on the relevant tutorials. &lt;/li&gt;
   &lt;li&gt;There shouldn't be any copying/pasting of the code.&lt;/li&gt;
   &lt;li&gt;Only 1 folder should be used for the entire workshop.&lt;/li&gt;
+  &lt;li&gt;Encourage participants to add their own commments in the script files along the way.&lt;/li&gt;
   &lt;li&gt;Ask before taking over a participant's machine to demonstrate or fix a problem, and only do so if absolutely necessary. &lt;/li&gt;
   &lt;li&gt;To make things easy on everyone, the following terminology will be used consistently throughout the day:&lt;/li&gt;
 &lt;/ol&gt;
@@ -49,6 +50,8 @@ For Mac/Windows term translation: &lt;a href="http://www.dummies.com/how-to/cont
 &lt;ol&gt;
   &lt;li&gt;Capitalization is crucial in Windows Powershell, so if you see participants running into problems it's always a good idea to check there. &lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;All complete script and result files are available for your reference here: &lt;a href="http://curriculum.dhbridge.org/code/"&gt;http://curriculum.dhbridge.org/code/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id="full-day-schedule"&gt;Full Day Schedule&lt;/h3&gt;
 
@@ -1370,7 +1373,7 @@ print text.similar('Pot')
     <link rel="alternate" href="http://blog.url.com/modules/module10.html"/>
     <id>http://blog.url.com/modules/module10.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-30T13:11:17-04:00</updated>
+    <updated>2014-10-31T09:41:48-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1614,7 +1617,7 @@ def get_text(json_data):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;There are two more steps we need to get the text ready to save. The first step is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.&lt;/p&gt;
+&lt;p&gt;There are two more steps we need to get the text ready to save. The first step, using "else", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.&lt;/p&gt;
 
 &lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
 2
