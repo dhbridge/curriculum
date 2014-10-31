@@ -27,7 +27,7 @@ Open your "`text_mining.py`" file. First, comment out <span class="command">prin
     #print text.collocations()
     #print text.similar('Pot')
 
-To work through the words, we can use a new "`for` loop" and save all of the approved words into a new array named "`word_set`". Create your new array at the end of the "**Set Variables**" section.
+To work through the words, we can use a new "`for` loop" and save all of the approved words into a new array named "`word_set`". Create your new array at the end of the "Set Variables" section.
 
     word_set = []
 
