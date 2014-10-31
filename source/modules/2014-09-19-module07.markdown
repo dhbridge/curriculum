@@ -10,7 +10,7 @@ In this module, we will learn to:
 
 We are now ready to start writing a function to gather all of the information we want from the DPLA.
 
-We now have a file that looks like this:
+Our file currently looks like this:
 
 	# Load Libraries
 	from dpla.api import DPLA
