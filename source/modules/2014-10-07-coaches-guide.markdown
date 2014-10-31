@@ -133,9 +133,11 @@ Start with the DPLA interface in the browser and have your group search for "coo
 -High-level programming languages (like Python) enable you to write commands for your computer in something that approximates English. Those commands are then translated down to machine language, executed by the hardware, and the results are translated back to generate the desired output. Your computer is constantly processing commands from the applications on your machine in multiple programming languages. Just like those applications, you can use the terminal interface to send commands to your computer.
 -Discuss everyone's diagrams and make sure the concepts are clear.
 
-3. **Mapping Exercise #2:** have participants diagram the following, similar to the API exercise from earlier in the day:
+2. **Mapping Exercise #2:** have participants diagram the following, similar to the API exercise from earlier in the day:
 -A Python module or library is a bundle of code, including variables and functions (defined processes), that does a particular task. Many Python modules already exist out in the world, ready to be used, and new ones are developed by programmers all the time. Python scripts, which combine these modules with additional python commands, give the computer new, and more complicated, tasks that can be completed.
 -Discuss everyone's diagrams and make sure the concepts are clear.
+
+More on libraries:  they are bundles of code that we can combine to do different tasks - we don’t have to write everything new every time. It’s like cake-mix or bottled sauces (but without the cultural baggage) - by combining the mixes with other ingredients, we can create new things very quickly.
 
 ### Six
 
