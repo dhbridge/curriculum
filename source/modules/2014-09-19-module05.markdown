@@ -8,11 +8,11 @@ In this module, we will learn:
 1. to write a Python script in our text editor and run it in the Terminal
 2. how programming languages relate to our machines and to the available libraries
 
-In this module, we will look at how to save our Python scripts in a text file. While the Interactive Shell is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.
+In this module, we will look at how to save our Python scripts in a text file. While the Interactive Interpreter is really useful for figuring things out, files are easier to share and enable us to keep our save our work as we go.
 
 ### 1. Writing and Executing Script Files
 
-First, exit out of the Python Interactive Shell by running <span class="command">exit()</span>.
+First, exit out of the Python Interactive Interpreter by running <span class="command">exit()</span>.
 
 You should still be in the folder we made at the beginning of the day. Check using <span class="command">pwd</span>.
 
@@ -40,7 +40,7 @@ Congratulations! You just executed your first Python script!
 
 ### Writing our DPyLA Script
 
-Now let's recreate some of the work we did in the Interactive Shell in this script file.
+Now let's recreate some of the work we did in the Interactive Interpreter in this script file.
 
 Delete <span class="command">print "Hello World"</span> so that you're working with a clean file.
 
