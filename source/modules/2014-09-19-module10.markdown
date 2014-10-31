@@ -9,7 +9,7 @@ In this module we will learn to:
 2. select data from particular fields and deal with missing data
 3. convert our JSON data to strings of text
 
-Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can analyize it in later modules.s
+Now that we have a very large file of JSON data, we can work locally to find patterns that we could not find using the online interface for the DPLA's holdings. Since we are interested in the language being used in order to investigate how the descriptions of "cooking" items are gendered, our next step is to clean up that data and save it as text only so we can analyize it in later modules.
 
 ### 1. Create a New Script and Load in Our Data
 
@@ -17,9 +17,9 @@ It is time to create a new script file!
 
 Go to Terminal and type:
 
-	touch my_second_script.py 
+	touch my_second_script.py
 
-or on Windows: 
+or on Windows:
 
     New-Item -ItemType file my_second_script.py
 
@@ -36,15 +36,15 @@ First, we will need the JSON library again. To add this, add <span class="comman
     # Load Libraries
     import json
 
-The next thing is to load up the data from our "search_results.json" file.
+The next thing is to load up the data from our "`search_results.json`" file.
 
 The structure for this is:
-    
+
     # Set Variables
     with open("search_results.json") as json_file:
         json_data = json.load(json_file)
 
-Here, we tell Python to open our "search_results.json" file and assign it to the variable "json_file". Then we use the "load" method from the JSON library to load up the data and save it as the variable "json_data". 
+Here, we tell Python to open our "`search_results.json`" file and assign it to the variable "`json_file`". Then we use the "`load`" method from the JSON library to load up the data and save it as the variable "`json_data`".
 
 Our second script file should now look like:
 
@@ -53,14 +53,14 @@ Our second script file should now look like:
 
     # Set Variables
     with open("search_results.json") as json_file:
-        json_data = json.load(json_file) 
+        json_data = json.load(json_file)
 
     # Define Functions
 
-    # Make Function Calls  
+    # Make Function Calls
 
 
-To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "print" statement that prints the second item in the "json_data" list.
+To make sure this worked, let's print out one item from the JSON data. Work with your table to add a "`print`" statement that prints the second item in the "`json_data`" list.
 
 ### 2. Select the Relevant Text Data
 
@@ -68,26 +68,26 @@ Our research question for this data is how, across the entire DPLA collection, t
 
 The next step is to select the fields that will be most helpful for analyzing how "cooking" items are described across the items in the DPLA.
 
-Looking at our items, there are three main fields containing description-type information for our different "cooking" items: the title, the description, and the subject headings. 
+Looking at our items, there are three main fields containing description-type information for our different "cooking" items: the title, the description, and the subject headings.
 
-To start, let's make a new function called "get_text" that takes in our "json_data" list:
+To start, let's make a new function called "`get_text`" that takes in our "`json_data`" list:
 
     # Define Functions
     def get_text(json_data):
         # Do something to each item in json_data
 
-Next, for each item in that array, we want to look for the "title", the "description", and the "subject heading fields". This means using another "for loop". 
+Next, for each item in that list, we want to look for the "title", the "description", and the "subject heading fields". This means using another "`for` loop".
 
-    # Define Functions    
+    # Define Functions
     def get_text(json_data):
         for each in json_data:
             # Get the titles
             # Get the descriptions
             # Get the subject headings
 
-We can get the title, description, and subject headings by looking for those "keys" within each item in our "json_data" list. 
+We can get the title, description, and subject headings by looking for those "keys" within each item in our "`json_data`" list.
 
-    # Define Functions    
+    # Define Functions
     def get_text(json_data):
         for each in json_data:
             # Get the title
@@ -106,7 +106,7 @@ So far so good. But what if one of these fields is missing? Programming language
 
     # Set Variables
     with open('search_results.json') as json_file:
-        json_data = json.load(json_file) 
+        json_data = json.load(json_file)
 
     # Define Functions
     def get_text(json_data):
@@ -124,9 +124,9 @@ So far so good. But what if one of these fields is missing? Programming language
     print json_data[1]
     get_text(json_data)
 
-Towards the end of the error message, you should see a line that says "KeyError: 'sourceResource.description'". This is Python telling you that it cannot find a key "description" in one of the resources.
+Towards the end of the error message, you should see a line that says "`KeyError: 'sourceResource.description'`". This is Python telling you that it cannot find a key "description" in one of the resources.
 
-To deal with this, we use "try" and "except" -- we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.
+To deal with this, we use "`try`" and "`except`" -- we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.
 
     # Define Functions
     def get_text(json_data):
@@ -136,7 +136,7 @@ To deal with this, we use "try" and "except" -- we will tell the computer to try
                 find_titles = each['sourceResource']['title']
             except:
                 title = ' '
-            
+
             # Get the Descriptions
             try:
                 find_descriptions = each['sourceResource']['description']
@@ -149,7 +149,7 @@ To deal with this, we use "try" and "except" -- we will tell the computer to try
             except:
                 subject = ' '
 
-There are two more steps we need to get the text ready to save. The first step, using "else", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.
+There are two more steps we need to get the text ready to save. The first step, using "`else`", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.
 
     # Define Functions
     def get_text(json_data):
@@ -164,7 +164,7 @@ There are two more steps we need to get the text ready to save. The first step, 
                         title = each.encode('utf8')
             except:
                 title = ' '
-            
+
             # Get the Descriptions
             try:
                 find_descriptions = each['sourceResource']['description']
@@ -184,28 +184,28 @@ There are two more steps we need to get the text ready to save. The first step, 
                 else:
                     subject_list = []
                     for each in find_subjects:
-                        subject_list.append(each['name'])  
+                        subject_list.append(each['name'])
 
                     combined_subjects = ', '.join(subject_list)
                     subject = combined_subjects.encode('utf8')
             except:
                 subject = ' '
 
-You might notice two different things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along. 
+You might notice two different things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along.
 
-Second, we are handling the subject field differently than the title and description fields. This is because the subject key holds an additional list, rather than just values. 
+Second, we are handling the subject field differently than the title and description fields. This is because the subject key holds an additional list, rather than just values.
 
 Work with your group to map out what is going on in the subject section of the function.
 
 The last is to save this data into a text file. Similar to last time, we need to set up the file that will receive that data:
-    
+
     # Load Libraries
     import json
 
     # Set Variables
     with open("search_results.json") as json_file:
-        json_data = json.load(json_file) 
-    
+        json_data = json.load(json_file)
+
     f = open('text_results.txt', 'w')
 
 Now, let's go back to the function and put all our pieces together into a new variable.
@@ -223,7 +223,7 @@ Now, let's go back to the function and put all our pieces together into a new va
                         title = each.encode('utf8')
             except:
                 title = ' '
-            
+
             # Get the Descriptions
             try:
                 find_descriptions = each['sourceResource']['description']
@@ -243,7 +243,7 @@ Now, let's go back to the function and put all our pieces together into a new va
                 else:
                     subject_list = []
                     for each in find_subjects:
-                        subject_list.append(each['name'])  
+                        subject_list.append(each['name'])
 
                     combined_subjects = ', '.join(subject_list)
                     subject = combined_subjects.encode('utf8')
@@ -264,7 +264,7 @@ The last step is to write all the information within "data" to our file directly
             f.write(data)
 
 Last, let's add a call to the function:
-    
+
     # Load Libraries
     import json
 
@@ -287,7 +287,7 @@ Last, let's add a call to the function:
                         title = each.encode('utf8')
             except:
                 title = ' '
-            
+
             # Get the Descriptions
             try:
                 find_descriptions = each['sourceResource']['description']
@@ -307,7 +307,7 @@ Last, let's add a call to the function:
                 else:
                     subject_list = []
                     for each in find_subjects:
-                        subject_list.append(each['name'])  
+                        subject_list.append(each['name'])
 
                     combined_subjects = ', '.join(subject_list)
                     subject = combined_subjects.encode('utf8')
@@ -323,7 +323,7 @@ Last, let's add a call to the function:
     # Make Function Calls
     get_text(json_data)
 
-Save and run your second Python script. You should now have a file named "text_results.txt" in your "dhb_awesome" directory. If you open that file, you should see lines of beautiful text ready for analysis.
+Save and run your second Python script. You should now have a file named "`text_results.txt`" in your "`dhb_awesome`" directory. If you open that file, you should see lines of beautiful text ready for analysis.
 
 In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.
 
