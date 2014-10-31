@@ -9,7 +9,7 @@ We are almost there! We have been creating some interesting data on the word fre
 
 As we did when we wrote our JSON results, we will start by telling Python to open a CSV file and assign to a variable.
 
-Currently our script should look like this:
+Currently our `text_mining.py` file should look like this:
 
     # Import Libraries
     import nltk
@@ -18,12 +18,12 @@ Currently our script should look like this:
     from nltk.probability import *
 
     # Set Variables
-    with open('text_results.txt, 'r') as file:
+    with open('text_results.txt', 'r') as file:
         cooking_text = file.read().decode('utf8')
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
-    
+
     # Load in Stopwords Library
     stopwords = stopwords.words('english')
 
@@ -52,7 +52,7 @@ Currently our script should look like this:
     print fd.most_common(200)
     print fd.hapaxes()
 
-To create CSV files, we need to import the csv library, which is preinstalled, but not preloaded in Python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.
+To create CSV files, we need to import the `csv` library, which is preinstalled, but not preloaded in Python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.
 
     # Import Libraries
     import nltk
@@ -60,9 +60,9 @@ To create CSV files, we need to import the csv library, which is preinstalled, b
     from nltk import word_tokenize
     from nltk.probability import *
     import csv
-   
+
 Now, we can create our CSV file right after the line where we opened the JSON file. CSV files open a little differently than text files, in that we open the file with a "writer" helper.
-    
+
     # Set Variables
     with open('text_results.txt', 'r') as file:
         cooking_text = file.read().decode('utf8')
@@ -70,7 +70,7 @@ Now, we can create our CSV file right after the line where we opened the JSON fi
     file = csv.writer(open('word_frequencies.csv', 'wb'))
 
 
-Now, at the end of our file, we can save the key(the word) and the count(the frequency) as two columns in our CSV file. If you did the graphing challenge, be sure to comment out <span class='command'>fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.
+Now, at the bottom of `text_mining.py`, we can save the key (the word) and the count (the frequency) as two columns in the CSV file `word_frequencies.csv`. If you did the graphing challenge, be sure to comment out <span class='command'>fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.
 
     for key, count in fd.most_common(200):
         file.writerow([key, count])
@@ -82,16 +82,17 @@ The final product should look like this:
     from nltk.corpus import stopwords
     from nltk import word_tokenize
     from nltk.probability import *
+    import csv
 
     # Set Variables
-    with open('text_results.txt, 'r') as file:
+    with open('text_results.txt', 'r') as file:
         cooking_text = file.read().decode('utf8')
 
     file = csv.writer(open('word_frequencies.csv', 'w'))
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
-    
+
     # Load in Stopwords Library
     stopwords = stopwords.words('english')
 
