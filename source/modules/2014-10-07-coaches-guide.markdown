@@ -29,6 +29,8 @@ Directories and Folders = Folders
 For Mac/Windows term translation: [http://www.dummies.com/how-to/content/comparing-common-windows-terms-with-mac-terms.html](http://www.dummies.com/how-to/content/comparing-common-windows-terms-with-mac-terms.html)
 
 7. Capitalization is crucial in Windows Powershell, so if you see participants running into problems it's always a good idea to check there. 
+ 
+All complete script and result files are available for your reference here: [http://curriculum.dhbridge.org/code/](http://curriculum.dhbridge.org/code/)
 
 ### Full Day Schedule
 
