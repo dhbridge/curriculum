@@ -36,6 +36,7 @@
                 		<section id="sidebar">
 			<h2>Modules</h2>
 			<a href="/modules/installation.html">Installation Instructions</a>
+			<a href="/modules/coaches-guide.html">Coaches Guide</a>
 
 			<ol>
 			<li><a href="/modules/module01.html">Working with your Computer</a></li>
@@ -2818,7 +2819,7 @@ result = dpla.search('cooking')
 
 <p>You can also sort by geography:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search("cooking", fields=["sourceResource.title", "sourceResource.date", "sourceResource.spatial"], spatial_facet=[37.7577,-122.4376])
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>result = dpla.search("cooking", fields=["sourceResource.title", "sourceResource.date", "sourceResource.spatial"], spatial_sort=[37.7577,-122.4376])
 </pre></td></tr></tbody></table>
 </div>
 
