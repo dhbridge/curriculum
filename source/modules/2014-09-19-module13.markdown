@@ -135,3 +135,4 @@ The file will most likely open in Excel or a similar program.
 Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patterns we see here?
 
 <span class="left">[Previous Module](module12.html)</span>
+<span class="right">[Next Module](module14.html)</span>
