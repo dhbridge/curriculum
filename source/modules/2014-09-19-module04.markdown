@@ -30,7 +30,7 @@ To see your updated search results, run:
 
 You can also sort by geography:
 
-	result = dpla.search("cooking", fields=["sourceResource.title", "sourceResource.date", "sourceResource.spatial"], spatial_facet=[37.7577,-122.4376])
+	result = dpla.search("cooking", fields=["sourceResource.title", "sourceResource.date", "sourceResource.spatial"], spatial_sort=[37.7577,-122.4376])
 
 To see the results, run:
 
