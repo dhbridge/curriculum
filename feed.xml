@@ -412,7 +412,7 @@ print all_records[30]
     <link rel="alternate" href="http://blog.url.com/modules/module13.html"/>
     <id>http://blog.url.com/modules/module13.html</id>
     <published>2014-09-18T20:00:00-04:00</published>
-    <updated>2014-10-31T15:10:02-04:00</updated>
+    <updated>2014-10-31T22:07:14-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -654,7 +654,8 @@ for key, count in fd.most_common(200):
 
 &lt;p&gt;Look over your results. What patterns strike you as interesting? As expected? As unexpected? What additional questions do these word frequencies raise? Now that you have this data, what additional information do you need to know to interpret the patterns we see here?&lt;/p&gt;
 
-&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module12.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="left"&gt;&lt;a href="module12.html"&gt;Previous Module&lt;/a&gt;&lt;/span&gt;
+&lt;span class="right"&gt;&lt;a href="module14.html"&gt;Next Module&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
