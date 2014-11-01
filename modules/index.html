@@ -420,8 +420,8 @@ def pull_records(pages, end, size):
 		print "finished page " + str(pages)
 		pages = pages + 1
 
-def save_each(n):
-	for each in n.items:
+def save_each(x):
+	for each in x.items:
 		all_records.append(each)
 
 # Make Function Calls
@@ -2033,8 +2033,8 @@ def pull_records(pages, end, size):
 		print 'finished page ' + str(pages)
 		pages = pages + 1
 
-def save_each(n):
-	for each in n.items:
+def save_each(x):
+	for each in x.items:
 		all_records.append(each)
 
 # Make Function Calls
@@ -2131,8 +2131,8 @@ def pull_records(pages, end, size):
 		print 'finished page ' + str(pages)
 		pages = pages + 1
 
-def save_each(n):
-	for each in n.items:
+def save_each(x):
+	for each in x.items:
 		all_records.append(each)
 
 def save_results():
@@ -2381,11 +2381,11 @@ pull_records(2, 3, 50)
 
 <p>To create a "Save Each" function, we need to define a new function in the <code>my_first_script.py</code> file. A best practice in programming is to group  functions together toward the top of the file. Let's put our "<code>save_each</code>" function after "<code>pull_records</code>" but before we call the "<code>pull_records</code>" function:</p>
 
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>def save_each(n):
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>def save_each(x):
 </pre></td></tr></tbody></table>
 </div>
 
-<p>The '<code>n</code>' here is again arbitrary (short for number). We are telling the function that there is one attribute that we will be passing in, and to take that variable and plug it in for '<code>n</code>' throughout the function.</p>
+<p>The '<code>x</code>' here is again arbitrary. We are telling the function that there is one attribute that we will be passing in, and to take that variable and plug it in for '<code>x</code>' throughout the function.</p>
 
 <p>We now need to add our first loop. With our current search, there are 50 items in our <code>paged_search</code> variable. We want to save each of those items separately to the "<code>all_records</code>" list. This means the computer needs to move through each individual item, grab the item, and add it to "<code>all_records</code>".</p>
 
@@ -2393,13 +2393,13 @@ pull_records(2, 3, 50)
 
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>def save_each(n):
-	for each in n.items:
+3</pre></td><td class="code"><pre>def save_each(x):
+	for each in x.items:
 		# do something to every item in the list of items
 </pre></td></tr></tbody></table>
 </div>
 
-<p>This is called a "<em>for loop</em>". It tells Python to iterate through each item in the list "<code>n</code>".</p>
+<p>This is called a "<em>for loop</em>". It tells Python to iterate through each item in the list "<code>x</code>".</p>
 
 <p>Because this logic is contained within the function, we need to add another tab. Each time we have a new loop or new function, we tab in all the lines associated with that block of code. To show that we're done listing steps for a particular bit of logic, we align the code with the appropriate amount of whitespace.</p>
 
@@ -2409,8 +2409,8 @@ method:</p>
 <div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>def save_each(n):
-	for each in n.items:
+4</pre></td><td class="code"><pre>def save_each(x):
+	for each in x.items:
 		# do something to every item in the list of items
 		all_records.append(each)
 </pre></td></tr></tbody></table>
@@ -2479,8 +2479,8 @@ def pull_records (pages, end, size):
 	# print paged_search.items[2]
 	save_each(paged_search)
 
-def save_each(n):
-	for each in n.items:
+def save_each(x):
+	for each in x.items:
 		# do something to every item in the list of items
 		all_records.append(each)
 
