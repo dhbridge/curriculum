@@ -109,27 +109,27 @@ Now we need to add another function to store those results to the empty '`all_re
 
 To create a "Save Each" function, we need to define a new function in the `my_first_script.py` file. A best practice in programming is to group  functions together toward the top of the file. Let's put our "`save_each`" function after "`pull_records`" but before we call the "`pull_records`" function:
 
-	def save_each(n):
+	def save_each(x):
 
-The '`n`' here is again arbitrary (short for number). We are telling the function that there is one attribute that we will be passing in, and to take that variable and plug it in for '`n`' throughout the function.
+The '`x`' here is again arbitrary. We are telling the function that there is one attribute that we will be passing in, and to take that variable and plug it in for '`x`' throughout the function.
 
 We now need to add our first loop. With our current search, there are 50 items in our `paged_search` variable. We want to save each of those items separately to the "`all_records`" list. This means the computer needs to move through each individual item, grab the item, and add it to "`all_records`".
 
 Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:
 
-	def save_each(n):
-		for each in n.items:
+	def save_each(x):
+		for each in x.items:
 			# do something to every item in the list of items
 
-This is called a "*for loop*". It tells Python to iterate through each item in the list "`n`".
+This is called a "*for loop*". It tells Python to iterate through each item in the list "`x`".
 
 Because this logic is contained within the function, we need to add another tab. Each time we have a new loop or new function, we tab in all the lines associated with that block of code. To show that we're done listing steps for a particular bit of logic, we align the code with the appropriate amount of whitespace.
 
 To add the item to the "`all_records`" list, we use the "[append](https://docs.python.org/2/tutorial/datastructures.html)"
 method:
 
-	def save_each(n):
-		for each in n.items:
+	def save_each(x):
+		for each in x.items:
 			# do something to every item in the list of items
 			all_records.append(each)
 
@@ -166,8 +166,8 @@ Our file should now look like:
 		# print paged_search.items[2]
 		save_each(paged_search)
 
-	def save_each(n):
-		for each in n.items:
+	def save_each(x):
+		for each in x.items:
 			# do something to every item in the list of items
 			all_records.append(each)
 

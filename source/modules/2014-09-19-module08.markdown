@@ -73,8 +73,8 @@ Our file should now look like this:
 			print "finished page " + str(pages)
 			pages = pages + 1
 
-	def save_each(n):
-		for each in n.items:
+	def save_each(x):
+		for each in x.items:
 			all_records.append(each)
 
 	# Make Function Calls
