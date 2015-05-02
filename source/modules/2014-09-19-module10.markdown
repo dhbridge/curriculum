@@ -36,7 +36,19 @@ First, we will need the JSON library again. To add this, add <span class="comman
     # Load Libraries
     import json
 
-The next thing is to load up the data from our "`search_results.json`" file.
+Later in this module, we will need an additional library called "`kitchen`" so let's install and import that now.
+
+In Terminal run:
+
+    pip install kitchen
+
+"`kitchen`" is a bit of a "kitchen sink" of libraries - it holds a lot of different things. We will be using it to help with writing our strings, or more specifically, with the translating of the characters we read into the binary the computer reads. For that, we need only a very particular part of the library, the 'to_bytes' method. After "`import json`", add:
+
+    #Load Libraries
+    import json
+    from kitchen.text.converters import to_bytes
+
+Now that we have our libraries in place, the next thing is to load up the data from our "`search_results.json`" file.
 
 The structure for this is:
 
@@ -50,6 +62,7 @@ Our second script file should now look like:
 
     # Load Libraries
     import json
+    from kitchen.text.converters import to_bytes
 
     # Set Variables
     with open("search_results.json") as json_file:
@@ -76,7 +89,7 @@ To start, let's make a new function called "`get_text`" that takes in our "`json
     def get_text(json_data):
         # Do something to each item in json_data
 
-Next, for each item in that list, we want to look for the "title", the "description", and the "subject heading fields". This means using another "`for` loop".
+Next, for each item in that list, we want to look for the "title", the "description", and the "subject heading fields". This means using a "`for` loop".
 
     # Define Functions
     def get_text(json_data):
@@ -103,6 +116,7 @@ So far so good. But what if one of these fields is missing? Programming language
 
     # Load Libraries
     import json
+    from kitchen.text.converters import to_bytes
 
     # Set Variables
     with open('search_results.json') as json_file:
@@ -124,83 +138,189 @@ So far so good. But what if one of these fields is missing? Programming language
     print json_data[1]
     get_text(json_data)
 
-Towards the end of the error message, you should see a line that says "`KeyError: 'sourceResource.description'`". This is Python telling you that it cannot find a key "description" in one of the resources.
+Towards the end of the error message, you should see a line that says "`KeyError: 'sourceResource.description'`". This is Python telling you that it cannot find a key "description" in one of the resources. Also, what do we do with when there are multiple values for each key, like with the Subject Headings?
 
-To deal with this, we use "`try`" and "`except`" -- we will tell the computer to try to find the keys, but if it doesn't, to assign the value to an empty space and move on.
+Things are not as simple as they first appeared.
 
-    # Define Functions
-    def get_text(json_data):
-        for each in json_data:
-            # Get the Titles
-            try:
-                find_titles = each['sourceResource']['title']
-            except:
-                title = ' '
+To fix this, let's create a second function that we can use to get the values associated with each key, and while we're at it, let's make sure those values are all in a consistent format. Since our final product will be a file of strings, let's save the values associated with our keys as a list of strings.
 
-            # Get the Descriptions
-            try:
-                find_descriptions = each['sourceResource']['description']
-            except:
-                description = ' '
-
-            # Get the Subject Headings
-            try:
-                find_subjects = each['sourceResource']['subject']
-            except:
-                subject = ' '
-
-There are two more steps we need to get the text ready to save. The first step, using "`else`", is to get all of the data out of lists and make sure that it is encoded so that Python knows which letters correspond to the data bits.
+In your functions section, add a new function called "`get_fields`", which will do work on two variables, the "`item`" and the "`key`":
 
     # Define Functions
-    def get_text(json_data):
-        for each in json_data:
-            # Get the Titles
-            try:
-                find_titles = each['sourceResource']['title']
-                if isinstance(find_titles, basestring):
-                    title = find_titles.encode('utf8')
-                else:
-                    for each in find_titles:
-                        title = each.encode('utf8')
-            except:
-                title = ' '
 
-            # Get the Descriptions
-            try:
-                find_descriptions = each['sourceResource']['description']
-                if isinstance(find_descriptions, basestring):
-                    description = find_descriptions.encode('utf8')
-                else:
-                    for each in find_descriptions:
-                        description = each.encode('utf8')
-            except:
-                description = ' '
+    def get_fields(item, key):
+        # Return key from the sourceResource as a list of strings.
+
+    def get_texts(json_data):
+
+
+To start, we will assign the variable "`values`" to hold the values of whichever key we send to this function. To get those values, we will combine the same pattern as before, but add the "`get`" function. The "`get`" function will return a default value if the key we are looking for does not exist for an item (this is the second things being passed into the "`get`" function). We will set the default values to a string with just a space inside:
+
+
+    # Define Functions
+
+    def get_fields(item, key):
+        # Return key from the sourceResource as a list of strings.
+        values = item[u'sourceResource'].get(key, [u' '])
+
+
+    def get_texts(json_data):
+
+We also want to make sure that what we get back is consistent. Because we know that some fields have multiple entries, we want everything to be a list. So, we will add a conditional statement to check if what we got back for the value is a string, and, if it is, convert it into a list. 
+
+    # Define Functions
+
+    def get_fields(item, key):
+        # Return key from the sourceResource as a list of strings.
+        values = item[u'sourceResource'].get(key, [u' '])
+        if isinstance(values, basestring):
+            values = [values]
+        return values
+
+    def get_texts(json_data):
+
+We end with a "`return`" statement to send whatever the final product is back to whichever process used the "`get_fields`" function. 
+
+Now, let's use our "`get_fields()`" function inside the "`get_texts()`" function.
+
+    # Define Functions
+
+    def get_fields(item, key):
+        # Return key from the sourceResource as a list of strings.
+        values = item[u'sourceResource'].get(key, [u' '])
+        if isinstance(values, basestring):
+            values = [values]
+        return values
+
+    def get_texts(json_data):
+        for each in json_data:
+            # Get the title
+            title = get_fields(each, u'title')
+
+            # Get the Description
+            description = get_fields(each, u'description')
 
             # Get the Subject Headings
-            try:
-                find_subjects = each['sourceResource']['subject']
-                if isinstance(find_subjects, basestring):
-                    subject = find_subjects.encode('utf8')
-                else:
-                    subject_list = []
-                    for each in find_subjects:
-                        subject_list.append(each['name'])
+            subject_info = get_fields(each, u'subject')
 
-                    combined_subjects = ', '.join(subject_list)
-                    subject = combined_subjects.encode('utf8')
-            except:
-                subject = ' '
+With your group, talk through what is going on in these functions. Work together to trace how the information is traveling between the functions. Add `print` statements to inspect the data at different points.
 
-You might notice two different things with this function. First, we are reusing variable names. Variables hold the last thing passed to them, so we can overwrite the value of a variable to update it as we go along.
+We are almost there! However, we have to do a little extra work on each of the values. Remember how we saved all of the values as lists, because sometimes there are multiple of values for every key? Now that we have all of the values, we need to combine them into a single string for each key (title, description, and subject headings). 
 
-Second, we are handling the subject field differently than the title and description fields. This is because the subject key holds an additional list, rather than just values.
+For "`title`" and "`description`", this means using the "`join`" function to merge all of the list items into a string. 
 
-Work with your group to map out what is going on in the subject section of the function.
+For the subject headings, however, it is a bit more complicated. We will create a second loop for the subject headings to isolate the values held by the "`name`" key, and then save each of the subject headings to a new list before joining the list together into a string.
 
-The last is to save this data into a text file. Similar to last time, we need to set up the file that will receive that data:
+Let's go for it!
+
+First, add a join statement to the title and description sections. We will separate multiple entries with a comma and a space. Work with your table to understand the join statement. Use print statements to see what is happening
+
+    def get_texts(json_data):
+        for each in json_data:
+            # Get the title
+            title = get_fields(each, u'title')
+            title = (u', '.join(titles))
+
+            # Get the Description
+            description = get_fields(each, u'description')
+            description = (u', '.join(descriptions))
+
+            # Get the Subject Headings
+            subject_info = get_fields(each, u'subject')
+
+Then create an empty list named "`subjects`" to save the subject headings to:           
+
+    def get_texts(json_data):
+        for each in json_data:
+            # Get the title
+            title = get_fields(each, u'title')
+            title = (u', '.join(titles))
+
+            # Get the Description
+            description = get_fields(each, u'description')
+            description = (u', '.join(descriptions))
+
+            # Get the Subject Headings
+            subjects = []
+            subject_info = get_fields(each, u'subject')
+
+Now, create a loop to get the subject headings, which are the values associated with the key "`name`", and add those values to the new "`subjects`" list. 
+
+Because there are a few items with only one subject heading and no key "`name`", we will use "`try`" and "`except`". This way we can tell the computer to try first to get the values associated with the key "`name`", but if it can't find that key, to take the first item in the list. 
+
+Then, we will use "`append`" to add each value to our list of subjects. And finally, we can join that list of subjects into its own string, just like we did with "`title`" and "`description`".
+
+    def get_texts(json_data):
+        for each in json_data:
+            
+            # Get the title
+            titles = get_fields(each, u'title')
+            title = (u', '.join(titles))
+      
+            # Get the Description
+            descriptions = get_fields(each, u'description')
+            description = (u', '.join(descriptions))
+
+
+            # Get the Subject Headings
+            subjects = []
+            subject_info = get_fields(each, u'subject')
+
+            for info in subject_info:
+                try:
+                    subj = info[u'name']
+                except:
+                    subj = info[0]
+                subjects.append(subj)
+
+            subject = (u', '.join(subjects))
+
+Now, let's pull all our pieces - the title, the description, and the subject headings - together into a new variable. We will make each result into a sentence, which will allow us to apply interesting text-mining processes to our text in a later module.
+
+    # Define Functions
+
+    def get_fields(item, key):
+        # Return key from the sourceResource as a list of strings.
+        values = item[u'sourceResource'].get(key, [u' '])
+        if isinstance(values, basestring):
+            values = [values]
+        return values
+
+    def get_texts(json_data):
+        for each in json_data:
+            
+            # Get the title
+            titles = get_fields(each, u'title')
+            title = (u', '.join(titles))
+      
+            # Get the Description
+            descriptions = get_fields(each, u'description')
+            description = (u', '.join(descriptions))
+
+
+            # Get the Subject Headings
+            subjects = []
+            subject_info = get_fields(each, u'subject')
+
+            for info in subject_info:
+                try:
+                    subj = info[u'name']
+                except:
+                    subj = info[0]
+                subjects.append(subj)
+
+            subject = (u', '.join(subjects))
+
+            # Combine the data into a single variable in the form of a sentence
+            data = u'{}; {}; {}.\n'.format(title, description, subject)
+
+The brackets indicate that some information will be inserted into that location. In this case, order really does matter. The first bracket takes the value held in `title` because it is the first thing passed into the "`format`" function. The second bracket takes the value of `description` because it was passed in next, and so on.  Finally, the "`\n`" adds a "Return" to the end of the line, so that the information for each item appears on a new line.
+
+The last step is to save this data into a text file. Similar to last time, we need to set up the file that will receive that data. At the top of the file, add a variable "`f`" that holds a new "text_results.txt" file.
 
     # Load Libraries
     import json
+    from kitchen.text.converters import to_bytes
 
     # Set Variables
     with open("search_results.json") as json_file:
@@ -208,65 +328,44 @@ The last is to save this data into a text file. Similar to last time, we need to
 
     f = open('text_results.txt', 'w')
 
-Now, let's go back to the function and put all our pieces together into a new variable.
+Now back in our "`get_texts()`" function, the last step is to write all the information within "data" to our file.
 
-    # Define Functions
-    def get_text(json_data):
+    def get_texts(json_data):
         for each in json_data:
-            # Get the Titles
-            try:
-                find_titles = each['sourceResource']['title']
-                if isinstance(find_titles, basestring):
-                    title = find_titles.encode('utf8')
-                else:
-                    for each in find_titles:
-                        title = each.encode('utf8')
-            except:
-                title = ' '
+            
+            # Get the title
+            titles = get_fields(each, u'title')
+            title = (u', '.join(titles))
+      
+            # Get the Description
+            descriptions = get_fields(each, u'description')
+            description = (u', '.join(descriptions))
 
-            # Get the Descriptions
-            try:
-                find_descriptions = each['sourceResource']['description']
-                if isinstance(find_descriptions, basestring):
-                    description = find_descriptions.encode('utf8')
-                else:
-                    for each in find_descriptions:
-                        description = each.encode('utf8')
-            except:
-                description = ' '
 
             # Get the Subject Headings
-            try:
-                find_subjects = each['sourceResource']['subject']
-                if isinstance(find_subjects, basestring):
-                    subject = find_subjects.encode('utf8')
-                else:
-                    subject_list = []
-                    for each in find_subjects:
-                        subject_list.append(each['name'])
+            subjects = []
+            subject_info = get_fields(each, u'subject')
 
-                    combined_subjects = ', '.join(subject_list)
-                    subject = combined_subjects.encode('utf8')
-            except:
-                subject = ' '
+            for info in subject_info:
+                try:
+                    subj = info[u'name']
+                except:
+                    subj = info[0]
+                subjects.append(subj)
+
+            subject = (u', '.join(subjects))
 
             # Combine the data into a single variable in the form of a sentence
-            data = title + '; ' + description + '; ' + subject + '. \n'
-
-This line takes the information held in the title field, adds a ";" and a space, takes the information in the description field, add '; and a space, and finally, takes the list held in the subject field and smashes it together into a string, separated by a comma and a space. Finally, the "\n" adds an "Enter" to the end of the line, so that the information for each item appears on a new line.
-
-The last step is to write all the information within "data" to our file directly under the line just added:
-
-            # Combine the data into a single variable in the form of a sentence
-            data = title + '; ' + description + '; ' + subject + '. \n'
+            data = u'{}; {}; {}.\n'.format(title, description, subject)
 
             # Write the sentence to the 'text_results' file
-            f.write(data)
+            f.write(to_bytes(data))
 
-Last, let's add a call to the function:
+Finally, let's add a call to the function:
 
     # Load Libraries
     import json
+    from kitchen.text.converters import to_bytes
 
     # Set Variables
     with open("search_results.json") as json_file:
@@ -275,57 +374,57 @@ Last, let's add a call to the function:
     f = open('text_results.txt', 'w')
 
     # Define Functions
-    def get_text(json_data):
-        for each in json_data:
-            # Get the Titles
-            try:
-                find_titles = each['sourceResource']['title']
-                if isinstance(find_titles, basestring):
-                    title = find_titles.encode('utf8')
-                else:
-                    for each in find_titles:
-                        title = each.encode('utf8')
-            except:
-                title = ' '
+    def get_fields(item, key):
+        # Return key from the sourceResource as a list of strings.
+        values = item[u'sourceResource'].get(key, [u' '])
+        if isinstance(values, basestring):
+            values = [values]
+        return values
 
-            # Get the Descriptions
-            try:
-                find_descriptions = each['sourceResource']['description']
-                if isinstance(find_descriptions, basestring):
-                    description = find_descriptions.encode('utf8')
-                else:
-                    for each in find_descriptions:
-                        description = each.encode('utf8')
-            except:
-                description = ' '
+    def get_texts(json_data):
+        for each in json_data:
+            
+            # Get the title
+            titles = get_fields(each, u'title')
+            title = (u', '.join(titles))
+      
+            # Get the Description
+            descriptions = get_fields(each, u'description')
+            description = (u', '.join(descriptions))
+
 
             # Get the Subject Headings
-            try:
-                find_subjects = each['sourceResource']['subject']
-                if isinstance(find_subjects, basestring):
-                    subject = find_subjects.encode('utf8')
-                else:
-                    subject_list = []
-                    for each in find_subjects:
-                        subject_list.append(each['name'])
+            subjects = []
+            subject_info = get_fields(each, u'subject')
 
-                    combined_subjects = ', '.join(subject_list)
-                    subject = combined_subjects.encode('utf8')
-            except:
-                subject = ' '
+            for info in subject_info:
+                try:
+                    subj = info[u'name']
+                except:
+                    subj = info[0]
+                subjects.append(subj)
+
+            subject = (u', '.join(subjects))
 
             # Combine the data into a single variable in the form of a sentence
-            data = title + '; ' + description + '; ' + subject + '. \n'
+            data = u'{}; {}; {}.\n'.format(title, description, subject)
 
             # Write the sentence to the 'text_results' file
-            f.write(data)
+            f.write(to_bytes(data))
 
     # Make Function Calls
-    get_text(json_data)
+    get_texts(json_data)
 
 Save and run your second Python script. You should now have a file named "`text_results.txt`" in your "`dhb_awesome`" directory. If you open that file, you should see lines of beautiful text ready for analysis.
 
 In the next module, we will use the Natural Language ToolKit, a powerful Python library for working with text, to find patterns in the text data.
+
+### Bonus Challenge: 
+Research Python data types with your table. Which data types have we already worked with? Why do data types matter?
+
+### Credits
+
+Many thanks to Eric Rochester for his help [(https://gist.github.com/erochest/4debe339ec9d2bf5ea5a)](https://gist.github.com/erochest/4debe339ec9d2bf5ea5a) with refactoring this module.
 
 <span class="left">[Previous Module](module09.html)</span>
 <span class="right">[Next Module](module11.html)</span>
