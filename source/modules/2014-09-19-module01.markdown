@@ -90,7 +90,7 @@ on your Windows machine.
 
 This should launch your default text editor. (For Mac users, if the file does not open in TextWrangler or your text editor, work with your coach to set your default editor.) 
 
-Type <span class="command">print "Hello World"</span> into the text file and save. We will do something with that soon.
+Type <span class="command">print("Hello World")</span> into the text file and save. We will do something with that soon.
 
 If you want to learn more commands--like how to remove, copy, or rename files--checkout the [Scholars' Lab Command Line Bootcamp](http://praxis.scholarslab.org/scratchpad/bash/). But this is enough to start!
 
