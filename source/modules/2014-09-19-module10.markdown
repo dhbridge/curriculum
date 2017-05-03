@@ -40,7 +40,11 @@ Later in this module, we will need an additional library called "`kitchen`" so l
 
 In Terminal run:
 
-    pip install kitchen
+    pip3 install kitchen
+
+For Mac, you may need to use:
+
+    sudo pip3 install kitchen
 
 "`kitchen`" is a bit of a "kitchen sink" of libraries - it holds a lot of different things. We will be using it to help with writing our strings, or more specifically, with the translating of the characters we read into the binary the computer reads. For that, we need only a very particular part of the library, the 'to_bytes' method. After "`import json`", add:
 
@@ -135,7 +139,7 @@ So far so good. But what if one of these fields is missing? Programming language
             find_subjects = each['sourceResource']['subject']
 
     # Make Function Calls
-    print json_data[1]
+    print(json_data[1])
     get_text(json_data)
 
 Towards the end of the error message, you should see a line that says "`KeyError: 'sourceResource.description'`". This is Python telling you that it cannot find a key "description" in one of the resources. Also, what do we do with when there are multiple values for each key, like with the Subject Headings?
@@ -173,7 +177,7 @@ We also want to make sure that what we get back is consistent. Because we know t
     def get_fields(item, key):
         # Return key from the sourceResource as a list of strings.
         values = item[u'sourceResource'].get(key, [u' '])
-        if isinstance(values, basestring):
+        if isinstance(values, str):
             values = [values]
         return values
 
@@ -188,7 +192,7 @@ Now, let's use our "`get_fields()`" function inside the "`get_texts()`" function
     def get_fields(item, key):
         # Return key from the sourceResource as a list of strings.
         values = item[u'sourceResource'].get(key, [u' '])
-        if isinstance(values, basestring):
+        if isinstance(values, str):
             values = [values]
         return values
 
@@ -219,11 +223,11 @@ First, add a join statement to the title and description sections. We will separ
         for each in json_data:
             # Get the title
             title = get_fields(each, u'title')
-            title = (u', '.join(titles))
+            title = (u', '.join(title))
 
             # Get the Description
             description = get_fields(each, u'description')
-            description = (u', '.join(descriptions))
+            description = (u', '.join(description))
 
             # Get the Subject Headings
             subject_info = get_fields(each, u'subject')
@@ -234,11 +238,11 @@ Then create an empty list named "`subjects`" to save the subject headings to:
         for each in json_data:
             # Get the title
             title = get_fields(each, u'title')
-            title = (u', '.join(titles))
+            title = (u', '.join(title))
 
             # Get the Description
             description = get_fields(each, u'description')
-            description = (u', '.join(descriptions))
+            description = (u', '.join(description))
 
             # Get the Subject Headings
             subjects = []
@@ -254,12 +258,12 @@ Then, we will use "`append`" to add each value to our list of subjects. And fina
         for each in json_data:
             
             # Get the title
-            titles = get_fields(each, u'title')
-            title = (u', '.join(titles))
+            title = get_fields(each, u'title')
+            title = (u', '.join(title))
       
             # Get the Description
-            descriptions = get_fields(each, u'description')
-            description = (u', '.join(descriptions))
+            description = get_fields(each, u'description')
+            description = (u', '.join(description))
 
 
             # Get the Subject Headings
@@ -282,7 +286,7 @@ Now, let's pull all our pieces - the title, the description, and the subject hea
     def get_fields(item, key):
         # Return key from the sourceResource as a list of strings.
         values = item[u'sourceResource'].get(key, [u' '])
-        if isinstance(values, basestring):
+        if isinstance(values, str):
             values = [values]
         return values
 
@@ -290,12 +294,12 @@ Now, let's pull all our pieces - the title, the description, and the subject hea
         for each in json_data:
             
             # Get the title
-            titles = get_fields(each, u'title')
-            title = (u', '.join(titles))
+            title = get_fields(each, u'title')
+            title = (u', '.join(title))
       
             # Get the Description
-            descriptions = get_fields(each, u'description')
-            description = (u', '.join(descriptions))
+            description = get_fields(each, u'description')
+            description = (u', '.join(description))
 
 
             # Get the Subject Headings
@@ -334,12 +338,12 @@ Now back in our "`get_texts()`" function, the last step is to write all the info
         for each in json_data:
             
             # Get the title
-            titles = get_fields(each, u'title')
-            title = (u', '.join(titles))
+            title = get_fields(each, u'title')
+            title = (u', '.join(title))
       
             # Get the Description
-            descriptions = get_fields(each, u'description')
-            description = (u', '.join(descriptions))
+            description = get_fields(each, u'description')
+            description = (u', '.join(description))
 
 
             # Get the Subject Headings
@@ -377,7 +381,7 @@ Finally, let's add a call to the function:
     def get_fields(item, key):
         # Return key from the sourceResource as a list of strings.
         values = item[u'sourceResource'].get(key, [u' '])
-        if isinstance(values, basestring):
+        if isinstance(values, str):
             values = [values]
         return values
 
@@ -385,12 +389,12 @@ Finally, let's add a call to the function:
         for each in json_data:
             
             # Get the title
-            titles = get_fields(each, u'title')
-            title = (u', '.join(titles))
+            title = get_fields(each, u'title')
+            title = (u', '.join(title))
       
             # Get the Description
-            descriptions = get_fields(each, u'description')
-            description = (u', '.join(descriptions))
+            description = get_fields(each, u'description')
+            description = (u', '.join(description))
 
 
             # Get the Subject Headings

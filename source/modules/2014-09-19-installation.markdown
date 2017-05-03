@@ -26,7 +26,7 @@ You might also want to bring:
 You will be installing or checking the status of the following tools:
 
 - Python
-- `pip`
+- `pip3`
 - Text Editor
 
 Programming languages are very literal: if you tell it to do something that it cannot do, it just stops and gives you an error. So don't worry if you get an error message--it happens all the time, often over very small, correctable things. 
@@ -57,10 +57,10 @@ Open up Terminal. It should give you a screen that looks similar to this:
 
 ![image of terminal screen](/images/terminal.png)
 
-To check your Python version, type <span class="command">python</span> into the Terminal window and press "Enter". You should see something that looks like:
+To check your Python version, type <span class="command">python3</span> into the Terminal window and press "Enter". You should see something that looks like:
 
  
-    Python 2.7.5 (default, Mar  9 2014, 22:15:05) 
+    Python 3.4.2 (default, Mar  9 2014, 22:15:05) 
     [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
     Type "help", "copyright", "credits" or "license" for more information.
     >>> 
@@ -71,15 +71,15 @@ You are now in the Python Shell. This is an interactive environment that allows 
 
 Exit the Python Shell by typing <span class="command">quit()</span> and pressing "Enter".
 
-#### 3. Install `pip`
+#### 3. Install `pip3`
 
-One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. `pip` is a tool that helps us install and use those packages of code.
+One of the things that makes Python so powerful is the ability to use libraries, or packages of code, and to combine these together in our own programs. `pip3` is a tool that helps us install and use those packages of code.
 
-To download `pip`, we are going to use another tool called cURL, which is already part of your operating system. cURL allows us to transfer data using the command line.
+To download `pip3`, we are going to use another tool called cURL, which is already part of your operating system. cURL allows us to transfer data using the command line.
 
 Type <span class="command">curl -O https://bootstrap.pypa.io/get-pip.py</span> and press "Enter". This will download a file titled "get-pip.py" onto your machine.
 
-To install `pip`, you need to run that file with Python. To do that, type <span class="command">python get-pip.py</span> into Terminal and press "Enter". 
+To install `pip3`, you need to run that file with Python. To do that, type <span class="command">python get-pip.py</span> into Terminal and press "Enter". 
 
 If Terminal turns red and you get errors that say <span class="command"> OSError: [Errno 13] Permission denied</span>, don't fret. This is because the script is trying to make changes to system files, and your computer is protecting those files. Because we trust this script, we can over-ride those protections and give Python permission to install at the system level. We do this by using the sudo command (or "SuperUserDO") before the Python command.
 

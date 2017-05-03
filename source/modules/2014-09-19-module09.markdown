@@ -31,9 +31,9 @@ Your file should now look like this:
 	def pull_records(pages, end, size):
 		while(pages <= end):
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-			# print paged_search.items[2]
+			# print(paged_search.items[2])
 			save_each(paged_search)
-			print 'finished page ' + str(pages)
+			print('finished page ' + str(pages))
 			pages = pages + 1
 
 	def save_each(x):
@@ -41,9 +41,9 @@ Your file should now look like this:
 			all_records.append(each)
 
 	# Make Function Calls
-	# print result.items[1]
+	# print(result.items[1])
 	pull_records(2, 5, 50)
-	print all_records[150]
+	print(all_records[150])
 
 Here you are assigning the results of a function - `open("search_results.json")` - to the variable `f`. The "`open`" method both opens an existing file and creates a file if the file does not already exist on your computer. The "`w`" argument indicates that the file should be opened for "*writing*". One thing to note about "`w`" - "write" gives the program permission to overwrite the data inside the file, which is why we are opening the file once and writing the entire list at the end. If we were to write each item as we looped, we would end up with only the last item in the file. This code would write and overwrite each item as it went along. If you need to write inside a loop, you can open the file as "`a`" instead. This tells the computer to "append" the information to the end of the file, rather than overwrite the existing information.
 
@@ -84,9 +84,9 @@ Our file should now look like this:
 	def pull_records(pages, end, size):
 		while(pages <= end):
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-			# print paged_search.items[2]
+			# print(paged_search.items[2])
 			save_each(paged_search)
-			print 'finished page ' + str(pages)
+			print('finished page ' + str(pages))
 			pages = pages + 1
 
 	def save_each(x):
@@ -99,9 +99,9 @@ Our file should now look like this:
 		f.close
 
 	# Make Function Calls
-	# print result.items[1]
+	# print(result.items[1])
 	pull_records(2, 5, 50)
-	print all_records[150]
+	print(all_records[150])
 	save_results()
 
 Test that everything is working by running your "`my_first_script.py`" in Terminal.

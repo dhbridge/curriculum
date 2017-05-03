@@ -77,8 +77,8 @@ LUNCH
 
 Check to make sure that participants have the following installed and ready to go:
 
-1. Python 2.7
-2. `pip`
+1. Python 3.4
+2. `pip3`
 3. Text Editor: work with participants to set TextWrangler as the default text editor for Mac users. It's not an issue for Windows users because the commands specify starting Notepad++ each time. 
 4. Chrome browser
 

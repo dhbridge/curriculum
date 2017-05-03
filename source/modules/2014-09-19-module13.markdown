@@ -19,7 +19,7 @@ Currently our `text_mining.py` file should look like this:
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -40,17 +40,17 @@ Currently our `text_mining.py` file should look like this:
         return word_set
 
     # Make Function Calls
-    #print cooking_text[0:20]
-    #print cooking_tokens[0:10]
-    #print text.concordance('economics')
-    #print text.collocations()
-    #print text.similar('Pot')
+    #print(cooking_text[0:20])
+    #print(cooking_tokens[0:10])
+    #print(text.concordance('economics'))
+    #print(text.collocations())
+    #print(text.similar('Pot'))
 
     normalize_text(text)
 
     fd = FreqDist(word_set)
-    print fd.most_common(200)
-    print fd.hapaxes()
+    print(fd.most_common(200))
+    print(fd.hapaxes())
 
 To create CSV files, we need to import the `csv` library, which is preinstalled, but not preloaded in Python. To do that, add <span class="command">import csv</span> to our list of libraries at the top of the file.
 
@@ -65,9 +65,9 @@ Now, we can create our CSV file right after the line where we opened the JSON fi
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
-    file = csv.writer(open('word_frequencies.csv', 'wb'))
+    file = csv.writer(open('word_frequencies.csv', 'w', newline=''))
 
 
 Now, at the bottom of `text_mining.py`, we can save the key (the word) and the count (the frequency) as two columns in the CSV file `word_frequencies.csv`. If you did the graphing challenge, be sure to comment out <span class='command'>fd.plot(50,cumulative=False)</span> as well. The plotting function and the write csv functions don't work well together.
@@ -86,9 +86,9 @@ The final product should look like this:
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
-    file = csv.writer(open('word_frequencies.csv', 'w'))
+    file = csv.writer(open('word_frequencies.csv', 'w', newline=''))
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -109,17 +109,17 @@ The final product should look like this:
         return word_set
 
     # Make Function Calls
-    #print cooking_text[0:20]
-    #print cooking_tokens[0:10]
-    #print text.concordance('economics')
-    #print text.collocations()
-    #print text.similar('Pot')
+    #print(cooking_text[0:20])
+    #print(cooking_tokens[0:10])
+    #print(text.concordance('economics'))
+    #print(text.collocations())
+    #print(text.similar('Pot'))
 
     normalize_text(text)
 
     fd = FreqDist(word_set)
-    print fd.most_common(200)
-    #print fd.hapaxes()
+    print(fd.most_common(200))
+    #print(fd.hapaxes())
     #fd.plot(50,cumulative=False)
 
     # Print results to a CSV file

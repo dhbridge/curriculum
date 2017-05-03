@@ -23,7 +23,7 @@ Our file currently looks like this:
 	# Define Functions
 
 	# Make Function Calls
-	# print result.items[1]
+	# print(result.items[1])
 
 We will now add a function that handles the query for any given page number.
 
@@ -63,7 +63,7 @@ Your file should now look like this:
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size=size, page=pages)
 
 	# Make Function Calls
-	# print result.items[1]
+	# print(result.items[1])
 
 It is important to note that in Python, white-space has meaning: when writing functions in Python, white space is used to designate what is in a function or within a loop and what is outside of it.
 
@@ -72,12 +72,12 @@ Let's add a "`print`" statement to our function and test out the first stage of 
 	# Define Functions
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
-		print paged_search.items[2]
+		print(paged_search.items[2])
 
 To execute the function, we will call the function name and give it values. On a new line in the 'Make Function Calls' section, add the line:
 
 	# Make Function Calls
-	# print result.items[1]
+	# print(result.items[1])
 	pull_records(2, 3, 50)
 
 Your file should now look like:
@@ -93,10 +93,10 @@ Your file should now look like:
 	# Define Functions
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'], page_size = size, page = pages)
-		print paged_search.items[2]
+		print(paged_search.items[2])
 
 	# Make Function Calls
-	# print result.items[1]
+	# print(result.items[1])
 	pull_records(2, 3, 50)
 
 Save the file and go to Terminal to run it (`python my_first_script.py`). Then come back to the function and work with your table to understand how the function works.
@@ -115,7 +115,7 @@ The '`x`' here is again arbitrary. We are telling the function that there is one
 
 We now need to add our first loop. With our current search, there are 50 items in our `paged_search` variable. We want to save each of those items separately to the "`all_records`" list. This means the computer needs to move through each individual item, grab the item, and add it to "`all_records`".
 
-Tabbing in one space on the next line under <span class="command">def save_each(n):</span>s add:
+Tabbing in one space on the next line under <span class="command">def save_each(x):</span>s add:
 
 	def save_each(x):
 		for each in x.items:
@@ -139,15 +139,15 @@ Now we can use this function in our "`pull_records`" function. Currently, our "`
 
 	def pull_records (pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
-		print paged_search.items[2]
+		print(paged_search.items[2])
 
-Let's comment out the "`print paged_search.item[2]`" line, because that was just there to check that the first bit worked.
+Let's comment out the "`print(paged_search.item[2])`" line, because that was just there to check that the first bit worked.
 
 Now add a call to the "`save_each`" function, that passes in our search results.
 
 	def pull_records (pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
-		# print paged_search.items[2]
+		# print(paged_search.items[2])
 		save_each(paged_search)
 
 Our file should now look like:
@@ -163,7 +163,7 @@ Our file should now look like:
 	# Define Functions
 	def pull_records (pages, end, size):
 		paged_search = dpla.search('cooking', fields=['sourceResource'],  page_size=size, page=pages)
-		# print paged_search.items[2]
+		# print(paged_search.items[2])
 		save_each(paged_search)
 
 	def save_each(x):
@@ -172,14 +172,14 @@ Our file should now look like:
 			all_records.append(each)
 
 	# Make Function Calls
-	# print result.items[1]
+	# print(result.items[1])
 	pull_records(2, 3, 50)
 
 To test this, let's now add a "`print`" statement to the end of the file, after the "`pull_records`" function has been run, to make sure that the items are going into the "`all_records`" variable.
 
 After "`pull_records()`" add:
 
-	print all_records[30]
+	print(all_records[30])
 
 Save and run your script.
 

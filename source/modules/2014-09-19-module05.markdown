@@ -24,7 +24,7 @@ and on Windows:
 
 	Start Notepad++ my_first_script.py
 
-It should say 'print "Hello World"'. Now that you know something about Python functions, what do you expect this script to do?
+It should say 'print("Hello World")'. Now that you know something about Python functions, what do you expect this script to do?
 
 Let's test it out! To execute a Python file, run the following in Terminal:
 
@@ -42,7 +42,7 @@ Congratulations! You just executed your first Python script!
 
 Now let's recreate some of the work we did in the Interactive Interpreter in this script file.
 
-Delete <span class="command">print "Hello World"</span> so that you're working with a clean file.
+Delete <span class="command">print("Hello World")</span> so that you're working with a clean file.
 
 First, at the beginning of a Python file you need to list the libraries that we will be using. The computer will execute the code in the order it reads it, so it is important that your commands follow a logical structure down the page.
 

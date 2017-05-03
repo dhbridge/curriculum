@@ -33,17 +33,17 @@ You have just installed your first Python library.
 
 Python is a language we can use to write and execute scripts. But it also comes with a handy feature called the Interactive Interpreter. Using the Interactive Interpreter, we will first experiment with lines of Python and see what the language can do. 
 
-To start up the Interactive Interpreter, go to your Terminal window and type <span class="command">python</span> and press "Enter".
+To start up the Interactive Interpreter, go to your Terminal window and type <span class="command">python3</span> and press "Enter".
 
 Your Terminal should now look like this:
 
-	jeriwieringa$ python
-	Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+	jeriwieringa$ python3
+	Python 3.4.2 (default, Mar  9 2014, 22:15:05)
 	[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
 	Type "help", "copyright", "credits" or "license" for more information.
 	>>>
 
-Everything you type now will be processed by Python. Let's try it out a bit. Type <span class="command">print "Hello World"</span> and press "Enter". Now type <span class="command">print "My Name is [Your Name]"</span> and press "Enter". Now type <span class="command">print 5 + 8</span> and press "Enter".
+Everything you type now will be processed by Python. Let's try it out a bit. Type <span class="command">print("Hello World")</span> and press "Enter". Now type <span class="command">print("My Name is [Your Name]")</span> and press "Enter". Now type <span class="command">print(5 + 8)</span> and press "Enter".
 
 Here you have discovered a couple of very useful things about programming languages. 
 

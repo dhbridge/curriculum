@@ -28,7 +28,7 @@ Next, declare (or set) the variables (names) that you will use through the scrip
 
 After the variables, we will put our functions. Functions are like mini-scripts or packets of code that do one job. We can then combine functions to create more complicated programs. We will add some functions to our script in the next modules.
 
-Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) parens "`()`". One exception is the "`print`" function, which doesn't require parens in the version of Python we are using for this workshop. We called the "`print`" function to print one item from our search results. It is important to call the functions in the order that you want them to be run.
+Finally, at the send of the file, we put the "calls to the functions" or commands to execute functions. To do this, we use the function name and (usually) parens "`()`". We called the "`print`" function to print one item from our search results. It is important to call the functions in the order that you want them to be run.
 
 	# Load Libraries
 	import [library name]
@@ -45,7 +45,7 @@ Finally, at the send of the file, we put the "calls to the functions" or command
 	# Make Function Calls
 	my_var = my_function()
 
-	print my_var[1]
+	print(my_var[1])
 
 ### Asking Questions of Our Data
 
@@ -74,7 +74,7 @@ Next, let's change the number of items we get back by adding an additional param
 
 To check that this worked, let's add a line telling the computer to print out the 40th item:
 
-	print result.items[39]
+	print(result.items[39])
 
 Remember, counting within a list begins at 0.
 
@@ -107,7 +107,7 @@ Your file should look like:
 	# Define Functions
 
 	# Make Function Calls
-	# print result.items[39]
+	# print(result.items[39])
 
 Now, let's create a new variable, "`all_records`" and set it equal to an empty list.
 

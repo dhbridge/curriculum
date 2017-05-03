@@ -16,13 +16,13 @@ We are interested in the language used in the three fields we singled out across
 
 To install NLTK, let's go back to our Terminal and use `pip`.
 
-Run <span class="command">pip install nltk</span>. You may need to use <span class="command">sudo pip install nltk</span>  (Mac).
+Run <span class="command">pip3 install nltk</span>. You may need to use <span class="command">sudo pip3 install nltk</span>  (Mac).
 
 There are also a number of datasets available for use with NLTK. For our purposes, we will only be using the "stopwords" dataset. You can browse the list of all the datasets you could download and use at [http://www.nltk.org/nltk_data/](http://www.nltk.org/nltk_data/).
 
-To download the stopwords, we are going back into the Python Interactive Interpreter. Run <span class="command">python</span>. Your Terminal window should now look something like this:
+To download the stopwords, we are going back into the Python Interactive Interpreter. Run <span class="command">python3</span>. Your Terminal window should now look something like this:
 
-    Python 2.7.5 (default, Mar  9 2014, 22:15:05)
+    Python 3.4.2 (default, Mar  9 2014, 22:15:05)
     [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
@@ -79,7 +79,7 @@ Next let's load in our text file:
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
 Let's add a "`print`" command so we can display part of our text to make sure everything is loading correctly so far:
 
@@ -89,12 +89,12 @@ Let's add a "`print`" command so we can display part of our text to make sure ev
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
     # Define Functions
 
     # Make Function Calls
-    print cooking_text[0:20]
+    print(cooking_text[0:20])
 
 Save and run this script in Terminal. Let's take a look at the results. One thing to note here is that Python treats the text as a list of letters.
 
@@ -113,17 +113,17 @@ Now let's comment out the last print statement and transform our "words" into to
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
     cooking_tokens = word_tokenize(cooking_text)
 
     # Define Functions
 
     # Make Function Calls
-    #print cooking_text[0:20]
-    print cooking_tokens[0:10]
+    #print(cooking_text[0:20])
+    print(cooking_tokens[0:10])
 
-Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out "`print cooking_tokens[0:10]`" and add to the variables section after <span class="command">cooking_tokens...</span>:
+Next, we need to do one more transformation on our words so that they will play nicely with NLTK. Comment out "`print(cooking_tokens[0:10])`" and add to the variables section after <span class="command">cooking_tokens...</span>:
 
     text = nltk.Text(cooking_tokens)
 
@@ -136,7 +136,7 @@ Your file should now look like this:
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -144,37 +144,37 @@ Your file should now look like this:
     # Define Functions
 
     # Make Function Calls
-    #print cooking_text[0:20]
-    #print cooking_tokens[0:10]
+    #print(cooking_text[0:20])
+    #print(cooking_tokens[0:10])
 
 
 The first thing we can do to get a sense of the words in our dataset is to use the "`concordance`" method within NLTK. This will print all the instances of a word with the surrounding words for context.
 
-After <span class="command">#print cooking_tokens[0:10]</span>, add:
+After <span class="command">#print(cooking_tokens[0:10])</span>, add:
 
-    print text.concordance('cooking')
+    print(text.concordance('cooking'))
 
 Save and run your script.
 
 Pretty cool! Now change "cooking" to "economics", save and run the script, and see what the output is:
 
-    print text.concordance('economics')
+    print(text.concordance('economics'))
 
 Try some other words to get a sense of the word usage in the "`text_results`" file. You can either replace the word or add additional `print` statements.
 
 Another useful method is "`collocation`". This shows us all the words that tend to appear together throughout the corpus.
 
-Comment out <span class="command">print text.concordance('your_last_word')</span> and add 
+Comment out <span class="command">print(text.concordance('your_last_word'))</span> and add 
 
-    print text.collocations()
+    print(text.collocations())
 
 Save and run your script.
 
 One more method that is useful for surveying our data is "`similar`". This shows us words that are used similarly to the word we give it.
 
-Comment out <span class="command"> print text.collocations()</span> and add:
+Comment out <span class="command"> print(text.collocations())</span> and add:
 
-    print text.similar('Pot')
+    print(text.similar('Pot'))
 
 Your script should now look like:
 
@@ -185,7 +185,7 @@ Your script should now look like:
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -193,12 +193,12 @@ Your script should now look like:
     # Define Functions
 
     # Make Function Calls
-    #print cooking_text[0:20]
-    #print cooking_tokens[0:10]
-    #print text.concordance('economics')
-    #print text.collocations()
+    #print(cooking_text[0:20])
+    #print(cooking_tokens[0:10])
+    #print(text.concordance('economics'))
+    #print(text.collocations())
 
-    print text.similar('Pot')
+    print(text.similar('Pot'))
 
 What other patterns might be interesting to know about the words used to describe objects related to "cooking"?
 

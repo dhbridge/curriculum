@@ -14,18 +14,18 @@ While we can get a lot of information from the entirety of the text, we can also
 
 To clean up the text, we need to work through each word and and run it through a series of checks or filters.
 
-Open your "`text_mining.py`" file. First, comment out <span class="command">print text.similar('Pot')</span>. Next, let's create a new function that normalizes the text:
+Open your "`text_mining.py`" file. First, comment out <span class="command">print(text.similar('Pot'))</span>. Next, let's create a new function that normalizes the text:
 
     # Define Functions
     def normalize_text(text):
         # Work through all the words in text and filter
 
     # Make Function Calls
-    #print cooking_text[0:20]
-    #print cooking_tokens[0:10]
-    #print text.concordance('economics')
-    #print text.collocations()
-    #print text.similar('Pot')
+    #print(cooking_text[0:20])
+    #print(cooking_tokens[0:10])
+    #print(text.concordance('economics'))
+    #print(text.collocations())
+    #print(text.similar('Pot'))
 
 To work through the words, we can use a new "`for` loop" and save all of the approved words into a new array named "`word_set`". Create your new array at the end of the "Set Variables" section.
 
@@ -56,7 +56,7 @@ Next, let's check the word against the NLTK collection of stopwords. First, let'
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -95,11 +95,11 @@ Finally, we will add those words that pass through the filters to the "`word_set
 The last step is to call our "`normalize_text`" function and pass in our text.
 
     # Make Function Calls
-    #print cooking_text[0:20]
-    #print cooking_tokens[0:10]
-    #print text.concordance('economy')
-    #print text.collocations()
-    #print text.similar('Pot')
+    #print(cooking_text[0:20])
+    #print(cooking_tokens[0:10])
+    #print(text.concordance('economy'))
+    #print(text.collocations())
+    #print(text.similar('Pot'))
 
     normalize_text(text)
 
@@ -116,7 +116,7 @@ Our Python file should now look like this:
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -137,11 +137,11 @@ Our Python file should now look like this:
         return word_set
 
     # Make Function Calls
-    #print cooking_text[0:20]
-    #print cooking_tokens[0:10]
-    #print text.concordance('economy')
-    #print text.collocations()
-    #print text.similar('Pot')
+    #print(cooking_text[0:20])
+    #print(cooking_tokens[0:10])
+    #print(text.concordance('economy'))
+    #print(text.collocations())
+    #print(text.similar('Pot'))
 
     normalize_text(text)
 
@@ -149,7 +149,7 @@ We need one more library to get word frequencies from our array of approved word
 
     from nltk.probability import *
 
-Now, we will use the Frequency Distribution method to get word counts. NLTK is a very powerful library, and by using it, we can draw on the work others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script. Let's first use the library, and then work through what it did.
+Now, we will use the Frequency Distribution method to get word counts. NLTK is a very powerful library, and by using it, we can draw on the work of others to build and verify that the functions do what they say they do. There is no need to reinvent the wheel with every new script. Let's first use the library, and then work through what it did.
 
 The first step is to run the Frequency Distribution method and save the results to a variable so they are easier to use. After <span class="command">normalize_text(text)</span> add:
 
@@ -157,7 +157,7 @@ The first step is to run the Frequency Distribution method and save the results 
 
 To see the 200 most common words, add to the bottom of the 'Make Function Calls' section:
 
-    print fd.most_common(200)
+    print(fd.most_common(200))
 
 and run your script.
 
@@ -175,7 +175,7 @@ Your file should look like:
 
     # Set Variables
     with open('text_results.txt', 'r') as file:
-        cooking_text = file.read().decode('utf8')
+        cooking_text = file.read()
 
     cooking_tokens = word_tokenize(cooking_text)
     text = nltk.Text(cooking_tokens)
@@ -196,22 +196,22 @@ Your file should look like:
         return word_set
 
     # Make Function Calls
-    #print cooking_text[0:20]
-    #print cooking_tokens[0:10]
-    #print text.concordance('economy')
-    #print text.collocations()
-    #print text.similar('Pot')
+    #print(cooking_text[0:20])
+    #print(cooking_tokens[0:10])
+    #print(text.concordance('economy'))
+    #print(text.collocations())
+    #print(text.similar('Pot'))
 
     normalize_text(text)
 
     fd = FreqDist(word_set)
-    print fd.most_common(200)
+    print(fd.most_common(200))
 
 You can comment out print statements along the way if you are seeing too much information. 
 
 ### Bonus Challenge (for the ambitious)
 
-For some super magic, you can also generate a plot of the most frequent words. You will need to install ``numpy`` with <span class="command">pip install -U numpy</span> and ``matplotlib`` with <span class="command">pip install matplotlib</span>. Remember, if you get an error, try running the command again with `sudo` (e.g. `sudo pip install -U numpy`).
+For some super magic, you can also generate a plot of the most frequent words. You will need to install ``numpy`` with <span class="command">pip3 install -U numpy</span> and ``matplotlib`` with <span class="command">pip3 install matplotlib</span>. Remember, if you get an error, try running the command again with `sudo` (e.g. `sudo pip3 install -U numpy`).
 
 Add to your script:
 

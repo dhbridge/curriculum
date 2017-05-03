@@ -20,7 +20,7 @@ To use a `while` loop, let's look again at our "`pull_records`" function.
 
 	def pull_records(pages, end, size):
 		paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-		# print paged_search.items[2]
+		# print(paged_search.items[2])
 		save_each(paged_search)
 
 Remember, "`pages`" is a variable for the first page and "`end`" is a variable for the last page of search results we want. We want the `pull_records` function to retrieve every page of search results. In other words, if the page number is less than or equal to the total number of pages available, we want to get the search results from that page. Once we hit the end, we want to stop.
@@ -34,7 +34,7 @@ so that our function now looks like this:
 	def pull_records(pages, end, size):
 		while(pages <= end):
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-			# print paged_search.items[2]
+			# print(paged_search.items[2])
 			save_each(paged_search)
 
 Can you see the problem with our current function? As it currently is written, "`pages`" is always less than "`end`" because it never increases. This means we would get stuck in an "**infinite loop**" if we tried to run the code right now &mdash; don't run the code at this point! If you did, that's OK, just stop the execution of the program with by hitting `ctrl + c` on the keyboard.
@@ -46,13 +46,13 @@ Add "pages = pages +1" after <span class="command">save_each(paged_search)</span
 	def pull_records(pages, end, size):
 			while(pages <= end):
 				paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-				# print paged_search.items[2]					
+				# print(paged_search.items[2])					
 				save_each(paged_search)
 				pages = pages + 1
 
 Let's also add a print command to check that things are working as we expect. Above <span class = "command">pages = pages + 1</span> add:
 
-	print "finished page " + str(pages)
+	print("finished page " + str(pages))
 
 Our file should now look like this:
 
@@ -68,9 +68,9 @@ Our file should now look like this:
 	def pull_records(pages, end, size):
 		while(pages <= end):
 			paged_search = dpla.search('cooking',fields=['sourceResource'], page_size=size, page=pages)
-			# print paged_search.items[2]
+			# print(paged_search.items[2])
 			save_each(paged_search)
-			print "finished page " + str(pages)
+			print("finished page " + str(pages))
 			pages = pages + 1
 
 	def save_each(x):
@@ -78,11 +78,11 @@ Our file should now look like this:
 			all_records.append(each)
 
 	# Make Function Calls
-	# print result.items[1]
+	# print(result.items[1])
 	pull_records(2, 3, 50)
-	print all_records[30]
+	print(all_records[30])
 
-Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print all_records[30]</span> to <span class="command">print all_records[150]</span>
+Let's test our function on a subset of the pages. Change <span class="command">pull_records(2, 3, 50)</span> to <span class="command">pull_records(2, 5, 50)</span> and change <span class="command">print(all_records[30])</span> to <span class="command">print(all_records[150])</span>
 
 Save and run in Terminal.
 
